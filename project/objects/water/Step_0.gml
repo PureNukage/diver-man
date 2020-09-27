@@ -1,0 +1,1 @@
+sec += 1 / room_speed
