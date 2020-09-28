@@ -10,12 +10,8 @@ if (hspd != 0 or vspd != 0) {
 	
 	if hspd != 0 image_xscale = hspd * xscale
 	
-	if sprite_index != s_diverman_walk {
-		sprite_index = s_diverman_walk
-		image_index = 0
-	}
-	else {
-		////	Footprints
+	////	Footprints
+	if sprite_index == s_diverman_walk and onGround {
 		if floor(image_index) == 2 or floor(image_index) == 6 {
 			if !madeFootprint {
 				switch(sign(image_xscale))
@@ -43,9 +39,10 @@ if (hspd != 0 or vspd != 0) {
 						}
 					break
 				}
-				var Footprint = createParticle(X,y, particles.footprint, 180, 0)
+				var Footprint = createParticle(X,groundY, particles.footprint, 180, 0)
 				Footprint.sprite_index = s_footprint
 				Footprint.image_xscale = round(image_xscale)
+				Footprint.z = z
 				madeFootprint = true
 			}
 		}
@@ -67,11 +64,44 @@ else {
 		}
 	}
 }
+	
+////	Jumping
+if input.keyJump and onGround {
+	setThrust(5)	
+}
+
+if !onGround applyThrust()
+
+////	Determine sprite
+if onGround {
+	//	Moving
+	if (hspd != 0 or vspd != 0) {
+		if sprite_index != s_diverman_walk {
+			sprite_index = s_diverman_walk
+			image_index = 0
+		}
+	}
+	//	Not moving
+	else {
+		if moveForce == 0 and sprite_index != s_diverman_idle {
+			sprite_index = s_diverman_idle
+			image_index = 0
+		}	
+	}
+} 
+//	In the air
+else {
+	sprite_index = s_diverman_idle_frozen
+}
 
 applyMovement()
 
-x = groundX
-y = groundY
+if onGround {
+	x = groundX
+	y = groundY + z
+} else {
+	x = groundX	
+}
 
 depth = -y
 

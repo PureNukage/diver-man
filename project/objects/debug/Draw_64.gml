@@ -5,7 +5,7 @@ if on {
 	draw_set_color(c_black)
 	
 	with player {
-		draw_text(XX,YY, "image_index: "+string(image_index)) YY += 15	
+		draw_text(XX,YY, "z: "+string(z)) YY += 15
 	}
 	
 }

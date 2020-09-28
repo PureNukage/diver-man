@@ -3,6 +3,11 @@
 
 #macro animation_end (image_index > image_number - 1)
 
+#macro up 0
+#macro right 1
+#macro down 2
+#macro left 3
+
 enum particles {
 	bubble,
 	footprint

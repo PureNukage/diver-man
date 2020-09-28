@@ -12,3 +12,5 @@ keyRight = keyboard_check(ord("D"))
 keyLeft = keyboard_check(ord("A"))
 keyUp = keyboard_check(ord("W"))
 keyDown = keyboard_check(ord("S"))
+
+keyJump = keyboard_check_pressed(vk_space)
