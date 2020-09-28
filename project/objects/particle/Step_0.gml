@@ -18,7 +18,7 @@ switch(particles)
 		
 		image_alpha = duration / durationMax
 		
-		if place_meeting(x,y,collisionMap) and z < instance_place(x,y,collisionMap).z {
+		if place_meeting(x,y,collisionMap) {
 			visible = false	
 		}
 		

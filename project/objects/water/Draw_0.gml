@@ -15,8 +15,8 @@ if !surface_exists(groundSurface) {
 	
 	////	WIP CAUSTIC
 	shader_set(shader_caustic)
-	var Width = window_get_width()
-	var Height = window_get_height()
+	var Width = room_width
+	var Height = room_height
 	shader_set_uniform_f(caustic_resolution, Width, Height)
 	shader_set_uniform_f(caustic_seconds, sec)
 

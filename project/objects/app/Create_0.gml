@@ -7,6 +7,7 @@ instance_create_layer(0,0,Layer,debug)
 instance_create_layer(0,0,Layer,time)
 instance_create_layer(0,0,Layer,sound)
 instance_create_layer(0,0,Layer,water)
+instance_create_layer(0,0,Layer,lighting)
 
 function scale_canvas(new_width, new_height) {
 	window_set_size(new_width, new_height)
@@ -68,7 +69,7 @@ function cameraSetup() {
 
 		#endregion
 	
-		scale_canvas(1920,1080)
+		//scale_canvas(1920,1080)
 
 		default_zoom_width = camera_get_view_width(camera)
 		default_zoom_height = camera_get_view_height(camera)
