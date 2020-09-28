@@ -34,4 +34,6 @@ function empty() {
 	sound.playSoundEffect(sound_coins)
 	
 	player.gold += 300
+	
+	treasure = -1
 }
