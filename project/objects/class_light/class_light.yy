@@ -26,8 +26,8 @@
   "properties": [],
   "overriddenProperties": [],
   "parent": {
-    "name": "Game",
-    "path": "folders/Game.yy",
+    "name": "Lights",
+    "path": "folders/Game/Lights.yy",
   },
   "resourceVersion": "1.0",
   "name": "class_light",

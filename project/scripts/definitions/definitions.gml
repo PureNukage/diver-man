@@ -12,3 +12,13 @@ enum particles {
 	bubble,
 	footprint
 }
+
+enum state {
+	free,
+	walk,
+}
+
+enum treasure {
+	gold,
+	gold_necklace,	
+}

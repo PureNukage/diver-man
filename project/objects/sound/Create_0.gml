@@ -7,4 +7,6 @@ function playSoundEffect(index) {
 	debug.log("Playing sound: " + string_upper(string(audio_get_name(index))))
 }
 
+playSoundEffect(sound_underwater)
+
 //playSoundEffect(music_groove)

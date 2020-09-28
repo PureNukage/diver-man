@@ -14,3 +14,5 @@ keyUp = keyboard_check(ord("W"))
 keyDown = keyboard_check(ord("S"))
 
 keyJump = keyboard_check_pressed(vk_space)
+
+keyInteract = keyboard_check_pressed(ord("E"))

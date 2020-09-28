@@ -10,6 +10,8 @@ switch(particles)
 		image_alpha = duration / durationMax
 
 		y -= Speed
+		
+		depth = -y
 	
 	break
 	case particles.footprint:

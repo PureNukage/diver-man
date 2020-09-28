@@ -1,11 +1,13 @@
-#region		Camera Zoom
-
 var Lerp = 0.09
 x = lerp(x,player.x,Lerp)
 y = lerp(y,player.y-32,Lerp)
 
 if time.stream <= 5 {
-	window_center()	
+	window_center()
+	if instance_exists(player) {
+		x = player.x
+		y = player.y
+	}
 }
 
 //zoom_level = clamp((zoom_level + (mouse_wheel_down()-mouse_wheel_up())*0.1),0.25,1.0)
@@ -43,5 +45,3 @@ var edgeX = camera_get_view_width(camera)/2
 var edgeY = camera_get_view_height(camera)/2
 x = clamp(x,0+edgeX,room_width-edgeX)
 y = clamp(y,0+edgeY,room_height-edgeY)
-
-#endregion

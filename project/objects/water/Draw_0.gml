@@ -22,6 +22,16 @@ if !surface_exists(groundSurface) {
 
 	draw_rectangle(0,0,Width,Height,false)
 	
+	//	check for collisionMap collisions
+	//var yes = false
+	//if instance_exists(collisionMap) with collisionMap if drawSurface yes = true
+	
+	//if yes {
+	//	gpu_set_blendmode(bm_subtract)
+	//	draw_sprite_ext(player.sprite_index,player.image_index,player.x,player.y,player.image_xscale,player.image_yscale,player.image_angle,c_black,player.image_alpha)
+	//	gpu_set_blendmode(bm_normal)	
+	//}
+	
 	shader_reset()
 	
 	surface_reset_target()
@@ -43,7 +53,11 @@ if !surface_exists(groundSurface) {
 		if player.map != id {
 			var surface = surface_create(sprite_get_width(sprite_index)*image_xscale, sprite_get_height(sprite_index)*image_yscale + 16)
 			buffer_set_surface(surfaceBuffer, surface, 0, 0, 0)
-			draw_sprite_ext(player.sprite_index,player.image_index,player.x,player.y-player.z,player.image_xscale,player.image_yscale,player.image_angle,player.image_blend,player.image_alpha)
+			
+			//gpu_set_blendmode(bm_subtract)
+			//draw_sprite_ext(player.sprite_index,player.image_index,player.x,player.y,player.image_xscale,player.image_yscale,player.image_angle,c_black,player.image_alpha)
+			//gpu_set_blendmode(bm_normal)
+			
 			draw_surface(surface,x,y)
 			if surface_exists(surface) surface_free(surface)
 		}	

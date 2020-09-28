@@ -30,8 +30,8 @@
   "properties": [],
   "overriddenProperties": [],
   "parent": {
-    "name": "Game",
-    "path": "folders/Game.yy",
+    "name": "Collisions",
+    "path": "folders/Game/Collisions.yy",
   },
   "resourceVersion": "1.0",
   "name": "collisionMap",
