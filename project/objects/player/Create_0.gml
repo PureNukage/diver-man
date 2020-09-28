@@ -148,7 +148,7 @@ function applyMovement() {
 				var Map = instance_place(groundX + sign(xx), groundY, collisionMap)
 				if (z >= Map.z or map == Map) {
 					groundX += sign(xx)
-					if map == -1 or (map > -1 and map != Map) {
+					if (map == -1 or (map > -1 and map != Map)) and instance_place(groundX + sign(xx), (groundY-z), Map) {
 						changeMap(Map)
 					}
 				} 
@@ -193,7 +193,7 @@ function applyMovement() {
 				if (z >= Map.z or map == Map) {
 					groundY += sign(yy)
 					if !onGround y += sign(yy)
-					if map == -1 or (map > -1 and map != Map) {
+					if (map == -1 or (map > -1 and map != Map)) and instance_place(groundX, (groundY-z) + sign(yy), Map) {
 						changeMap(Map)
 					}
 				}
