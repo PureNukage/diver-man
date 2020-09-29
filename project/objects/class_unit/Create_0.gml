@@ -172,6 +172,7 @@ function applyMovement() {
 		//	Collision happening
 		else {
 			var Collision = instance_place(groundX + sign(xx), groundY, collision)
+
 			if Collision.topWall {
 				//	If we are higher than the topWall
 				if z >= Collision.map.z {
@@ -185,6 +186,10 @@ function applyMovement() {
 					changeMap(-1)
 				}
 			}
+			else if Collision.z > z {
+				groundX += sign(xx)
+			}
+			
 		}
 	}
 	
@@ -248,6 +253,11 @@ function applyMovement() {
 					//changeMap(-1)
 				}
 			}
+			else if Collision.z > z {
+				groundY += sign(yy)
+				if !onGround y += sign(yy)
+			}
+			
 		}
 	}
 	
@@ -285,7 +295,7 @@ function draw_shadow() {
 	
 bubbleTimer = -1
 bubbleTimerMax = irandom_range(120,180)
-function bubbles() {
+function bubbles(_sound) {
 	if bubbleTimer > 0 bubbleTimer--
 	else {
 		
@@ -299,7 +309,7 @@ function bubbles() {
 			
 			var scatter = 12
 			var scatterX = irandom_range(x - scatter, x + scatter)
-			var scatterY = irandom_range(y - 32 - scatter, y - 32 + scatter)
+			var scatterY = irandom_range(y-z - 32 - scatter, y-z - 32 + scatter)
 			
 			var Speed = irandom_range(1,2)
 		
@@ -309,7 +319,7 @@ function bubbles() {
 			
 		}
 		
-		sound.playSoundEffect(choose(sound_bubbles_0, sound_bubbles_1, sound_bubbles_2))
+		if _sound sound.playSoundEffect(choose(sound_bubbles_0, sound_bubbles_1, sound_bubbles_2))
 		
 	}
 }	

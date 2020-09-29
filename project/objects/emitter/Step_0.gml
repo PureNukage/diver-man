@@ -14,6 +14,7 @@ switch(particles)
 				for(var i=0;i<(amountMax - amount);i++) {
 					var Jellyfish = createParticle(X,Y, particles.jellyfish, -1, 0)
 					Jellyfish.temporary = false
+					Jellyfish.myEmitter = id
 					
 					var flip1 = choose(0,1)
 					var flip2 = choose(0,1)

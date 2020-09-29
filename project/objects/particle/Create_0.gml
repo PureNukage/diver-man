@@ -5,12 +5,13 @@ particles = -1
 z = 0
 moveDirection = 45
 temporary = true
+myEmitter = -1
 
 burstTimer = -1
 burstGoalX = -1
 burstGoalY = -1
-burstGoalX = x + lengthdir_x(50, moveDirection)
-burstGoalY = y + lengthdir_y(50, moveDirection)
+burstGoalX = x
+burstGoalY = y
 function burst() {
 	var Lerp = 0.03
 	x = lerp(x, burstGoalX, Lerp)

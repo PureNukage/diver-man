@@ -3,12 +3,12 @@ if opening open()
 var spacer = 64
 if player.onGround and player.z >= z and point_in_rectangle(player.groundX,player.groundY,x-spacer,y-spacer,x+spacer,y+spacer) {
 	if input.keyInteract {
-		if !opened {
+		if !opened and !opening {
 			opening = true
 			bubbleTimer = 0
 			bubbleTimerMax = 0
 			bubbles()
-		} else if treasure > -1 {
+		} else if opened and treasure > -1 {
 			empty()		
 		}
 	}
