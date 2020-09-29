@@ -129,7 +129,9 @@ function changeMap(Map) {
 	}
 	//	Changing to no map/z = 0
 	else {
+		var Break = 0
 		groundY = groundY + map.z
+		var Break = 0
 
 		if groundY >= y-z {
 			onGround = false
@@ -265,6 +267,8 @@ function draw_shadow() {
 	var Z = 0
 	if map > -1 Z = map.z
 	var Alpha = (1 - ((z) / (100+Z))) * .25
+	
+	Alpha = clamp(Alpha, 0.1, 1)
 	
 	draw_set_alpha(Alpha)
 

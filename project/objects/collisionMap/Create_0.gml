@@ -42,11 +42,13 @@ function findNearbyMaps() {
 }
 	
 function drawNearbyMaps() {
-	for(var i=0;i<4;i++) {
-		if arrayNearbyMaps[i] > -1 and instance_exists(arrayNearbyMaps[i]) {
-			var ID = arrayNearbyMaps[i]
-			ID.drawSurface = true
-			ID.depth = player.depth - 1
+	if foundNearbyMaps {
+		for(var i=0;i<4;i++) {
+			if arrayNearbyMaps[i] > -1 and instance_exists(arrayNearbyMaps[i]) {
+				var ID = arrayNearbyMaps[i]
+				ID.drawSurface = true
+				ID.depth = player.depth - 1
+			}
 		}
 	}
 }
@@ -81,8 +83,6 @@ function createSurface() {
 	surfaceBuffer = buffer_create(width*height*4, buffer_grow, 1)
 	
 	buffer_get_surface(surfaceBuffer, finalSurface, 0, 0, 0)
-	
-	//sprite_index = sprite_create_from_surface(finalSurface, 0,0, surface_get_width(finalSurface), surface_get_height(finalSurface), false, false, 0,0)
 	
 	surface_free(surface)
 	

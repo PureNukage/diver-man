@@ -1,7 +1,7 @@
 if opening open()
 
 var spacer = 64
-if player.onGround and point_in_rectangle(player.groundX,player.groundY,x-spacer,y-spacer,x+spacer,y+spacer) {
+if player.onGround and player.z >= z and point_in_rectangle(player.groundX,player.groundY,x-spacer,y-spacer,x+spacer,y+spacer) {
 	if input.keyInteract {
 		if !opened {
 			opening = true
@@ -16,4 +16,4 @@ if player.onGround and point_in_rectangle(player.groundX,player.groundY,x-spacer
 }
 else if highlight highlight = false
 
-depth = -y
+depth = -y + -z

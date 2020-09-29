@@ -14,7 +14,7 @@ function mpGrid_build() {
 	
 	if instance_exists(collision) mp_grid_add_instances(mpGrid,collision,false)
 	
-	if instance_exists(collisionMap) mp_grid_add_instances(mpGrid,collisionMap,false)
+	//if instance_exists(collisionMap) mp_grid_add_instances(mpGrid,collisionMap,false)
 	
 }
 

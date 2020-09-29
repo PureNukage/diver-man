@@ -1,11 +1,24 @@
-if (instance_exists(player) and place_meeting(x,y,player) and player.groundY < y+z) 
-//or (instance_exists(player) and player.falling) 
+if (instance_exists(class_unit) and place_meeting(x,y,class_unit))
 {
-	if player.map != id {
-		player.depth = water.depth + 1
-		depth = player.depth - 1
+	var ID = instance_place(x,y,class_unit)
+	if ID.map != id and ID.groundY < y+z {
+		ID.depth = water.depth + 1
+		depth = ID.depth - 1
 		drawSurface = true
 		drawNearbyMaps()
+	}
+	
+	//	Loop through and set all objects depth
+	var list = ds_list_create()
+	var amountOfCollisions = instance_place_list(x,y,class_unit,list,true)
+	if amountOfCollisions > 1 {
+		for(var i=0;i<amountOfCollisions;i++) {
+			var ID = list[| i]
+			if ID.map != id and ID.groundY < y+z {
+				ID.depth = water.depth + 1
+				depth = ID.depth - 1
+			}
+		}
 	}
 }
 

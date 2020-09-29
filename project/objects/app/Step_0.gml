@@ -1,6 +1,10 @@
+if layer_exists(layer_get_id("Viewport")) {
+	layer_set_visible(layer_get_id("Viewport"), false)	
+}
+
 var Lerp = 0.09
-x = lerp(x,player.x,Lerp)
-y = lerp(y,player.y-32,Lerp)
+x = lerp(x,player.groundX,Lerp)
+y = lerp(y,player.y-player.z-32,Lerp)
 
 if time.stream <= 5 {
 	window_center()

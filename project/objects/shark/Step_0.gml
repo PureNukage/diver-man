@@ -67,4 +67,4 @@ if state == state.walk {
 x = groundX
 y = groundY + z
 
-depth = -y
+//depth = -y
