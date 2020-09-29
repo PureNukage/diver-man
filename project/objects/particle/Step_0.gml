@@ -1,5 +1,5 @@
 if duration > 0 duration--
-else instance_destroy()
+else if temporary instance_destroy()
 
 switch(particles) 
 {
@@ -23,6 +23,18 @@ switch(particles)
 		if place_meeting(x,y,collisionMap) {
 			visible = false	
 		}
+		
+	break
+	case particles.jellyfish:
+		
+		sprite_index = s_jellyfish
+		
+		if burstTimer == -1 burst()
+		else burstTimer--
+
+		image_angle = moveDirection
+
+		depth = -20000
 		
 	break
 }

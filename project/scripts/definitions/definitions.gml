@@ -10,7 +10,8 @@
 
 enum particles {
 	bubble,
-	footprint
+	footprint,
+	jellyfish
 }
 
 enum state {

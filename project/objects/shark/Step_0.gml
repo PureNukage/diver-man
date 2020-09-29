@@ -6,22 +6,7 @@ switch(state)
 			//	Finished idling
 			if timer == -1 {
 				
-				//	Find goal
-				var distance = 250
-				var X = irandom_range(groundX-distance,groundX+distance)
-				var Y = irandom_range(groundY-distance,groundY+distance)
-				
-				if !place_meeting(X,Y,collision) and !place_meeting(X,Y,collisionMap) {
-					if pathfind(grid.mpGrid, path, groundX,groundY, X,Y, true) {
-						debug.log("Idle walking")
-						debug.log("this path has "+string(path_get_number(path))+" points")
-						state = state.walk
-						pos = 1
-						//path_set_precision(path,8)
-						xGoto = path_get_point_x(path, pos)
-						yGoto = path_get_point_y(path, pos)
-					}
-				}
+				idlewalk()
 				
 			}
 			else timer--
@@ -49,7 +34,8 @@ switch(state)
 			else {
 				moveForce += 0.5
 				moveForce = clamp(moveForce,0,2)
-				setForce(moveForce, moveDirection)	
+				setForce(moveForce, moveDirection)
+				
 			}
 			
 			if xx > 0 {
@@ -62,7 +48,21 @@ switch(state)
 	#endregion
 }
 
+var oldX = groundX
+var oldY = groundY
+
 applyMovement()
+
+if state == state.walk {
+	if oldX == groundX and oldY == groundY { 
+		attemptingToMove++
+		
+		if attemptingToMove >= 180 {
+			idlewalk()
+			attemptingToMove = 0
+		}
+	}
+}
 
 x = groundX
 y = groundY + z
