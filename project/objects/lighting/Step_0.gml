@@ -24,4 +24,9 @@ if instance_exists(class_light) with class_light {
 
 gpu_set_blendmode(bm_normal)
 
+//	Shade
+if instance_exists(shade) with shade {
+	draw_rectangle(x,y,x+sprite_get_width(sprite_index)*image_xscale,y+sprite_get_height(sprite_index)*image_yscale,false)	
+}
+
 surface_reset_target()

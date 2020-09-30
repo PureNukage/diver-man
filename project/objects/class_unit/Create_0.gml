@@ -17,6 +17,7 @@ thrust = 0
 map = -1
 hpMax = 5
 hp = hpMax
+shadowEllipse = true
 
 madeFootprint = false
 
@@ -287,7 +288,8 @@ function draw_shadow() {
 	else if !onGround Z = 0
 
 	var extraWidth = 6 * ((1 - ((z) / (100+Z))))
-	draw_ellipse(bbox_left-extraWidth,bbox_top-Z,bbox_right+extraWidth,bbox_bottom-Z,false)
+	if shadowEllipse draw_ellipse(bbox_left-extraWidth,bbox_top-Z,bbox_right+extraWidth,bbox_bottom-Z,false)
+	else draw_rectangle(bbox_left-extraWidth,bbox_top-Z,bbox_right+extraWidth,bbox_bottom-Z,false)
 	
 	draw_reset()
 	

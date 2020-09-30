@@ -1,1 +1,1 @@
-sec += 1 / room_speed
+if !app.paused sec += 1 / room_speed

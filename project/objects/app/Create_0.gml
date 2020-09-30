@@ -1,6 +1,8 @@
 creator = ""
 version = ""
 
+paused = false
+
 var Layer = "Instances"
 instance_create_layer(0,0,Layer,input)
 instance_create_layer(0,0,Layer,debug)
@@ -80,3 +82,8 @@ function cameraSetup() {
 }
 	
 cameraSetup()
+
+if room == RoomAppStart {
+	room_goto(Room1)
+	cameraRefresh = true
+}

@@ -1,3 +1,13 @@
+if input.keyPause {
+	paused = !paused	
+}
+
+if cameraRefresh {
+	cameraRefresh = false
+	cameraSetup()
+	grid.mpGrid_build()
+}
+
 if layer_exists(layer_get_id("Viewport")) {
 	layer_set_visible(layer_get_id("Viewport"), false)	
 }
