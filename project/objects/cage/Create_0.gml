@@ -15,6 +15,8 @@ function lift(up_or_down) {
 		player.muted = true
 		player.x = x
 		player.y = y-z
+		player.groundX = x
+		player.groundY = y-z
 	}
 	
 	var Z = 0
