@@ -1,4 +1,5 @@
 z = 0
+width = sprite_get_height(sprite_index)*image_yscale
 
 surfaceBuffer = -1
 

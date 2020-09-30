@@ -124,15 +124,18 @@ function changeMap(Map) {
 		}
 		//	I am jumping up
 		else {
-			groundY = groundY - Map.z
+			groundY = y - Map.z
 		}
 		
 	}
 	//	Changing to no map/z = 0
 	else {
-		var Break = 0
-		groundY = groundY + map.z
-		var Break = 0
+		
+		//	Smooth loop to lower groundY (looking for collision)
+		for(var i=0;i<map.z;i++) {
+			if !place_meeting(groundX,groundY + 1, collision) groundY += 1	
+		}
+		//groundY = groundY + map.z
 
 		if groundY >= y-z {
 			onGround = false
@@ -151,14 +154,26 @@ function applyMovement() {
 				var Map = instance_place(groundX + sign(xx), groundY, collisionMap)
 				if (z >= Map.z or map == Map) {
 					groundX += sign(xx)
-					if (map == -1 or (map > -1 and map != Map)) and instance_place(groundX + sign(xx), (groundY-z), Map) {
+					if (map == -1 or (map > -1 and map != Map)) and instance_place(groundX + sign(xx), (groundY), Map) {
 						changeMap(Map)
 					}
 				} 
-				//	We're not high enough to enter this map
+				//	We're not high enough to enter this map or this isn't our map
 				else {
-					if groundY < Map.y + Map.z {
-						groundX += sign(xx)	
+					//	Walking behind the other map
+					if groundY+z < ((Map.y+sprite_get_height(Map.sprite_index)*Map.image_yscale) - Map.width) {
+						groundX += sign(xx)
+						
+						//	Lets check if we're on our original map still
+						//var list = ds_list_create()
+						//var count = instance_place_list(groundX,groundY,collisionMap,list,true)
+						//var foundIt = false
+						//for(var i=0;i<count;i++) {
+						//	var ID = list[| i]
+						//	if ID == map foundIt = true
+						//}
+						//if !foundIt changeMap(-1)
+						//ds_list_destroy(list)
 					}
 				}
 			//	Not colliding with collision or a collisionMap
@@ -201,13 +216,13 @@ function applyMovement() {
 				if (z >= Map.z or map == Map) {
 					groundY += sign(yy)
 					if !onGround y += sign(yy)
-					if (map == -1 or (map > -1 and map != Map)) and instance_place(groundX, (groundY-z) + sign(yy), Map) {
+					if (map == -1 or (map > -1 and map != Map)) and instance_place(groundX, (groundY) + sign(yy), Map) {
 						changeMap(Map)
 					}
 				}
 				//	We're not high enough to enter this map
 				else {
-					if groundY + sign(yy) < Map.y + Map.z {
+					if groundY+z + sign(yy) < ((Map.y+sprite_get_height(Map.sprite_index)*Map.image_yscale) - Map.width) {
 						groundY += sign(yy)
 						if !onGround y += sign(yy)
 					}					

@@ -17,6 +17,14 @@ if on {
 		draw_text(xx,yy, "y: "+string(y)) yy += 15
 	}
 	
+	if instance_exists(player) with player {
+		draw_set_color(c_yellow)
+		draw_rectangle(x-32,y-z-2,x+32,y-z+2,false)
+		
+		draw_set_color(c_aqua)
+		draw_rectangle(x-32,groundY-2,x+32,groundY+2,false)
+	}
+	
 	draw_set_alpha(0.25)
 	mp_grid_draw(grid.mpGrid)
 	
