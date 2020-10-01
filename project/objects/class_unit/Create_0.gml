@@ -213,7 +213,7 @@ function applyMovement() {
 					if !place_meeting(groundX + sign(xx), groundY, collisionMap) groundX += sign(xx)
 					else {
 						var mapID = instance_place(groundX + sign(xx), groundY, collisionMap)
-						if mapID.z <= z groundX += sign(xx)
+						if z >= mapID.z groundX += sign(xx)
 					}
 					if map > -1 and !place_meeting(groundX, groundY, map) and !place_meeting(x,y, collision) {
 						changeMap(-1)	
@@ -235,10 +235,17 @@ function applyMovement() {
 			if place_meeting(groundX, groundY + sign(yy), collisionMap) {
 				var Map = instance_place(groundX, groundY + sign(yy), collisionMap)
 				if (z >= Map.z or map == Map) {
-					groundY += sign(yy)
-					if !onGround y += sign(yy)
-					if (map == -1 or (map > -1 and map != Map)) and instance_place(groundX, (groundY) + sign(yy), Map) and place_meeting(groundX, y + sign(yy) - z, Map) {
-						changeMap(Map)
+					//	Check if I can even be on this map
+					if groundY > Map.y + Map.width {
+						groundY += 16
+						changeMap(-1) 
+					}
+					else {
+						groundY += sign(yy)
+						if !onGround y += sign(yy)
+						if (map == -1 or (map > -1 and map != Map)) and instance_place(groundX, (groundY) + sign(yy), Map) and place_meeting(groundX, y + sign(yy) - z, Map) {
+							changeMap(Map)
+						}
 					}
 				}
 				//	We're not high enough to enter this map
@@ -301,8 +308,11 @@ function applyMovement() {
 					} else {
 						var mapID = instance_place(groundX, groundY + sign(yy), collisionMap)
 						if z >= mapID.z {
-							groundY += sign(yy)
-							if !onGround y += sign(yy)	
+							if groundY > mapID.y + mapID.width changeMap(-1)
+							else {
+								groundY += sign(yy)
+								if !onGround y += sign(yy)	
+							}
 						}
 					}
 					
