@@ -196,7 +196,11 @@ function applyMovement() {
 				}
 				//	We're higher than this collision
 				else {
-					groundX += sign(xx)
+					if !place_meeting(groundX + sign(xx), groundY, collisionMap) groundX += sign(xx)
+					else {
+						var mapID = instance_place(groundX + sign(xx), groundY, collisionMap)
+						if mapID.z <= z groundX += sign(xx)
+					}
 					if map > -1 and !place_meeting(groundX, groundY, map) and !place_meeting(x,y, collision) {
 						changeMap(-1)	
 					}
@@ -274,9 +278,19 @@ function applyMovement() {
 						//changeMap(-1)
 					}
 				}
-				else {
-					groundY += sign(yy)
-					if !onGround y += sign(yy)
+				//	We're higher than this collision
+				else {				
+					if !place_meeting(groundX, groundY + sign(yy), collisionMap) {
+						groundY += sign(yy)
+						if !onGround y += sign(yy)
+					} else {
+						var mapID = instance_place(groundX + sign(xx), groundY, collisionMap)
+						if z >= mapID.z {
+							groundY += sign(yy)
+							if !onGround y += sign(yy)	
+						}
+					}
+					
 					if map > -1 and !place_meeting(groundX, groundY, map) and !place_meeting(x,y, collision) {
 						changeMap(-1)	
 					}
