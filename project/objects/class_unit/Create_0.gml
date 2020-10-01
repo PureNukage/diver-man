@@ -132,10 +132,10 @@ function changeMap(Map) {
 	else {
 		
 		//	Smooth loop to lower groundY (looking for collision)
-		for(var i=0;i<map.z;i++) {
-			if !place_meeting(groundX,groundY + 1, collision) groundY += 1	
-		}
-		//groundY = groundY + map.z
+		//for(var i=0;i<map.z;i++) {
+		//	if !place_meeting(groundX,groundY + 1, collision) groundY += 1	
+		//}
+		groundY = groundY + map.z
 
 		if groundY >= y-z {
 			onGround = false
@@ -163,17 +163,6 @@ function applyMovement() {
 					//	Walking behind the other map
 					if groundY+z < ((Map.y+sprite_get_height(Map.sprite_index)*Map.image_yscale) - Map.width) {
 						groundX += sign(xx)
-						
-						//	Lets check if we're on our original map still
-						//var list = ds_list_create()
-						//var count = instance_place_list(groundX,groundY,collisionMap,list,true)
-						//var foundIt = false
-						//for(var i=0;i<count;i++) {
-						//	var ID = list[| i]
-						//	if ID == map foundIt = true
-						//}
-						//if !foundIt changeMap(-1)
-						//ds_list_destroy(list)
 					}
 				}
 			//	Not colliding with collision or a collisionMap
@@ -189,19 +178,33 @@ function applyMovement() {
 		else {
 			var Collision = instance_place(groundX + sign(xx), groundY, collision)
 
+			//	Its a topwall
 			if Collision.topWall {
-				//	If we are higher than the topWall
-				if z >= Collision.map.z {
-					if map == -1 or map != Collision.map {
-						changeMap(Collision.map) 
-					} else if map == Collision.map {
+				//	Check if we're ACTUALLY colliding with it
+				if place_meeting(x + sign(xx), y, Collision) {
+					//	If we are higher than the topWall
+					if z >= Collision.map.z {
+						if map == -1 or map != Collision.map {
+							changeMap(Collision.map) 
+						} else if map == Collision.map {
+							changeMap(-1)
+						}
+					}
+					else if map == Collision.map {
 						changeMap(-1)
 					}
 				}
-				else if map == Collision.map {
-					changeMap(-1)
-				}
+				//	We're higher than this collision
+				else {
+					groundX += sign(xx)
+					if map > -1 and !place_meeting(groundX, groundY, map) and !place_meeting(x,y, collision) {
+						changeMap(-1)	
+					}
+				}				
 			}
+			
+			
+			//	not a topWall and collision is higher than us
 			else if Collision.z > z {
 				groundX += sign(xx)
 			}
@@ -241,34 +244,47 @@ function applyMovement() {
 		else {
 			var Collision = instance_place(groundX, groundY + sign(yy), collision)
 			if Collision.topWall {
-				if z >= Collision.map.z {
-					if map == -1 or map != Collision.map {
-						map = Collision.map
-						groundY -= map.z
-						while place_meeting(groundX,groundY,Collision) {
-							groundY -= 1	
+				//	Check if we're ACTUALLY colliding with it
+				if place_meeting(x, y + sign(yy), Collision) {
+					if z >= Collision.map.z {
+						if map == -1 or map != Collision.map {
+							map = Collision.map
+							groundY -= map.z
+							while place_meeting(groundX,groundY,Collision) {
+								groundY -= 1	
+							}
+							//changeMap(Collision.map) 
+						} else if map == Collision.map {
+							groundY += map.z
+							while place_meeting(groundX,groundY,Collision) {
+								groundY += 1	
+							}
+							if groundY > y-z onGround = false
+							map = -1	
+							//changeMap(-1)
 						}
-						//changeMap(Collision.map) 
-					} else if map == Collision.map {
+					}
+					else if map == Collision.map {
 						groundY += map.z
 						while place_meeting(groundX,groundY,Collision) {
 							groundY += 1	
 						}
 						if groundY > y-z onGround = false
-						map = -1	
+						map = -1
 						//changeMap(-1)
 					}
 				}
-				else if map == Collision.map {
-					groundY += map.z
-					while place_meeting(groundX,groundY,Collision) {
-						groundY += 1	
+				else {
+					groundY += sign(yy)
+					if !onGround y += sign(yy)
+					if map > -1 and !place_meeting(groundX, groundY, map) and !place_meeting(x,y, collision) {
+						changeMap(-1)	
 					}
-					if groundY > y-z onGround = false
-					map = -1
-					//changeMap(-1)
 				}
 			}
+			
+			
+			////
 			else if Collision.z > z {
 				groundY += sign(yy)
 				if !onGround y += sign(yy)
