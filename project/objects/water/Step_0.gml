@@ -1,1 +1,1 @@
-if !app.paused sec += 1 / room_speed
+if on if !app.paused sec += 1 / room_speed

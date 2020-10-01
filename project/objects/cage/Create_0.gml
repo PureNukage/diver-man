@@ -40,6 +40,9 @@ function lift(up_or_down) {
 		lowered = false
 		
 		//liftDirection = down
+		room_goto(RoomMainMenu)
+		app.cameraRefresh()
+		app.shading(false)
 	}
 	else if !lowered and z <= 0 {
 		debug.log("Cage has been lowered")

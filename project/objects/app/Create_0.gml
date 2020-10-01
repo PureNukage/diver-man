@@ -84,6 +84,17 @@ function cameraSetup() {
 cameraSetup()
 
 if room == RoomAppStart {
-	room_goto(Room1)
+	room_goto(RoomMainMenu)
 	cameraRefresh = true
+}
+
+function shading(on) {
+	if on {
+		water.on = true
+		lighting.on = true
+	}
+	else {
+		water.on = false
+		lighting.on = false
+	}
 }

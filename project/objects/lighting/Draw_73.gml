@@ -1,1 +1,1 @@
-draw_surface(surface,0,0)
+if on draw_surface(surface,0,0)

@@ -49,8 +49,10 @@ function drawNearbyMaps() {
 		for(var i=0;i<4;i++) {
 			if arrayNearbyMaps[i] > -1 and instance_exists(arrayNearbyMaps[i]) {
 				var ID = arrayNearbyMaps[i]
-				ID.drawSurface = true
-				ID.depth = player.depth - 1
+				if ID.z >= z {
+					ID.drawSurface = true
+					ID.depth = player.depth - 1
+				}
 			}
 		}
 	}

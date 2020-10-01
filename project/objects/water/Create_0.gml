@@ -1,3 +1,5 @@
+on = false
+
 application_surface_draw_enable(false)
 
 u_resolution = shader_get_uniform(shader_godrays, "iResolution")

@@ -1,7 +1,7 @@
 if (instance_exists(class_unit) and place_meeting(x,y,class_unit))
 {
 	var ID = instance_place(x,y,class_unit)
-	if ID.map != id and ID.groundY < y+z and ID.z < z {
+	if ID.map != id and ID.groundY < ((y+sprite_get_height(sprite_index)*image_yscale) - width) and ID.z < z {
 		ID.depth = water.depth + 1
 		depth = ID.depth - 1
 		drawSurface = true

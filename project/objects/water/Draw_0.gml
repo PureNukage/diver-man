@@ -1,13 +1,13 @@
-if !surface_exists(groundSurface) {
-	groundSurface = surface_create(room_width, room_height)	
-	
-	surface_set_target(groundSurface)
-	draw_clear_alpha(c_black, 0)
-	
-	surface_reset_target()
-}
+if on {
 
-//else {
+	if !surface_exists(groundSurface) {
+		groundSurface = surface_create(room_width, room_height)	
+	
+		surface_set_target(groundSurface)
+		draw_clear_alpha(c_black, 0)
+	
+		surface_reset_target()
+	}
 
 	var surface = surface_create(room_width, room_height)
 	
@@ -53,5 +53,6 @@ if !surface_exists(groundSurface) {
 	}
 	
 	draw_surface(groundSurface,0,0)
+}
 	
 	

@@ -118,6 +118,15 @@ function changeMap(Map) {
 			if Map.z == -1 {
 				onGround = false	
 			} else {
+				//	Smooth loop to lower groundY (looking for collision)
+				//for(var i=0;i<map.z;i++) {
+				//	if !place_meeting(groundX,groundY + 1, collision) groundY += 1	
+				//	else {
+				//		var ID = instance_place(groundX, groundY + 1, collision)
+				//		if ID.topWall groundY += 1
+				//	}
+				//}
+				//while place_meeting(groundX, groundY, collision) groundY += 1
 				groundY = groundY + Map.z
 				if groundY > y-z onGround = false
 			}
@@ -134,7 +143,12 @@ function changeMap(Map) {
 		//	Smooth loop to lower groundY (looking for collision)
 		//for(var i=0;i<map.z;i++) {
 		//	if !place_meeting(groundX,groundY + 1, collision) groundY += 1	
+		//	else {
+		//		var ID = instance_place(groundX, groundY + 1, collision)
+		//		if ID.topWall and ID.map == Map groundY += 1
+		//	}
 		//}
+		//while place_meeting(groundX, groundY, collision) groundY += 1
 		groundY = groundY + map.z
 
 		if groundY >= y-z {
@@ -154,14 +168,14 @@ function applyMovement() {
 				var Map = instance_place(groundX + sign(xx), groundY, collisionMap)
 				if (z >= Map.z or map == Map) {
 					groundX += sign(xx)
-					if (map == -1 or (map > -1 and map != Map)) and instance_place(groundX + sign(xx), (groundY), Map) {
+					if (map == -1 or (map > -1 and map != Map)) and instance_place(groundX + sign(xx), (groundY), Map) and place_meeting(groundX + sign(xx), y-z, Map) {
 						changeMap(Map)
 					}
 				} 
 				//	We're not high enough to enter this map or this isn't our map
 				else {
 					//	Walking behind the other map
-					if groundY+z < ((Map.y+sprite_get_height(Map.sprite_index)*Map.image_yscale) - Map.width) {
+					if groundY < ((Map.y+sprite_get_height(Map.sprite_index)*Map.image_yscale) - Map.width) {
 						groundX += sign(xx)
 					}
 				}
@@ -223,13 +237,14 @@ function applyMovement() {
 				if (z >= Map.z or map == Map) {
 					groundY += sign(yy)
 					if !onGround y += sign(yy)
-					if (map == -1 or (map > -1 and map != Map)) and instance_place(groundX, (groundY) + sign(yy), Map) {
+					if (map == -1 or (map > -1 and map != Map)) and instance_place(groundX, (groundY) + sign(yy), Map) and place_meeting(groundX, y + sign(yy) - z, Map) {
 						changeMap(Map)
 					}
 				}
 				//	We're not high enough to enter this map
 				else {
-					if groundY+z + sign(yy) < ((Map.y+sprite_get_height(Map.sprite_index)*Map.image_yscale) - Map.width) {
+					//	Walking behind the other map
+					if groundY + sign(yy) < ((Map.y+sprite_get_height(Map.sprite_index)*Map.image_yscale) - Map.width) {
 						groundY += sign(yy)
 						if !onGround y += sign(yy)
 					}					
@@ -284,7 +299,7 @@ function applyMovement() {
 						groundY += sign(yy)
 						if !onGround y += sign(yy)
 					} else {
-						var mapID = instance_place(groundX + sign(xx), groundY, collisionMap)
+						var mapID = instance_place(groundX, groundY + sign(yy), collisionMap)
 						if z >= mapID.z {
 							groundY += sign(yy)
 							if !onGround y += sign(yy)	
