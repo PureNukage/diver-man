@@ -13,6 +13,7 @@ function lift(up_or_down) {
 	
 	if filled {
 		player.muted = true
+		player.sprite_index = s_diverman_idle
 		player.x = x
 		player.y = y-z
 		player.groundX = x
