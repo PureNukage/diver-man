@@ -38,7 +38,7 @@ function lift(up_or_down) {
 		inUse = false
 		lowered = false
 		
-		liftDirection = down
+		//liftDirection = down
 	}
 	else if !lowered and z <= 0 {
 		debug.log("Cage has been lowered")
@@ -63,5 +63,17 @@ function lift(up_or_down) {
 	
 	draw_sprite(s_cage_roof,0,x,y-z)
 	draw_sprite(s_cage_bars,0,x,y-z)
+	
+}
+	
+function useLift(up_or_down, Filled) {
+	
+	liftDirection = up_or_down
+	
+	if Filled {
+		filled = true	
+	}
+	
+	inUse = true
 	
 }
