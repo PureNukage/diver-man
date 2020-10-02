@@ -2,10 +2,8 @@ event_inherited()
 
 shadowEllipse = false
 
-z = 360
-
 //startingGame = false
-lowered = false
+lowered = true
 inUse = false
 liftDirection = down
 filled = false
@@ -40,20 +38,36 @@ function lift(up_or_down) {
 		lowered = false
 		
 		//liftDirection = down
-		room_goto(RoomMainMenu)
-		app.cameraRefresh()
-		app.shading(false)
+		//room_goto(RoomMainMenu)
+		//app.cameraRefresh()
+		//app.underwaterChange(false)
+		
+		//	We're underwater, lets surface
+		if app.underwater and room != RoomDock {
+			room_goto(RoomDock)
+			app.cameraRefresh = true
+			app.underwaterChange(false)
+		}
 	}
-	else if !lowered and z <= 0 {
+	else if (app.underwater and !lowered and z <= 0) or (!app.underwater and !lowered and z <= -360) {
 		debug.log("Cage has been lowered")
 		inUse = false
 		lowered = true
-		z = 0
+		if !app.underwater z = -360
 		
 		if filled {
 			player.muted = false
 			player.groundX = x
 			player.groundY = y
+		}
+		
+		liftDirection = up
+		
+		//	We're on the surface
+		if !app.underwater and room == RoomDock {
+			room_goto(Room1)
+			app.cameraRefresh = true
+			app.underwaterChange(true)
 		}
 		
 		//liftDirection = up

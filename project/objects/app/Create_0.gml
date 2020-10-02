@@ -88,13 +88,23 @@ if room == RoomAppStart {
 	cameraRefresh = true
 }
 
-function shading(on) {
+underwater = false
+function underwaterChange(on) {
 	if on {
+		underwater = true
 		water.on = true
 		lighting.on = true
+		if !audio_is_playing(sound_underwater) {
+			audio_play_sound(sound_underwater,0,true)
+			audio_sound_gain(sound_underwater,sound.volumeSound,0)	
+		}
 	}
 	else {
+		underwater = false
 		water.on = false
 		lighting.on = false
+		if audio_is_playing(sound_underwater) {
+			audio_stop_sound(sound_underwater)
+		}
 	}
 }

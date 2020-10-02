@@ -1,0 +1,2 @@
+lowered = false
+liftDirection = down

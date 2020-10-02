@@ -97,7 +97,13 @@ if !app.paused {
 		} 
 		//	In the air
 		else {
-			sprite_index = s_diverman_idle_frozen
+			if thrust > 0 {
+				sprite_index = s_diverman_jump	
+			}
+			else {
+				sprite_index = s_diverman_fall	
+			}
+			//sprite_index = s_diverman_idle_frozen
 		}
 
 		applyMovement()
@@ -111,7 +117,7 @@ if !app.paused {
 
 		depth = -y
 
-		bubbles(false)
+		if app.underwater bubbles(false)
 	}
 	else visible = false
 }

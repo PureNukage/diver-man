@@ -1,4 +1,4 @@
-draw_shadow()
+if app.underwater draw_shadow()
 
 if !inUse draw_unit()
 else lift(liftDirection)
