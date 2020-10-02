@@ -93,3 +93,16 @@ function pathfind(mp_grid, Path, xStart, yStart, xGoal, yGoal, allowdiag) {
 	}
 	
 }
+	
+function instance_place_highest(x, y, object) {
+  var instance = noone;
+  var list = ds_list_create();
+  var num = instance_place_list(x, y, object, list, false);
+  for(var i = 0; i < num; i++){
+    if (instance == noone || list[| i].z > instance.z)
+      instance = list[| i];
+  }
+  ds_list_destroy(list);
+
+  return instance;
+}

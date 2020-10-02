@@ -123,8 +123,18 @@ function changeMap(Map) {
 					if !place_meeting(groundX,groundY + 1, collisionMap) groundY += 1	
 					else {
 						var ID = instance_place(groundX, groundY + 1, collisionMap)
-						if (z - i) > ID.z groundY += 1
-
+						if (map.z - i) > ID.z groundY += 1
+						//var ID = instance_place(groundX, groundY + 1, collisionMap)
+						//if (z - i) > ID.z {
+						//	//	We're above the map
+						//	if groundY + 1 < ID.bbox_top + ID.width {
+						//		groundY += 1
+						//	}
+						//	//	Lower us onto the map
+						//	else if groundY + 1 >= ID.bbox_bottom-ID.width {
+						//		groundY += 1	
+						//	}
+						//}
 					}
 				}
 
@@ -156,7 +166,7 @@ function changeMap(Map) {
 				else if groundY + 1 >= ID.bbox_bottom-ID.width {
 					groundY += 1	
 				}
-				else if (z - i) > ID.z groundY += 1
+				else if (map.z - i) > ID.z groundY += 1
 
 			}
 		}
@@ -184,17 +194,22 @@ function applyMovement() {
 			}
 			//	Colliding with a map
 			else {
-				var Map = instance_place(groundX + sign(xx), groundY, collisionMap)
+				var Map = instance_place_highest(groundX + sign(xx), groundY, collisionMap)
 				//	We are higher than it or its our map
 				if (z >= Map.z ) {//or map == Map) {
 					groundX += sign(xx)
-					if map == -1 or Map != map {
-						changeMap(Map)	
+					if (map == -1 or Map != map) {
+						if place_meeting(groundX, y, Map) {
+							changeMap(Map)
+						} else if map > -1 changeMap(-1)
+					}
+					if z == Map.z and map == Map and groundY >= (Map.bbox_top + Map.width + 16) {
+						changeMap(-1)	
 					}
 				}
 				else {
 					//	We're behind this map
-					if map != Map and groundY <= Map.bbox_bottom - Map.width {
+					if map != Map and map == -1 and groundY <= Map.bbox_bottom - Map.width {
 						groundX += sign(xx)
 					}
 					else {
@@ -227,13 +242,18 @@ function applyMovement() {
 			}
 			//	Colliding with a map
 			else {
-				var Map = instance_place(groundX, groundY + sign(yy), collisionMap)
+				var Map = instance_place_highest(groundX, groundY + sign(yy), collisionMap)
 				//	We are higher than it
-				if (z > Map.z) { //or map == Map) {
+				if (z >= Map.z) { //or map == Map) {
 					groundY += sign(yy)
 					if !onGround y += sign(yy)
 					if map == -1 or map != Map {
-						changeMap(Map)	
+						if place_meeting(groundX, y, Map) {
+							changeMap(Map)
+						} else if map > -1 changeMap(-1)
+					}
+					if z == Map.z and map == Map and groundY + sign(yy) >= (Map.bbox_top + Map.width + 16) {
+						changeMap(-1)	
 					}
 				}
 				else {
