@@ -119,16 +119,19 @@ function changeMap(Map) {
 				onGround = false	
 			} else {
 				//	Smooth loop to lower groundY (looking for collision)
-				//for(var i=0;i<map.z;i++) {
-				//	if !place_meeting(groundX,groundY + 1, collision) groundY += 1	
-				//	else {
-				//		var ID = instance_place(groundX, groundY + 1, collision)
-				//		if ID.topWall groundY += 1
-				//	}
-				//}
-				//while place_meeting(groundX, groundY, collision) groundY += 1
-				groundY = groundY + Map.z
-				if groundY > y-z onGround = false
+				for(var i=0;i<map.z;i++) {
+					if !place_meeting(groundX,groundY + 1, collisionMap) groundY += 1	
+					else {
+						var ID = instance_place(groundX, groundY + 1, collisionMap)
+						if (z - i) > ID.z groundY += 1
+
+					}
+				}
+
+				if groundY > y-z {
+					onGround = false
+					z -= 1	
+				}
 			}
 		}
 		//	I am jumping up
@@ -141,15 +144,22 @@ function changeMap(Map) {
 	else {
 		
 		//	Smooth loop to lower groundY (looking for collision)
-		//for(var i=0;i<map.z;i++) {
-		//	if !place_meeting(groundX,groundY + 1, collision) groundY += 1	
-		//	else {
-		//		var ID = instance_place(groundX, groundY + 1, collision)
-		//		if ID.topWall and ID.map == Map groundY += 1
-		//	}
-		//}
-		//while place_meeting(groundX, groundY, collision) groundY += 1
-		groundY = groundY + map.z
+		for(var i=0;i<map.z;i++) {
+			if !place_meeting(groundX,groundY + 1, collisionMap) groundY += 1	
+			else {
+				var ID = instance_place(groundX, groundY + 1, collisionMap)
+				//	We're above the map
+				if groundY + 1 < ID.bbox_top + ID.width {
+					groundY += 1
+				}
+				//	Lower us onto the map
+				else if groundY + 1 >= ID.bbox_bottom-ID.width {
+					groundY += 1	
+				}
+				else if (z - i) > ID.z groundY += 1
+
+			}
+		}
 
 		if groundY >= y-z {
 			onGround = false
@@ -163,174 +173,262 @@ function changeMap(Map) {
 function applyMovement() {
 	
 	for(var X=0;X<abs(xx);X++) {
+		//	Not colliding with collision
 		if !place_meeting(groundX + sign(xx), groundY, collision) {
-			if place_meeting(groundX + sign(xx), groundY, collisionMap) {
-				var Map = instance_place(groundX + sign(xx), groundY, collisionMap)
-				if (z >= Map.z or map == Map) {
-					groundX += sign(xx)
-					if (map == -1 or (map > -1 and map != Map)) and instance_place(groundX + sign(xx), (groundY), Map) and place_meeting(groundX + sign(xx), y-z, Map) {
-						changeMap(Map)
-					}
-				} 
-				//	We're not high enough to enter this map or this isn't our map
-				else {
-					//	Walking behind the other map
-					if groundY < ((Map.y+sprite_get_height(Map.sprite_index)*Map.image_yscale) - Map.width) {
-						groundX += sign(xx)
-					}
-				}
-			//	Not colliding with collision or a collisionMap
-			}
-			else {
+			//	Not colliding with a collisionMap
+			if !place_meeting(groundX + sign(xx), groundY, collisionMap) {
 				groundX += sign(xx)
 				if map > -1 {
-					changeMap(-1)	
+					changeMap(-1)
 				}
 			}
-		}
-		//	Collision happening
-		else {
-			var Collision = instance_place(groundX + sign(xx), groundY, collision)
-
-			//	Its a topwall
-			if Collision.topWall {
-				//	Check if we're ACTUALLY colliding with it
-				if place_meeting(x + sign(xx), y, Collision) {
-					//	If we are higher than the topWall
-					if z >= Collision.map.z {
-						if map == -1 or map != Collision.map {
-							changeMap(Collision.map) 
-						} else if map == Collision.map {
-							changeMap(-1)
+			//	Colliding with a map
+			else {
+				var Map = instance_place(groundX + sign(xx), groundY, collisionMap)
+				//	We are higher than it or its our map
+				if (z >= Map.z ) {//or map == Map) {
+					groundX += sign(xx)
+					if map == -1 or Map != map {
+						changeMap(Map)	
+					}
+				}
+				else {
+					//	We're behind this map
+					if map != Map and groundY <= Map.bbox_bottom - Map.width {
+						groundX += sign(xx)
+					}
+					else {
+						//	Check if we're actually on it
+						if map == Map and groundY <= (Map.bbox_top + Map.width + 16) {
+							groundX += sign(xx)	
+						}
+						//	Not on the map, fall
+						else {
+							//if map > -1 changeMap(-1)	
 						}
 					}
-					else if map == Collision.map {
-						changeMap(-1)
-					}
 				}
-				//	We're higher than this collision
-				else {
-					if !place_meeting(groundX + sign(xx), groundY, collisionMap) groundX += sign(xx)
-					else {
-						var mapID = instance_place(groundX + sign(xx), groundY, collisionMap)
-						if z >= mapID.z groundX += sign(xx)
-					}
-					if map > -1 and !place_meeting(groundX, groundY, map) and !place_meeting(x,y, collision) {
-						changeMap(-1)	
-					}
-				}				
 			}
-			
-			
-			//	not a topWall and collision is higher than us
-			else if Collision.z > z {
-				groundX += sign(xx)
-			}
-			
+		} else {
+
 		}
 	}
 	
 	for(var Y=0;Y<abs(yy);Y++) {
+		//	Not colliding with collision
 		if !place_meeting(groundX, groundY + sign(yy), collision) {
-			if place_meeting(groundX, groundY + sign(yy), collisionMap) {
-				var Map = instance_place(groundX, groundY + sign(yy), collisionMap)
-				if (z >= Map.z or map == Map) {
-					//	Check if I can even be on this map
-					if groundY > Map.y + Map.width {
-						groundY += 16
-						changeMap(-1) 
-					}
-					else {
-						groundY += sign(yy)
-						if !onGround y += sign(yy)
-						if (map == -1 or (map > -1 and map != Map)) and instance_place(groundX, (groundY) + sign(yy), Map) and place_meeting(groundX, y + sign(yy) - z, Map) {
-							changeMap(Map)
-						}
-					}
-				}
-				//	We're not high enough to enter this map
-				else {
-					//	Walking behind the other map
-					if groundY + sign(yy) < ((Map.y+sprite_get_height(Map.sprite_index)*Map.image_yscale) - Map.width) {
-						groundY += sign(yy)
-						if !onGround y += sign(yy)
-					}					
-				}
-			}
-			//	Not colliding with collision or collisionMap
-			else {
-				groundY += sign(yy)
-				if !onGround y += sign(yy)	
-				if map > -1 {
-					changeMap(-1)
-				}	
-			}
-		}
-		//	Hitting collision
-		else {
-			var Collision = instance_place(groundX, groundY + sign(yy), collision)
-			if Collision.topWall {
-				//	Check if we're ACTUALLY colliding with it
-				if place_meeting(x, y + sign(yy), Collision) {
-					if z >= Collision.map.z {
-						if map == -1 or map != Collision.map {
-							map = Collision.map
-							groundY -= map.z
-							while place_meeting(groundX,groundY,Collision) {
-								groundY -= 1	
-							}
-							//changeMap(Collision.map) 
-						} else if map == Collision.map {
-							groundY += map.z
-							while place_meeting(groundX,groundY,Collision) {
-								groundY += 1	
-							}
-							if groundY > y-z onGround = false
-							map = -1	
-							//changeMap(-1)
-						}
-					}
-					else if map == Collision.map {
-						groundY += map.z
-						while place_meeting(groundX,groundY,Collision) {
-							groundY += 1	
-						}
-						if groundY > y-z onGround = false
-						map = -1
-						//changeMap(-1)
-					}
-				}
-				//	We're higher than this collision
-				else {				
-					if !place_meeting(groundX, groundY + sign(yy), collisionMap) {
-						groundY += sign(yy)
-						if !onGround y += sign(yy)
-					} else {
-						var mapID = instance_place(groundX, groundY + sign(yy), collisionMap)
-						if z >= mapID.z {
-							if groundY > mapID.y + mapID.width changeMap(-1)
-							else {
-								groundY += sign(yy)
-								if !onGround y += sign(yy)	
-							}
-						}
-					}
-					
-					if map > -1 and !place_meeting(groundX, groundY, map) and !place_meeting(x,y, collision) {
-						changeMap(-1)	
-					}
-				}
-			}
-			
-			
-			////
-			else if Collision.z > z {
+			//	Not colliding with a collisionMap
+			if !place_meeting(groundX, groundY + sign(yy), collisionMap) {
 				groundY += sign(yy)
 				if !onGround y += sign(yy)
+				if map > -1 {
+					changeMap(-1)
+				}
 			}
+			//	Colliding with a map
+			else {
+				var Map = instance_place(groundX, groundY + sign(yy), collisionMap)
+				//	We are higher than it
+				if (z > Map.z) { //or map == Map) {
+					groundY += sign(yy)
+					if !onGround y += sign(yy)
+					if map == -1 or map != Map {
+						changeMap(Map)	
+					}
+				}
+				else {
+					//	We're behind this map 
+					if map != Map and groundY + sign(yy) <= Map.bbox_bottom - Map.width {
+						groundY += sign(yy)
+						if !onGround y += sign(yy)
+					}
+					else {
+						//	Check if we're actually on it
+						if map == Map and groundY + sign(yy) <= (Map.bbox_top + Map.width + 16) {	
+							groundY += sign(yy)
+							if !onGround y += sign(yy)
+						}
+						//	We are not on the map, fall
+						else if map > -1 {
+							changeMap(-1)
+						}
+					}
+				}
+			}
+		} else {
 			
-		}
+		}	
 	}
+	
+	//for(var X=0;X<abs(xx);X++) {
+	//	if !place_meeting(groundX + sign(xx), groundY, collision) {
+	//		if place_meeting(groundX + sign(xx), groundY, collisionMap) {
+	//			var Map = instance_place(groundX + sign(xx), groundY, collisionMap)
+	//			if (z >= Map.z or map == Map) {
+	//				groundX += sign(xx)
+	//				if (map == -1 or (map > -1 and map != Map)) and instance_place(groundX + sign(xx), (groundY), Map) and place_meeting(groundX + sign(xx), y-z, Map) {
+	//					changeMap(Map)
+	//				}
+	//			} 
+	//			//	We're not high enough to enter this map or this isn't our map
+	//			else {
+	//				//	Walking behind the other map
+	//				if groundY < ((Map.y+sprite_get_height(Map.sprite_index)*Map.image_yscale) - Map.width) {
+	//					groundX += sign(xx)
+	//				}
+	//			}
+	//		//	Not colliding with collision or a collisionMap
+	//		}
+	//		else {
+	//			groundX += sign(xx)
+	//			if map > -1 {
+	//				changeMap(-1)	
+	//			}
+	//		}
+	//	}
+	//	//	Collision happening
+	//	else {
+	//		var Collision = instance_place(groundX + sign(xx), groundY, collision)
+
+	//		//	Its a topwall
+	//		if Collision.topWall {
+	//			//	Check if we're ACTUALLY colliding with it
+	//			if place_meeting(x + sign(xx), y, Collision) {
+	//				//	If we are higher than the topWall
+	//				if z >= Collision.map.z {
+	//					if map == -1 or map != Collision.map {
+	//						changeMap(Collision.map) 
+	//					} else if map == Collision.map {
+	//						changeMap(-1)
+	//					}
+	//				}
+	//				else if map == Collision.map {
+	//					changeMap(-1)
+	//				}
+	//			}
+	//			//	We're higher than this collision
+	//			else {
+	//				if !place_meeting(groundX + sign(xx), groundY, collisionMap) groundX += sign(xx)
+	//				else {
+	//					var mapID = instance_place(groundX + sign(xx), groundY, collisionMap)
+	//					if z >= mapID.z groundX += sign(xx)
+	//				}
+	//				if map > -1 and !place_meeting(groundX, groundY, map) and !place_meeting(x,y, collision) {
+	//					changeMap(-1)	
+	//				}
+	//			}				
+	//		}
+			
+			
+	//		//	not a topWall and collision is higher than us
+	//		else if Collision.z > z {
+	//			groundX += sign(xx)
+	//		}
+			
+	//	}
+	//}
+	
+	//for(var Y=0;Y<abs(yy);Y++) {
+	//	if !place_meeting(groundX, groundY + sign(yy), collision) {
+	//		if place_meeting(groundX, groundY + sign(yy), collisionMap) {
+	//			var Map = instance_place(groundX, groundY + sign(yy), collisionMap)
+	//			if (z >= Map.z or map == Map) {
+	//				//	Check if I can even be on this map
+	//				if groundY > Map.y + Map.width {
+	//					groundY += 16
+	//					changeMap(-1) 
+	//				}
+	//				else {
+	//					groundY += sign(yy)
+	//					if !onGround y += sign(yy)
+	//					if (map == -1 or (map > -1 and map != Map)) and instance_place(groundX, (groundY) + sign(yy), Map) and place_meeting(groundX, y + sign(yy) - z, Map) {
+	//						changeMap(Map)
+	//					}
+	//				}
+	//			}
+	//			//	We're not high enough to enter this map
+	//			else {
+	//				//	Walking behind the other map
+	//				if groundY + sign(yy) < ((Map.y+sprite_get_height(Map.sprite_index)*Map.image_yscale) - Map.width) {
+	//					groundY += sign(yy)
+	//					if !onGround y += sign(yy)
+	//				}					
+	//			}
+	//		}
+	//		//	Not colliding with collision or collisionMap
+	//		else {
+	//			groundY += sign(yy)
+	//			if !onGround y += sign(yy)	
+	//			if map > -1 {
+	//				changeMap(-1)
+	//			}	
+	//		}
+	//	}
+	//	//	Hitting collision
+	//	else {
+	//		var Collision = instance_place(groundX, groundY + sign(yy), collision)
+	//		if Collision.topWall {
+	//			//	Check if we're ACTUALLY colliding with it
+	//			if place_meeting(x, y + sign(yy), Collision) {
+	//				if z >= Collision.map.z {
+	//					if map == -1 or map != Collision.map {
+	//						map = Collision.map
+	//						groundY -= map.z
+	//						while place_meeting(groundX,groundY,Collision) {
+	//							groundY -= 1	
+	//						}
+	//						//changeMap(Collision.map) 
+	//					} else if map == Collision.map {
+	//						groundY += map.z
+	//						while place_meeting(groundX,groundY,Collision) {
+	//							groundY += 1	
+	//						}
+	//						if groundY > y-z onGround = false
+	//						map = -1	
+	//						//changeMap(-1)
+	//					}
+	//				}
+	//				else if map == Collision.map {
+	//					groundY += map.z
+	//					while place_meeting(groundX,groundY,Collision) {
+	//						groundY += 1	
+	//					}
+	//					if groundY > y-z onGround = false
+	//					map = -1
+	//					//changeMap(-1)
+	//				}
+	//			}
+	//			//	We're higher than this collision
+	//			else {				
+	//				if !place_meeting(groundX, groundY + sign(yy), collisionMap) {
+	//					groundY += sign(yy)
+	//					if !onGround y += sign(yy)
+	//				} else {
+	//					var mapID = instance_place(groundX, groundY + sign(yy), collisionMap)
+	//					if z >= mapID.z {
+	//						if groundY > mapID.y + mapID.width changeMap(-1)
+	//						else {
+	//							groundY += sign(yy)
+	//							if !onGround y += sign(yy)	
+	//						}
+	//					}
+	//				}
+					
+	//				if map > -1 and !place_meeting(groundX, groundY, map) and !place_meeting(x,y, collision) {
+	//					changeMap(-1)	
+	//				}
+	//			}
+	//		}
+			
+			
+	//		////
+	//		else if Collision.z > z {
+	//			groundY += sign(yy)
+	//			if !onGround y += sign(yy)
+	//		}
+			
+	//	}
+	//}
 	
 	xx = 0
 	yy = 0

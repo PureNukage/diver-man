@@ -6,9 +6,9 @@ z = 360
 
 //startingGame = false
 lowered = false
-inUse = true
+inUse = false
 liftDirection = down
-filled = true
+filled = false
 function lift(up_or_down) {
 	
 	if filled {
