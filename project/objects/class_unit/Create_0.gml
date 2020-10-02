@@ -122,19 +122,19 @@ function changeMap(Map) {
 				for(var i=0;i<map.z;i++) {
 					if !place_meeting(groundX,groundY + 1, collisionMap) groundY += 1	
 					else {
-						var ID = instance_place(groundX, groundY + 1, collisionMap)
-						if (map.z - i) > ID.z groundY += 1
 						//var ID = instance_place(groundX, groundY + 1, collisionMap)
-						//if (z - i) > ID.z {
-						//	//	We're above the map
-						//	if groundY + 1 < ID.bbox_top + ID.width {
-						//		groundY += 1
-						//	}
-						//	//	Lower us onto the map
-						//	else if groundY + 1 >= ID.bbox_bottom-ID.width {
-						//		groundY += 1	
-						//	}
-						//}
+						//if (map.z - i) > ID.z groundY += 1
+						var ID = instance_place(groundX, groundY + 1, collisionMap)
+						if (map.z - i) > ID.z {
+							//	We're above the map
+							if groundY + 1 < ID.bbox_top + ID.width {
+								groundY += 1
+							}
+							//	Lower us onto the map
+							else if groundY + 1 >= ID.bbox_bottom-ID.width {
+								groundY += 1	
+							}
+						}
 					}
 				}
 
@@ -199,11 +199,12 @@ function applyMovement() {
 				if (z >= Map.z ) {//or map == Map) {
 					groundX += sign(xx)
 					if (map == -1 or Map != map) {
-						if place_meeting(groundX, y, Map) {
+						//	
+						if y > Map.bbox_bottom - Map.width and y-z < Map.bbox_top + Map.width and place_meeting(groundX, groundY, Map) and place_meeting(groundX, y, Map) {
 							changeMap(Map)
 						} else if map > -1 changeMap(-1)
 					}
-					if z == Map.z and map == Map and groundY >= (Map.bbox_top + Map.width + 16) {
+					else if map == Map and groundY >= (Map.bbox_top + Map.width + 16) {
 						changeMap(-1)	
 					}
 				}
@@ -248,11 +249,11 @@ function applyMovement() {
 					groundY += sign(yy)
 					if !onGround y += sign(yy)
 					if map == -1 or map != Map {
-						if place_meeting(groundX, y, Map) {
+						if y > Map.bbox_bottom - Map.width and y-z < Map.bbox_top + Map.width and place_meeting(groundX, groundY, Map) and place_meeting(groundX, y, Map) {
 							changeMap(Map)
-						} else if map > -1 changeMap(-1)
+						} else if map > -1 changeMap(-1)				
 					}
-					if z == Map.z and map == Map and groundY + sign(yy) >= (Map.bbox_top + Map.width + 16) {
+					else if map == Map and groundY + sign(yy) >= (Map.bbox_top + Map.width + 16) {
 						changeMap(-1)	
 					}
 				}
