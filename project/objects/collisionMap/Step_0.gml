@@ -1,11 +1,15 @@
 if (instance_exists(class_unit) and place_meeting(x,y,class_unit))
 {
 	var ID = instance_place(x,y,class_unit)
-	if ID.map != id and ID.groundY < ((y+sprite_get_height(sprite_index)*image_yscale) - width) and ID.z < z {
-		ID.depth = water.depth + 1
-		depth = ID.depth - 1
-		drawSurface = true
-		drawNearbyMaps()
+	if ID.map != id {
+		var canDraw = false
+		with ID if place_meeting(x,y,other.id) and y <= (other.bbox_bottom - other.width) canDraw = true
+		if canDraw {
+			ID.depth = water.depth + 1
+			depth = ID.depth - 1
+			drawSurface = true
+			drawNearbyMaps()
+		}
 	}
 	
 	//	Loop through and set all objects depth

@@ -49,7 +49,7 @@ function drawNearbyMaps() {
 		for(var i=0;i<4;i++) {
 			if arrayNearbyMaps[i] > -1 and instance_exists(arrayNearbyMaps[i]) {
 				var ID = arrayNearbyMaps[i]
-				if ID.z >= z {
+				if ID.z >= z and player.map != ID {
 					ID.drawSurface = true
 					ID.depth = player.depth - 1
 				}

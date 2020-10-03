@@ -177,7 +177,8 @@ function roomTransitioning() {
 				room_goto(roomTransitionTo)
 				app.cameraRefresh = true
 				roomTransitionStage = 1
-				app.underwaterChange(true)
+				if roomTransitionTo == Room1 app.underwaterChange(true)
+				else if roomTransitionTo == RoomDock app.underwaterChange(false)
 				roomTransitionTimer = 5
 			}
 		break

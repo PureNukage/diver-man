@@ -22,7 +22,13 @@ function lift(up_or_down) {
 	switch(up_or_down)
 	{
 		case up:
-			Z = 2	
+			Z = 2
+			
+			if app.underwater {
+				if z >= 100 and app.roomTransitionTo == -1 {
+					app.roomTransition(RoomDock, 5)
+				}
+			}
 		break
 		
 		case down:
@@ -50,8 +56,8 @@ function lift(up_or_down) {
 		
 		//	We're underwater, lets surface
 		if app.underwater and room != RoomDock {
-			app.roomTransition(RoomDock, 5)
-			app.underwaterChange(false)
+			//app.roomTransition(RoomDock, 5)
+		//	app.underwaterChange(false)
 		}
 	}
 	else if (app.underwater and !lowered and z <= 0) or (!app.underwater and !lowered and z <= -360) {
