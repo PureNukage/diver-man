@@ -135,7 +135,7 @@ function roomTransition(Room, Speed) {
 	
 	roomTransitionStage = 0
 	
-	depth = -20000
+	depth = -2000
 }
 
 function roomTransitioning() {
