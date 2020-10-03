@@ -44,7 +44,7 @@ if on {
 	surface_reset_target()
 	
 	surface_set_target(surface)
-	draw_surface(shadowSurface,0,0)
+	//draw_surface(shadowSurface,0,0)
 	surface_reset_target()
 	
 	surface_free(shadowSurface)

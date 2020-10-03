@@ -11,6 +11,7 @@ instance_create_layer(0,0,Layer,time)
 instance_create_layer(0,0,Layer,sound)
 instance_create_layer(0,0,Layer,water)
 instance_create_layer(0,0,Layer,lighting)
+instance_create_layer(0,0,Layer,shadows)
 instance_create_layer(0,0,Layer,grid)
 instance_create_layer(0,0,Layer,gui)
 
