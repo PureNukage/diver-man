@@ -14,9 +14,9 @@ draw_roundrect(X-2,Y-2,X+Width+2,Y+Height+2,false)
 if point_in_rectangle(mouse_gui_x,mouse_gui_y,X,Y,X+Width,Y+Height) {
 	draw_set_color(c_ltgray)
 	if input.mouseLeftPress {
-		room_goto(RoomDock)
+		room_goto(Room1)
 		app.cameraRefresh = true
-		app.underwaterChange(false)
+		app.underwaterChange(true)
 		//audio_play_sound(sound_underwater,0,true)
 		//audio_sound_gain(sound_underwater,sound.volumeSound,0)
 	}
