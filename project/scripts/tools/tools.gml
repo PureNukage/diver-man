@@ -106,3 +106,10 @@ function instance_place_highest(x, y, object) {
 
   return instance;
 }
+	
+function instance_place_count(x, y, object) {
+	var list = ds_list_create()
+	var count = instance_place_list(x,y,object,list,true)
+	ds_list_destroy(list)
+	return count
+}

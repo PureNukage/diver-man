@@ -195,6 +195,8 @@ function applyMovement() {
 			//	Colliding with a map
 			else {
 				var Map = instance_place_highest(groundX + sign(xx), groundY, collisionMap)
+				var collisionCount = instance_place_count(groundX + sign(xx), groundY, collisionMap)
+				var collisionGroundCount = instance_place_count(groundX + sign(xx), y, collisionMap)
 				//	We are higher than it or its our map
 				if (z >= Map.z ) {//or map == Map) {
 					groundX += sign(xx)
@@ -210,7 +212,7 @@ function applyMovement() {
 				}
 				else {
 					//	We're behind this map
-					if map != Map and map == -1 and groundY <= Map.bbox_bottom - Map.width {
+					if map != Map and map == -1 and groundY <= Map.bbox_bottom - Map.width and (collisionGroundCount == 1 and collisionCount <= 1) {
 						groundX += sign(xx)
 					}
 					else {
