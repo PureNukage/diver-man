@@ -27,6 +27,12 @@ function lift(up_or_down) {
 		
 		case down:
 			Z = -2
+			
+			if !app.underwater {
+				if z <= -100 and app.roomTransitionTo == -1 {
+					app.roomTransition(Room1, 5)	
+				}
+			}
 		break
 	}
 	
@@ -44,8 +50,7 @@ function lift(up_or_down) {
 		
 		//	We're underwater, lets surface
 		if app.underwater and room != RoomDock {
-			room_goto(RoomDock)
-			app.cameraRefresh = true
+			app.roomTransition(RoomDock, 5)
 			app.underwaterChange(false)
 		}
 	}
@@ -55,7 +60,7 @@ function lift(up_or_down) {
 		lowered = true
 		if !app.underwater z = -360
 		
-		if filled {
+		if filled and app.underwater {
 			player.muted = false
 			player.groundX = x
 			player.groundY = y
@@ -65,9 +70,10 @@ function lift(up_or_down) {
 		
 		//	We're on the surface
 		if !app.underwater and room == RoomDock {
-			room_goto(Room1)
-			app.cameraRefresh = true
-			app.underwaterChange(true)
+			//app.roomTransition(Room1, 5)
+			//room_goto(Room1)
+			//app.cameraRefresh = true
+			//app.underwaterChange(true)
 		}
 		
 		//liftDirection = up

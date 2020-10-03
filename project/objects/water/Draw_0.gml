@@ -24,6 +24,17 @@ if on {
 	
 	shader_reset()
 	
+	//	Room transition
+	if app.roomTransitionTo > -1 and buffer_exists(app.roomTransitionBuffer) {
+		var Surface = surface_create(display_get_gui_width(),display_get_gui_height())
+		buffer_set_surface(app.roomTransitionBuffer,Surface, 0,0,0)
+		
+		gpu_set_blendmode(bm_subtract)
+		draw_surface(Surface,camera_get_view_x(app.camera),app.camera_get_view_y(app.camera))
+		gpu_set_blendmode(bm_normal)
+		surface_free(Surface)
+	}
+	
 	surface_reset_target()
 	
 	surface_set_target(groundSurface)

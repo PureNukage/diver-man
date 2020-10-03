@@ -25,6 +25,7 @@
     {"id":{"name":"s_water","path":"sprites/s_water/s_water.yy",},"order":28,},
     {"id":{"name":"RoomDock","path":"rooms/RoomDock/RoomDock.yy",},"order":3,},
     {"id":{"name":"class_enemy","path":"objects/class_enemy/class_enemy.yy",},"order":11,},
+    {"id":{"name":"s_crate","path":"sprites/s_crate/s_crate.yy",},"order":33,},
     {"id":{"name":"shader_caustic","path":"shaders/shader_caustic/shader_caustic.yy",},"order":2,},
     {"id":{"name":"particle","path":"objects/particle/particle.yy",},"order":13,},
     {"id":{"name":"s_treasurechest","path":"sprites/s_treasurechest/s_treasurechest.yy",},"order":18,},

@@ -2,7 +2,7 @@ creator = ""
 version = ""
 
 paused = false
-suitOn = false
+suitOn = true
 
 var Layer = "Instances"
 instance_create_layer(0,0,Layer,input)
@@ -30,6 +30,15 @@ function cameraSetup() {
 		width = 640
 		height = 360
 		zoom_level = 1
+		
+		var fullscreen = false
+		//var windowWidth = window_get_width()
+		var windowHeight = window_get_height()
+		//var displayWidth = display_get_width()
+		var displayHeight = display_get_height()
+		if window_get_width() == display_get_width() and (abs(windowHeight - displayHeight) < 100) {
+			fullscreen = true
+		}
 
 		#region Views
 
@@ -74,7 +83,7 @@ function cameraSetup() {
 
 		#endregion
 	
-		//scale_canvas(1920,1080)
+		if !fullscreen scale_canvas(1920,1080)
 
 		default_zoom_width = camera_get_view_width(camera)
 		default_zoom_height = camera_get_view_height(camera)
@@ -108,4 +117,129 @@ function underwaterChange(on) {
 			audio_stop_sound(sound_underwater)
 		}
 	}
+}
+
+roomTransitionTimer = -1
+roomTransitionTo = -1
+roomTransitionLerp = -1
+roomTransitionLerpStart = -1
+roomTransitionSpeed = -1
+roomTransitionStage = -1
+roomTransitionBuffer = -1
+function roomTransition(Room, Speed) {
+	roomTransitionTo = Room
+	roomTransitionSpeed = Speed
+	
+	roomTransitionLerp = display_get_gui_width()
+	roomTransitionLerpStart = roomTransitionLerp
+	
+	roomTransitionStage = 0
+	
+	depth = -20000
+}
+
+function roomTransitioning() {
+	var Width = display_get_gui_width()
+	var Height = display_get_gui_height()
+	var surface = surface_create(Width,Height)
+	surface_set_target(surface)
+	draw_clear_alpha(c_black, 0)
+	
+	switch(roomTransitionStage)
+	{
+		//	Old room
+		case 0:
+			draw_set_color(c_black)
+			draw_set_alpha(1)
+			draw_rectangle(0,0,Width,Height,false)
+	
+			gpu_set_blendmode(bm_subtract)
+	
+			var coorX, coorY
+			//if instance_exists(player) {
+			//	coorX = player.x
+			//	coorY = player.y-player.z
+			//}
+			//else {
+				coorX = camera_get_view_x(app.camera) + (camera_get_view_border_x(app.camera)/2)	
+				coorY = camera_get_view_y(app.camera) + (camera_get_view_border_y(app.camera)/2)	
+			//}
+			draw_circle(coorX,coorY,roomTransitionLerp,false)
+	
+			gpu_set_blendmode(bm_normal)
+	
+			surface_reset_target()
+			
+			roomTransitionLerp = approach(roomTransitionLerp, 0, roomTransitionSpeed)
+			
+			//	Transition over, lets go to the next room
+			if roomTransitionLerp == 0 {
+				room_goto(roomTransitionTo)
+				app.cameraRefresh = true
+				roomTransitionStage = 1
+				app.underwaterChange(true)
+				roomTransitionTimer = 5
+			}
+		break
+		//	Pause on new room
+		case 1:
+			draw_set_color(c_black)
+			draw_set_alpha(1)
+			draw_rectangle(0,0,Width,Height,false)
+			
+			surface_reset_target()
+		
+			if roomTransitionTimer > -1 roomTransitionTimer--
+			else {
+				roomTransitionStage = 2
+			}
+		break
+		//	New room
+		case 2:
+			draw_set_color(c_black)
+			draw_set_alpha(1)
+			draw_rectangle(0,0,Width,Height,false)
+			
+			gpu_set_blendmode(bm_subtract)
+	
+			var coorX, coorY
+			//if instance_exists(player) {
+			//	coorX = player.x
+			//	coorY = player.y-player.z
+			//}
+			//else {
+				coorX = camera_get_view_x(app.camera) + (camera_get_view_border_x(app.camera)/2)	
+				coorY = camera_get_view_y(app.camera) + (camera_get_view_border_y(app.camera)/2)	
+			//}
+			draw_circle(coorX,coorY,roomTransitionLerp,false)
+	
+			gpu_set_blendmode(bm_normal)
+	
+			surface_reset_target()
+			
+			roomTransitionLerp = approach(roomTransitionLerp, Width, roomTransitionSpeed)
+			
+			//	Transition over, lets go to the next room
+			if roomTransitionLerp == Width {
+				roomTransitionTo = -1
+				roomTransitionLerp = -1
+				roomTransitionLerpStart = -1
+				roomTransitionSpeed = -1
+				roomTransitionStage = -1
+				depth = 1
+			}
+		break	
+	}
+	
+	draw_surface(surface,camera_get_view_x(app.camera),app.camera_get_view_y(app.camera))
+	
+	{
+		if buffer_exists(roomTransitionBuffer) buffer_delete(roomTransitionBuffer)
+		roomTransitionBuffer = buffer_create(Width*Height*4, buffer_grow, 1)
+		buffer_get_surface(roomTransitionBuffer,surface, 0,0,0)
+	}
+	
+	surface_free(surface)
+	
+	//debug.log("roomTransitionLerp: "+string(roomTransitionLerp))
 }
