@@ -6,6 +6,8 @@ if !app.paused {
 
 		hspd = input.keyRight - input.keyLeft
 		vspd = input.keyDown - input.keyUp
+		
+		if !suitOn sprite_index = s_kid_player
 
 		if (hspd != 0 or vspd != 0) {
 			moveDirection = point_direction(0,0,hspd,vspd)
@@ -64,10 +66,10 @@ if !app.paused {
 				moveForce--
 			}
 			else {
-				if sprite_index != s_diverman_idle {
-					sprite_index = s_diverman_idle
-					image_index = 0
-				}
+				//if sprite_index != s_diverman_idle {
+				//	sprite_index = s_diverman_idle
+				//	image_index = 0
+				//}
 			}
 		}
 	
@@ -82,26 +84,30 @@ if !app.paused {
 		if onGround {
 			//	Moving
 			if (hspd != 0 or vspd != 0) {
-				if sprite_index != s_diverman_walk {
-					sprite_index = s_diverman_walk
-					image_index = 0
+				if suitOn {
+					if sprite_index != s_diverman_walk {
+						sprite_index = s_diverman_walk
+						image_index = 0
+					}
 				}
 			}
 			//	Not moving
 			else {
-				if moveForce == 0 and sprite_index != s_diverman_idle {
-					sprite_index = s_diverman_idle
-					image_index = 0
-				}	
+				if suitOn {
+					if moveForce == 0 and sprite_index != s_diverman_idle {
+						sprite_index = s_diverman_idle
+						image_index = 0
+					}	
+				}
 			}
 		} 
 		//	In the air
 		else {
 			if thrust > 0 {
-				sprite_index = s_diverman_jump	
+				if suitOn sprite_index = s_diverman_jump	
 			}
 			else {
-				sprite_index = s_diverman_fall	
+				if suitOn sprite_index = s_diverman_fall	
 			}
 			//sprite_index = s_diverman_idle_frozen
 		}

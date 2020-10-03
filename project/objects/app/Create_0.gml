@@ -2,6 +2,7 @@ creator = ""
 version = ""
 
 paused = false
+suitOn = false
 
 var Layer = "Instances"
 instance_create_layer(0,0,Layer,input)

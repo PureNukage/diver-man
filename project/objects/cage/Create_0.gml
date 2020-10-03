@@ -94,4 +94,8 @@ function useLift(up_or_down, Filled) {
 	
 	inUse = true
 	
+	if !app.underwater {
+		if instance_exists(crane) crane.image_speed = 1
+	}
+	
 }
