@@ -68,8 +68,8 @@
     {"visible":true,"isLocked":false,"blendMode":0,"opacity":100.0,"displayName":"default","resourceVersion":"1.0","name":"83a889b6-b025-413b-aac0-d735bd62405e","tags":[],"resourceType":"GMImageLayer",},
   ],
   "parent": {
-    "name": "Art",
-    "path": "folders/Art.yy",
+    "name": "diverman",
+    "path": "folders/Art/characters/diverman.yy",
   },
   "resourceVersion": "1.0",
   "name": "s_suit_pile",

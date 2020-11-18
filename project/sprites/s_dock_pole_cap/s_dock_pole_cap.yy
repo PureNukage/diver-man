@@ -68,8 +68,8 @@
     {"visible":true,"isLocked":false,"blendMode":0,"opacity":100.0,"displayName":"default","resourceVersion":"1.0","name":"66e7ea9c-e2dd-4d6e-a67b-108b2f45bb8a","tags":[],"resourceType":"GMImageLayer",},
   ],
   "parent": {
-    "name": "Art",
-    "path": "folders/Art.yy",
+    "name": "misc items",
+    "path": "folders/Art/misc items.yy",
   },
   "resourceVersion": "1.0",
   "name": "s_dock_pole_cap",

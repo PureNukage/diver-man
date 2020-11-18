@@ -5,7 +5,6 @@ if (instance_exists(class_unit) and place_meeting(x,y,class_unit))
 		var canDraw = false
 		with ID if place_meeting(x,y,other.id) and y <= (other.bbox_bottom - other.width) canDraw = true
 		if canDraw {
-			ID.depth = water.depth + 1
 			depth = ID.depth - 1
 			drawSurface = true
 			drawNearbyMaps()
@@ -19,7 +18,6 @@ if (instance_exists(class_unit) and place_meeting(x,y,class_unit))
 		for(var i=0;i<amountOfCollisions;i++) {
 			var ID = list[| i]
 			if ID.map != id and ID.groundY < y+z {
-				ID.depth = water.depth + 1
 				depth = ID.depth - 1
 			}
 		}

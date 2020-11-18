@@ -1,4 +1,4 @@
-volumeSound = 0.5
+volumeSound = 1
 volumeMusic = 1
 
 function playSoundEffect(index) {

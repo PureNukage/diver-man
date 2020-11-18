@@ -1,0 +1,103 @@
+﻿intro,1,It's been a week since I lost my job.,s_brother_face
+intro,2,I lasted a few more months using butter...,s_brother_face
+intro,3,But I'm too large for chimneys now.,s_brother_face
+intro,respintru,Did you get chosen for the factory today?,s_brother_face
+respintru,4,No,
+respintru,5,...,
+intro,6,Nuts,s_brother_face
+intro,6,Darn.,s_brother_face
+intro,7,"Well, hopefully we have enough for a while.",s_brother_face
+intro,respintr1,...,
+intro,9,Today sucks.,s_brother_face
+intro,10,It's getting late...,s_brother_face
+intro,11,If you want to spend that coin nows the time.,s_brother_face
+intro,-12,Then lets head home.,s_brother_face
+intro,13,INTRO OVER,
+respintr1,-8,We have 1 coin left.,
+respintr1,7,...,
+brother,1,<gghhrrrr>,s_brother_face
+brother,2,I'm hungry.,s_brother_face
+brother,resphome,Do you want to head home?,s_brother_face
+resphome,3,Yes,
+resphome,4,No,
+brother,-5,Ok lets go.,s_brother_face
+brother,-2,Make it snappy.,s_brother_face
+brother,-6,HEAD HOME,
+brotherNightChat,respNightChat,Do you have a plan for us?,s_brother_face
+respNightChat,1,I think so,
+respNightChat,1,I don't know,
+brotherNightChat,2,Ok.,s_brother_face
+brotherNightChat,3,I've been playing my flute recently.,s_brother_face
+brotherNightChat,4,And I have an idea for tomorrow.,s_brother_face
+brotherNightChat,5,...,s_brother_face
+brotherNightChat,6,!!!,s_brother_face
+brotherNightChat,-7,"Hey, I can't find my watch!!!",s_brother_face
+brotherNightChat,8,Ok good its out here.,s_brother_face
+brotherNightChat,9,Inside this watch...,s_brother_face
+brotherNightChat,10,...is our last photo of Mom and Dad.,s_brother_face
+brotherNightChat,11,...,s_brother_face
+brotherNightChat,-12,Ok NIGHT,s_brother_face
+musicMorning1,1,Okay so the plan is...,s_brother_face
+musicMorning1,2,...I'm going to play my flute...,s_brother_face
+musicMorning1,3,... and you're going to dance.,s_brother_face
+musicMorning1,4,The city is BUSY this morning! ,s_brother_face
+musicMorning1,5,Better for business!,s_brother_face
+musicMorning1,-6,Also try to not get knocked over. ,s_brother_face
+bullys1,-1,HEY TWERP!!,s_bully1_face
+bullys1,2,I told you it was the little twerp.,s_bully1_face
+bullys1,3,Can you IMAGINE not having parents? ,s_bully1_face
+bullys1,4,Who would you try and impress??,s_bully2_face
+bullys1,5,Only to be told your dreams of...,s_bully2_face
+bullys1,6,...working on engines are stupid.,s_bully2_face
+bullys1,7,Ha! Can you imagine?,s_bully1_face
+bullys1,-8,I think we should wedgie the little twerp!,s_bully2_face
+bullys2,1,Give me back my watch!,s_brother_face
+bullys2,2,Oh yeah?,s_bully1_face
+bullys2,-3,Watch this!,s_bully1_face
+bullys2,-4,Hahaha. Lets beat it.,s_bully2_face
+brotherAfterWatch,1,Those jerks threw the watch off the dock!,s_brother_face
+brotherAfterWatch,2,"Well, the photo is behind glass...",s_brother_face
+brotherAfterWatch,3,... so it should be fine. ,s_brother_face
+brotherAfterWatch,4,And I thought yesterday was bad.,s_brother_face
+brotherAfterWatch,-5,This confirms that life sucks.,s_brother_face
+sailorPeteEntrance,-1,You could say that again.,s_sailorpete_face
+sailorPeteEntrance,2,*burp*,s_sailorpete_face
+sailorPeteEntrance,3,Hey boys... You're looking glum.,s_sailorpete_face
+sailorPeteEntrance,4,Glummer than usual for orphans.,s_sailorpete_face
+sailorPeteEntrance,-5,*burp*,s_sailorpete_face
+brotherAfterWatch,6,The Roosh brothers threw something...,s_brother_face
+brotherAfterWatch,-7,...very important to me off the dock.,s_brother_face
+sailorPeteEntrance,6,*burp*,s_sailorpete_face
+sailorPeteEntrance,7,That's a reason to take a drink.,s_sailorpete_face
+sailorPeteEntrance,8,I might have something that'll help.,s_sailorpete_face
+sailorPeteEntrance,-9,Other than rum.,s_sailorpete_face
+sailorPeteGivingSuit,1,*burp*,s_sailorpete_face
+sailorPeteGivingSuit,2,On this box is one of my old diving suits.,s_sailorpete_face
+sailorPeteGivingSuit,3,I used them to do repairs back in the Navy.,s_sailorpete_face
+sailorPeteGivingSuit,4,Also how I lost my leg to Nessy!,s_sailorpete_face
+sailorPeteGivingSuit,5,*burp*,s_sailorpete_face
+sailorPeteGivingSuit,-6,Which one of ya is getting in?,s_sailorpete_face
+brotherGivingSuit,respGettingSuit,Well?,s_sailorpete_face
+respGettingSuit,1,I'll do it.,
+respGettingSuit,1,I'd rather not.,
+brotherGivingSuit,2,He'll do it. I can't afford to get sweaty.,s_brother_face
+brotherGivingSuit,-3,"Who knows, the Pompnose girl might see me.",s_brother_face
+sailorPeteGivingSuit,-7,"Alright, come here boy.",s_sailorpete_face
+brotherGotSuit,,Yeah...,s_brother_face
+brotherGotSuit,1,Can't understand you.,s_brother_face
+brotherGotSuit,-1,Good luck though!,s_brother_face
+peteGotSuit,1,*burp* Good good,s_sailorpete_face
+peteGotSuit,-1,Get in the crane and I'll lower you down,s_sailorpete_face
+brotherGivingWatch,1,You found it!,s_brother_face
+brotherGivingWatch,2,And the photo is dry! Amazing!,s_brother_face
+brotherGivingWatch,3,What was it like down there? ,s_brother_face
+brotherGivingWatch,4,Before Sailor Pete left we were talking...,s_brother_face
+brotherGivingWatch,5,...and he was telling me about the docks.,s_brother_face
+brotherGivingWatch,6,Rumor is there are chests all around!,s_brother_face
+brotherGivingWatch,7,Although they can be hard to reach. ,s_brother_face
+brotherGivingWatch,8,Pete says we can use his suit. ,s_brother_face
+brotherGivingWatch,respDiving,What do you think?,s_brother_face
+respDiving,9,Lets find some treasure!,
+brotherGivingWatch,10,Heck yes! This will be our best endeavor yet!,s_brother_face
+brotherGivingWatch,-12,We'll sleep on a pile of gold doubloons!,s_brother_face
+brotherGivingWatch,-11,Can't understand you. Take off the suit!,s_brother_face

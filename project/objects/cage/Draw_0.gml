@@ -1,7 +1,12 @@
 if app.underwater draw_shadow()
 
-if !inUse draw_unit()
-else lift(liftDirection)
+if !inUse {
+	drawUnit = true
+	//draw_unit()
+} else {
+	drawUnit = false
+	lift(liftDirection)
+}
 
 if !app.underwater {
 	var surface = surface_create(room_width, room_height)
@@ -24,3 +29,5 @@ if !app.underwater {
 else {
 	draw_sprite(s_chain,0,x,y-z-64)
 }
+
+event_inherited()

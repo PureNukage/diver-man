@@ -14,6 +14,7 @@ if on {
 		draw_text(XX,YY, "map: "+string(map)) YY += 15
 		draw_text(XX,YY, "groundX: "+string(groundX)) YY += 15
 		draw_text(XX,YY, "groundY: "+string(groundY)) YY += 15
+		draw_text(XX,YY, "moveForce: "+string(moveForce)) YY += 15
 	}
 	
 }

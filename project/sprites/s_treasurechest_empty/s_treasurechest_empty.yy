@@ -68,8 +68,8 @@
     {"visible":true,"isLocked":false,"blendMode":0,"opacity":100.0,"displayName":"default","resourceVersion":"1.0","name":"d5e0eb30-b739-499c-885a-774fa6b69106","tags":[],"resourceType":"GMImageLayer",},
   ],
   "parent": {
-    "name": "Art",
-    "path": "folders/Art.yy",
+    "name": "misc items",
+    "path": "folders/Art/misc items.yy",
   },
   "resourceVersion": "1.0",
   "name": "s_treasurechest_empty",

@@ -68,8 +68,8 @@
     {"visible":true,"isLocked":false,"blendMode":0,"opacity":100.0,"displayName":"default","resourceVersion":"1.0","name":"7f7f8552-db4d-4e96-af61-d5fce5d8af69","tags":[],"resourceType":"GMImageLayer",},
   ],
   "parent": {
-    "name": "Art",
-    "path": "folders/Art.yy",
+    "name": "fish",
+    "path": "folders/Art/fish.yy",
   },
   "resourceVersion": "1.0",
   "name": "s_jellyfish",

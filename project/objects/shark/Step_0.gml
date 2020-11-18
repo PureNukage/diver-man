@@ -40,14 +40,30 @@ if !app.paused {
 				
 				}
 			
-				if xx > 0 {
+				if xx > 0.25 {
 					image_xscale = 1
-				} if xx < 0 {
+				} if xx < -0.25 {
 					image_xscale = -1	
 				}
 			
 			break
 		#endregion
+	}
+	
+	//	Check for damage
+	mask_index = s_shark_swim
+	if !damaged and place_meeting(x,y, player) and player.state == state.attack and player.image_index < 4 {
+		depth = player.depth + 1
+		setDamage(1, 15)
+		knockbackForce = 5
+		knockbackDirection = point_direction(player.x,player.y, x,y)
+	}
+	mask_index = s_shark_collision
+	if damaged applyDamage()
+	
+	if knockbackForce > 0 {
+		setForce(knockbackForce, knockbackDirection)
+		knockbackForce--	
 	}
 
 	var oldX = groundX

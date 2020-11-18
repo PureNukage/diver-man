@@ -74,8 +74,8 @@
     {"visible":false,"isLocked":false,"blendMode":0,"opacity":100.0,"displayName":"Layer 1","resourceVersion":"1.0","name":"97e5a26d-86ff-4ca3-afb8-0c5a42f630b4","tags":[],"resourceType":"GMImageLayer",},
   ],
   "parent": {
-    "name": "Art",
-    "path": "folders/Art.yy",
+    "name": "diverman",
+    "path": "folders/Art/characters/diverman.yy",
   },
   "resourceVersion": "1.0",
   "name": "s_footprint",

@@ -1,25 +1,77 @@
 hspd = 0
 vspd = 0
+canMove = true
 onGround = true
 groundX = x
 groundY = y
 grav = 0.2
+detectCollision = true
+maxMovespeed = 2
+jumpHaltDuration = -1
 z = 0
 xx = 0
 yy = 0
 xscale = 1
 yscale = 1
+flee = false
 moveForce = 0
 moveDirection = -1
 knockbackForce = 0
 knockbackDirection = -1
 thrust = 0
 map = -1
+damaged = false
+damagedTimer = -1
+flash = false
+flashDuration = -1
 hpMax = 5
 hp = hpMax
 shadowEllipse = true
+interactibility = false
+interactable = false
+interactCD = -1
+drawShadow = true
+drawUnit = true
+depth = -y
 
 madeFootprint = false
+
+function setDamage(amount, _flashDuration) {
+	hp -= amount
+	
+	damaged = true
+	damagedTimer = 45
+	
+	if _flashDuration > 0 {
+		flash = true
+		flashDuration = _flashDuration
+	}
+	else {
+		flash = false
+		flashDuration = -1
+	}
+}
+
+function applyDamage() {
+	
+	//	Damage timer
+	if damagedTimer > 0 {
+		damagedTimer--	
+	}
+	else if damagedTimer <= 0 {
+		damaged = false
+		damagedTimer = -1
+	}
+	
+	//	Flash timer
+	if flashDuration > 0 {
+		flashDuration--	
+	}
+	else if flashDuration <= 0 {
+		flash = false
+		flashDuration = -1
+	}
+}
 
 function setThrust(Thrust) {
 	onGround = false
@@ -38,8 +90,20 @@ function applyThrust() {
 		if map > -1 and map.z > -1 z = map.z
 		else z = 0
 		
+		if moveForce > 0 moveForce -= 3
+		
+		////	Sand poof
+		if object_index == player and app.underwater {
+			var Poof = instance_create_layer(x,y,"Instances",particle)
+			Poof.particles = particles.sandPoofJump
+			Poof.duration = 30
+		
+			jumpHaltDuration = 30
+		}
+		
+		
 		////	Footprints
-		if object_index == player {
+		if object_index == player and app.underwater {
 			////	Footsteps
 			switch(sign(image_xscale))
 			{
@@ -120,19 +184,21 @@ function changeMap(Map) {
 			} else {
 				//	Smooth loop to lower groundY (looking for collision)
 				for(var i=0;i<map.z;i++) {
-					if !place_meeting(groundX,groundY + 1, collisionMap) groundY += 1	
-					else {
-						//var ID = instance_place(groundX, groundY + 1, collisionMap)
-						//if (map.z - i) > ID.z groundY += 1
-						var ID = instance_place(groundX, groundY + 1, collisionMap)
-						if (map.z - i) > ID.z {
-							//	We're above the map
-							if groundY + 1 < ID.bbox_top + ID.width {
-								groundY += 1
-							}
-							//	Lower us onto the map
-							else if groundY + 1 >= ID.bbox_bottom-ID.width {
-								groundY += 1	
+					if !place_meeting(groundX,groundY + 1, collision) {
+						if !place_meeting(groundX,groundY + 1, collisionMap) groundY += 1	
+						else {
+							//var ID = instance_place(groundX, groundY + 1, collisionMap)
+							//if (map.z - i) > ID.z groundY += 1
+							var ID = instance_place(groundX, groundY + 1, collisionMap)
+							if (map.z - i) > ID.z {
+								//	We're above the map
+								if groundY + 1 < ID.bbox_top + ID.width {
+									groundY += 1
+								}
+								//	Lower us onto the map
+								else if groundY + 1 >= ID.bbox_bottom-ID.width {
+									groundY += 1	
+								}
 							}
 						}
 					}
@@ -155,19 +221,21 @@ function changeMap(Map) {
 		
 		//	Smooth loop to lower groundY (looking for collision)
 		for(var i=0;i<map.z;i++) {
-			if !place_meeting(groundX,groundY + 1, collisionMap) groundY += 1	
-			else {
-				var ID = instance_place(groundX, groundY + 1, collisionMap)
-				//	We're above the map
-				if groundY + 1 < ID.bbox_top + ID.width {
-					groundY += 1
-				}
-				//	Lower us onto the map
-				else if groundY + 1 >= ID.bbox_bottom-ID.width {
-					groundY += 1	
-				}
-				else if (map.z - i) > ID.z groundY += 1
+			if !place_meeting(groundX, groundY + 1, collision) {
+				if !place_meeting(groundX,groundY + 1, collisionMap) groundY += 1	
+				else {
+					var ID = instance_place(groundX, groundY + 1, collisionMap)
+					//	We're above the map
+					if groundY + 1 < ID.bbox_top + ID.width {
+						groundY += 1
+					}
+					//	Lower us onto the map
+					else if groundY + 1 >= ID.bbox_bottom-ID.width {
+						groundY += 1	
+					}
+					else if (map.z - i) > ID.z groundY += 1
 
+				}
 			}
 		}
 
@@ -182,11 +250,14 @@ function changeMap(Map) {
 
 function applyMovement() {
 	
+	var subX = abs(xx) - abs(floor(xx))
+	var subY = abs(yy) - abs(floor(yy))
+	
 	for(var X=0;X<abs(xx);X++) {
 		//	Not colliding with collision
-		if !place_meeting(groundX + sign(xx), groundY, collision) {
+		if !detectCollision or !place_meeting(groundX + sign(xx), groundY, collision) {
 			//	Not colliding with a collisionMap
-			if !place_meeting(groundX + sign(xx), groundY, collisionMap) {
+			if !detectCollision or !place_meeting(groundX + sign(xx), groundY, collisionMap) {
 				groundX += sign(xx)
 				if map > -1 {
 					changeMap(-1)
@@ -195,24 +266,28 @@ function applyMovement() {
 			//	Colliding with a map
 			else {
 				var Map = instance_place_highest(groundX + sign(xx), groundY, collisionMap)
-				var collisionCount = instance_place_count(groundX + sign(xx), groundY, collisionMap)
-				var collisionGroundCount = instance_place_count(groundX + sign(xx), y, collisionMap)
 				//	We are higher than it or its our map
-				if (z >= Map.z ) {//or map == Map) {
+				if (z >= Map.z ) {
 					groundX += sign(xx)
 					if (map == -1 or Map != map) {
-						//	
+						//	Check if we're actually on it
 						if y > Map.bbox_bottom - Map.width and y-z < Map.bbox_top + Map.width and place_meeting(groundX, groundY, Map) and place_meeting(groundX, y, Map) {
 							changeMap(Map)
-						} else if map > -1 changeMap(-1)
+						} else if map > -1 {
+							//	If we're not colliding with current map anymore
+							if !place_meeting(groundX + sign(xx), groundY, map) and groundY > Map.bbox_top + Map.width + 16 {
+								changeMap(-1)
+							}
+						}
 					}
 					else if map == Map and groundY >= (Map.bbox_top + Map.width + 16) {
 						changeMap(-1)	
 					}
 				}
 				else {
+					var collisionCount = maps_collision_count(x,y)
 					//	We're behind this map
-					if map != Map and map == -1 and groundY <= Map.bbox_bottom - Map.width and (collisionGroundCount == 1 and collisionCount <= 1) {
+					if map != Map and map == -1 and groundY <= Map.bbox_bottom - Map.width and collisionCount == 0 {
 						groundX += sign(xx)
 					}
 					else {
@@ -227,16 +302,14 @@ function applyMovement() {
 					}
 				}
 			}
-		} else {
-
 		}
 	}
 	
 	for(var Y=0;Y<abs(yy);Y++) {
 		//	Not colliding with collision
-		if !place_meeting(groundX, groundY + sign(yy), collision) {
+		if !detectCollision or !place_meeting(groundX, groundY + sign(yy), collision) {
 			//	Not colliding with a collisionMap
-			if !place_meeting(groundX, groundY + sign(yy), collisionMap) {
+			if !detectCollision or !place_meeting(groundX, groundY + sign(yy), collisionMap) {
 				groundY += sign(yy)
 				if !onGround y += sign(yy)
 				if map > -1 {
@@ -247,19 +320,22 @@ function applyMovement() {
 			else {
 				var Map = instance_place_highest(groundX, groundY + sign(yy), collisionMap)
 				//	We are higher than it
-				if (z >= Map.z) { //or map == Map) {
+				if (z >= Map.z) {
 					groundY += sign(yy)
 					if !onGround y += sign(yy)
 					if map == -1 or map != Map {
 						if y > Map.bbox_bottom - Map.width and y-z < Map.bbox_top + Map.width and place_meeting(groundX, groundY, Map) and place_meeting(groundX, y, Map) {
 							changeMap(Map)
-						} else if map > -1 changeMap(-1)				
+						} else if map > -1 {
+							if !place_meeting(groundX, groundY + sign(yy), map) and groundY > Map.bbox_top + Map.width + 16 changeMap(-1)
+						}
 					}
 					else if map == Map and groundY + sign(yy) >= (Map.bbox_top + Map.width + 16) {
 						changeMap(-1)	
 					}
 				}
 				else {
+					var collisionCount = maps_collision_count(x,y)
 					//	We're behind this map 
 					if map != Map and groundY + sign(yy) <= Map.bbox_bottom - Map.width {
 						groundY += sign(yy)
@@ -273,13 +349,113 @@ function applyMovement() {
 						}
 						//	We are not on the map, fall
 						else if map > -1 {
-							changeMap(-1)
+							//changeMap(-1)
 						}
 					}
 				}
 			}
-		} else {
-			
+		}
+	}
+		
+	if subX > 0 {
+		//	Not colliding with collision
+		if !detectCollision or !place_meeting(groundX + subX, groundY, collision) {
+			//	Not colliding with a collisionMap
+			if !detectCollision or !place_meeting(groundX + subX, groundY, collisionMap) {
+				groundX += subX
+				if map > -1 {
+					changeMap(-1)
+				}
+			}
+			//	Colliding with a map
+			else {
+				var Map = instance_place_highest(groundX + subX, groundY, collisionMap)
+				//	We are higher than it or its our map
+				if (z >= Map.z ) {
+					groundX += subX
+					if (map == -1 or Map != map) {
+						//	Check if we're actually on it
+						if y > Map.bbox_bottom - Map.width and y-z < Map.bbox_top + Map.width and place_meeting(groundX, groundY, Map) and place_meeting(groundX, y, Map) {
+							changeMap(Map)
+						} else if map > -1 {
+							//	If we're not colliding with current map anymore
+							if !place_meeting(groundX + subX, groundY, map) changeMap(-1)
+						}
+					}
+					else if map == Map and groundY >= (Map.bbox_top + Map.width + 16) {
+						changeMap(-1)	
+					}
+				}
+				else {
+					var collisionCount = maps_collision_count(x,y)
+					//	We're behind this map
+					if map != Map and map == -1 and groundY <= Map.bbox_bottom - Map.width and collisionCount == 0 {
+						groundX += subX
+					}
+					else {
+						//	Check if we're actually on it
+						if map == Map and groundY <= (Map.bbox_top + Map.width + 16) {
+							groundX += subX
+						}
+						//	Not on the map, fall
+						else {
+							//if map > -1 changeMap(-1)	
+						}
+					}
+				}
+			}
+		}
+	}
+	
+	if subY > 0 {
+		//	Not colliding with collision
+		if !detectCollision or !place_meeting(groundX, groundY + subY, collision) {
+			//	Not colliding with a collisionMap
+			if !detectCollision or !place_meeting(groundX, groundY + subY, collisionMap) {
+				groundY += subY
+				if !onGround y += subY
+				if map > -1 {
+					changeMap(-1)
+				}
+			}
+			//	Colliding with a map
+			else {
+				var Map = instance_place_highest(groundX, groundY + subY, collisionMap)
+				//	We are higher than it
+				if (z >= Map.z) {
+					groundY += subY
+					if !onGround y += subY
+					if map == -1 or map != Map {
+						if y > Map.bbox_bottom - Map.width and y-z < Map.bbox_top + Map.width and place_meeting(groundX, groundY, Map) and place_meeting(groundX, y, Map) {
+							changeMap(Map)
+						} else if map > -1 {
+							if !place_meeting(groundX + sign(xx), groundY, map) changeMap(-1)
+						}
+					}
+					else if map == Map and groundY + subY >= (Map.bbox_top + Map.width + 16) {
+						changeMap(-1)	
+					}
+				}
+				else {
+					var collisionCount = maps_collision_count(x,y)
+					//	We're behind this map 
+					if map != Map and groundY + subY <= Map.bbox_bottom - Map.width {
+						groundY += subY
+						if !onGround y += subY
+					}
+					else {
+						//	Check if we're actually on it
+						if map == Map and groundY + subY <= (Map.bbox_top + Map.width + 16) {	
+							groundY += subY
+							if !onGround y += subY
+						}
+						//	We are not on the map, fall
+						else if map > -1 {
+							//changeMap(-1)
+						}
+					}
+				}
+			}
 		}	
 	}
 	
@@ -290,7 +466,9 @@ function applyMovement() {
 }
 	
 function draw_unit() {
-	draw_sprite_ext(sprite_index,image_index,x,y-z,image_xscale,image_yscale,image_angle,image_blend,image_alpha)	
+	if flash shader_set(shader_flash)
+	draw_sprite_ext(sprite_index,image_index,floor(x),floor(y-z),image_xscale,image_yscale,image_angle,image_blend,image_alpha)	
+	shader_reset()
 }
 
 function draw_shadow() {
@@ -323,8 +501,8 @@ function draw_shade() {
 	
 	var xOffset = sprite_get_xoffset(sprite_index)
 	var yOffset = sprite_get_yoffset(sprite_index)
-	var XX = x - xOffset + sprite_get_bbox_left(sprite_index)
-	var YY = y - yOffset + sprite_get_bbox_top(sprite_index) - z
+	var XX = floor(x) - xOffset + sprite_get_bbox_left(sprite_index)
+	var YY = floor(y) - yOffset + sprite_get_bbox_top(sprite_index) - z
 	var spriteWidth = sprite_get_bbox_right(sprite_index) - sprite_get_bbox_left(sprite_index)
 	var spriteHeight = sprite_get_bbox_bottom(sprite_index) - sprite_get_bbox_top(sprite_index)
 	
@@ -340,14 +518,14 @@ function draw_shade() {
 			shadeBuffer = buffer_create(spriteWidth*spriteHeight*4, buffer_grow, 1)	
 		}
 	
-		var bbox_width = abs(bbox_right-bbox_left)
-		var bbox_height = abs(bbox_bottom-bbox_top)
+		var bbox_width = floor(abs(bbox_right-bbox_left))
+		var bbox_height = floor(abs(bbox_bottom-bbox_top))
 		var surface = surface_create(bbox_width, bbox_height)
 		surface_set_target(surface)
 		draw_clear_alpha(c_black, 0)
 		surface_reset_target()
 	
-		surface_copy_part(surface,0,0,shadows.surface, bbox_left+z,bbox_top, bbox_width,bbox_height)
+		surface_copy_part(surface,0,0,shadows.surface, floor(bbox_left)+z,floor(bbox_top), bbox_width,bbox_height)
 
 		//	Draw the surface stretched on top of the sprite_index
 		var surface2 = surface_create(room_width,room_height)

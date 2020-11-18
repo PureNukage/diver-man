@@ -72,8 +72,8 @@
     {"visible":true,"isLocked":false,"blendMode":0,"opacity":100.0,"displayName":"default","resourceVersion":"1.0","name":"b5d0d125-8bd9-4e83-8c5c-33ce55300043","tags":[],"resourceType":"GMImageLayer",},
   ],
   "parent": {
-    "name": "Art",
-    "path": "folders/Art.yy",
+    "name": "misc items",
+    "path": "folders/Art/misc items.yy",
   },
   "resourceVersion": "1.0",
   "name": "s_crane",

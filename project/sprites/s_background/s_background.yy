@@ -68,8 +68,8 @@
     {"visible":true,"isLocked":false,"blendMode":0,"opacity":100.0,"displayName":"default","resourceVersion":"1.0","name":"ccb72633-e405-4d17-a7c5-77c53cd23a6a","tags":[],"resourceType":"GMImageLayer",},
   ],
   "parent": {
-    "name": "Art",
-    "path": "folders/Art.yy",
+    "name": "backgrounds",
+    "path": "folders/Art/backgrounds.yy",
   },
   "resourceVersion": "1.0",
   "name": "s_background",

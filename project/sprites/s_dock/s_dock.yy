@@ -68,8 +68,8 @@
     {"visible":true,"isLocked":false,"blendMode":0,"opacity":100.0,"displayName":"default","resourceVersion":"1.0","name":"b61fd0b8-a6f2-4617-b896-f237bcc6d572","tags":[],"resourceType":"GMImageLayer",},
   ],
   "parent": {
-    "name": "Art",
-    "path": "folders/Art.yy",
+    "name": "misc items",
+    "path": "folders/Art/misc items.yy",
   },
   "resourceVersion": "1.0",
   "name": "s_dock",

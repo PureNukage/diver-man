@@ -1,3 +1,5 @@
+event_inherited()
+
 if instance_exists(player) and player.suitOn {
 	image_alpha = 0.5
 } else {

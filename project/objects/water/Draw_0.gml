@@ -1,17 +1,17 @@
 if on {
 
-	if !surface_exists(groundSurface) {
-		groundSurface = surface_create(room_width, room_height)	
+	if !surface_exists(causticSurface) {
+		causticSurface = surface_create(room_width, room_height)	
 	
-		surface_set_target(groundSurface)
+		surface_set_target(causticSurface)
 		draw_clear_alpha(c_black, 0)
 	
 		surface_reset_target()
 	}
 
 	var surface = surface_create(room_width, room_height)
-	
 	surface_set_target(surface)
+	draw_clear_alpha(c_black, 0)
 	
 	////	WIP CAUSTIC
 	shader_set(shader_caustic)
@@ -24,46 +24,30 @@ if on {
 	
 	shader_reset()
 	
-	//	Room transition
-	if app.roomTransitionTo > -1 and buffer_exists(app.roomTransitionBuffer) {
-		var Surface = surface_create(display_get_gui_width(),display_get_gui_height())
-		buffer_set_surface(app.roomTransitionBuffer,Surface, 0,0,0)
-		
-		gpu_set_blendmode(bm_subtract)
-		draw_surface(Surface,camera_get_view_x(app.camera),app.camera_get_view_y(app.camera))
-		gpu_set_blendmode(bm_normal)
-		surface_free(Surface)
-	}
-	
 	surface_reset_target()
 	
-	surface_set_target(groundSurface)
+	surface_set_target(causticSurface)
 	
 	var Layer = layer_tilemap_get_id(layer_get_id("Tiles_1"))
 	//draw_tilemap(Layer, 0,0)
 	
-	draw_set_alpha(0.20)
-	draw_surface(surface,0,0)
 	draw_set_alpha(1)
+	draw_surface(surface,0,0)
 	
 	surface_reset_target()
 	
-	surface_free(surface)
-	
-	if instance_exists(collisionMap) with collisionMap if drawSurface {
-		//if player.map != id {
-			var surface = surface_create(sprite_get_width(sprite_index)*image_xscale, sprite_get_height(sprite_index)*image_yscale + 16)
-			buffer_set_surface(surfaceBuffer, surface, 0, 0, 0)		
-			draw_surface(surface,x,y)
-			if surface_exists(surface) surface_free(surface)
-		//}	
+	if !surface_exists(causticSurfaceOriginal) {
+		causticSurfaceOriginal = surface_create(room_width,room_height)	
 	}
+	surface_copy(causticSurfaceOriginal,0,0,surface)
+	surface_free(surface)
 	
 	with particle if particles == particles.footprint if z > 0 {
 		draw_self()	
 	}
 	
-	draw_surface(groundSurface,0,0)
+	draw_set_alpha(0.25)
+	draw_surface(causticSurface,0,0)
 }
 	
 	

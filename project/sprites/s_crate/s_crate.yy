@@ -68,8 +68,8 @@
     {"visible":true,"isLocked":false,"blendMode":0,"opacity":100.0,"displayName":"default","resourceVersion":"1.0","name":"4abf16fc-8f87-4c39-a802-0a245c5da856","tags":[],"resourceType":"GMImageLayer",},
   ],
   "parent": {
-    "name": "Art",
-    "path": "folders/Art.yy",
+    "name": "misc items",
+    "path": "folders/Art/misc items.yy",
   },
   "resourceVersion": "1.0",
   "name": "s_crate",

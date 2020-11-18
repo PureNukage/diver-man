@@ -1,8 +1,11 @@
 creator = ""
 version = ""
 
+canvasX = 0
+
 paused = false
 suitOn = true
+gold = 1
 
 var Layer = "Instances"
 instance_create_layer(0,0,Layer,input)
@@ -26,7 +29,6 @@ function scale_canvas(new_width, new_height) {
 }
 	
 function cameraSetup() {
-	#region Camera
 
 		width = 640
 		height = 360
@@ -54,7 +56,9 @@ function cameraSetup() {
 		#endregion
 		#region Resize and Center Game Window
 
-			window_set_rectangle((display_get_width()-view_wport[0])*0.5,(display_get_height()-view_hport[0])*0.5,view_wport[0],view_hport[0])
+			if !fullscreen window_set_rectangle((display_get_width()-view_wport[0])*0.5,(display_get_height()-view_hport[0])*0.5,view_wport[0],view_hport[0])
+			
+			if !fullscreen window_center()
 	
 			surface_resize(application_surface,view_wport[0],view_hport[0])
 	
@@ -84,12 +88,23 @@ function cameraSetup() {
 
 		#endregion
 	
-		if !fullscreen scale_canvas(1920,1080)
+		//if !fullscreen scale_canvas(1920,1080)
 
 		default_zoom_width = camera_get_view_width(camera)
 		default_zoom_height = camera_get_view_height(camera)
 
-	#endregion	
+}
+
+cameraFocusOnPlayer = true
+cameraFocusX = x
+cameraFocusY = y
+cameraFocusDuration = -1
+function cameraFocus(_x, _y, _duration){
+	
+	cameraFocusX = _x
+	cameraFocusY = _y
+	cameraFocusDuration = _duration
+	
 }
 	
 cameraSetup()
@@ -162,8 +177,10 @@ function roomTransitioning() {
 			//	coorY = player.y-player.z
 			//}
 			//else {
-				coorX = camera_get_view_x(app.camera) + (camera_get_view_border_x(app.camera)/2)	
-				coorY = camera_get_view_y(app.camera) + (camera_get_view_border_y(app.camera)/2)	
+				coorX = camera_get_view_x(app.camera) + (camera_get_view_width(app.camera)/2)	
+				coorY = camera_get_view_y(app.camera) + (camera_get_view_height(app.camera)/2)	
+				coorX = (camera_get_view_width(app.camera)/2)	
+				coorY = (camera_get_view_height(app.camera)/2)	
 			//}
 			draw_circle(coorX,coorY,roomTransitionLerp,false)
 	
@@ -179,7 +196,7 @@ function roomTransitioning() {
 				app.cameraRefresh = true
 				roomTransitionStage = 1
 				if roomTransitionTo == Room1 app.underwaterChange(true)
-				else if roomTransitionTo == RoomDock app.underwaterChange(false)
+				else app.underwaterChange(false)
 				roomTransitionTimer = 5
 			}
 		break
@@ -190,6 +207,8 @@ function roomTransitioning() {
 			draw_rectangle(0,0,Width,Height,false)
 			
 			surface_reset_target()
+			
+			if surface_exists(shadows.surface) surface_free(shadows.surface)
 		
 			if roomTransitionTimer > -1 roomTransitionTimer--
 			else {
@@ -210,8 +229,10 @@ function roomTransitioning() {
 			//	coorY = player.y-player.z
 			//}
 			//else {
-				coorX = camera_get_view_x(app.camera) + (camera_get_view_border_x(app.camera)/2)	
-				coorY = camera_get_view_y(app.camera) + (camera_get_view_border_y(app.camera)/2)	
+				coorX = camera_get_view_x(app.camera) + (camera_get_view_width(app.camera)/2)	
+				coorY = camera_get_view_y(app.camera) + (camera_get_view_height(app.camera)/2)	
+				coorX = (camera_get_view_width(app.camera)/2)	
+				coorY = (camera_get_view_height(app.camera)/2)	
 			//}
 			draw_circle(coorX,coorY,roomTransitionLerp,false)
 	
@@ -233,7 +254,7 @@ function roomTransitioning() {
 		break	
 	}
 	
-	draw_surface(surface,camera_get_view_x(app.camera),app.camera_get_view_y(app.camera))
+	draw_surface(surface,camera_get_view_x(app.camera),camera_get_view_y(app.camera))
 	
 	{
 		if buffer_exists(roomTransitionBuffer) buffer_delete(roomTransitionBuffer)

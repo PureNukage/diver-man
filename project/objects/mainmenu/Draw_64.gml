@@ -17,8 +17,9 @@ if point_in_rectangle(mouse_gui_x,mouse_gui_y,X,Y,X+Width,Y+Height) {
 		room_goto(Room1)
 		app.cameraRefresh = true
 		app.underwaterChange(true)
-		//audio_play_sound(sound_underwater,0,true)
-		//audio_sound_gain(sound_underwater,sound.volumeSound,0)
+		//lighting.on = true
+		//audio_play_sound(sound_underwater, 0, true)
+		//audio_sound_gain(sound_underwater, sound.volumeSound, 0)
 	}
 } else {
 	draw_set_color(c_gray)

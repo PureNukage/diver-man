@@ -11,12 +11,16 @@
 enum particles {
 	bubble,
 	footprint,
-	jellyfish
+	jellyfish,
+	sandPoofJump,
 }
 
 enum state {
 	free,
 	walk,
+	stunned,
+	flee,
+	attack
 }
 
 enum treasure {

@@ -1,6 +1,9 @@
-var buffer = 32
-if !inUse and instance_exists(player) and point_in_rectangle(player.groundX,player.groundY, x-buffer,y-buffer,bbox_right+buffer,bbox_bottom+buffer) {
-	if input.keyInteract {
+event_inherited()
+
+if inUse and interactable interactable = false
+
+if interactable {
+	if input.keyInteract and !inUse {
 		if player.suitOn {
 			useLift(liftDirection, true)
 		}

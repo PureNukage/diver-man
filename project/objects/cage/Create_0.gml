@@ -2,6 +2,9 @@ event_inherited()
 
 shadowEllipse = false
 
+interactibility = true
+if !app.underwater drawShadow = false
+
 //startingGame = false
 lowered = true
 inUse = false
@@ -26,8 +29,12 @@ function lift(up_or_down) {
 			
 			if app.underwater {
 				if z >= 100 and app.roomTransitionTo == -1 {
-					app.roomTransition(RoomDock, 5)
+					var Room = questManager.roomSurface
+					if Room == -1 Room = RoomDock
+					app.roomTransition(Room, 5)
 				}
+				
+				
 			}
 		break
 		
@@ -108,6 +115,13 @@ function useLift(up_or_down, Filled) {
 	
 	if !app.underwater {
 		if instance_exists(crane) crane.image_speed = 1
+	}
+	//	Underwater
+	else {
+		//	Clear the rope
+		for(var i=1;i<rope.verticeCount-1;i++) {
+			rope.delete_vertex(i)	
+		}
 	}
 	
 }

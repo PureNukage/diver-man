@@ -95,16 +95,26 @@ function pathfind(mp_grid, Path, xStart, yStart, xGoal, yGoal, allowdiag) {
 }
 	
 function instance_place_highest(x, y, object) {
-  var instance = noone;
-  var list = ds_list_create();
-  var num = instance_place_list(x, y, object, list, false);
-  for(var i = 0; i < num; i++){
-    if (instance == noone || list[| i].z > instance.z)
-      instance = list[| i];
-  }
-  ds_list_destroy(list);
+	var instance = noone;
+	var list = ds_list_create();
+	var num = instance_place_list(x, y, object, list, false);
+	for(var i = 0; i < num; i++){
+	if (instance == noone || list[| i].z > instance.z)
+	    instance = list[| i];
+	}
+	
+	//	Filter down to a map that we're actually colliding with
+	var Y = self.y
+	if ds_list_size(list) > 1 and list[| 1].z == instance.z {
+		for(var i=0;i<num;i++) {
+			if Y > (list[| i].bbox_bottom - list[| i].width) and list[| i].z == instance.z
+			instance = list[| i]
+		}
+	}
+  
+	ds_list_destroy(list);
 
-  return instance;
+	return instance;
 }
 	
 function instance_place_count(x, y, object) {
@@ -112,4 +122,137 @@ function instance_place_count(x, y, object) {
 	var count = instance_place_list(x,y,object,list,true)
 	ds_list_destroy(list)
 	return count
+}
+	
+function maps_collision_count(x,y) {
+	
+	var list = ds_list_create()
+	var count = instance_place_list(x,y, collisionMap, list, true)
+	
+	var collisionCount = 0
+	for(var i=0;i<count;i++) {
+		var Map = list[| i]
+		if y > Map.bbox_bottom - Map.width {
+			collisionCount++
+		}
+	}
+	
+	ds_list_destroy(list)
+	
+	return collisionCount
+	
+}
+	
+function draw_path_sprite(path, sprite, subimg) {
+	///@func draw_path_sprite(path,sprite,subimg)
+	///@desc Draws a path with a sprite (smoothly, not absolute)
+	///@auth Lord von Adel
+	///@arg path
+	///@arg sprite
+	///@arg index
+	var _path = path;
+	var _sprite = sprite;
+	var _subimg = subimg;
+
+	var sW = sprite_get_width(_sprite);
+	var sH = sprite_get_height(_sprite);
+	var _col = draw_get_color();
+	draw_set_color(c_white);
+
+	for (var i=0; i<path_get_length(_path); i++) {
+		var x1, y1, x2, y2, x0, y0, dir, m;
+	
+		x1 = path_get_x(_path,i/(path_get_length(_path)/sprite_get_width(_sprite)));
+		y1 = path_get_y(_path,i/(path_get_length(_path)/sprite_get_width(_sprite)));
+		x2 = path_get_x(_path,(i+1)/(path_get_length(_path)/sprite_get_width(_sprite)));
+		y2 = path_get_y(_path,(i+1)/(path_get_length(_path)/sprite_get_width(_sprite)));
+	
+		if(i > 0) {
+			x0 = path_get_x(_path,(i-1)/(path_get_length(_path)/sprite_get_width(_sprite)));
+			y0 = path_get_y(_path,(i-1)/(path_get_length(_path)/sprite_get_width(_sprite)));
+		} else {
+			x0 = path_get_x(_path,(i+1)/(path_get_length(_path)/sprite_get_width(_sprite)));
+			y0 = path_get_y(_path,(i+1)/(path_get_length(_path)/sprite_get_width(_sprite)));
+		}
+	
+		m = 1;
+		if(i > path_get_length(_path)/sH - 1) { m = (path_get_length(_path)/sH) - floor(path_get_length(_path)/sH); }
+	
+		dir = point_direction(x0,y0,x1,y1);
+		if(i == 0) { dir += 180; }
+		draw_primitive_begin_texture(pr_trianglestrip,sprite_get_texture(_sprite,_subimg));
+		draw_vertex_texture(x1+lengthdir_x(sW/2,dir+90),y1+lengthdir_y(sW/2,dir+90),0,0);
+		draw_vertex_texture(x1+lengthdir_x(-sW/2,dir+90),y1+lengthdir_y(-sW/2,dir+90),1,0);
+	
+		dir = point_direction(x1,y1,x2,y2);
+		draw_vertex_texture(x2+lengthdir_x(sW/2,dir+90),y2+lengthdir_y(sW/2,dir+90),0,m);
+		draw_vertex_texture(x2+lengthdir_x(-sW/2,dir+90),y2+lengthdir_y(-sW/2,dir+90),1,m);
+		draw_primitive_end();
+	};
+
+	draw_set_color(_col);	
+}
+	
+///draw_line_sprite(pixel_sprite, x1, y1, x2, y2, <width>, <color>, <alpha>)
+// Argument 0 should be a sprite resource that is 1 pixel and white with an origin at 0,0
+function drawLineSprite(sprite, x1,y1, x2,y2, width, color, alpha) {
+    var _pixel = sprite,
+    _x1=x1+1,
+    _y1=y1+1,
+    _x2=x2+1,
+    _y2=y2+1,
+    _width=argument_count > 5 ? width : 1,
+    _color=argument_count > 6 ? color : draw_get_color(),
+    _alpha=argument_count > 7 ? alpha : draw_get_alpha(),
+    _dir = point_direction(_x1, _y1, _x2, _y2),
+    _len = point_distance(_x1, _y1, _x2, _y2);
+
+    draw_sprite_ext(_pixel, 0, 
+                _x1+lengthdir_x(_width/2,_dir+90), 
+                _y1+lengthdir_y(_width/2,_dir+90), 
+                _len, _width, _dir, _color, _alpha);
+}
+	
+function load_dialogue() {
+	
+	var csv = "dialogue.csv"
+	var key = npcKey
+	
+	var dialogue = load_csv(csv)
+	
+	myDialogue = [[]]
+	
+	var height = ds_grid_height(dialogue)
+	
+	var foundDialogue = false
+	var DialogueIndex = 0
+	for(var i=0;i<height;i++) {
+		var Key = dialogue[# 0, i]
+		var nextIndex = dialogue[# 1, i]
+		var Dialogue = dialogue[# 2, i]
+		var Sprite = dialogue[# 3, i]
+		
+		var SpriteIndex = asset_get_index(Sprite)
+		
+		if string_count(key,Key) > 0 {
+			myDialogue[0, DialogueIndex] = nextIndex
+			myDialogue[1, DialogueIndex] = Dialogue
+			
+			if SpriteIndex > -1 {
+				npcSprite = SpriteIndex	
+				myDialogue[2, DialogueIndex] = SpriteIndex
+			}
+			else myDialogue[2, DialogueIndex] = s_brother_face
+			
+			foundDialogue = true
+			DialogueIndex++
+		}
+	}
+	if foundDialogue {
+		dialogueIndex = 0	
+	}
+	else dialogueIndex = -1
+	
+	ds_grid_destroy(dialogue)
+	
 }

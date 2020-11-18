@@ -1,0 +1,3 @@
+interactable = false
+
+drawGold = false

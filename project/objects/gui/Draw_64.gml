@@ -1,3 +1,15 @@
+//////	Interactable
+//if interactable {
+//	var xx = display_get_gui_width()/2
+//	var yy = display_get_gui_height()/2
+//	yy -= 100
+	
+//	draw_set_color(c_white)
+//	draw_set_halign(fa_center)
+//	draw_set_valign(fa_middle)
+//	draw_text(xx,yy,"Press E to interact")
+//}
+
 ////	Health and stamina bars
 if instance_exists(player) {
 	
@@ -31,20 +43,21 @@ if instance_exists(player) {
 	
 	
 	////	Gold
-	var xx = 500
-	var yy = 32
+	if drawGold {
+		var xx = 500
+		var yy = 32
 	
-	draw_sprite(s_coins,0,xx,yy)
+		draw_sprite(s_coins,0,xx,yy)
 	
-	var xx = 571
-	var yy = 28
+		var xx = 571
+		var yy = 28
 	
-	draw_set_color(c_yellow)
-	draw_set_font(font_coins)
-	draw_set_halign(fa_left)
-	draw_set_valign(fa_top)
-	draw_text(xx,yy, string(player.gold))
-	
+		draw_set_color(c_yellow)
+		draw_set_font(font_coins)
+		draw_set_halign(fa_left)
+		draw_set_valign(fa_top)
+		draw_text(xx,yy, string(player.gold))
+	}
 	
 	draw_reset()
 	

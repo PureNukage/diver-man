@@ -68,8 +68,8 @@
     {"visible":true,"isLocked":false,"blendMode":0,"opacity":100.0,"displayName":"default","resourceVersion":"1.0","name":"3957adb7-5cf4-4598-9957-bdcee20efb8b","tags":[],"resourceType":"GMImageLayer",},
   ],
   "parent": {
-    "name": "Art",
-    "path": "folders/Art.yy",
+    "name": "diverman",
+    "path": "folders/Art/characters/diverman.yy",
   },
   "resourceVersion": "1.0",
   "name": "s_diverman_collision",

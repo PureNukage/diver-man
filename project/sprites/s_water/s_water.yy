@@ -68,8 +68,8 @@
     {"visible":true,"isLocked":false,"blendMode":0,"opacity":100.0,"displayName":"default","resourceVersion":"1.0","name":"9325f417-0c21-4e8a-9863-8ac6e9932c5b","tags":[],"resourceType":"GMImageLayer",},
   ],
   "parent": {
-    "name": "Art",
-    "path": "folders/Art.yy",
+    "name": "backgrounds",
+    "path": "folders/Art/backgrounds.yy",
   },
   "resourceVersion": "1.0",
   "name": "s_water",

@@ -5,6 +5,8 @@ if on {
 	
 	draw_set_alpha(1)
 	draw_set_color(c_blue)
+	//draw_set_color(make_color_rgb(90,196,231))
+	//draw_set_color(make_color_rgb(55,30,111))
 	draw_rectangle(0,0,room_width,room_height,false)
 	
 	//	Room transition

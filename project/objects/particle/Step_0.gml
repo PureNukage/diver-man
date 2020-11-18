@@ -36,13 +36,22 @@ if !app.paused {
 
 			image_angle = moveDirection
 
-			depth = -20000
+			depth = -5000
 		
 			if !point_in_rectangle(x,y, 0,0,room_width,room_height) {
 				myEmitter.amount--
 				instance_destroy()	
 			}
 		
+		break
+		case particles.sandPoofJump:
+			sprite_index = s_sand_poof_jump
+			
+			image_alpha = 0.5
+			
+			if animation_end {
+				instance_destroy()	
+			}
 		break
 	}
 	

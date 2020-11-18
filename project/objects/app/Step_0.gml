@@ -2,22 +2,32 @@ if input.keyPause {
 	paused = !paused	
 }
 
+if room == Room1 {
+	//if instance_exists(class_foliage) with class_foliage instance_deactivate_object(self)
+}
+
+if !cameraFocusOnPlayer {
+	x = cameraFocusX
+	y = cameraFocusY
+}
+
 if cameraRefresh {
 	cameraRefresh = false
 	cameraSetup()
 	grid.mpGrid_build()
 	window_center()
-	if instance_exists(player) {
+	if instance_exists(player) and cameraFocusOnPlayer {
 		x = player.x
 		y = player.y-player.z-32
 	}
 }
 
-if layer_exists(layer_get_id("Viewport")) {
-	layer_set_visible(layer_get_id("Viewport"), false)	
+var viewportID = layer_get_id("Viewport")
+if layer_exists(viewportID) and layer_get_visible(viewportID) {
+	layer_set_visible(viewportID, false)	
 }
 
-if instance_exists(player) {
+if instance_exists(player) and cameraFocusOnPlayer {
 	var Lerp = 0.09
 	x = lerp(x,player.groundX,Lerp)
 	y = lerp(y,player.y-player.z-32,Lerp)
@@ -25,7 +35,7 @@ if instance_exists(player) {
 
 if time.stream <= 5 {
 	window_center()
-	if instance_exists(player) {
+	if instance_exists(player) and cameraFocusOnPlayer {
 		x = player.x
 		y = player.y
 	}
