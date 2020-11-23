@@ -27,7 +27,7 @@ path_set_precision(path, 8)
 if player.sprite_index == s_diverman_sprint {
 	var vx = player.x + (player.image_xscale * 8)	
 	var vy = player.y-player.z-55
-} else if player.sprite_index == s_diverman_attack {
+} else if player.sprite_index == s_diverman_attack or sprite_index == s_diverman_attack2 {
 	if player.image_index == 1 {
 		var vx = player.x + (player.image_xscale * 8)
 		var vy = player.y-player.z-55

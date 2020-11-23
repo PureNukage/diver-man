@@ -28,7 +28,7 @@ if on {
 	
 	surface_set_target(causticSurface)
 	
-	var Layer = layer_tilemap_get_id(layer_get_id("Tiles_1"))
+	//var Layer = layer_tilemap_get_id(layer_get_id("Tiles_1"))
 	//draw_tilemap(Layer, 0,0)
 	
 	draw_set_alpha(1)

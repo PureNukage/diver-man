@@ -1,2 +1,2 @@
 z = 48
-width = 80
+width = 128

@@ -9,7 +9,9 @@ if !app.paused {
 				
 					//	Attacking
 					if input.keyAttack and onGround {
-						sprite_index = s_diverman_attack
+						if !attack sprite_index = s_diverman_attack
+						else sprite_index = s_diverman_attack2
+						attack = !attack
 						image_index = 0
 						image_speed = 1
 						moveForce = 5
@@ -70,8 +72,10 @@ if !app.paused {
 	
 						if hspd != 0 image_xscale = sign(hspd) * xscale
 			
-						image_speed = (moveForce/maxMovespeed)
-						image_speed = clamp(image_speed,.2,1)
+						if jumpHaltDuration == -1 {
+							image_speed = (moveForce/maxMovespeed)
+							image_speed = clamp(image_speed,.2,1)
+						}
 	
 						////	Footprints
 						if onGround footprint()
@@ -85,17 +89,14 @@ if !app.paused {
 						else {
 							image_speed = 1
 							moveForce = 0
-							if sprite_index != s_diverman_idle and suitOn {
-								sprite_index = s_diverman_idle
-								image_index = 0
-							}
 						}
 					}
 	
 					////	Jumping
 					if input.keyJump and onGround {
 						//var Thrust = clamp(5 * (moveForce/ maxMovespeed), min(3, maxMovespeed), 5)
-						setThrust(5)	
+						setThrust(5)
+						image_speed = 1
 					}
 
 					if !onGround applyThrust()
@@ -105,20 +106,27 @@ if !app.paused {
 						//	Moving
 						if (hspd != 0 or vspd != 0) {
 							if suitOn {
-								if running {
-									sprite_index = s_diverman_sprint	
-								}
-								else
-								if sprite_index != s_diverman_walk {
-									sprite_index = s_diverman_walk
-									image_index = 0
+								if jumpHaltDuration > 0 {
+									sprite_index = s_diverman_jump
+									if animation_end {
+										jumpHaltDuration = -1	
+									}
+								} else {
+									if running {
+										sprite_index = s_diverman_sprint	
+									}
+									else
+									if sprite_index != s_diverman_walk {
+										sprite_index = s_diverman_walk
+										image_index = 0
+									}
 								}
 							}
 						}
 						//	Not moving
 						else {
 							if suitOn {
-								if moveForce == 0 and sprite_index != s_diverman_idle {
+								if moveForce == 0 and sprite_index != s_diverman_idle and jumpHaltDuration == -1 {
 									sprite_index = s_diverman_idle
 									image_index = 0
 								}	
@@ -128,12 +136,21 @@ if !app.paused {
 					//	In the air
 					else {
 						if thrust > 0 {
-							//if suitOn sprite_index = s_diverman_jump	
+							if suitOn {
+								sprite_index = s_diverman_jump
+								image_index = 0
+							}
 						}
 						else {
-							//if suitOn sprite_index = s_diverman_fall	
+							if suitOn {
+								if sprite_index != s_diverman_jump {
+									sprite_index = s_diverman_jump
+								}
+								if image_index >= 2 {
+									image_index = 2
+								}
+							}
 						}
-						//sprite_index = s_diverman_idle_frozen
 					}
 				
 				break	

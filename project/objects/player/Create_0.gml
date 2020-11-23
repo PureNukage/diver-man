@@ -8,7 +8,9 @@ state = state.free
 
 staminaMax = 100
 stamina = staminaMax
-gold = app.gold
+gold = app.gold 
+
+attack = 0
 
 dancing = false
 
