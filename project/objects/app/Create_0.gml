@@ -259,7 +259,7 @@ function roomTransitioning() {
 	{
 		if buffer_exists(roomTransitionBuffer) buffer_delete(roomTransitionBuffer)
 		roomTransitionBuffer = buffer_create(Width*Height*4, buffer_grow, 1)
-		buffer_get_surface(roomTransitionBuffer,surface, 0,0,0)
+		buffer_get_surface(roomTransitionBuffer,surface, 0)
 	}
 	
 	surface_free(surface)

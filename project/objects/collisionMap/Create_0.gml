@@ -90,7 +90,7 @@ function createSurface() {
 	
 	surfaceBuffer = buffer_create(width*height*4, buffer_grow, 1)
 	
-	buffer_get_surface(surfaceBuffer, finalSurface, 0, 0, 0)
+	buffer_get_surface(surfaceBuffer, finalSurface, 0)
 	
 	surface_free(surface)
 	

@@ -13,7 +13,7 @@ if on {
 	if app.roomTransitionStage > -1 and buffer_exists(app.roomTransitionBuffer) {
 		draw_set_alpha(1)
 		var Surface = surface_create(display_get_gui_width(),display_get_gui_height())
-		buffer_set_surface(app.roomTransitionBuffer,Surface, 0,0,0)
+		buffer_set_surface(app.roomTransitionBuffer,Surface, 0)
 		
 		//debug.log("surface_width: "+string(surface_get_width(Surface)))
 		//debug.log("surface_height: "+string(surface_get_height(Surface)))

@@ -579,7 +579,7 @@ function draw_shade() {
 	//draw_surface_ext(surfaceFinal, XX + 256,YY, 1,1, 0, c_white, 1)
 	else if buffer_exists(shadeBuffer) {
 		var surfaceFinal = surface_create(spriteWidth,spriteHeight)
-		buffer_set_surface(shadeBuffer,surfaceFinal, 0,0,0)
+		buffer_set_surface(shadeBuffer,surfaceFinal, 0)
 	}
 	
 	if surface_exists(surfaceFinal) draw_surface_ext(surfaceFinal,XX,YY,1,1,0,c_white, 0.5)
@@ -587,7 +587,7 @@ function draw_shade() {
 	if shadeStatic and surface_exists(surfaceFinal) {
 		if buffer_exists(shadeBuffer) buffer_delete(shadeBuffer)
 		shadeBuffer = buffer_create(spriteWidth*spriteHeight*4, buffer_grow, 1)
-		buffer_get_surface(shadeBuffer, surfaceFinal, 0,0,0)
+		buffer_get_surface(shadeBuffer, surfaceFinal, 0)
 	}
 	
 	if surface_exists(surface) surface_free(surface)

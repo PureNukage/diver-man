@@ -11,3 +11,5 @@ backgroundFadeOut = 100
 timer = 0
 
 createdBackground = false
+
+//sound.playSoundEffect(sound_music)
