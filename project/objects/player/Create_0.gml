@@ -8,7 +8,9 @@ state = state.free
 
 staminaMax = 100
 stamina = staminaMax
-gold = app.gold 
+gold = app.gold
+
+jumping = -1
 
 attack = 0
 
@@ -70,12 +72,12 @@ function footprint() {
 		Footprint.image_xscale = round(image_xscale)
 		Footprint.z = z
 		madeFootprint = true
-		debug.log("making footprint")
+		//debug.log("making footprint")
 	}
 }
 //	Not stepping
 else {
 	if madeFootprint madeFootprint = false
 }
-debug.log("image_index: "+string(image_index))
+//debug.log("image_index: "+string(image_index))
 }

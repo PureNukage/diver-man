@@ -29,21 +29,10 @@ for(var i=0;i<responseCount;i++) {
 var xx = display_get_gui_width()/2 - width/2
 var yy = display_get_gui_height()/2
 for(var i=0;i<responseCount;i++) {
-	draw_set_color(c_black)
-	draw_rectangle(xx-2,yy-2, xx+width+2,yy+height+2, false)
 	
-	if responseIndex == i {
-		draw_set_color(c_gray)
-	}
-	else {
-		draw_set_color(c_dkgray)
-	}
-	draw_rectangle(xx,yy, xx+width,yy+height, false)
-	
-	draw_set_color(c_white)
-	draw_set_halign(fa_center)
-	draw_set_valign(fa_middle)
-	draw_text(xx+width/2,yy+height/2,myDialogue[1, i])
+	var slice_index = s_parchment_dark_9slice
+	if responseIndex == i slice_index = s_parchment_9slice
+	draw_nine_tile(slice_index, width, height, xx,yy, myDialogue[1, i])
 	
 	yy += height + 10
 }

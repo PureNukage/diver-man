@@ -92,11 +92,19 @@ if !app.paused {
 						}
 					}
 	
+	
+					if !onGround and jumping > -1 {
+						if input.keyJumping and jumping < 5 {
+							setThrust(thrust + 0.5)	
+						}
+						jumping--
+					}
 					////	Jumping
 					if input.keyJump and onGround {
 						//var Thrust = clamp(5 * (moveForce/ maxMovespeed), min(3, maxMovespeed), 5)
-						setThrust(5)
+						setThrust(3)
 						image_speed = 1
+						jumping = 10
 					}
 
 					if !onGround applyThrust()

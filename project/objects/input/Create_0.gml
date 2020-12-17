@@ -16,6 +16,7 @@ keyDown = keyboard_check(ord("S"))
 keyRun = keyboard_check(vk_shift)
 
 keyJump = keyboard_check_pressed(vk_space) or gamepad_button_check_pressed(0, gp_face1)
+keyJumping = keyboard_check(vk_space) or gamepad_button_check(0, gp_face1)
 
 keyInteract = keyboard_check_pressed(ord("E"))
 keyInteractHold = keyboard_check(ord("E"))

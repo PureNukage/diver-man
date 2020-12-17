@@ -193,8 +193,6 @@ function draw_path_sprite(path, sprite, subimg) {
 	draw_set_color(_col);	
 }
 	
-///draw_line_sprite(pixel_sprite, x1, y1, x2, y2, <width>, <color>, <alpha>)
-// Argument 0 should be a sprite resource that is 1 pixel and white with an origin at 0,0
 function drawLineSprite(sprite, x1,y1, x2,y2, width, color, alpha) {
     var _pixel = sprite,
     _x1=x1+1,
@@ -255,4 +253,63 @@ function load_dialogue() {
 	
 	ds_grid_destroy(dialogue)
 	
+}
+	
+function draw_nine_tile(slice_index, width, height, xx, yy, _string) {
+	//draw_set_font(font_dialogue)
+	var pixels = 42
+	var tilesWidth = ceil(width / pixels)
+	var tilesHeight = ceil(height / pixels)
+	var XX = xx
+	var YY = yy
+	//debug.log(string(tilesWidth))
+	//debug.log(string(tilesHeight))
+	for(var w=0;w<tilesWidth;w++) {
+		for(var h=0;h<tilesHeight;h++) {
+			//	Top left corner
+			if w == 0 and h == 0 {
+				draw_sprite_part(slice_index,0, 0,0,pixels,pixels, XX,YY)
+			}
+			//	Top piece
+			else if w > 0 and w < tilesWidth-1 and h == 0 {
+				draw_sprite_part(slice_index,0, pixels,0, pixels,pixels, XX,YY)
+			}
+			//	Top right corner
+			else if w == tilesWidth-1 and h == 0 {
+				draw_sprite_part(slice_index,0, pixels*2+2,0, pixels,pixels, XX,YY)	
+			}
+			//	Left side piece
+			else if w == 0 and h > 0 and h < tilesHeight-1 {
+				draw_sprite_part(slice_index,0, 0,pixels, pixels,pixels, XX,YY)	
+			}
+			//	Bottom left corner
+			else if w == 0 and h == tilesHeight-1 {
+				draw_sprite_part(slice_index,0, 0,pixels*2+2, pixels,pixels, XX,YY)		
+			}
+			//	Bottom piece
+			else if w > 0 and w < tilesWidth-1 and h == tilesHeight-1 {
+				draw_sprite_part(slice_index,0, pixels,pixels*2+2, pixels,pixels, XX,YY)		
+			}
+			//	Bottom right corner
+			else if w == tilesWidth-1 and h == tilesHeight-1 {
+				draw_sprite_part(slice_index,0, pixels*2+2,pixels*2+2, pixels,pixels, XX,YY)	
+			}
+			//	Right side piece
+			else if w == tilesWidth-1 and h < tilesHeight-1 and h > 0 {
+				draw_sprite_part(slice_index,0, pixels*2+2,pixels*1, pixels,pixels, XX,YY)		
+			}
+			//	Center tile
+			else {
+				draw_sprite_part(slice_index,0, pixels,pixels, pixels,pixels, XX,YY)		
+			}
+			YY += pixels
+		}
+		YY = yy
+		XX += pixels
+	}
+	
+	draw_set_color(c_black)
+	draw_set_halign(fa_center)
+	draw_set_valign(fa_middle)
+	draw_text_ext(xx+(tilesWidth*pixels)/2, yy+(tilesHeight*pixels)/2, _string, string_height(_string), 430)
 }
