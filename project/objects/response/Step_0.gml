@@ -32,8 +32,8 @@ if input.keyDown and responseCD == -1 {
 if responseCD > -1 responseCD--
 
 if responseIndex < 0 {
-	responseIndex = array_length(myDialogue)-1	
+	responseIndex = array_length(myDialogue[1])-1	
 }
-else if responseIndex > array_length(myDialogue)-1 {
+else if responseIndex > array_length(myDialogue[1])-1 {
 	responseIndex = 0	
 }

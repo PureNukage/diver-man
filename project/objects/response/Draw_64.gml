@@ -1,5 +1,5 @@
 ////	Draw the responses
-var responseCount = array_length(myDialogue[0])
+var responseCount = array_length(myDialogue[1])
 draw_set_font(font_response)
 
 var widthSpacer = 30
