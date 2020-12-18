@@ -28,6 +28,7 @@
     {"id":{"name":"danceTimer","path":"objects/danceTimer/danceTimer.yy",},"order":10,},
     {"id":{"name":"s_watch","path":"sprites/s_watch/s_watch.yy",},"order":17,},
     {"id":{"name":"RoomIntro","path":"rooms/RoomIntro/RoomIntro.yy",},"order":9,},
+    {"id":{"name":"RoomMainMenu2","path":"rooms/RoomMainMenu2/RoomMainMenu2.yy",},"order":13,},
     {"id":{"name":"grid","path":"objects/grid/grid.yy",},"order":6,},
     {"id":{"name":"s_dock_pole_cap","path":"sprites/s_dock_pole_cap/s_dock_pole_cap.yy",},"order":6,},
     {"id":{"name":"RoomDockGettingSuit","path":"rooms/RoomDockGettingSuit/RoomDockGettingSuit.yy",},"order":4,},
@@ -245,6 +246,7 @@
     {"roomId":{"name":"RoomDockGivingWatch","path":"rooms/RoomDockGivingWatch/RoomDockGivingWatch.yy",},},
     {"roomId":{"name":"RoomTEMPLATE","path":"rooms/RoomTEMPLATE/RoomTEMPLATE.yy",},},
     {"roomId":{"name":"RoomCityHub","path":"rooms/RoomCityHub/RoomCityHub.yy",},},
+    {"roomId":{"name":"RoomMainMenu2","path":"rooms/RoomMainMenu2/RoomMainMenu2.yy",},},
   ],
   "Folders": [
     {"folderPath":"folders/Tile Sets.yy","order":0,"resourceVersion":"1.0","name":"Tile Sets","tags":[],"resourceType":"GMFolder",},

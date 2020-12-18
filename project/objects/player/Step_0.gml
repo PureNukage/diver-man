@@ -126,7 +126,7 @@ if !app.paused {
 									else
 									if sprite_index != s_diverman_walk {
 										sprite_index = s_diverman_walk
-										image_index = 0
+										//image_index = 0
 									}
 								}
 							}
@@ -136,7 +136,7 @@ if !app.paused {
 							if suitOn {
 								if moveForce == 0 and sprite_index != s_diverman_idle and jumpHaltDuration == -1 {
 									sprite_index = s_diverman_idle
-									image_index = 0
+									//image_index = 0
 								}	
 							}
 						}
