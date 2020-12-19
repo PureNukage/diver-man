@@ -5,21 +5,18 @@ if !surface_exists(surface) {
 	surface_reset_target()
 }
 
-if surface_exists(surface) {
-
-	surface_set_target(surface)
-
-	if instance_exists(shade) with shade {
-		draw_sprite_ext(s_shade, image_index, x,y, image_xscale,image_yscale, image_angle, image_blend, image_alpha)	
-	}
-
+if surfaceBuffer > -1 and buffer_exists(surfaceBuffer) {
+	var Surface = surface_create(room_width, room_height)
+	surface_set_target(Surface)
+	draw_clear_alpha(c_white, 0)
 	surface_reset_target()
-	
-	draw_set_alpha(0.5)
-	draw_surface(surface,0,0)
-	
-	//surface_free(surface)
-	
-	draw_reset()
-	
+	draw_set_alpha(1)
+	buffer_set_surface(surfaceBuffer,Surface,0)
+	draw_surface(Surface,0,0)
+	surface_free(Surface)
+}
+
+if instance_exists(mainmenu2) with mainmenu2 {
+	draw_set_alpha(1)
+	draw_surface(surface,0,0)	
 }

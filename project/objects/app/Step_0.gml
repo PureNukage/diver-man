@@ -15,6 +15,10 @@ if cameraRefresh {
 	cameraRefresh = false
 	cameraSetup()
 	grid.mpGrid_build()
+	shadows.generate_map()
+	surface_free(water.causticSurface)
+	surface_free(water.causticSurfaceOriginal)
+	surface_free(lighting.surface)
 	window_center()
 	if instance_exists(player) and cameraFocusOnPlayer {
 		x = player.x

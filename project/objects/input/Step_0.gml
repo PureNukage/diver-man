@@ -13,6 +13,11 @@ keyLeft = keyboard_check(ord("A"))
 keyUp = keyboard_check(ord("W"))
 keyDown = keyboard_check(ord("S"))
 
+keyRightPress = keyboard_check_pressed(ord("D"))
+keyLeftPress = keyboard_check_pressed(ord("A"))
+keyUpPress = keyboard_check_pressed(ord("W"))
+keyDownPress = keyboard_check_pressed(ord("S"))
+
 keyRun = keyboard_check(vk_shift)
 
 keyJump = keyboard_check_pressed(vk_space) or gamepad_button_check_pressed(0, gp_face1)
@@ -27,3 +32,5 @@ keyPause = keyboard_check_pressed(vk_escape)
 
 gamepadAxisLV = gamepad_axis_value(0, gp_axislv)
 gamepadAxisLH = gamepad_axis_value(0, gp_axislh)
+
+keyEnterPress = keyboard_check_pressed(vk_enter)

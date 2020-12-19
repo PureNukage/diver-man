@@ -40,6 +40,10 @@ if on {
 		draw_set_alpha(0.5)
 		draw_sprite_ext(s_shade, image_index, x,y, image_xscale,image_yscale, image_angle, image_blend, image_alpha)
 	}
+	
+	if instance_exists(mainmenu2) with mainmenu2 {
+		draw_surface(surface,0,0)	
+	}
 
 	surface_reset_target()
 	

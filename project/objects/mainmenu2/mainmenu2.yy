@@ -1,8 +1,5 @@
 {
-  "spriteId": {
-    "name": "s_light_square",
-    "path": "sprites/s_light_square/s_light_square.yy",
-  },
+  "spriteId": null,
   "solid": false,
   "visible": true,
   "spriteMaskId": null,
@@ -21,17 +18,17 @@
   "physicsKinematic": false,
   "physicsShapePoints": [],
   "eventList": [
-    {"isDnD":false,"eventNum":0,"eventType":8,"collisionObjectId":null,"parent":{"name":"shade","path":"objects/shade/shade.yy",},"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMEvent",},
-    {"isDnD":false,"eventNum":0,"eventType":0,"collisionObjectId":null,"parent":{"name":"shade","path":"objects/shade/shade.yy",},"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMEvent",},
+    {"isDnD":false,"eventNum":0,"eventType":0,"collisionObjectId":null,"parent":{"name":"mainmenu2","path":"objects/mainmenu2/mainmenu2.yy",},"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMEvent",},
+    {"isDnD":false,"eventNum":0,"eventType":3,"collisionObjectId":null,"parent":{"name":"mainmenu2","path":"objects/mainmenu2/mainmenu2.yy",},"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMEvent",},
   ],
   "properties": [],
   "overriddenProperties": [],
   "parent": {
-    "name": "Lights",
-    "path": "folders/Game/Lights.yy",
+    "name": "Game",
+    "path": "folders/Game.yy",
   },
   "resourceVersion": "1.0",
-  "name": "shade",
+  "name": "mainmenu2",
   "tags": [],
   "resourceType": "GMObject",
 }

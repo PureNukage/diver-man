@@ -109,11 +109,6 @@ function cameraFocus(_x, _y, _duration){
 	
 cameraSetup()
 
-if room == RoomAppStart {
-	room_goto(RoomMainMenu)
-	cameraRefresh = true
-}
-
 underwater = false
 function underwaterChange(on) {
 	if on {
@@ -265,4 +260,10 @@ function roomTransitioning() {
 	surface_free(surface)
 	
 	//debug.log("roomTransitionLerp: "+string(roomTransitionLerp))
+}
+	
+if room == RoomAppStart {
+	room_goto(RoomMainMenu2)
+	underwaterChange(true)
+	cameraRefresh = true
 }
