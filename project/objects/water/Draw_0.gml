@@ -1,3 +1,5 @@
+//if live_call() return live_result 
+
 if on {
 
 	if !surface_exists(causticSurface) {
@@ -8,15 +10,17 @@ if on {
 	
 		surface_reset_target()
 	}
+	
+	var Width = 256
+	var Height = 256
 
-	var surface = surface_create(room_width, room_height)
+	var surface = surface_create(Width, Height)
 	surface_set_target(surface)
 	draw_clear_alpha(c_black, 0)
 	
 	////	WIP CAUSTIC
 	shader_set(shader_caustic)
-	var Width = room_width
-	var Height = room_height
+
 	shader_set_uniform_f(caustic_resolution, Width, Height)
 	shader_set_uniform_f(caustic_seconds, sec)
 
@@ -32,7 +36,15 @@ if on {
 	//draw_tilemap(Layer, 0,0)
 	
 	draw_set_alpha(1)
-	draw_surface(surface,0,0)
+	//draw_surface(surface,0,0)
+	
+	var WW = room_width / Width
+	var HH = room_height / Height
+	for(var w=0;w<WW;w++) {
+		for(var h=0;h<HH;h++) {
+			draw_surface(surface, w*Width,h*Height)	
+		}
+	}
 	
 	surface_reset_target()
 	
@@ -46,7 +58,7 @@ if on {
 		draw_self()	
 	}
 	
-	draw_set_alpha(0.25)
+	draw_set_alpha(0.15)
 	draw_surface(causticSurface,0,0)
 }
 	
