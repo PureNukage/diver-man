@@ -27,3 +27,8 @@ enum treasure {
 	gold,
 	gold_necklace,	
 }
+
+enum menu {
+	main,
+	settings,
+}
