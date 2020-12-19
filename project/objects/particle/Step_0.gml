@@ -44,10 +44,10 @@ if !app.paused {
 			}
 		
 		break
-		case particles.sandPoofJump:
-			sprite_index = s_sand_poof_jump
+		case particles.dustpoof:
+			//sprite_index = s_sand_poof_jump
 			
-			image_alpha = 0.5
+			//image_alpha = 0.5
 			
 			if animation_end {
 				instance_destroy()	

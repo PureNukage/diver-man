@@ -10,7 +10,7 @@ if surfaceBuffer > -1 and buffer_exists(surfaceBuffer) {
 	surface_set_target(Surface)
 	draw_clear_alpha(c_white, 0)
 	surface_reset_target()
-	draw_set_alpha(1)
+	draw_set_alpha(0.5)
 	buffer_set_surface(surfaceBuffer,Surface,0)
 	draw_surface(Surface,0,0)
 	surface_free(Surface)

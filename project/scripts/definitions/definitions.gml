@@ -12,7 +12,7 @@ enum particles {
 	bubble,
 	footprint,
 	jellyfish,
-	sandPoofJump,
+	dustpoof,
 }
 
 enum state {

@@ -23,47 +23,56 @@ muted = false
 mask_index = s_diverman_collision
 
 function footprint() {
-	var footstepIndex1 = 0
-	var footstepIndex2 = 0
+	var footstepLeft = 0
+	var footstepRight = 0
 	
 	if sprite_index == s_diverman_walk {
-		var footstepIndex1 = 2
-		var footstepIndex2 = 7	
+		var footstepLeft = 0
+		var footstepRight = 5
 	}
 	
 	else if sprite_index == s_diverman_sprint {
-		var footstepIndex1 = 3
-		var footstepIndex2 = 8
+		var footstepLeft = 3
+		var footstepRight = 8
 	}
 	else {
 			
 	}
 	
-	if floor(image_index) == footstepIndex1 or floor(image_index) == footstepIndex2 {
+	if floor(image_index) == footstepLeft or floor(image_index) == footstepRight {
 	if !madeFootprint {
 		var X = groundX
+		var dustSprite = -1
 		switch(sign(image_xscale))
 		{
 			//	Facing Right
 			case 1:
 				//	Right foot
-				if floor(image_index) == footstepIndex1 {
+				if floor(image_index) == footstepRight {
 					var X = x
+					if sprite_index == s_diverman_walk dustSprite = s_diverman_walk_dustpoofs_right
+					else dustSprite = s_diverman_running_dustpoofs_right
 				} 
 				//	Left foot
 				else {
 					var X = x - 18
+					if sprite_index == s_diverman_walk dustSprite = s_diverman_walk_dustpoofs_left
+					else dustSprite = s_diverman_running_dustpoofs_left
 				}
 			break
 			//	Facing Left
 			case -1:
 				//	Right foot
-				if floor(image_index) == footstepIndex2 {
+				if floor(image_index) == footstepRight {
 					var X = x + 18
+					if sprite_index == s_diverman_walk dustSprite = s_diverman_walk_dustpoofs_right
+					else dustSprite = s_diverman_running_dustpoofs_right
 				} 
 				//	Left foot
 				else {
 					var X = x
+					if sprite_index == s_diverman_walk dustSprite = s_diverman_walk_dustpoofs_left
+					else dustSprite = s_diverman_running_dustpoofs_left
 				}
 			break
 		}
@@ -72,6 +81,11 @@ function footprint() {
 		Footprint.image_xscale = round(image_xscale)
 		Footprint.z = z
 		madeFootprint = true
+		
+		var dustpoof = create_particle(dustSprite, particles.dustpoof, x, groundY)
+		dustpoof.image_xscale = round(image_xscale)
+		dustpoof.depth = player.depth - 5
+		
 		//debug.log("making footprint")
 	}
 }

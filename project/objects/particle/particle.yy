@@ -1,8 +1,5 @@
 {
-  "spriteId": {
-    "name": "s_bubble",
-    "path": "sprites/s_bubble/s_bubble.yy",
-  },
+  "spriteId": null,
   "solid": false,
   "visible": true,
   "spriteMaskId": null,

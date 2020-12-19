@@ -313,3 +313,11 @@ function draw_nine_tile(slice_index, width, height, xx, yy, _string) {
 	draw_set_valign(fa_middle)
 	draw_text_ext(xx+(tilesWidth*pixels)/2, yy+(tilesHeight*pixels)/2, _string, string_height(_string), 430)
 }
+	
+function create_particle(Sprite_index, Particles, x, y) {
+	var ID = instance_create_layer(x,y,"Instances",particle)
+	ID.sprite_index = Sprite_index
+	ID.particles = Particles
+	ID.duration = 60
+	return ID
+}

@@ -41,8 +41,8 @@ if !app.paused {
 				
 					//	Modifying max movespeed based on suit and sprinting
 					if suitOn {
-						if !running maxMovespeed = 2
-						else maxMovespeed = 3
+						if !running maxMovespeed = 1.25
+						else maxMovespeed = 2.5
 					}
 					else maxMovespeed = 4
 	

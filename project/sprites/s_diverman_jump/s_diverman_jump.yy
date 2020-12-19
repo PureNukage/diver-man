@@ -8,7 +8,7 @@
   "collisionTolerance": 0,
   "swfPrecision": 2.525,
   "bbox_left": 17,
-  "bbox_right": 70,
+  "bbox_right": 62,
   "bbox_top": 5,
   "bbox_bottom": 78,
   "HTile": false,

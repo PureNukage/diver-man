@@ -95,7 +95,8 @@ function applyThrust() {
 		////	Sand poof
 		if object_index == player and app.underwater {
 			var Poof = instance_create_layer(x,y,"Instances",particle)
-			Poof.particles = particles.sandPoofJump
+			Poof.particles = particles.dustpoof
+			Poof.sprite_index = s_diverman_jumping_dustpoofs
 			Poof.duration = 30
 		
 			jumpHaltDuration = 30
@@ -488,8 +489,8 @@ function draw_shadow() {
 	else if !onGround Z = 0
 
 	var extraWidth = 6 * ((1 - ((z) / (100+Z))))
-	if shadowEllipse draw_ellipse(bbox_left-extraWidth,bbox_top-Z,bbox_right+extraWidth,bbox_bottom-Z,false)
-	else draw_rectangle(bbox_left-extraWidth,bbox_top-Z,bbox_right+extraWidth,bbox_bottom-Z,false)
+	if shadowEllipse draw_ellipse(bbox_left-extraWidth,bbox_top-Z,bbox_right+extraWidth,bbox_bottom+5-Z,false)
+	else draw_rectangle(bbox_left-extraWidth,bbox_top-Z,bbox_right+extraWidth,bbox_bottom+5-Z,false)
 	
 	draw_reset()
 	
@@ -591,14 +592,14 @@ function draw_shade() {
 	
 	////	DEBUG
 	if object_index == player {
-		if surface_exists(surface) draw_surface_ext(surface, XX + 64,YY, 1,1, 0, c_white, 1)
-		if surface_exists(surface2) draw_surface_ext(surface2, XX + 128 - abs(x),YY - y + abs(spriteHeight), 1,1, 0, c_white, 1)
-		if surface_exists(surface3) draw_surface_ext(surface3, XX + 192,YY, 1,1, 0, c_white, 1)
-		if surface_exists(surface4) draw_surface_ext(surface4, XX + 256,YY, 1,1, 0, c_white, 1)
+		//if surface_exists(surface) draw_surface_ext(surface, XX + 64,YY, 1,1, 0, c_white, 1)
+		//if surface_exists(surface2) draw_surface_ext(surface2, XX + 128 - abs(x),YY - y + abs(spriteHeight), 1,1, 0, c_white, 1)
+		//if surface_exists(surface3) draw_surface_ext(surface3, XX + 192,YY, 1,1, 0, c_white, 1)
+		//if surface_exists(surface4) draw_surface_ext(surface4, XX + 256,YY, 1,1, 0, c_white, 1)
 	}
 	
 	if surface_exists(surfaceFinal) {
-		draw_surface_ext(surfaceFinal,XX,YY,1,1,0,c_white, 1)
+		draw_surface_ext(surfaceFinal,XX,YY,1,1,0,c_white, 0.5)
 		//repeat(200) draw_surface_ext(surfaceFinal,XX,YY,1,1,0,c_white, 1)
 		//draw_surface_ext(surfaceFinal,XX,YY,1,1,0,c_white, 1)
 		//draw_surface_ext(surfaceFinal,XX,YY,1,1,0,c_white, 1)
