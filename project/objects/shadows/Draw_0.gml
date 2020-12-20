@@ -18,6 +18,6 @@ if surfaceBuffer > -1 and buffer_exists(surfaceBuffer) {
 
 if instance_exists(mainmenu2) with mainmenu2 {
 	draw_set_alpha(1)
-	draw_surface(surface,0,0)
+	if surface_exists(surface) draw_surface(surface,0,0)
 	other.generate_map()
 }

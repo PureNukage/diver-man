@@ -42,7 +42,7 @@ if on {
 	}
 	
 	if instance_exists(mainmenu2) with mainmenu2 {
-		draw_surface(surface,0,0)	
+		if surface_exists(surface) draw_surface(surface,0,0)	
 	}
 
 	surface_reset_target()

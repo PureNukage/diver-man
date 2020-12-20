@@ -52,7 +52,7 @@ function generate_map() {
 	//	Main menu shadow text
 	if instance_exists(mainmenu2) with mainmenu2 {
 		draw_set_alpha(1)
-		draw_surface(surface,0,0)	
+		if surface_exists(surface) draw_surface(surface,0,0)	
 	}
 	
 	surface_reset_target()

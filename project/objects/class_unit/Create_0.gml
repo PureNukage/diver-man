@@ -188,8 +188,6 @@ function changeMap(Map) {
 					if !place_meeting(groundX,groundY + 1, collision) {
 						if !place_meeting(groundX,groundY + 1, collisionMap) groundY += 1	
 						else {
-							//var ID = instance_place(groundX, groundY + 1, collisionMap)
-							//if (map.z - i) > ID.z groundY += 1
 							var ID = instance_place(groundX, groundY + 1, collisionMap)
 							if (map.z - i) > ID.z {
 								//	We're above the map
@@ -221,21 +219,26 @@ function changeMap(Map) {
 	else {
 		
 		//	Smooth loop to lower groundY (looking for collision)
+		var above_or_below = -1	//	0 = above, 1 = below
 		for(var i=0;i<map.z;i++) {
 			if !place_meeting(groundX, groundY + 1, collision) {
 				if !place_meeting(groundX,groundY + 1, collisionMap) groundY += 1	
 				else {
 					var ID = instance_place(groundX, groundY + 1, collisionMap)
 					//	We're above the map
-					if groundY + 1 < ID.bbox_top + ID.width {
+					//if groundY + 1 < ID.bbox_top + ID.width {
+					if groundY + 1 < ID.bbox_bottom - ID.width {
 						groundY += 1
+						if above_or_below == -1 above_or_below = 0
 					}
 					//	Lower us onto the map
-					else if groundY + 1 >= ID.bbox_bottom-ID.width {
-						groundY += 1	
+					else if groundY + 1 >= ID.bbox_bottom-ID.z {
+						if above_or_below == 1 groundY += 1
+						if above_or_below == -1 above_or_below = 1
 					}
-					else if (map.z - i) > ID.z groundY += 1
-
+					else if (map.z - i) > ID.z {
+						groundY += 1
+					}
 				}
 			}
 		}
