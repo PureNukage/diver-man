@@ -12,3 +12,48 @@ causticSurfaceOriginal = -1
 causticSurface = -1
 
 sec = 0
+
+causticBuffer = -1
+function generate_caustic_map() {
+	var Surface = surface_create(room_width, room_height)
+	surface_set_target(Surface)
+	draw_clear_alpha(c_white, 0)
+	
+	draw_set_alpha(1)
+	draw_set_color(c_black)
+	
+	if instance_exists(collisionMap) with collisionMap {
+		//var y1 = bbox_bottom - z
+		//var y2 = bbox_bottom
+		//raw_rectangle(bbox_left,y1,bbox_right,y2,false)
+		
+		var mapSurface = surface_create(sprite_get_width(sprite_index)* image_xscale,sprite_get_height(sprite_index)*image_yscale)
+		surface_reset_target()
+		surface_set_target(mapSurface)
+		draw_clear_alpha(c_white, 0)
+		surface_reset_target()
+		surface_set_target(Surface)
+		
+		buffer_set_surface(surfaceBuffer,mapSurface,0)
+		
+		draw_surface_ext(mapSurface,x,y,1,1,0,c_black,1)
+		
+		//	Cleanup the top so only the cliff remains
+		gpu_set_blendmode(bm_subtract)
+		draw_rectangle(bbox_left,bbox_top,bbox_right,bbox_bottom-z,false)
+		gpu_set_blendmode(bm_normal)
+		
+		surface_free(mapSurface)
+	}
+	
+	surface_reset_target()
+	
+	if causticBuffer > -1 and buffer_exists(causticBuffer) buffer_delete(causticBuffer)
+	
+	causticBuffer = buffer_create(room_width*room_height*4,buffer_grow,1)
+	buffer_get_surface(causticBuffer,Surface,0)
+	
+	surface_save(Surface,"causticMap.png")
+	
+	surface_free(Surface)
+}

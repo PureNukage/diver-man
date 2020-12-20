@@ -32,18 +32,23 @@ if on {
 	
 	surface_set_target(causticSurface)
 	
-	//var Layer = layer_tilemap_get_id(layer_get_id("Tiles_1"))
-	//draw_tilemap(Layer, 0,0)
-	
 	draw_set_alpha(1)
-	//draw_surface(surface,0,0)
-	
 	var WW = room_width / Width
 	var HH = room_height / Height
 	for(var w=0;w<WW;w++) {
 		for(var h=0;h<HH;h++) {
-			draw_surface(surface, w*Width,h*Height)	
+			draw_surface(surface, w*Width,h*Height)
 		}
+	}
+	
+	////	Remove collisionMap cliffs
+	if causticBuffer > -1 {
+		var Surface = surface_create(room_width, room_height)
+		buffer_set_surface(causticBuffer,Surface,0)
+		gpu_set_blendmode(bm_subtract)
+		draw_surface_ext(Surface,0,0,1,1,0,c_black,1)
+		gpu_set_blendmode(bm_normal)
+		surface_free(Surface)
 	}
 	
 	surface_reset_target()
