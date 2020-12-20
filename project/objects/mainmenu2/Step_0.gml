@@ -31,8 +31,8 @@ switch(menu) {
 					case 0:
 						text = "New Game"
 						if pressed {
-							room_goto(Room1)
-							app.underwaterChange(true)
+							room_goto(RoomIntro)
+							app.underwaterChange(false)
 							app.cameraRefresh = true
 						}
 					break
