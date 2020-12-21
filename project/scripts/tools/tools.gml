@@ -159,7 +159,7 @@ function draw_path_sprite(path, sprite, subimg) {
 	var _col = draw_get_color();
 	draw_set_color(c_white);
 
-	for (var i=0; i<path_get_length(_path); i++) {
+	for (var i=0; i<path_get_length(_path)/sprite_get_height(_sprite); i++) {
 		var x1, y1, x2, y2, x0, y0, dir, m;
 	
 		x1 = path_get_x(_path,i/(path_get_length(_path)/sprite_get_width(_sprite)));

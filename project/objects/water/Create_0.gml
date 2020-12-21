@@ -109,6 +109,7 @@ function generate_collision_maps() {
 		heightMaps[i][1] = buffer_create(room_width*room_height*4,buffer_grow,1)
 		buffer_get_surface(heightMaps[i][1],surface,0)
 		heightMaps[i][0] = Z
+		heightMaps[i][2] = -1
 		
 		surface_free(surface)
 	}

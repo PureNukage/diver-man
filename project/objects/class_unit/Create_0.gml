@@ -520,27 +520,20 @@ function draw_shadow_ext(_z, _map) {
 		var cutterSurface = surface_create(room_width,room_height)
 		var index = -1
 		for(var i=0;i<water.heightMapCount;i++) {
-			if water.heightMaps[i,0] == _z index = i
+			if water.heightMaps[i][0] == _z index = i
 		}
-		if index > -1 buffer_set_surface(water.heightMaps[index,1],cutterSurface,0)
-	
-		gpu_set_blendmode(bm_subtract)
-		draw_surface_ext(cutterSurface,0,0,1,1,0,c_black,1)
-		gpu_set_blendmode(bm_normal)
+		if index > -1 and surface_exists(water.heightMaps[index][2]) {
+			gpu_set_blendmode(bm_subtract)
+			draw_surface_ext(water.heightMaps[index][2],0,0,1,1,0,c_black,1)
+			gpu_set_blendmode(bm_normal)
+		}
 		
 		surface_free(cutterSurface)
 	}
 	//	Use every map as a mask for the base shadow
 	else if map > -1 and _map == -1 {
-		gpu_set_blendmode(bm_subtract)
-		//if instance_exists(collisionMap) with collisionMap {
-			//var cutterSurface = surface_create(room_width, room_height)
-			//buffer_set_surface(water.collisionMapsBuffer,cutterSurface,0)
-			
-			if surface_exists(water.collisionMapsSurface) draw_surface_ext(water.collisionMapsSurface,0,0,1,1,0,c_black,1)
-		
-			//surface_free(cutterSurface)
-		//}
+		gpu_set_blendmode(bm_subtract)	
+		if surface_exists(water.collisionMapsSurface) draw_surface_ext(water.collisionMapsSurface,0,0,1,1,0,c_black,1)
 		gpu_set_blendmode(bm_normal)
 	}
 	
@@ -555,6 +548,7 @@ function draw_shadow_ext(_z, _map) {
 
 shadeStatic = true
 shadeBuffer = -1
+shadeSurface = -1
 function draw_shade() {
 	
 	var xOffset = sprite_get_xoffset(sprite_index)
@@ -639,12 +633,13 @@ function draw_shade() {
 		draw_surface_ext(surface3,0,0,1,1,0,c_black,1)
 		gpu_set_blendmode(bm_normal)
 		surface_reset_target()
+		
+		buffer_get_surface(shadeBuffer, surfaceFinal, 0)
 	}
 	
-
 	else if buffer_exists(shadeBuffer) {
 		var surfaceFinal = surface_create(spriteWidth,spriteHeight)
-		buffer_set_surface(shadeBuffer,surfaceFinal, 0)
+		if !shadeStatic buffer_delete(shadeBuffer)
 	}
 	
 	////	DEBUG
@@ -655,23 +650,11 @@ function draw_shade() {
 		//if surface_exists(surface4) draw_surface_ext(surface4, XX + 256,YY, 1,1, 0, c_white, 1)
 	}
 	
-	if surface_exists(surfaceFinal) {
-		draw_surface_ext(surfaceFinal,XX,YY,1,1,0,c_white, 0.5)
-		//repeat(200) draw_surface_ext(surfaceFinal,XX,YY,1,1,0,c_white, 1)
-		//draw_surface_ext(surfaceFinal,XX,YY,1,1,0,c_white, 1)
-		//draw_surface_ext(surfaceFinal,XX,YY,1,1,0,c_white, 1)
-		//draw_surface_ext(surfaceFinal,XX,YY,1,1,0,c_white, 1)
-		//draw_surface_ext(surfaceFinal,XX,YY,1,1,0,c_white, 1)
-		//draw_surface_ext(surfaceFinal,XX,YY,1,1,0,c_white, 1)
-		//draw_surface_ext(surfaceFinal,XX,YY,1,1,0,c_white, 1)
+	if surface_exists(shadeSurface) {
+		draw_surface_ext(shadeSurface,XX,YY,1,1,0,c_white, 0.5)		
 	}
-	
-	//draw_surface(shadowSurface,0,0)
-	
-	if shadeStatic and surface_exists(surfaceFinal) {
-		if buffer_exists(shadeBuffer) buffer_delete(shadeBuffer)
-		shadeBuffer = buffer_create(spriteWidth*spriteHeight*4, buffer_grow, 1)
-		buffer_get_surface(shadeBuffer, surfaceFinal, 0)
+	else if !shadeStatic {
+		draw_surface_ext(surfaceFinal,XX,YY,1,1,0,c_white,0.5)	
 	}
 	
 	if surface_exists(surface) surface_free(surface)

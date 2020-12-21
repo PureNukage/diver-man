@@ -7,6 +7,8 @@ paused = false
 suitOn = true
 gold = 1
 
+newRoom = false
+
 var Layer = "Instances"
 instance_create_layer(0,0,Layer,input)
 instance_create_layer(0,0,Layer,debug)
