@@ -32,11 +32,16 @@ if !app.paused {
 					}
 				
 					//	I just jumped!
-					if jumpHaltDuration > 0 {
+					if jumpHaltDuration > -1 {
 						jumpHaltDuration--
 					}
-					else if jumpHaltDuration == 0 {
-						jumpHaltDuration--	
+					
+					if jumpHalt {
+						if sprite_index == s_diverman_jump canMove = false	
+						else {
+							canMove = true
+							jumpHalt = false
+						}
 					}
 				
 					//	Modifying max movespeed based on suit and sprinting
@@ -44,7 +49,9 @@ if !app.paused {
 						if !running maxMovespeed = 1.25
 						else maxMovespeed = 2.5
 					}
-					else maxMovespeed = 4
+					else maxMovespeed = 3
+					
+
 	
 					visible = true
 				
@@ -100,7 +107,7 @@ if !app.paused {
 						jumping--
 					}
 					////	Jumping
-					if input.keyJump and onGround and app.underwater {
+					if input.keyJump and onGround and app.underwater and !jumpHalt {
 						//var Thrust = clamp(5 * (moveForce/ maxMovespeed), min(3, maxMovespeed), 5)
 						setThrust(3)
 						image_speed = 1

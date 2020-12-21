@@ -14,7 +14,6 @@ for(var i=0;i<amount;i++) {
 	}
 }
 var amount = ds_list_size(list2)
-debug.log(string(amount))
 
 //	Draw the base shadow
 draw_shadow_ext(0, -1)

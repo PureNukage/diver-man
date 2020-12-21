@@ -8,6 +8,7 @@ grav = 0.2
 detectCollision = true
 maxMovespeed = 2
 jumpHaltDuration = -1
+jumpHalt = false
 z = 0
 xx = 0
 yy = 0
@@ -100,6 +101,8 @@ function applyThrust() {
 			Poof.duration = 30
 		
 			jumpHaltDuration = 30
+			jumpHalt = true
+			//canMove = false
 		}
 		
 		
@@ -503,17 +506,21 @@ function draw_shadow_ext(_z, _map) {
 	
 	draw_set_color(c_black)
 	
-	var zDrop = 128	//	How much z until the shadow is no longer visible
+	var zDrop = 160	//	How much z until the shadow is no longer visible
 	
 	//	This should have it be a solid circle if right under the player and invisible if >= zDrop
-	var Alpha = ((zDrop - (z - _z)) / zDrop) * .5
+	var Alpha = ((zDrop - (z - _z)) / zDrop) * .4
 	
 	var surface = surface_create(room_width, room_height)
 	surface_set_target(surface)
 	draw_clear_alpha(c_black, 0)
 	
 	draw_set_alpha(1)
-	if shadowEllipse draw_ellipse(bbox_left-6,bbox_top-_z,bbox_right+6,bbox_bottom-_z,false)
+	var widthBase = 20
+	var Width = widthBase * ((zDrop - (z - _z)) / zDrop)
+	debug.log(string(Width))
+	var correction = 12
+	if shadowEllipse draw_ellipse(bbox_left+correction-Width,bbox_top-_z,bbox_right-correction+Width,bbox_bottom-_z,false)
 	else draw_rectangle(bbox_left,bbox_top-_z,bbox_right,bbox_bottom-_z,false)
 	
 	if _map > -1 {

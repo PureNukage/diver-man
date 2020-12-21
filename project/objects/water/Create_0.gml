@@ -111,6 +111,8 @@ function generate_collision_maps() {
 		heightMaps[i][0] = Z
 		heightMaps[i][2] = -1
 		
+		surface_save(surface,"inverseHeightMap"+string(Z)+".png")
+		
 		surface_free(surface)
 	}
 	
@@ -133,6 +135,8 @@ function generate_collision_maps() {
 	if surface_exists(collisionMapsSurface) surface_free(collisionMapsSurface)
 	collisionMapsBuffer = buffer_create(room_width*room_height*4,buffer_grow,1)
 	buffer_get_surface(collisionMapsBuffer,surface,0)
+	
+	surface_save(surface, "collisionMapsSurface.png")
 	
 	surface_free(surface)	
 	

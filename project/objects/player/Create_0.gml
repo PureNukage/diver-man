@@ -20,6 +20,8 @@ suitOn = app.suitOn
 
 muted = false
 
+jumpHalt = false
+
 mask_index = s_diverman_collision
 
 function footprint() {

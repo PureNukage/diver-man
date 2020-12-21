@@ -19,5 +19,5 @@ if shadeStatic and !surface_exists(shadeSurface) and buffer_exists(shadeBuffer) 
 	var spriteHeight = sprite_get_bbox_bottom(sprite_index) - sprite_get_bbox_top(sprite_index)
 	shadeSurface = surface_create(spriteWidth,spriteHeight)
 	buffer_set_surface(shadeBuffer,shadeSurface,0)
-	surface_save(shadeSurface,"shadeSurface"+string(id)+".png")
+	//surface_save(shadeSurface,"shadeSurface"+string(id)+".png")
 }
