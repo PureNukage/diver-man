@@ -11,6 +11,8 @@ caustic_seconds = shader_get_uniform(shader_caustic, "iTime")
 causticSurfaceOriginal = -1
 causticSurface = -1
 
+cliffSurface = -1
+
 sec = 0
 
 causticBuffer = -1

@@ -78,7 +78,7 @@ if !app.paused {
 						}
 	
 						////	Footprints
-						if onGround footprint()
+						if onGround and app.underwater footprint()
 						
 					} 
 					//	Not inputting 
@@ -100,7 +100,7 @@ if !app.paused {
 						jumping--
 					}
 					////	Jumping
-					if input.keyJump and onGround {
+					if input.keyJump and onGround and app.underwater {
 						//var Thrust = clamp(5 * (moveForce/ maxMovespeed), min(3, maxMovespeed), 5)
 						setThrust(3)
 						image_speed = 1

@@ -4,7 +4,7 @@ version = ""
 canvasX = 0
 
 paused = false
-suitOn = false
+suitOn = true
 gold = 1
 
 var Layer = "Instances"

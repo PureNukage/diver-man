@@ -5,6 +5,7 @@ centerX = bbox_left + (sprite_width/2)
 centerY = bbox_top + (sprite_height/2)
 
 surfaceBuffer = -1
+inverseSurfaceBuffer = -1
 
 drawSurface = false
 
@@ -92,7 +93,30 @@ function createSurface() {
 	
 	buffer_get_surface(surfaceBuffer, finalSurface, 0)
 	
+	////	Inverse surface used for shadow masks
+	var inverseSurface = surface_create(room_width, room_height)
+	surface_set_target(inverseSurface)
+	draw_clear_alpha(c_black, 0)
+	
+	draw_set_color(c_black)
+	draw_set_alpha(1)
+	draw_rectangle(0,0,room_width,room_height,false)
+	
+	gpu_set_blendmode(bm_subtract)
+	draw_surface_ext(finalSurface,x,y,1,1,0,c_black,1)
+	gpu_set_blendmode(bm_normal)
+	
+	//	Correct for the cliff 
+	//	todo
+	
+	surface_reset_target()
+	
+	if inverseSurfaceBuffer > -1 and buffer_exists(inverseSurfaceBuffer) buffer_delete(inverseSurfaceBuffer)
+	inverseSurfaceBuffer = buffer_create(room_width*room_height*4, buffer_grow, 1)
+	buffer_get_surface(inverseSurfaceBuffer, inverseSurface, 0)
+	
 	surface_free(surface)
+	surface_free(inverseSurface)
 	
 }
 

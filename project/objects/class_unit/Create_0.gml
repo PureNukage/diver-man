@@ -499,6 +499,56 @@ function draw_shadow() {
 	
 }
 
+function draw_shadow_ext(_z, _map) {
+	
+	draw_set_color(c_black)
+	
+	var zDrop = 128	//	How much z until the shadow is no longer visible
+	
+	//	This should have it be a solid circle if right under the player and invisible if >= zDrop
+	var Alpha = ((zDrop - (z - _z)) / zDrop) * .5
+	
+	var surface = surface_create(room_width, room_height)
+	surface_set_target(surface)
+	draw_clear_alpha(c_black, 0)
+	
+	draw_set_alpha(1)
+	if shadowEllipse draw_ellipse(bbox_left,bbox_top-_z,bbox_right,bbox_bottom-_z,false)
+	else draw_rectangle(bbox_left,bbox_top-_z,bbox_right,bbox_bottom-_z,false)
+	
+	if _map > -1 {
+		var cutterSurface = surface_create(room_width,room_height)
+		buffer_set_surface(_map.inverseSurfaceBuffer,cutterSurface,0)
+	
+		gpu_set_blendmode(bm_subtract)
+		draw_surface_ext(cutterSurface,0,0,1,1,0,c_black,1)
+		gpu_set_blendmode(bm_normal)
+		
+		surface_free(cutterSurface)
+	}
+	//	Use every map as a mask for the base shadow
+	else if map > -1 and _map == -1 {
+		gpu_set_blendmode(bm_subtract)
+		if instance_exists(collisionMap) with collisionMap {
+			var cutterSurface = surface_create(sprite_get_width(sprite_index)*image_xscale,sprite_get_height(sprite_index)*image_yscale)
+			buffer_set_surface(surfaceBuffer,cutterSurface,0)
+			
+			draw_surface_ext(cutterSurface,x,y,1,1,0,c_black,1)
+		
+			surface_free(cutterSurface)
+		}
+		gpu_set_blendmode(bm_normal)
+	}
+	
+	surface_reset_target()
+	
+	draw_set_alpha(Alpha)
+	draw_surface(surface,0,0)
+	
+	surface_free(surface)
+
+}
+
 shadeStatic = true
 shadeBuffer = -1
 function draw_shade() {
