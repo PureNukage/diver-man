@@ -17,6 +17,7 @@ if cameraRefresh {
 	grid.mpGrid_build()
 	shadows.generate_map()
 	water.generate_caustic_map()
+	water.generate_collision_maps()
 	surface_free(water.causticSurface)
 	surface_free(water.causticSurfaceOriginal)
 	surface_free(lighting.surface)

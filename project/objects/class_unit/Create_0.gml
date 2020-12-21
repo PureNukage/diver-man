@@ -513,12 +513,16 @@ function draw_shadow_ext(_z, _map) {
 	draw_clear_alpha(c_black, 0)
 	
 	draw_set_alpha(1)
-	if shadowEllipse draw_ellipse(bbox_left,bbox_top-_z,bbox_right,bbox_bottom-_z,false)
+	if shadowEllipse draw_ellipse(bbox_left-6,bbox_top-_z,bbox_right+6,bbox_bottom-_z,false)
 	else draw_rectangle(bbox_left,bbox_top-_z,bbox_right,bbox_bottom-_z,false)
 	
 	if _map > -1 {
 		var cutterSurface = surface_create(room_width,room_height)
-		buffer_set_surface(_map.inverseSurfaceBuffer,cutterSurface,0)
+		var index = -1
+		for(var i=0;i<water.heightMapCount;i++) {
+			if water.heightMaps[i,0] == _z index = i
+		}
+		if index > -1 buffer_set_surface(water.heightMaps[index,1],cutterSurface,0)
 	
 		gpu_set_blendmode(bm_subtract)
 		draw_surface_ext(cutterSurface,0,0,1,1,0,c_black,1)
@@ -529,14 +533,14 @@ function draw_shadow_ext(_z, _map) {
 	//	Use every map as a mask for the base shadow
 	else if map > -1 and _map == -1 {
 		gpu_set_blendmode(bm_subtract)
-		if instance_exists(collisionMap) with collisionMap {
-			var cutterSurface = surface_create(sprite_get_width(sprite_index)*image_xscale,sprite_get_height(sprite_index)*image_yscale)
-			buffer_set_surface(surfaceBuffer,cutterSurface,0)
+		//if instance_exists(collisionMap) with collisionMap {
+			//var cutterSurface = surface_create(room_width, room_height)
+			//buffer_set_surface(water.collisionMapsBuffer,cutterSurface,0)
 			
-			draw_surface_ext(cutterSurface,x,y,1,1,0,c_black,1)
+			if surface_exists(water.collisionMapsSurface) draw_surface_ext(water.collisionMapsSurface,0,0,1,1,0,c_black,1)
 		
-			surface_free(cutterSurface)
-		}
+			//surface_free(cutterSurface)
+		//}
 		gpu_set_blendmode(bm_normal)
 	}
 	

@@ -59,3 +59,81 @@ function generate_caustic_map() {
 	
 	surface_free(Surface)
 }
+
+heightMapCount = -1
+heightMaps = [[]]
+collisionMapsBuffer = -1
+collisionMapsSurface = -1
+function generate_collision_maps() {
+	
+	//	Clear out existing map buffers if we have any 
+	for(var i=0;i<array_length(heightMaps[0]);i++) {
+		buffer_delete(heightMaps[i][1])	
+	}
+	
+	//	how many z-level does this room have?
+	var z_list = ds_list_create()
+	if instance_exists(collisionMap) with collisionMap {
+		if ds_list_find_index(z_list,z) == -1 ds_list_add(z_list,z)
+	}
+	heightMapCount = ds_list_size(z_list)
+	
+	//	Create the inverse height maps
+	for(var i=0;i<heightMapCount;i++) {
+		var Z = z_list[| i]
+		var surface = surface_create(room_width, room_height)
+		surface_set_target(surface) 
+		draw_clear_alpha(c_black, 0)
+		
+		draw_set_alpha(1)
+		draw_set_color(c_black)
+		draw_rectangle(0,0,room_width,room_height,false)
+		
+		gpu_set_blendmode(bm_subtract)
+		if instance_exists(collisionMap) with collisionMap if z == Z {
+			var Surface = surface_create(sprite_get_width(sprite_index)*image_xscale,sprite_get_height(sprite_index)*image_yscale)
+			buffer_set_surface(surfaceBuffer,Surface,0)
+			draw_surface_ext(Surface,x,y,1,1,0,c_black,1)
+			surface_free(Surface)
+		}
+		gpu_set_blendmode(bm_normal)
+		
+		//	Draw the cliffs since we don't want to have shadows on those
+		if instance_exists(collisionMap) with collisionMap if z == Z {
+			draw_rectangle(bbox_left,bbox_bottom-z,bbox_right,bbox_bottom,false)
+		}
+		
+		surface_reset_target()
+		
+		//	Store this surface in our z-level array
+		heightMaps[i][1] = buffer_create(room_width*room_height*4,buffer_grow,1)
+		buffer_get_surface(heightMaps[i][1],surface,0)
+		heightMaps[i][0] = Z
+		
+		surface_free(surface)
+	}
+	
+	////	Create map of all cliffs, used for the base shadow
+	var surface = surface_create(room_width, room_height)
+	surface_set_target(surface) 
+	draw_clear_alpha(c_black, 0)
+	
+	if instance_exists(collisionMap) with collisionMap {
+		var Surface = surface_create(sprite_get_width(sprite_index)*image_xscale,sprite_get_height(sprite_index)*image_yscale)
+		buffer_set_surface(surfaceBuffer,Surface,0)
+		
+		draw_surface_ext(Surface,x,y,1,1,0,c_black,1)
+		
+		surface_free(Surface)
+	}
+	surface_reset_target()
+	
+	if collisionMapsBuffer > -1 and buffer_exists(collisionMapsBuffer) buffer_delete(collisionMapsBuffer)
+	if surface_exists(collisionMapsSurface) surface_free(collisionMapsSurface)
+	collisionMapsBuffer = buffer_create(room_width*room_height*4,buffer_grow,1)
+	buffer_get_surface(collisionMapsBuffer,surface,0)
+	
+	surface_free(surface)	
+	
+	ds_list_destroy(z_list)
+}
