@@ -88,6 +88,7 @@ function footprint() {
 		dustpoof.image_xscale = round(image_xscale)
 		dustpoof.depth = player.depth - 5
 		
+		sound.playSoundEffect(choose(Step_water_1_1_0, Step_water_2_1_0,Step_water_3_1_0, Step_water_4_1_0, Step_water_5_1_0, Step_water_6_1_0))
 		//debug.log("making footprint")
 	}
 }

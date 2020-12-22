@@ -26,9 +26,9 @@
   "frames": [
     {"compositeImage":{"FrameId":{"name":"ce3697e3-f5a4-463c-82b0-4f9ce1cbd8c5","path":"sprites/s_footprint/s_footprint.yy",},"LayerId":null,"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMSpriteBitmap",},"images":[
         {"FrameId":{"name":"ce3697e3-f5a4-463c-82b0-4f9ce1cbd8c5","path":"sprites/s_footprint/s_footprint.yy",},"LayerId":{"name":"0f4e060c-9cf1-40d3-a1ab-d8253c479f59","path":"sprites/s_footprint/s_footprint.yy",},"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMSpriteBitmap",},
-        {"FrameId":{"name":"ce3697e3-f5a4-463c-82b0-4f9ce1cbd8c5","path":"sprites/s_footprint/s_footprint.yy",},"LayerId":{"name":"97e5a26d-86ff-4ca3-afb8-0c5a42f630b4","path":"sprites/s_footprint/s_footprint.yy",},"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMSpriteBitmap",},
-        {"FrameId":{"name":"ce3697e3-f5a4-463c-82b0-4f9ce1cbd8c5","path":"sprites/s_footprint/s_footprint.yy",},"LayerId":{"name":"e00a0e24-fd18-4aa4-b228-9e01e5231e0d","path":"sprites/s_footprint/s_footprint.yy",},"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMSpriteBitmap",},
         {"FrameId":{"name":"ce3697e3-f5a4-463c-82b0-4f9ce1cbd8c5","path":"sprites/s_footprint/s_footprint.yy",},"LayerId":{"name":"8d4cbfdf-e8ad-4464-b0cb-c6bde68a1344","path":"sprites/s_footprint/s_footprint.yy",},"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMSpriteBitmap",},
+        {"FrameId":{"name":"ce3697e3-f5a4-463c-82b0-4f9ce1cbd8c5","path":"sprites/s_footprint/s_footprint.yy",},"LayerId":{"name":"e00a0e24-fd18-4aa4-b228-9e01e5231e0d","path":"sprites/s_footprint/s_footprint.yy",},"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMSpriteBitmap",},
+        {"FrameId":{"name":"ce3697e3-f5a4-463c-82b0-4f9ce1cbd8c5","path":"sprites/s_footprint/s_footprint.yy",},"LayerId":{"name":"97e5a26d-86ff-4ca3-afb8-0c5a42f630b4","path":"sprites/s_footprint/s_footprint.yy",},"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMSpriteBitmap",},
       ],"parent":{"name":"s_footprint","path":"sprites/s_footprint/s_footprint.yy",},"resourceVersion":"1.0","name":"ce3697e3-f5a4-463c-82b0-4f9ce1cbd8c5","tags":[],"resourceType":"GMSpriteFrame",},
   ],
   "sequence": {

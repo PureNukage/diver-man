@@ -25,8 +25,8 @@
   "gridY": 0,
   "frames": [
     {"compositeImage":{"FrameId":{"name":"4f819b13-5114-458d-9104-702c679832e9","path":"sprites/s_crab_watch/s_crab_watch.yy",},"LayerId":null,"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMSpriteBitmap",},"images":[
-        {"FrameId":{"name":"4f819b13-5114-458d-9104-702c679832e9","path":"sprites/s_crab_watch/s_crab_watch.yy",},"LayerId":{"name":"6648cb6c-c6c1-46f9-aa2b-25a1011052a1","path":"sprites/s_crab_watch/s_crab_watch.yy",},"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMSpriteBitmap",},
         {"FrameId":{"name":"4f819b13-5114-458d-9104-702c679832e9","path":"sprites/s_crab_watch/s_crab_watch.yy",},"LayerId":{"name":"aca2a03e-1094-41bc-b743-821ed1e3b47e","path":"sprites/s_crab_watch/s_crab_watch.yy",},"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMSpriteBitmap",},
+        {"FrameId":{"name":"4f819b13-5114-458d-9104-702c679832e9","path":"sprites/s_crab_watch/s_crab_watch.yy",},"LayerId":{"name":"6648cb6c-c6c1-46f9-aa2b-25a1011052a1","path":"sprites/s_crab_watch/s_crab_watch.yy",},"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMSpriteBitmap",},
       ],"parent":{"name":"s_crab_watch","path":"sprites/s_crab_watch/s_crab_watch.yy",},"resourceVersion":"1.0","name":"4f819b13-5114-458d-9104-702c679832e9","tags":[],"resourceType":"GMSpriteFrame",},
   ],
   "sequence": {
