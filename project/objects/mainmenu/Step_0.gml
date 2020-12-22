@@ -11,7 +11,6 @@ draw_set_valign(fa_middle)
 
 draw_set_color(c_black)
 draw_set_font(font_menu2)
-//draw_text(room_width/2, room_height/2, "poopy")
 
 switch(menu) {
 	#region Main Menu
@@ -31,8 +30,7 @@ switch(menu) {
 					case 0:
 						text = "New Game"
 						if pressed {
-							room_goto(Room1)
-							app.underwaterChange(true)
+							room_goto(RoomIntro)
 							app.cameraRefresh = true
 						}
 					break

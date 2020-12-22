@@ -518,7 +518,7 @@ function draw_shadow_ext(_z, _map) {
 	draw_set_alpha(1)
 	var widthBase = 20
 	var Width = widthBase * ((zDrop - (z - _z)) / zDrop)
-	debug.log(string(Width))
+	//debug.log(string(Width))
 	var correction = 12
 	if shadowEllipse draw_ellipse(bbox_left+correction-Width,bbox_top-_z,bbox_right-correction+Width,bbox_bottom-_z,false)
 	else draw_rectangle(bbox_left,bbox_top-_z,bbox_right,bbox_bottom-_z,false)

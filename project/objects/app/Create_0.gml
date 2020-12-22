@@ -4,7 +4,7 @@ version = ""
 canvasX = 0
 
 paused = false
-suitOn = true
+suitOn = false
 gold = 1
 
 newRoom = false
@@ -265,7 +265,7 @@ function roomTransitioning() {
 }
 	
 if room == RoomAppStart {
-	room_goto(RoomMainMenu2)
+	room_goto(RoomMainMenu)
 	underwaterChange(true)
 	cameraRefresh = true
 }

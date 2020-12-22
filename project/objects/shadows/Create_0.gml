@@ -50,7 +50,7 @@ function generate_map() {
 	}
 	
 	//	Main menu shadow text
-	if instance_exists(mainmenu2) with mainmenu2 {
+	if instance_exists(mainmenu) with mainmenu {
 		draw_set_alpha(1)
 		if surface_exists(surface) draw_surface(surface,0,0)	
 	}

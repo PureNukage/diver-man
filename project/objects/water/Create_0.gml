@@ -1,3 +1,34 @@
+function check_room_underwater() {
+	
+	//	list of underwater rooms
+	var list = ds_list_create() 
+	ds_list_add(list, Room1)
+	ds_list_add(list, RoomMainMenu)
+	
+	//	This room is underwater
+	if ds_list_find_index(list, room) > -1 {
+		app.underwaterChange(true)
+		
+		//	Lets make sure the player has his suit on
+		if instance_exists(player) and !app.suitOn {
+			app.suitOn = true
+			player.suitOn = app.suitOn
+		}
+	}
+	// This room is NOT underwater
+	else {
+		app.underwaterChange(false)
+		
+		//	Lets make sure the player does NOT have his suit on
+		if instance_exists(player) and app.suitOn {
+			app.suitOn = false
+			player.suitOn = app.suitOn
+		}
+	}
+	
+
+}
+
 on = false
 
 application_surface_draw_enable(false)
@@ -55,7 +86,7 @@ function generate_caustic_map() {
 	causticBuffer = buffer_create(room_width*room_height*4,buffer_grow,1)
 	buffer_get_surface(causticBuffer,Surface,0)
 	
-	surface_save(Surface,"causticMap.png")
+	//surface_save(Surface,"causticMap.png")
 	
 	surface_free(Surface)
 }
@@ -111,7 +142,7 @@ function generate_collision_maps() {
 		heightMaps[i][0] = Z
 		heightMaps[i][2] = -1
 		
-		surface_save(surface,"inverseHeightMap"+string(Z)+".png")
+		//surface_save(surface,"inverseHeightMap"+string(Z)+".png")
 		
 		surface_free(surface)
 	}
@@ -136,7 +167,7 @@ function generate_collision_maps() {
 	collisionMapsBuffer = buffer_create(room_width*room_height*4,buffer_grow,1)
 	buffer_get_surface(collisionMapsBuffer,surface,0)
 	
-	surface_save(surface, "collisionMapsSurface.png")
+	//surface_save(surface, "collisionMapsSurface.png")
 	
 	surface_free(surface)	
 	

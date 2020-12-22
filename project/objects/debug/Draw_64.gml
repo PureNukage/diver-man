@@ -17,4 +17,15 @@ if on {
 		draw_text(XX,YY, "moveForce: "+string(moveForce)) YY += 15
 	}
 	
+	
+	////	GUI buttons
+	var _string = "off"	if app.suitOn _string = "on"
+	var clicked = draw_button_ext(display_get_gui_width()-128-8,8, 128,64, "suit: "+_string) 
+	if clicked {
+		app.suitOn = !app.suitOn
+		if instance_exists(player) player.suitOn = app.suitOn
+	}
+	
+	draw_reset()
+	
 }

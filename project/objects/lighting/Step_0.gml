@@ -41,7 +41,7 @@ if on {
 		draw_sprite_ext(s_shade, image_index, x,y, image_xscale,image_yscale, image_angle, image_blend, image_alpha)
 	}
 	
-	if instance_exists(mainmenu2) with mainmenu2 {
+	if instance_exists(mainmenu) with mainmenu {
 		if surface_exists(surface) draw_surface(surface,0,0)	
 	}
 
