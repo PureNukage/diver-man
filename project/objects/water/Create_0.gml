@@ -26,6 +26,7 @@ function check_room_underwater() {
 		}
 	}
 	
+	ds_list_destroy(list)
 
 }
 
