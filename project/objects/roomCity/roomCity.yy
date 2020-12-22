@@ -23,8 +23,8 @@
   "properties": [],
   "overriddenProperties": [],
   "parent": {
-    "name": "CityIntro",
-    "path": "folders/Game/CityIntro.yy",
+    "name": "intro",
+    "path": "folders/Game/scenes/intro.yy",
   },
   "resourceVersion": "1.0",
   "name": "roomCity",

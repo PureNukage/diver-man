@@ -19,6 +19,7 @@ instance_create_layer(0,0,Layer,lighting)
 instance_create_layer(0,0,Layer,shadows)
 instance_create_layer(0,0,Layer,grid)
 instance_create_layer(0,0,Layer,gui)
+instance_create_layer(0,0,Layer,questManager)
 
 function scale_canvas(new_width, new_height) {
 	window_set_size(new_width, new_height)

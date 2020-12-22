@@ -16,13 +16,13 @@ if input.keyInteract and interactCD == -1 {
 	
 			//	If index is positive, make the new textbox
 			if sign(real(ID.dialogueIndex)) > 0 {
-				debug.log("POSITIVE")
+				//debug.log("POSITIVE")
 				var Textbox = instance_create_layer(0,0,"Instances",textbox)
 				Textbox.ID = ID
 				Textbox.text = ID.myDialogue[1, ID.dialogueIndex]
 			}
 			else {
-				debug.log("NEGATIVE")
+				//debug.log("NEGATIVE")
 				ID.dialogueIndex = real(ID.dialogueIndex) * -1
 				ID.inConversation = false
 				ID.interactCD = 15

@@ -29,8 +29,8 @@
   "properties": [],
   "overriddenProperties": [],
   "parent": {
-    "name": "CityIntro",
-    "path": "folders/Game/CityIntro.yy",
+    "name": "scenes",
+    "path": "folders/Game/scenes.yy",
   },
   "resourceVersion": "1.0",
   "name": "brotherMusic",

@@ -32,3 +32,10 @@ enum menu {
 	main,
 	settings,
 }
+
+enum quests {
+	intro,
+	spendFinalCoin,
+	streetDance,
+	watch,
+}
