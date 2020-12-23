@@ -1,5 +1,5 @@
 {
-  "bboxMode": 0,
+  "bboxMode": 2,
   "collisionKind": 1,
   "type": 0,
   "origin": 9,
@@ -7,10 +7,10 @@
   "edgeFiltering": false,
   "collisionTolerance": 0,
   "swfPrecision": 2.525,
-  "bbox_left": 0,
-  "bbox_right": 32,
-  "bbox_top": 0,
-  "bbox_bottom": 50,
+  "bbox_left": 7,
+  "bbox_right": 26,
+  "bbox_top": 48,
+  "bbox_bottom": 51,
   "HTile": false,
   "VTile": false,
   "For3D": false,
@@ -24,12 +24,12 @@
   "gridX": 0,
   "gridY": 0,
   "frames": [
-    {"compositeImage":{"FrameId":{"name":"0a7ded97-1b0e-401f-8013-b8ebbcff89f5","path":"sprites/s_vendor/s_vendor.yy",},"LayerId":null,"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMSpriteBitmap",},"images":[
-        {"FrameId":{"name":"0a7ded97-1b0e-401f-8013-b8ebbcff89f5","path":"sprites/s_vendor/s_vendor.yy",},"LayerId":{"name":"c274ee17-3385-4633-8551-233cec0d1ccc","path":"sprites/s_vendor/s_vendor.yy",},"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMSpriteBitmap",},
-      ],"parent":{"name":"s_vendor","path":"sprites/s_vendor/s_vendor.yy",},"resourceVersion":"1.0","name":"0a7ded97-1b0e-401f-8013-b8ebbcff89f5","tags":[],"resourceType":"GMSpriteFrame",},
+    {"compositeImage":{"FrameId":{"name":"0a7ded97-1b0e-401f-8013-b8ebbcff89f5","path":"sprites/s_vendor_collision/s_vendor_collision.yy",},"LayerId":null,"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMSpriteBitmap",},"images":[
+        {"FrameId":{"name":"0a7ded97-1b0e-401f-8013-b8ebbcff89f5","path":"sprites/s_vendor_collision/s_vendor_collision.yy",},"LayerId":{"name":"c274ee17-3385-4633-8551-233cec0d1ccc","path":"sprites/s_vendor_collision/s_vendor_collision.yy",},"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMSpriteBitmap",},
+      ],"parent":{"name":"s_vendor_collision","path":"sprites/s_vendor_collision/s_vendor_collision.yy",},"resourceVersion":"1.0","name":"0a7ded97-1b0e-401f-8013-b8ebbcff89f5","tags":[],"resourceType":"GMSpriteFrame",},
   ],
   "sequence": {
-    "spriteId": {"name":"s_vendor","path":"sprites/s_vendor/s_vendor.yy",},
+    "spriteId": {"name":"s_vendor_collision","path":"sprites/s_vendor_collision/s_vendor_collision.yy",},
     "timeUnits": 1,
     "playback": 1,
     "playbackSpeed": 30.0,
@@ -41,7 +41,7 @@
     "moments": {"Keyframes":[],"resourceVersion":"1.0","resourceType":"KeyframeStore<MomentsEventKeyframe>",},
     "tracks": [
       {"name":"frames","spriteId":null,"keyframes":{"Keyframes":[
-            {"id":"c96468c0-1a41-4f89-9c90-3425abc5c4f6","Key":0.0,"Length":1.0,"Stretch":false,"Disabled":false,"IsCreationKey":false,"Channels":{"0":{"Id":{"name":"0a7ded97-1b0e-401f-8013-b8ebbcff89f5","path":"sprites/s_vendor/s_vendor.yy",},"resourceVersion":"1.0","resourceType":"SpriteFrameKeyframe",},},"resourceVersion":"1.0","resourceType":"Keyframe<SpriteFrameKeyframe>",},
+            {"id":"c7b28723-fb1e-4d77-8f51-a0719ebbdbfb","Key":0.0,"Length":1.0,"Stretch":false,"Disabled":false,"IsCreationKey":false,"Channels":{"0":{"Id":{"name":"0a7ded97-1b0e-401f-8013-b8ebbcff89f5","path":"sprites/s_vendor_collision/s_vendor_collision.yy",},"resourceVersion":"1.0","resourceType":"SpriteFrameKeyframe",},},"resourceVersion":"1.0","resourceType":"Keyframe<SpriteFrameKeyframe>",},
           ],"resourceVersion":"1.0","resourceType":"KeyframeStore<SpriteFrameKeyframe>",},"trackColour":0,"inheritsTrackColour":true,"builtinName":0,"traits":0,"interpolation":1,"tracks":[],"events":[],"modifiers":[],"isCreationTrack":false,"resourceVersion":"1.0","tags":[],"resourceType":"GMSpriteFramesTrack",},
     ],
     "visibleRange": null,
@@ -58,9 +58,9 @@
     "yorigin": 51,
     "eventToFunction": {},
     "eventStubScript": null,
-    "parent": {"name":"s_vendor","path":"sprites/s_vendor/s_vendor.yy",},
+    "parent": {"name":"s_vendor_collision","path":"sprites/s_vendor_collision/s_vendor_collision.yy",},
     "resourceVersion": "1.3",
-    "name": "s_vendor",
+    "name": "s_vendor_collision",
     "tags": [],
     "resourceType": "GMSequence",
   },
@@ -72,7 +72,7 @@
     "path": "folders/Art.yy",
   },
   "resourceVersion": "1.0",
-  "name": "s_vendor",
+  "name": "s_vendor_collision",
   "tags": [],
   "resourceType": "GMSprite",
 }

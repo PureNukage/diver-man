@@ -4,7 +4,7 @@ if drawUnit draw_unit()
 
 if interactable {
 	var xx = x 
-	var yy = y-sprite_get_yoffset(sprite_index)	
+	var yy = y-(sprite_get_yoffset(sprite_index)*image_yscale)
 	
 	draw_sprite_ext(s_keyboard_e,0,xx,yy,2,2,0,c_white,1)
 }

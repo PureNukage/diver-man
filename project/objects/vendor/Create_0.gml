@@ -1,3 +1,7 @@
 event_inherited()
-interactibility = false
 
+mask_index = s_vendor_collision
+
+npcKey = "vendorFinalCoin"
+
+load_dialogue()

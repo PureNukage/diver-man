@@ -49,8 +49,10 @@ else if stage == 1 {
 	//	Check for final dialogue
 	if dialogueIndex == 12 {
 		player.muted = false
+		player.canMove = false
 		instance_create_layer(x+96+gap,y,"Instances",brother)
 		destroy = true
+		app.roomTransition(RoomCityHub, 5)
 		exit
 	}
 }

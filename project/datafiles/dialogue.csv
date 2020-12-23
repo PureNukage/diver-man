@@ -101,3 +101,11 @@ respDiving,9,Lets find some treasure!,
 brotherGivingWatch,10,Heck yes! This will be our best endeavor yet!,s_brother_face
 brotherGivingWatch,-12,We'll sleep on a pile of gold doubloons!,s_brother_face
 brotherGivingWatch,-11,Can't understand you. Take off the suit!,s_brother_face
+vendorFinalCoin,1,"Oh hello there, I was just about to wrap up shop. But..",s_brother_face
+vendorFinalCoin,2,I have time to make a quick sandwich. ,s_brother_face
+vendorFinalCoin,respFinalCoinVendor,"For you? Hmm, one coin. ",s_brother_face
+respFinalCoinVendor,3,Okay. My brother and I love your sandwiches. ,
+respFinalCoinVendor,4,Let me think about it. ,
+vendorFinalCoin,5,Aww that's sweet. ,s_brother_face
+vendorFinalCoin,-1,No problem dear. ,s_brother_face
+vendorFinalCoin,-5,Have a good night dear!,s_brother_face

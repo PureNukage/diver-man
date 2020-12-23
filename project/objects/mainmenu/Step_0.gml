@@ -30,7 +30,7 @@ switch(menu) {
 					case 0:
 						text = "New Game"
 						if pressed {
-							room_goto(Room1)
+							room_goto(RoomCityHub)
 							app.cameraRefresh = true
 						}
 					break
