@@ -112,14 +112,6 @@ if !app.paused {
 						setThrust(3)
 						image_speed = 1
 						jumping = 10
-						sound.playSoundEffect(JumpUp_water_1_0)
-					}
-					
-					//    Sound on Landing
-					if jumpHalt = true {
-						if audio_is_playing(JumpDown_water_1_0) == false {
-							sound.playSoundEffect(JumpDown_water_1_0)
-						}
 					}
 
 					if !onGround applyThrust()

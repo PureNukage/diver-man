@@ -23,7 +23,7 @@ if drawSurface {
 	draw_clear_alpha(c_black, 0)
 	surface_reset_target()
 	
-	surface_copy_part(causticSurf,0,0, water.causticSurface,x,y,sprite_get_width(sprite_index)*image_xscale,sprite_get_height(sprite_index)*image_yscale)
+	if surface_exists(water.causticSurface) surface_copy_part(causticSurf,0,0, water.causticSurface,x,y,sprite_get_width(sprite_index)*image_xscale,sprite_get_height(sprite_index)*image_yscale)
 	surface_set_target(causticSurf)
 	
 	gpu_set_blendmode(bm_subtract)
