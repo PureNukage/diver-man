@@ -30,15 +30,16 @@ if !app.paused {
 					else if running {
 						running = false	
 					}
-				
-					//	I just jumped!
-					if jumpHaltDuration > -1 {
-						jumpHaltDuration--
-					}
 					
+					//	Jump halt logic
 					if jumpHalt {
-						if sprite_index == s_diverman_jump canMove = false	
-						else {
+						if sprite_index == s_diverman_jump {
+							canMove = false	
+							if animation_end {
+								jumpHalt = false	
+								canMove = true
+							}
+						} else {
 							canMove = true
 							jumpHalt = false
 						}
@@ -51,8 +52,6 @@ if !app.paused {
 					}
 					else maxMovespeed = 3
 					
-
-	
 					visible = true
 				
 					//	Allow movement input if we're not in dialogue and I can move
@@ -72,14 +71,12 @@ if !app.paused {
 						moveDirection = point_direction(0,0,hspd,vspd)
 						moveForce += 0.05
 						moveForce = clamp(moveForce,0,maxMovespeed)
-			
-						//if moveForce == 2 moveForce = 0
 
 						setForce(moveForce, moveDirection)
 	
 						if hspd != 0 image_xscale = sign(hspd) * xscale
 			
-						if jumpHaltDuration == -1 {
+						if !jumpHalt {
 							image_speed = (moveForce/maxMovespeed)
 							image_speed = clamp(image_speed,.2,1)
 						}
@@ -99,7 +96,7 @@ if !app.paused {
 						}
 					}
 	
-	
+					//	Hold jump to jump higher
 					if !onGround and jumping > -1 {
 						if input.keyJumping and jumping < 5 {
 							setThrust(thrust + 0.5)	
@@ -108,10 +105,10 @@ if !app.paused {
 					}
 					////	Jumping
 					if input.keyJump and onGround and app.underwater and !jumpHalt {
-						//var Thrust = clamp(5 * (moveForce/ maxMovespeed), min(3, maxMovespeed), 5)
 						setThrust(3)
 						image_speed = 1
 						jumping = 10
+						sound.playSoundEffect(sound_jumpup_water)
 					}
 
 					if !onGround applyThrust()
@@ -121,11 +118,8 @@ if !app.paused {
 						//	Moving
 						if (hspd != 0 or vspd != 0) {
 							if suitOn {
-								if jumpHaltDuration > 0 {
+								if jumpHalt {
 									sprite_index = s_diverman_jump
-									if animation_end {
-										jumpHaltDuration = -1	
-									}
 								} else {
 									if running {
 										sprite_index = s_diverman_sprint	
@@ -133,7 +127,6 @@ if !app.paused {
 									else
 									if sprite_index != s_diverman_walk {
 										sprite_index = s_diverman_walk
-										//image_index = 0
 									}
 								}
 							}
@@ -141,21 +134,22 @@ if !app.paused {
 						//	Not moving
 						else {
 							if suitOn {
-								if moveForce == 0 and sprite_index != s_diverman_idle and jumpHaltDuration == -1 {
+								if moveForce == 0 and sprite_index != s_diverman_idle and !jumpHalt {
 									sprite_index = s_diverman_idle
-									//image_index = 0
 								}	
 							}
 						}
 					} 
 					//	In the air
 					else {
+						//	Going up
 						if thrust > 0 {
 							if suitOn {
 								sprite_index = s_diverman_jump
 								image_index = 0
 							}
 						}
+						//	Going down
 						else {
 							if suitOn {
 								if sprite_index != s_diverman_jump {

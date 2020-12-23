@@ -99,8 +99,10 @@ function applyThrust() {
 			Poof.particles = particles.dustpoof
 			Poof.sprite_index = s_diverman_jumping_dustpoofs
 			Poof.duration = 30
+			
+			sound.playSoundEffect(sound_jumpdown_water)
 		
-			jumpHaltDuration = 30
+			//jumpHaltDuration = 30
 			jumpHalt = true
 			//canMove = false
 		}
