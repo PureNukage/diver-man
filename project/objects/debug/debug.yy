@@ -26,8 +26,8 @@
   "properties": [],
   "overriddenProperties": [],
   "parent": {
-    "name": "Game",
-    "path": "folders/Game.yy",
+    "name": "system",
+    "path": "folders/Game/system.yy",
   },
   "resourceVersion": "1.0",
   "name": "debug",

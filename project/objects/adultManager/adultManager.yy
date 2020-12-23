@@ -24,8 +24,8 @@
   "properties": [],
   "overriddenProperties": [],
   "parent": {
-    "name": "Game",
-    "path": "folders/Game.yy",
+    "name": "characters",
+    "path": "folders/Game/characters.yy",
   },
   "resourceVersion": "1.0",
   "name": "adultManager",

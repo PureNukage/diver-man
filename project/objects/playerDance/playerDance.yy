@@ -31,8 +31,8 @@
   "properties": [],
   "overriddenProperties": [],
   "parent": {
-    "name": "scenes",
-    "path": "folders/Game/scenes.yy",
+    "name": "street dancing",
+    "path": "folders/Game/scenes/street dancing.yy",
   },
   "resourceVersion": "1.0",
   "name": "playerDance",

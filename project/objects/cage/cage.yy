@@ -31,8 +31,8 @@
   "properties": [],
   "overriddenProperties": [],
   "parent": {
-    "name": "Game",
-    "path": "folders/Game.yy",
+    "name": "misc",
+    "path": "folders/Game/misc.yy",
   },
   "resourceVersion": "1.0",
   "name": "cage",

@@ -28,6 +28,7 @@ else if stage == 2 {
 		stage = 3
 		image_xscale = -1
 		player.image_xscale = -1
+		questManager.add_quest(quests.watch)
 	}
 }
 //	Wait till sailor pete walks in 

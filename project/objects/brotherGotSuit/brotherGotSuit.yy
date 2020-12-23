@@ -25,12 +25,13 @@
   "physicsShapePoints": [],
   "eventList": [
     {"isDnD":false,"eventNum":0,"eventType":0,"collisionObjectId":null,"parent":{"name":"brotherGotSuit","path":"objects/brotherGotSuit/brotherGotSuit.yy",},"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMEvent",},
+    {"isDnD":false,"eventNum":0,"eventType":3,"collisionObjectId":null,"parent":{"name":"brotherGotSuit","path":"objects/brotherGotSuit/brotherGotSuit.yy",},"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMEvent",},
   ],
   "properties": [],
   "overriddenProperties": [],
   "parent": {
-    "name": "scenes",
-    "path": "folders/Game/scenes.yy",
+    "name": "get brothers watch",
+    "path": "folders/Game/scenes/get brothers watch.yy",
   },
   "resourceVersion": "1.0",
   "name": "brotherGotSuit",

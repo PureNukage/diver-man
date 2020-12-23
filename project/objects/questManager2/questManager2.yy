@@ -24,8 +24,8 @@
   "properties": [],
   "overriddenProperties": [],
   "parent": {
-    "name": "Game",
-    "path": "folders/Game.yy",
+    "name": "get brothers watch",
+    "path": "folders/Game/scenes/get brothers watch.yy",
   },
   "resourceVersion": "1.0",
   "name": "questManager2",

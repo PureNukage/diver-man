@@ -83,9 +83,9 @@ respGettingSuit,1,I'd rather not.,
 brotherGivingSuit,2,He'll do it. I can't afford to get sweaty.,s_brother_face
 brotherGivingSuit,-3,"Who knows, the Pompnose girl might see me.",s_brother_face
 sailorPeteGivingSuit,-7,"Alright, come here boy.",s_sailorpete_face
-brotherGotSuit,0,Yeah...,s_brother_face
-brotherGotSuit,1,Can't understand you.,s_brother_face
-brotherGotSuit,-1,Good luck though!,s_brother_face
+brotherGotSuit,1,Yeah...,s_brother_face
+brotherGotSuit,2,Can't understand you.,s_brother_face
+brotherGotSuit,0,Good luck though!,s_brother_face
 peteGotSuit,1,*burp* Good good,s_sailorpete_face
 peteGotSuit,-1,Get in the crane and I'll lower you down,s_sailorpete_face
 brotherGivingWatch,1,You found it!,s_brother_face

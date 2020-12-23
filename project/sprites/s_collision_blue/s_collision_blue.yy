@@ -68,8 +68,8 @@
     {"visible":true,"isLocked":false,"blendMode":0,"opacity":100.0,"displayName":"default","resourceVersion":"1.0","name":"228ce181-7384-4420-949e-e1fcf423af9e","tags":[],"resourceType":"GMImageLayer",},
   ],
   "parent": {
-    "name": "Art",
-    "path": "folders/Art.yy",
+    "name": "collisions",
+    "path": "folders/Art/collisions.yy",
   },
   "resourceVersion": "1.0",
   "name": "s_collision_blue",

@@ -31,8 +31,8 @@
   "properties": [],
   "overriddenProperties": [],
   "parent": {
-    "name": "Game",
-    "path": "folders/Game.yy",
+    "name": "units",
+    "path": "folders/Game/units.yy",
   },
   "resourceVersion": "1.0",
   "name": "crab",

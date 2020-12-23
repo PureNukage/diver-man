@@ -68,8 +68,8 @@
     {"visible":true,"isLocked":false,"blendMode":0,"opacity":100.0,"displayName":"default","resourceVersion":"1.0","name":"33719648-616e-484c-88bb-93cae27c148a","tags":[],"resourceType":"GMImageLayer",},
   ],
   "parent": {
-    "name": "Art",
-    "path": "folders/Art.yy",
+    "name": "lights",
+    "path": "folders/Art/lights.yy",
   },
   "resourceVersion": "1.0",
   "name": "s_light_lightpole",

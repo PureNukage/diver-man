@@ -3,9 +3,9 @@ questCount = -1
 
 questNames = []
 questNames[quests.intro] = "Intro"
-questNames[quests.spendFinalCoin] = "Spend Final Coin"
-questNames[quests.streetDance] = "Street Dance"
-questNames[quests.watch] = "Get Brothers Watch Back"
+questNames[quests.spendFinalCoin] = "The Last Coin"
+questNames[quests.streetDance] = "Performing for the Streets"
+questNames[quests.watch] = "The Family Watch"
 
 
 function quest_check() {

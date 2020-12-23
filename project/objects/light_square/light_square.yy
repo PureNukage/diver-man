@@ -29,8 +29,8 @@
   "properties": [],
   "overriddenProperties": [],
   "parent": {
-    "name": "Lights",
-    "path": "folders/Game/Lights.yy",
+    "name": "lights",
+    "path": "folders/Game/lights.yy",
   },
   "resourceVersion": "1.0",
   "name": "light_square",

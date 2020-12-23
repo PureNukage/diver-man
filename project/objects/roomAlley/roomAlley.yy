@@ -24,8 +24,8 @@
   "properties": [],
   "overriddenProperties": [],
   "parent": {
-    "name": "scenes",
-    "path": "folders/Game/scenes.yy",
+    "name": "alley",
+    "path": "folders/Game/scenes/alley.yy",
   },
   "resourceVersion": "1.0",
   "name": "roomAlley",

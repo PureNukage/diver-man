@@ -1,6 +1,6 @@
 event_inherited()
 
-if interactable {
+if interactable and interactibility {
 	if input.keyInteract and !inConversation and dialogueIndex > -1 {
 		var Textbox = instance_create_layer(0,0,"Instances",textbox)
 		Textbox.ID = id

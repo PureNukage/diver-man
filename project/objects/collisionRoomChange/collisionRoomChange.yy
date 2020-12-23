@@ -27,8 +27,8 @@
   "properties": [],
   "overriddenProperties": [],
   "parent": {
-    "name": "Collisions",
-    "path": "folders/Game/Collisions.yy",
+    "name": "collisions",
+    "path": "folders/Game/collisions.yy",
   },
   "resourceVersion": "1.0",
   "name": "collisionRoomChange",

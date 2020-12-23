@@ -29,7 +29,7 @@ function lift(up_or_down) {
 			
 			if app.underwater {
 				if z >= 100 and app.roomTransitionTo == -1 {
-					var Room = questManager.roomSurface
+					var Room = questManager2.roomSurface
 					if Room == -1 Room = RoomDock
 					app.roomTransition(Room, 5)
 				}
