@@ -7,7 +7,6 @@ groundY = y
 grav = 0.2
 detectCollision = true
 maxMovespeed = 2
-jumpHaltDuration = -1
 jumpHalt = false
 z = 0
 xx = 0

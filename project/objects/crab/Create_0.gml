@@ -71,7 +71,7 @@ function reverseNode() {
 }
 	
 function stunCheck() {
-	if point_distance(x,y, player.x,player.y) < 30 and player.jumpHaltDuration > -1 {
+	if point_distance(x,y, player.x,player.y) < 30 and player.jumpHalt {
 		state = state.stunned
 		sprite_index = s_crab_knocked
 		setThrust(5)
