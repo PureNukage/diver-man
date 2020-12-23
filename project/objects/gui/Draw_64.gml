@@ -62,3 +62,11 @@ if instance_exists(player) {
 	draw_reset()
 	
 }
+	
+////	New Quest
+if drawNewQuest {
+	if questManager.questCount > 0 {
+		var Quest = questManager.questList[| questManager.questCount-1]	
+		draw_new_quest_popup(Quest)	
+	}
+}

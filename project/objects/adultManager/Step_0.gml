@@ -24,5 +24,5 @@ if on {
 	if adultSpawnerTimer > -1 adultSpawnerTimer--
 	else adultSpawnerTimer = 15
 
-	debug.log(string(ds_list_size(adults)))
+	//debug.log(string(ds_list_size(adults)))
 }

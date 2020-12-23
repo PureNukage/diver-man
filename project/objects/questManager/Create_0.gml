@@ -28,6 +28,8 @@ function add_quest(_quest_index) {
 	
 	debug.log("Added quest: "+string_upper(questNames[_quest_index]))
 	
+	gui.drawNewQuest = true
+	
 	questCount = ds_list_size(questList)
 }
 

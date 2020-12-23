@@ -25,7 +25,8 @@ if stage == 0 {
 	}
 	
 	if dialogueIndex == 6 {
-		stage = 1	
+		stage = 1
+		questManager.add_quest(quests.streetDance)
 	}
 }
 //	Walking to the center of the room	

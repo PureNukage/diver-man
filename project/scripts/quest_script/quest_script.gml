@@ -12,13 +12,13 @@ function quest_script(quest) {
 					case -1:
 						if instance_exists(walkAndTalk) {
 							quest.stage++
-							debug.log("Quest: "+string_upper(questManager.questNames[quest_index])+" is now at stage: "+string_upper(quest.stage))
 						}
 					break
 					//	Wait for intro dialogue to finish up
 					case 0:
 						if !instance_exists(walkAndTalk) {
-							quest_finished = true	
+							quest_finished = true
+							questManager.add_quest(quests.spendFinalCoin)
 						}
 					break
 				}
@@ -29,7 +29,12 @@ function quest_script(quest) {
 		#region SPEND FINAL COIN
 			case quests.spendFinalCoin:
 				
-				
+				switch(stage) {
+					//	Wait for player to go back to alley
+					case -1:
+						if room == RoomAlley quest_finished = true
+					break
+				}
 				
 			break
 		#endregion
@@ -37,7 +42,16 @@ function quest_script(quest) {
 		#region STREET PERFORMERS
 			case quests.streetDance:
 				
-				
+				switch(stage) {
+					//	Wait for bullies to chase brother away
+					case -1:
+						if instance_exists(danceTimer) and danceTimer.stage >= 4 quest.stage++
+					break
+					//	Chasing after brother and bullies
+					case 0:
+						if instance_exists(bullysTossWatch) and bullysTossWatch.stage > 0 quest_finished = true
+					break
+				}
 				
 			break
 		#endregion
@@ -49,6 +63,11 @@ function quest_script(quest) {
 				
 			break
 		#endregion
+	}
+	
+	//	We advanced a stage
+	if quest.stage > stage {
+		debug.log("Quest: "+string_upper(questManager.questNames[quest_index])+" is now at stage: "+string_upper(quest.stage))	
 	}
 	
 	if quest_finished {
