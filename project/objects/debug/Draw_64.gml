@@ -19,11 +19,19 @@ if on {
 	
 	
 	////	GUI buttons
+	//	Suit on/off
 	var _string = "off"	if app.suitOn _string = "on"
 	var clicked = draw_button_ext(display_get_gui_width()-128-8,8, 128,64, "suit: "+_string) 
 	if clicked {
 		app.suitOn = !app.suitOn
 		if instance_exists(player) player.suitOn = app.suitOn
+	}
+	
+	//	GUI on/off
+	var _string = "off"	if gui.drawGold _string = "on"
+	var clicked = draw_button_ext(display_get_gui_width()-128-8,80, 128,64, "gui: "+_string) 
+	if clicked {
+		gui.drawGold = !gui.drawGold
 	}
 	
 	draw_reset()

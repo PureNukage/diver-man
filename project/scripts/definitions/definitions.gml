@@ -23,6 +23,10 @@ enum state {
 	attack
 }
 
+enum item {
+	sandwich,	
+}
+
 enum treasure {
 	gold,
 	gold_necklace,	

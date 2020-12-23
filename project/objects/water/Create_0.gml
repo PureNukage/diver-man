@@ -99,8 +99,8 @@ collisionMapsSurface = -1
 function generate_collision_maps() {
 	
 	//	Clear out existing map buffers if we have any 
-	for(var i=0;i<array_length(heightMaps[0]);i++) {
-		buffer_delete(heightMaps[i][1])	
+	for(var i=0;i<heightMapCount;i++) {
+		if buffer_exists(heightMaps[i][1]) buffer_delete(heightMaps[i][1])
 	}
 	
 	//	how many z-level does this room have?

@@ -703,3 +703,23 @@ function bubbles(_sound) {
 		
 	}
 }	
+	
+////	Inventory
+inventory = ds_list_create()
+
+function create_item(item_index) {
+	var Item = new _create_item(item_index)
+	ds_list_add(inventory, Item)
+}
+
+function item_check(item_index) {
+	for(var i=0;i<ds_list_size(inventory);i++) {
+		var Item = inventory[| i]
+		if Item.index == item_index return i
+	}
+	return -1
+}
+
+function _create_item(item_index) constructor {
+	index = item_index
+}
