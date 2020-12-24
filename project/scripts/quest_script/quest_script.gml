@@ -18,7 +18,6 @@ function quest_script(quest) {
 					case 0:
 						if !instance_exists(walkAndTalk) {
 							quest_finished = true
-							questManager.add_quest(quests.spendFinalCoin)
 						}
 					break
 				}

@@ -25,12 +25,13 @@
   "physicsShapePoints": [],
   "eventList": [
     {"isDnD":false,"eventNum":0,"eventType":3,"collisionObjectId":null,"parent":{"name":"brother","path":"objects/brother/brother.yy",},"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMEvent",},
+    {"isDnD":false,"eventNum":0,"eventType":0,"collisionObjectId":null,"parent":{"name":"brother","path":"objects/brother/brother.yy",},"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMEvent",},
   ],
   "properties": [],
   "overriddenProperties": [],
   "parent": {
-    "name": "characters",
-    "path": "folders/Game/characters.yy",
+    "name": "intro",
+    "path": "folders/Game/scenes/intro.yy",
   },
   "resourceVersion": "1.0",
   "name": "brother",
