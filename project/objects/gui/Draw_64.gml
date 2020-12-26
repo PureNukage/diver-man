@@ -69,4 +69,5 @@ if drawNewQuest {
 		var Quest = questManager.questList[| questManager.questCount-1]	
 		draw_new_quest_popup(Quest)	
 	}
+	draw_reset()
 }

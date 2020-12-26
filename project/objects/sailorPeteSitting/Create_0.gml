@@ -6,4 +6,6 @@ npcKey = "sailorPeteFinalCoin"
 
 load_dialogue()
 
+toldStory = false
+
 depth = -y

@@ -30,8 +30,8 @@
   "properties": [],
   "overriddenProperties": [],
   "parent": {
-    "name": "characters",
-    "path": "folders/Game/characters.yy",
+    "name": "intro",
+    "path": "folders/Game/scenes/intro.yy",
   },
   "resourceVersion": "1.0",
   "name": "vendor",

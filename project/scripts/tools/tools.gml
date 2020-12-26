@@ -234,6 +234,51 @@ function load_dialogue() {
 		
 		if string_count(key,Key) > 0 {
 			myDialogue[0, DialogueIndex] = nextIndex
+			
+			////	Error checking the variable dialogue (the variable is replaced in Textbox::Begin Step)
+			if string_count("%",Dialogue) >= 2 {
+				for(var a=0;a<string_length(Dialogue);a++) {
+					//	A variable
+					if string_char_at(Dialogue,a) == "%" {
+						var endIndex = -1
+						//	Find the other percentage
+						for(var s=a;s<string_length(Dialogue);s++) {
+							//	Found it
+							if s != a and string_char_at(Dialogue,s) == "%" {
+								endIndex = s
+								s = 500
+							}
+						}
+						if endIndex > -1 { 
+							//	Found it, lets find our variable
+							var substring = string_copy(Dialogue,a, endIndex+1-a)
+							var variableString = substring
+							while string_count("%",substring) > 0 {
+								substring = string_delete(substring,string_pos("%",substring),1)	
+							}
+						
+							//	Substring only has variable now, separate into object and variable using the period
+							var periodIndex = string_pos(".",substring)
+							var Object = asset_get_index(string_copy(substring,0,periodIndex-1))
+							var Variable = string_copy(substring,periodIndex+1,string_length(substring)+1-periodIndex)
+						
+							//	Check if object exists
+							if instance_exists(Object) and variable_instance_exists(Object,Variable) {
+								//	Replace the variable in the dialogue with a string of the actual variable
+								var newString = string(variable_instance_get(Object,Variable))
+								var variableIndex = string_pos(variableString,Dialogue)
+								//Dialogue = string_replace(Dialogue,variableString,newString)
+								var Break = 0
+							}
+							else {
+								debug.log("ERROR with dialogue. KEY: "+string(Key)+" at: "+string(a))	
+							}
+							
+						}
+					}
+				}
+			}
+			
 			myDialogue[1, DialogueIndex] = Dialogue
 			
 			if SpriteIndex > -1 {
@@ -253,6 +298,50 @@ function load_dialogue() {
 	
 	ds_grid_destroy(dialogue)
 	
+}
+	
+function condition_check_dialogue(ID) {
+	var key = ID.npcKey
+	var index = ID.dialogueIndex
+	
+	switch(key) {
+		case "dicekid":
+			switch(index) {
+				//	Make sure the player has at least one coin
+				case 1:
+				case 5:
+				case 9:
+					//	Player does not have one coin
+					if player.gold < 1 {
+						ID.dialogueIndex = 13
+						debug.log("Player does not have enough money to gamble")
+					}
+				break
+			}
+		break
+		case "sailorPeteFinalCoin":
+			switch(index) {
+				case 3:
+					//	Player does not have one coin
+					if player.gold < 1 {
+						ID.dialogueIndex = 18
+						debug.log("Player does not have enough money to hear Petes tale")
+					}
+				break
+			}
+		break
+		case "vendor":
+			switch(index) {
+				case 2:
+					//	Player does not have one coin
+					if player.gold < 1 {
+						ID.dialogueIndex = 6
+						debug.log("Player does not have enough money to buy a sandwich")
+					}
+				break
+			}
+		break
+	}
 }
 	
 function draw_nine_tile(slice_index, width, height, xx, yy, _string) {
@@ -320,4 +409,10 @@ function create_particle(Sprite_index, Particles, x, y) {
 	ID.particles = Particles
 	ID.duration = 60
 	return ID
+}
+	
+function create_textbox(ID, text) {
+	var Textbox = instance_create_layer(0,0,"Instances",textbox)
+	Textbox.ID = ID
+	Textbox.text = text
 }
