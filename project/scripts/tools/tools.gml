@@ -302,7 +302,7 @@ function load_dialogue() {
 	
 function condition_check_dialogue(ID) {
 	var key = ID.npcKey
-	var index = ID.dialogueIndex
+	var index = real(ID.dialogueIndex)
 	
 	switch(key) {
 		case "dicekid":
@@ -330,7 +330,7 @@ function condition_check_dialogue(ID) {
 				break
 			}
 		break
-		case "vendor":
+		case "vendorFinalCoin":
 			switch(index) {
 				case 2:
 					//	Player does not have one coin

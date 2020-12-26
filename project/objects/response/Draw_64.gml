@@ -21,7 +21,7 @@ for(var i=0;i<responseCount;i++) {
 	}
 	//	Is our mouse over this one?
 	if point_in_rectangle(mouse_gui_x,mouse_gui_y, xx,yy, xx+width,yy+height) {
-		if responseIndex != i responseIndex = i	
+		//if responseIndex != i responseIndex = i	
 	}
 	yy += height + 10
 }

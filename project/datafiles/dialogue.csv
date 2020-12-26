@@ -109,7 +109,7 @@ respFinalCoinVendor,4,Let me think about it. ,
 vendorFinalCoin,5,Aww that's sweet. ,s_vendor_face
 vendorFinalCoin,-1,No problem dear. ,s_vendor_face
 vendorFinalCoin,-5,Have a good night dear!,s_vendor_face
-vendorFinalCoin,-1,Unfortunately dear these sandwiches aren't free. ,
+vendorFinalCoin,-1,Unfortunately dear these sandwiches aren't free. ,s_vendor_face
 sailorPeteFinalCoin,1,zzz...zzz...zz- hgnhh?,s_sailorpete_face
 sailorPeteFinalCoin,2,The orphan... h-howsh it going?,s_sailorpete_face
 sailorPeteFinalCoin,3,Spare a coin for an old sailor like me...,s_sailorpete_face
