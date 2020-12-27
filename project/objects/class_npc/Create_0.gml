@@ -1,8 +1,7 @@
 event_inherited()
 
 interactibility = true
-npcName = "NPC"
-npcKey = "brother"
+npcKey = "default"
 npcSprite = s_brother_face
 inConversation = false
 dialogueIndex = -1

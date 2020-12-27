@@ -1,7 +1,7 @@
 if input.keyInteract {
 	
 	//	next index for ID
-	var nextIndex = myDialogue[0, responseIndex]
+	var nextIndex = responses[0, responseIndex]
 	
 	//	if nextIndex is negative
 	if sign(real(nextIndex)) == -1 {
@@ -10,11 +10,11 @@ if input.keyInteract {
 	else {
 	
 		ID.dialogueIndex = nextIndex
-	
-		var Textbox = instance_create_layer(0,0,"Instances",textbox)
-		Textbox.ID = ID
-		Textbox.text = ID.myDialogue[1, ID.dialogueIndex]
+		
+		create_textbox(ID, ID.myDialogue[1, ID.dialogueIndex])
 	}
+	
+	condition_check_response(id)
 	
 	instance_destroy()
 	
@@ -32,8 +32,8 @@ if input.keyDown and responseCD == -1 {
 if responseCD > -1 responseCD--
 
 if responseIndex < 0 {
-	responseIndex = array_length(myDialogue[1])-1	
+	responseIndex = array_length(responses[1])-1	
 }
-else if responseIndex > array_length(myDialogue[1])-1 {
+else if responseIndex > array_length(responses[1])-1 {
 	responseIndex = 0	
 }

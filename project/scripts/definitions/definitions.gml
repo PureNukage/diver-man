@@ -37,6 +37,10 @@ enum menu {
 	settings,
 }
 
+enum characters {
+	brother,	
+}
+
 enum quests {
 	intro,
 	spendFinalCoin,

@@ -1,5 +1,5 @@
-for(var i=0;i<array_length(myDialogue);i++) {
-	var Dialogue = myDialogue[i, 0]
+for(var i=0;i<array_length(responses);i++) {
+	var Dialogue = responses[i, 0]
 	if string_count("%",Dialogue) >= 2 {
 		for(var a=0;a<string_length(Dialogue);a++) {
 			//	A variable
@@ -31,7 +31,7 @@ for(var i=0;i<array_length(myDialogue);i++) {
 						//	Replace the variable in the dialogue with a string of the actual variable
 						var newString = string(variable_instance_get(Object,Variable))
 						Dialogue = string_replace(Dialogue,variableString,newString)
-						myDialogue[i, 0] = Dialogue
+						responses[i, 0] = Dialogue
 					}
 					else {
 						//debug.log("ERROR with dialogue. KEY: "+string(Key)+" at: "+string(a))	

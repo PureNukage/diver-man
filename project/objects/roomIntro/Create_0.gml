@@ -1,6 +1,9 @@
 //	Add the intro quest
 questManager.add_quest(quests.intro)
 
+//	Add brother as a character
+characterManager.add_character(characters.brother)
+
 text1 = "1930s"
 text2 = "a year after the sickness took your parents"
 

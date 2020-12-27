@@ -6,7 +6,10 @@ if input.keyInteract and interactCD == -1 {
 			var Response = instance_create_layer(0,0,"Instances",response)
 			Response.ID = ID
 			Response.npcKey = ID.myDialogue[0, ID.dialogueIndex]
-			with Response load_dialogue()
+			with Response {
+				load_dialogue()
+				condition_check_dialogue(id)	
+			}
 		}
 		//	A string of dialogue
 		else {

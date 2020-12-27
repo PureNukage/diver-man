@@ -252,7 +252,7 @@ function load_dialogue() {
 						if endIndex > -1 { 
 							//	Found it, lets find our variable
 							var substring = string_copy(Dialogue,a, endIndex+1-a)
-							var variableString = substring
+							//var variableString = substring
 							while string_count("%",substring) > 0 {
 								substring = string_delete(substring,string_pos("%",substring),1)	
 							}
@@ -265,10 +265,10 @@ function load_dialogue() {
 							//	Check if object exists
 							if instance_exists(Object) and variable_instance_exists(Object,Variable) {
 								//	Replace the variable in the dialogue with a string of the actual variable
-								var newString = string(variable_instance_get(Object,Variable))
-								var variableIndex = string_pos(variableString,Dialogue)
+								//var newString = string(variable_instance_get(Object,Variable))
+								//var variableIndex = string_pos(variableString,Dialogue)
 								//Dialogue = string_replace(Dialogue,variableString,newString)
-								var Break = 0
+								//var Break = 0
 							}
 							else {
 								debug.log("ERROR with dialogue. KEY: "+string(Key)+" at: "+string(a))	
@@ -304,40 +304,148 @@ function condition_check_dialogue(ID) {
 	var key = ID.npcKey
 	var index = real(ID.dialogueIndex)
 	
+	////	Condition checking response dialogue
+	if ID.object_index == response {
+		var keepArray = []
+		//	Loop through the responses dialogue
+		for(var i=0;i<array_length(ID.myDialogue[1]);i++) {
+			var keep = true
+			switch(key) {
+				case "respBrotherCoin":
+					//	Find quest LWO
+					var quest = questManager.find_quest(quests.spendFinalCoin)
+					
+					switch(i) {
+						//	Decided to keep it
+						case 0:
+							if !quest.keptCoin keep = false
+						break
+						//	Played street craps and made some money!
+						case 1:
+							if !quest.gambled or (quest.profited or quest.lostItAll) keep = false	
+						break
+						//	Here's a sandwich
+						case 2:
+							if !quest.boughtSandwich or !player.item_check(item.sandwich) keep = false
+						break
+						//	Listened to Sailor Pete
+						case 3:
+							if !quest.listenedToPete keep = false
+						break
+						//	...and I lost it all
+						case 4:
+							if !quest.lostItAll keep = false
+						break
+						//	Gambled and profited
+						case 5:
+							if !quest.profited keep = false
+						break
+						//	That's it
+						case 6:
+							if !quest._listenedToPete and !quest._boughtSandwich and !quest._gambled keep = false
+						break
+					}
+				break
+			}
+			keepArray[i] = keep
+		}
+		//	Loop through again and make a new myDialogue with only what we're keeping
+		var _myDialogue = [[]]
+		var _dialogueIndex = 0
+		for(var i=0;i<array_length(ID.myDialogue[1]);i++) {
+			if keepArray[i] {
+				//_myDialogue[_dialogueIndex, 0] = ID.myDialogue[i, 0]
+				//_myDialogue[_dialogueIndex, 1] = ID.myDialogue[i, 1]
+				//_myDialogue[_dialogueIndex, 2] = ID.myDialogue[i, 2]
+				_myDialogue[0, _dialogueIndex] = ID.myDialogue[0, i]
+				_myDialogue[1, _dialogueIndex] = ID.myDialogue[1, i]
+				_myDialogue[2, _dialogueIndex] = ID.myDialogue[2, i]
+				_dialogueIndex++
+			}
+		}
+		ID.responses = _myDialogue
+		ID.responseCount = array_length(responses[1])
+	}
+	////	Condition checking a textbox
+	else {
+	
+		switch(key) {
+			case "dicekid":
+				switch(index) {
+					//	Make sure the player has at least one coin
+					case 1:
+					case 5:
+					case 9:
+						//	Player does not have one coin
+						if player.gold < 1 {
+							ID.dialogueIndex = 13
+							debug.log("Player does not have enough money to gamble")
+						}
+					break
+				}
+			break
+			case "sailorPeteFinalCoin":
+				switch(index) {
+					case 3:
+						//	Player does not have one coin
+						if player.gold < 1 {
+							ID.dialogueIndex = 18
+							debug.log("Player does not have enough money to hear Petes tale")
+						}
+					break
+				}
+			break
+			case "vendorFinalCoin":
+				switch(index) {
+					case 2:
+						//	Player does not have one coin
+						if player.gold < 1 {
+							ID.dialogueIndex = 6
+							debug.log("Player does not have enough money to buy a sandwich")
+						}
+					break
+				}
+			break
+		}
+	}
+}
+	
+function condition_check_response(ID) {
+	var key = ID.npcKey
+	var oldIndex = ID.responseIndex
+	
+	//	Find this response in the myDialogue db
+	var index = -1
+	for(var i=0;i<array_length(ID.myDialogue[1]);i++) {
+		var Text = ID.myDialogue[1, i]
+		if Text == ID.responses[1, oldIndex] {
+			index = i
+			i = 500
+		}
+	}
+	
 	switch(key) {
-		case "dicekid":
+		case "respBrotherCoin":
+			//	Find quest LWO
+			var quest = questManager.find_quest(quests.spendFinalCoin)
 			switch(index) {
-				//	Make sure the player has at least one coin
+				//	Gambled
 				case 1:
-				case 5:
-				case 9:
-					//	Player does not have one coin
-					if player.gold < 1 {
-						ID.dialogueIndex = 13
-						debug.log("Player does not have enough money to gamble")
-					}
+					quest._gambled = true
 				break
-			}
-		break
-		case "sailorPeteFinalCoin":
-			switch(index) {
-				case 3:
-					//	Player does not have one coin
-					if player.gold < 1 {
-						ID.dialogueIndex = 18
-						debug.log("Player does not have enough money to hear Petes tale")
-					}
-				break
-			}
-		break
-		case "vendorFinalCoin":
-			switch(index) {
+				//	Sandwich
 				case 2:
-					//	Player does not have one coin
-					if player.gold < 1 {
-						ID.dialogueIndex = 6
-						debug.log("Player does not have enough money to buy a sandwich")
-					}
+					quest._boughtSandwich = true
+				break
+				//	Pete
+				case 3:
+					quest._listenedToPete = true
+				break
+				//	That's it
+				case 6:
+					//	End this dialogue
+					brotherFinalCoin.dialogueIndex = 11
+					instance_destroy()
 				break
 			}
 		break

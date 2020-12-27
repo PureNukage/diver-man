@@ -1,6 +1,8 @@
 questList = ds_list_create()
 questCount = -1
 
+finishedQuestList = ds_list_create()
+
 questNames = []
 questNames[quests.intro] = "Intro"
 questNames[quests.spendFinalCoin] = "The Last Coin"
@@ -22,6 +24,40 @@ function quest_check() {
 	}
 }
 
+function find_quest(quest_index) {
+	var quest = -1
+	
+	//	Check active quests first
+	quest = find_active_quest(quest_index)
+	
+	//	Check finished quests next
+	if quest == -1 quest = find_finished_quest(quest_index)
+	
+	//	Quest doesn't exist, lets make it
+	if quest == -1 {
+		add_quest(quest_index)
+		quest = find_active_quest(quest_index)
+	}
+	
+	return quest
+}
+
+function find_active_quest(quest_index) {
+	for(var i=0;i<questCount;i++) {
+		var Quest = questList[| i]
+		if Quest.index == quest_index return Quest
+	}
+	return -1
+}
+
+function find_finished_quest(quest_index) {
+	for(var i=0;i<ds_list_size(finishedQuestList);i++) {
+		var Quest = finishedQuestList[| i]
+		if Quest.index == quest_index return Quest
+	}
+	return -1
+}
+
 function add_quest(_quest_index) {
 	var Quest = new _add_quest(_quest_index)
 	ds_list_add(questList, Quest)
@@ -39,6 +75,8 @@ function _add_quest(_quest_index) constructor {
 }
 
 function _remove_quest(list_index) {
+	var Quest = questList[| list_index]
+	ds_list_add(finishedQuestList, Quest)
 	ds_list_delete(questList, list_index)
 	questCount = ds_list_size(questList)
 }

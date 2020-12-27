@@ -20,6 +20,7 @@ instance_create_layer(0,0,Layer,shadows)
 instance_create_layer(0,0,Layer,grid)
 instance_create_layer(0,0,Layer,gui)
 instance_create_layer(0,0,Layer,questManager)
+instance_create_layer(0,0,Layer,characterManager)
 instance_create_layer(0,0,Layer,game)
 
 function scale_canvas(new_width, new_height) {
