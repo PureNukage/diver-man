@@ -23,6 +23,117 @@ instance_create_layer(0,0,Layer,questManager)
 instance_create_layer(0,0,Layer,characterManager)
 instance_create_layer(0,0,Layer,game)
 
+function save_game(quick) {
+	debug.log("SAVING GAME")
+	ini_open("save.ini")
+	
+	////	Save settings
+	var section = "SETTINGS"
+	
+	ini_write_real(section,"sound",sound.volumeSound)
+	ini_write_real(section,"music",sound.volumeMusic)
+	
+	
+	if !quick {
+		////	Save databases
+		var section = "GAMEDATA"
+	
+		//var questListString = ds_list_write(questManager.questList)
+		//var finishedQuestListString = ds_list_write(questManager.finishedQuestList)
+		//var characterList = ds_list_write(characterManager.characterList)
+	
+		//ini_write_string(section,"questListString",questListString)
+		//ini_write_string(section,"finishedQuestListString",finishedQuestListString)
+		//ini_write_string(section,"characterList",characterList)
+		
+		//var questArray = []
+		//for(var i=0;i<ds_list_size(questManager.questList);i++) {
+		//	questArray[i] = questManager.questList[| i]	
+		//}
+		//var questListString = json_stringify(questArray)
+		
+		var questListString = encode_gamedata(questManager.questList)
+		var finishedQuestListString = encode_gamedata(questManager.finishedQuestList)
+		var characterList = encode_gamedata(characterManager.characterList)
+		
+		ini_write_string(section,"questListString",questListString)
+		ini_write_string(section,"finishedQuestListString",finishedQuestListString)
+		ini_write_string(section,"characterList",characterList)
+	}
+	
+	
+	if instance_exists(player) {
+		////	Save player stuff
+		var section = "PLAYER"
+	
+		ini_write_real(section,"suitOn",player.suitOn)
+		ini_write_real(section,"gold",player.gold)
+	
+		//var inventoryString = ds_list_write(player.inventory)
+		//ini_write_string(section,"inventoryString",inventoryString)
+		var inventoryString = encode_gamedata(player.inventory)
+		ini_write_string(section,"inventoryString",inventoryString)
+	}
+	
+	ini_close()
+}
+
+function load_game(quick) {
+	debug.log("LOADING GAME")
+	ini_open("save.ini")
+	
+	////	Save settings
+	var section = "SETTINGS"
+	
+	sound.volumeSound = ini_read_real(section,"sound",0.5)
+	sound.volumeMusic = ini_read_real(section,"music",0.5)
+	
+	if !quick {
+		////	Save databases
+		var section = "GAMEDATA"
+	
+		var questListString = ini_read_string(section,"questListString",0)
+		var finishedQuestListString = ini_read_string(section,"finishedQuestListString",0)
+		var characterListString = ini_read_string(section,"characterList",0)
+		
+		if is_string(questListString) {
+			//ds_list_read(questManager.questList, questListString)
+			decode_gamedata(questManager.questList, questListString)
+		}
+		else debug.log("ERROR LOADING Can't read questManager.questList string")
+		
+		if is_string(finishedQuestListString) {
+			//ds_list_read(questManager.finishedQuestList, finishedQuestListString)
+			decode_gamedata(questManager.finishedQuestList, finishedQuestListString)
+		} else debug.log("ERROR LOADING Can't read questManager.finishedQuestList string")
+		
+		if is_string(characterListString) {
+			//ds_list_read(characterManager.characterList, characterListString)
+			decode_gamedata(characterManager.characterList, characterListString)
+		} else debug.log("ERROR LOADING Can't read characterManager.characterList string")
+		
+	}
+	
+	
+	if instance_exists(player) {
+		////	Save player stuff
+		var section = "PLAYER"
+	
+		player.suitOn = ini_read_real(section,"suitOn",0)
+		player.gold = ini_read_real(section,"gold",0)
+	
+		var inventoryString = ini_read_string(section,"inventoryString",0)
+	
+		if is_string(inventoryString) {
+			//ds_list_read(player.inventory,inventoryString)
+			decode_gamedata(player.inventory, inventoryString)
+		} else debug.log("ERROR LOADING Can't read player.inventory string")
+	}
+	
+	
+	ini_close()
+}
+
 function scale_canvas(new_width, new_height) {
 	window_set_size(new_width, new_height)
 	
@@ -152,6 +263,8 @@ function roomTransition(Room, Speed) {
 	roomTransitionStage = 0
 	
 	depth = -2000
+	
+	app.save_game(true)
 }
 
 function roomTransitioning() {
@@ -213,6 +326,7 @@ function roomTransitioning() {
 			if roomTransitionTimer > -1 roomTransitionTimer--
 			else {
 				roomTransitionStage = 2
+				app.load_game(true)
 			}
 		break
 		//	New room

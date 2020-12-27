@@ -31,8 +31,8 @@ respBrotherCoin,3,Here's a sandwich.,
 respBrotherCoin,6,Listened to Sailor Petes tale about losing his leg.,
 respBrotherCoin,10,...I gambled and I lost it all.,
 respBrotherCoin,9,Played street craps and flipped the coin into profit.,
-respBrotherCoin,-11,That's it.,
-brotherFinalCoin,-11,Smart. We may need it.,s_brother_face
+respBrotherCoin,11,That's it.,
+brotherFinalCoin,11,Smart. We may need it.,s_brother_face
 brotherFinalCoin,respBrotherCoin,Nice!,s_brother_face
 brotherFinalCoin,4,Oh wow! And It's my favorite. ,s_brother_face
 brotherFinalCoin,5,*munch munch munch*,s_brother_face
@@ -40,8 +40,9 @@ brotherFinalCoin,respBrotherCoin,Thanks!,s_brother_face
 brotherFinalCoin,respBrotherPeteTale,How'd he lose it? Was it a shark like I guessed?,s_brother_face
 brotherFinalCoin,8,Davey Jones! Ha!,s_brother_face
 brotherFinalCoin,respBrotherCoin,Well that's one mystery solved.,s_brother_face
-brotherFinalCoin,-11,An investment for later? Ok I'm trusting you.,s_brother_face
-brotherFinalCoin,-11,Oh.,s_brother_face
+brotherFinalCoin,11,An investment for later? Ok I'm trusting you.,s_brother_face
+brotherFinalCoin,11,Oh.,s_brother_face
+brotherFinalCoin,-12,What a day.,s_brother_face
 respBrotherPeteTale,8,His battleship sunk in a storm.,
 respBrotherPeteTale,7,He says Davey Jones sunk the battleship he was on.,
 brotherNightChat,respNightChat,Do you have a plan for us?,s_brother_face

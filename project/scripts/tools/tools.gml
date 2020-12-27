@@ -326,7 +326,7 @@ function condition_check_dialogue(ID) {
 						break
 						//	Here's a sandwich
 						case 2:
-							if !quest.boughtSandwich or !player.item_check(item.sandwich) keep = false
+							if !quest.boughtSandwich or player.item_check(item.sandwich) == -1 keep = false
 						break
 						//	Listened to Sailor Pete
 						case 3:
@@ -364,7 +364,7 @@ function condition_check_dialogue(ID) {
 			}
 		}
 		ID.responses = _myDialogue
-		ID.responseCount = array_length(responses[1])
+		ID.responseCount = array_length(responses[0])
 	}
 	////	Condition checking a textbox
 	else {
@@ -436,6 +436,7 @@ function condition_check_response(ID) {
 				//	Sandwich
 				case 2:
 					quest._boughtSandwich = true
+					player.remove_item(player.item_check(item.sandwich))
 				break
 				//	Pete
 				case 3:
@@ -523,4 +524,29 @@ function create_textbox(ID, text) {
 	var Textbox = instance_create_layer(0,0,"Instances",textbox)
 	Textbox.ID = ID
 	Textbox.text = text
+}
+	
+function encode_gamedata(list_index) {
+	var array = []
+	for(var i=0;i<ds_list_size(list_index);i++) {
+		array[i] = list_index[| i]	
+	}
+	var String = json_stringify(array)
+	var list = ds_list_create()
+	ds_list_add(list,String)
+	var finalString = ds_list_write(list)
+	ds_list_destroy(list)
+	return finalString
+}
+
+function decode_gamedata(list_index, String) {
+	var list = ds_list_create()
+	ds_list_read(list, String)
+	var finalString = list[| 0]
+	ds_list_destroy(list)
+	
+	var array = json_parse(finalString)
+	for(var i=0;i<array_length(array);i++) {
+		list_index[| i] = array[i]
+	}
 }

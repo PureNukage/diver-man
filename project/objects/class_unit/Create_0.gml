@@ -712,6 +712,11 @@ function create_item(item_index) {
 	ds_list_add(inventory, Item)
 }
 
+function remove_item(item_list_index) {
+	if item_list_index > -1 ds_list_delete(inventory, item_list_index)
+	else debug.log("ERROR Trying to remove -1 item from inventory")
+}
+
 function item_check(item_index) {
 	for(var i=0;i<ds_list_size(inventory);i++) {
 		var Item = inventory[| i]
