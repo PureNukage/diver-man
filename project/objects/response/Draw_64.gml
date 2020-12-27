@@ -27,7 +27,7 @@ for(var i=0;i<ResponseCount;i++) {
 }
 
 var xx = display_get_gui_width()/2 - width/2
-var yy = display_get_gui_height()/2
+var yy = display_get_gui_height() - (ResponseCount*(height+10))
 for(var i=0;i<ResponseCount;i++) {
 	
 	var slice_index = s_parchment_dark_9slice

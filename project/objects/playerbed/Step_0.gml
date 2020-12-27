@@ -3,7 +3,7 @@ event_inherited()
 if filled and interactable interactable = false
 
 if interactable {
-	if input.keyInteract and !filled { 
+	if input.keyInteract and !filled and !instance_exists(brotherFinalCoin) { 
 		filled = true
 		player.muted = true
 		

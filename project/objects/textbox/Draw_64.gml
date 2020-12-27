@@ -4,7 +4,7 @@ draw_set_font(font_dialogue)
 var width = string_width(text) + widthSpacer*2
 //if width > 558 width = 558
 width = 558
-var height = string_height(text) + heightSpacer*2
+var height = string_height_ext(text,string_height(text),width-(widthSpacer*2)) + heightSpacer*2
 var xx = display_get_gui_width()/2 - width/2
 var yy = display_get_gui_height() - height - heightSpacer
 
