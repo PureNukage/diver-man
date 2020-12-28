@@ -104,6 +104,8 @@ function load_game(quick) {
 			decode_gamedata(characterManager.characterList, characterListString)
 		} else debug.log("ERROR LOADING Can't read characterManager.characterList string")
 		
+		gui.drawGold = true
+		
 	}
 	
 	////	Load player stuff
