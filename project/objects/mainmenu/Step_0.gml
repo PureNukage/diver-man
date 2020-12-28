@@ -41,10 +41,6 @@ switch(menu) {
 						////	Check if we have one
 						ini_open("save.ini")
 						var saved = ini_read_real("SETTINGS","saved",0)
-						if !saved {
-							draw_set_alpha(0.2)	
-						}
-						else draw_set_alpha(0.5)
 						
 						if saved and pressed {
 							app.load_game(false)	
@@ -60,9 +56,14 @@ switch(menu) {
 						}
 					break
 				}
-	
+
 				if menuIndex == i draw_set_alpha(0.95)
 				else draw_set_alpha(0.8)
+				
+				if i == 1 and !saved {
+					draw_set_alpha(0.5)
+					if menuIndex == i draw_set_alpha(0.95)
+				}
 	
 				draw_text(xx,yy,text)
 				yy += 64
