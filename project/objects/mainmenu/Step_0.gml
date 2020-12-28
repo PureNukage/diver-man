@@ -30,13 +30,25 @@ switch(menu) {
 					case 0:
 						text = "New Game"
 						if pressed {
-							room_goto(RoomCityHub)
+							room_goto(RoomIntro)
 							app.cameraRefresh = true
 						}
 					break
 					//	Load game
 					case 1:
 						text = "Load Game"
+						
+						////	Check if we have one
+						ini_open("save.ini")
+						var saved = ini_read_real("SETTINGS","saved",0)
+						if !saved {
+							draw_set_alpha(0.2)	
+						}
+						else draw_set_alpha(0.5)
+						
+						if saved and pressed {
+							app.load_game(false)	
+						}
 
 					break
 					//	Settings

@@ -509,7 +509,7 @@ function draw_nine_tile(slice_index, width, height, xx, yy, _string) {
 	draw_set_color(c_black)
 	draw_set_halign(fa_center)
 	draw_set_valign(fa_middle)
-	draw_text_ext(xx+(tilesWidth*pixels)/2, yy+(tilesHeight*pixels)/2, _string, string_height(_string), width-(pixels))
+	draw_text_ext(xx+(tilesWidth*pixels)/2, yy+(tilesHeight*pixels)/2, _string, string_height(_string), width)
 }
 	
 function create_particle(Sprite_index, Particles, x, y) {
