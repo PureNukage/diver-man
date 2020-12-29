@@ -210,6 +210,41 @@ function cameraSetup() {
 		default_zoom_height = camera_get_view_height(camera)
 
 }
+	
+function cameraFix() {
+	#region Views
+
+		view_enabled = true
+		view_visible[0] = true
+
+		view_set_visible(0,true)
+
+		view_set_wport(0,width)
+		view_set_hport(0,height)
+
+	#endregion
+	#region Camera Create
+
+		camera = camera_create()
+
+		var viewmat = matrix_build_lookat(width,height,-10,width,height,0,0,1,0)
+		var projmat = matrix_build_projection_ortho(width,height,1.0,32000.0)
+
+		camera_set_view_mat(camera,viewmat)
+		camera_set_proj_mat(camera,projmat)
+	
+		camera_set_view_pos(camera,x,y)
+		camera_set_view_size(camera,width,height)
+	
+		camera_set_view_speed(camera,200,200)
+		camera_set_view_border(camera,width,height)
+	
+		camera_set_view_target(camera,id)
+
+		view_camera[0] = camera
+
+	#endregion
+}
 
 cameraFocusOnPlayer = true
 cameraFocusX = x

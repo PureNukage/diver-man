@@ -14,7 +14,7 @@ if !cameraFocusOnPlayer {
 if cameraRefresh {
 	water.check_room_underwater()
 	cameraRefresh = false
-	cameraSetup()
+	cameraFix()
 	grid.mpGrid_build()
 	shadows.generate_map()
 	water.generate_caustic_map()
@@ -22,7 +22,6 @@ if cameraRefresh {
 	surface_free(water.causticSurface)
 	surface_free(water.causticSurfaceOriginal)
 	surface_free(lighting.surface)
-	window_center()
 	if instance_exists(player) and cameraFocusOnPlayer {
 		x = player.x
 		y = player.y-player.z-32

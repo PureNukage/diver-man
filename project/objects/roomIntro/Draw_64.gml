@@ -56,6 +56,9 @@ else {
 			
 			layer_background_sprite(layer_background_get_id(layer_get_id("Background")), sprite)
 			
+			var Object = instance_create_layer(0,0,"Instances",roomIntroSurface)
+			Object.surfaceBuffer = buffer_create(720*768*4,buffer_grow,1)
+			buffer_get_surface(Object.surfaceBuffer,surface,0)
 			surface_free(surface)
 			
 			createdBackground = true
@@ -64,12 +67,12 @@ else {
 		//	City background
 		if brotherFadeIn >= 100 {
 			if backgroundFadeOut > 0 backgroundFadeOut--
-			//draw_sprite_ext(s_city_background, 0, 0,0, 2,2,0,image_blend, backgroundFadeIn/100)
 			
 			if backgroundFadeOut <= 0 {
 				room_goto(RoomCity)
 				app.cameraRefresh = true
 				app.canvasX = layer_get_x("Background")
+				destroy = true
 			}
 		}
 		

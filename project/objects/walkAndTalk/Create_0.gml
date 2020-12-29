@@ -14,4 +14,10 @@ npcKey = "intro"
 dialogueIndex = -1
 
 load_dialogue()
-var Break = 0
+
+playerShadow = instance_create_layer(x,y,"Instances",player)
+playerShadow.image_alpha = -1
+playerShadow.canMove = false
+
+brotherShadow = instance_create_layer(x+96+gap,y,"Instances",brother)
+brotherShadow.image_alpha = -1

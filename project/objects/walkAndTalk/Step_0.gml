@@ -1,4 +1,6 @@
 if destroy {
+	instance_destroy(brotherShadow)
+	instance_destroy(playerShadow)
 	instance_destroy()
 	exit
 }
@@ -52,13 +54,21 @@ else if stage == 1 {
 		player.canMove = false
 		instance_create_layer(x+96+gap,y,"Instances",brother)
 		destroy = true
-		app.roomTransition(RoomCityHub, 5)
+		room_goto(RoomCityHub)
+		roomIntroSurface.surfaceX = layer_get_x("Background")
+		roomIntroSurface.brotherX = x+96+gap
+		roomIntroSurface.brotherY = y
+		app.cameraRefresh = true
 		exit
 	}
 }
 
-if instance_exists(player) {
-	player.muted = true
-	player.x = x
-	player.y = y
+//if instance_exists(player) with player {
+//	player.muted = true
+//	player.x = x
+//	player.y = y
+//}
+
+if instance_exists(brotherShadow) {
+	brotherShadow.x = x + 96 + gap	
 }
