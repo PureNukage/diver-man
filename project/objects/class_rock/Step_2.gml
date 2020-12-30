@@ -1,0 +1,1 @@
+heightMap.drawSurface = true

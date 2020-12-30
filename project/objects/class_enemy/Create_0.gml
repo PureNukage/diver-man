@@ -2,12 +2,8 @@ event_inherited()
 
 attemptingToMove = 0
 
-path = path_add()
-pos = 1
-xGoto = -1
-yGoto = -1
 state = state.free
-timer = -1
+
 
 function idlewalk() {
 	//	Find goal

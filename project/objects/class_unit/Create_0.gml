@@ -33,6 +33,11 @@ interactCD = -1
 drawShadow = true
 drawUnit = true
 depth = -y
+path = path_add()
+pos = 1
+xGoto = -1
+yGoto = -1
+timer = -1
 
 madeFootprint = false
 
@@ -258,8 +263,8 @@ function changeMap(Map) {
 
 function applyMovement() {
 	
-	var subX = abs(xx) - abs(floor(xx))
-	var subY = abs(yy) - abs(floor(yy))
+	var subX = (abs(xx) - floor(abs(xx))) * sign(xx)
+	var subY = (abs(yy) - floor(abs(yy))) * sign(yy)
 	
 	for(var X=0;X<abs(xx);X++) {
 		//	Not colliding with collision
@@ -466,6 +471,12 @@ function applyMovement() {
 			}
 		}	
 	}
+		
+	
+	debug.log("xx: "+string(floor(abs(xx))))
+	debug.log("yy: "+string(floor(abs(yy))))
+	debug.log("subX: "+string(subX))
+	debug.log("subY: "+string(subY))
 	
 	
 	xx = 0

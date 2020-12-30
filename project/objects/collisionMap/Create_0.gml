@@ -12,6 +12,7 @@ drawSurface = false
 depth = -1
 
 sand = false
+rock = -1
 
 arrayNearbyMaps = []
 foundNearbyMaps = false
@@ -76,7 +77,8 @@ function createSurface() {
 	var LayerID = layer_get_id(layerString)
 	var tileLayerID = layer_tilemap_get_id(LayerID)
 	
-	draw_tilemap(tileLayerID, 0,0)
+	if rock == -1 draw_tilemap(tileLayerID, 0,0)
+	else draw_sprite(rock.sprite_index,rock.image_index,rock.x,rock.y)
 	
 	surface_reset_target()
 	
@@ -86,6 +88,7 @@ function createSurface() {
 	
 	var width = surface_get_width(finalSurface)
 	var height = surface_get_height(finalSurface)
+	
 	
 	if buffer_exists(surfaceBuffer) buffer_delete(surfaceBuffer)
 	
