@@ -68,8 +68,8 @@
     {"visible":true,"isLocked":false,"blendMode":0,"opacity":100.0,"displayName":"default","resourceVersion":"1.0","name":"1d259dfc-56b2-48e4-bc7c-23317bfcf3ea","tags":[],"resourceType":"GMImageLayer",},
   ],
   "parent": {
-    "name": "Art",
-    "path": "folders/Art.yy",
+    "name": "rocks",
+    "path": "folders/Art/rocks.yy",
   },
   "resourceVersion": "1.0",
   "name": "s_rock_small_moss",

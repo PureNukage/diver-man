@@ -473,10 +473,10 @@ function applyMovement() {
 	}
 		
 	
-	debug.log("xx: "+string(floor(abs(xx))))
-	debug.log("yy: "+string(floor(abs(yy))))
-	debug.log("subX: "+string(subX))
-	debug.log("subY: "+string(subY))
+	//debug.log("xx: "+string(floor(abs(xx))))
+	//debug.log("yy: "+string(floor(abs(yy))))
+	//debug.log("subX: "+string(subX))
+	//debug.log("subY: "+string(subY))
 	
 	
 	xx = 0

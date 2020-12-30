@@ -68,8 +68,8 @@
     {"visible":true,"isLocked":false,"blendMode":0,"opacity":100.0,"displayName":"default","resourceVersion":"1.0","name":"a121695f-7ab2-441c-b342-7309a06368b1","tags":[],"resourceType":"GMImageLayer",},
   ],
   "parent": {
-    "name": "Art",
-    "path": "folders/Art.yy",
+    "name": "rocks",
+    "path": "folders/Art/rocks.yy",
   },
   "resourceVersion": "1.0",
   "name": "s_rock_medium_coral",

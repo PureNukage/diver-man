@@ -78,7 +78,7 @@ function createSurface() {
 	var tileLayerID = layer_tilemap_get_id(LayerID)
 	
 	if rock == -1 draw_tilemap(tileLayerID, 0,0)
-	else draw_sprite(rock.sprite_index,rock.image_index,rock.x,rock.y)
+	else with rock draw_self()
 	
 	surface_reset_target()
 	

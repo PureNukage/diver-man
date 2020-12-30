@@ -26,6 +26,15 @@ if on {
 		
 		draw_set_color(c_aqua)
 		draw_rectangle(x-32,groundY-2,x+32,groundY+2,false)
+		
+		////	Draw attack hitbox
+		if state == state.attack {
+			var x1 = x - sprite_get_xoffset(sprite_index) + sprite_get_bbox_left(sprite_index)
+			var y1 = y - sprite_get_yoffset(sprite_index) + sprite_get_bbox_top(sprite_index)
+			var x2 = x1 + sprite_get_bbox_right(sprite_index) - sprite_get_bbox_left(sprite_index)
+			var y2 = y1 + sprite_get_bbox_bottom(sprite_index) - sprite_get_bbox_top(sprite_index)
+			draw_rectangle(x1,y1, x2,y2, false)	
+		}
 	}
 	
 	//	Draw rock collisionMaps
