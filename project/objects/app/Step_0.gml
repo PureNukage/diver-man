@@ -12,6 +12,7 @@ if !cameraFocusOnPlayer {
 }
 
 if cameraRefresh {
+	water.check_room_underwater()
 	cameraRefresh = false
 	cameraFix()
 	grid.mpGrid_build()

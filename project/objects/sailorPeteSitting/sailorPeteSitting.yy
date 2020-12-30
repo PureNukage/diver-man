@@ -1,7 +1,7 @@
 {
   "spriteId": {
-    "name": "s_sailor_pete_sitting",
-    "path": "sprites/s_sailor_pete_sitting/s_sailor_pete_sitting.yy",
+    "name": "s_sailor_pete",
+    "path": "sprites/s_sailor_pete/s_sailor_pete.yy",
   },
   "solid": false,
   "visible": true,

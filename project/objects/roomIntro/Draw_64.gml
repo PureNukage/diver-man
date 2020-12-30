@@ -80,11 +80,11 @@ else {
 		
 		//	Start fading in the city scene
 		if playerFadeIn < 100 playerFadeIn++
-		draw_sprite_ext(s_kid_player,image_index, xx,yy+adjustY, 1,1,0, image_blend,playerFadeIn/100)
+		draw_sprite_ext(s_kid_player,playerShadow.image_index, xx,yy+adjustY, 1,1,0, image_blend,playerFadeIn/100)
 		
 		if playerFadeIn >= 100 {
 			if brotherFadeIn < 100 brotherFadeIn++
-			draw_sprite_ext(s_kid_crutch,image_index, xx+96,yy+adjustY, 1,1,0, image_blend,brotherFadeIn/100)
+			draw_sprite_ext(s_kid_crutch,brotherShadow.image_index, xx+96,yy+adjustY, 1,1,0, image_blend,brotherFadeIn/100)
 
 		}
 		
