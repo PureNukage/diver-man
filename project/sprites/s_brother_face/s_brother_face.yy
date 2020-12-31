@@ -8,14 +8,14 @@
   "collisionTolerance": 0,
   "swfPrecision": 2.525,
   "bbox_left": 0,
-  "bbox_right": 20,
+  "bbox_right": 24,
   "bbox_top": 0,
-  "bbox_bottom": 20,
+  "bbox_bottom": 24,
   "HTile": false,
   "VTile": false,
   "For3D": false,
-  "width": 21,
-  "height": 21,
+  "width": 25,
+  "height": 25,
   "textureGroupId": {
     "name": "Default",
     "path": "texturegroups/Default",
@@ -24,15 +24,15 @@
   "gridX": 0,
   "gridY": 0,
   "frames": [
-    {"compositeImage":{"FrameId":{"name":"96790f3d-be7a-4ed1-8458-982c37bbe917","path":"sprites/s_brother_face/s_brother_face.yy",},"LayerId":null,"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMSpriteBitmap",},"images":[
-        {"FrameId":{"name":"96790f3d-be7a-4ed1-8458-982c37bbe917","path":"sprites/s_brother_face/s_brother_face.yy",},"LayerId":{"name":"f812fa23-fb11-449f-ae46-606124cec996","path":"sprites/s_brother_face/s_brother_face.yy",},"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMSpriteBitmap",},
-      ],"parent":{"name":"s_brother_face","path":"sprites/s_brother_face/s_brother_face.yy",},"resourceVersion":"1.0","name":"96790f3d-be7a-4ed1-8458-982c37bbe917","tags":[],"resourceType":"GMSpriteFrame",},
+    {"compositeImage":{"FrameId":{"name":"295a1d7e-5095-46cb-b772-390a76ab7ab2","path":"sprites/s_brother_face/s_brother_face.yy",},"LayerId":null,"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMSpriteBitmap",},"images":[
+        {"FrameId":{"name":"295a1d7e-5095-46cb-b772-390a76ab7ab2","path":"sprites/s_brother_face/s_brother_face.yy",},"LayerId":{"name":"39a5d25b-740d-4557-bb91-9a7d2e688493","path":"sprites/s_brother_face/s_brother_face.yy",},"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMSpriteBitmap",},
+      ],"parent":{"name":"s_brother_face","path":"sprites/s_brother_face/s_brother_face.yy",},"resourceVersion":"1.0","name":"295a1d7e-5095-46cb-b772-390a76ab7ab2","tags":[],"resourceType":"GMSpriteFrame",},
   ],
   "sequence": {
     "spriteId": {"name":"s_brother_face","path":"sprites/s_brother_face/s_brother_face.yy",},
     "timeUnits": 1,
     "playback": 1,
-    "playbackSpeed": 30.0,
+    "playbackSpeed": 8.0,
     "playbackSpeedType": 0,
     "autoRecord": true,
     "volume": 1.0,
@@ -41,7 +41,7 @@
     "moments": {"Keyframes":[],"resourceVersion":"1.0","resourceType":"KeyframeStore<MomentsEventKeyframe>",},
     "tracks": [
       {"name":"frames","spriteId":null,"keyframes":{"Keyframes":[
-            {"id":"fd1cad60-e4ba-46da-a5be-53f046972f55","Key":0.0,"Length":1.0,"Stretch":false,"Disabled":false,"IsCreationKey":false,"Channels":{"0":{"Id":{"name":"96790f3d-be7a-4ed1-8458-982c37bbe917","path":"sprites/s_brother_face/s_brother_face.yy",},"resourceVersion":"1.0","resourceType":"SpriteFrameKeyframe",},},"resourceVersion":"1.0","resourceType":"Keyframe<SpriteFrameKeyframe>",},
+            {"id":"0b906334-4be1-4544-ab61-704e0024d8d7","Key":0.0,"Length":1.0,"Stretch":false,"Disabled":false,"IsCreationKey":false,"Channels":{"0":{"Id":{"name":"295a1d7e-5095-46cb-b772-390a76ab7ab2","path":"sprites/s_brother_face/s_brother_face.yy",},"resourceVersion":"1.0","resourceType":"SpriteFrameKeyframe",},},"resourceVersion":"1.0","resourceType":"Keyframe<SpriteFrameKeyframe>",},
           ],"resourceVersion":"1.0","resourceType":"KeyframeStore<SpriteFrameKeyframe>",},"trackColour":0,"inheritsTrackColour":true,"builtinName":0,"traits":0,"interpolation":1,"tracks":[],"events":[],"modifiers":[],"isCreationTrack":false,"resourceVersion":"1.0","tags":[],"resourceType":"GMSpriteFramesTrack",},
     ],
     "visibleRange": null,
@@ -65,7 +65,7 @@
     "resourceType": "GMSequence",
   },
   "layers": [
-    {"visible":true,"isLocked":false,"blendMode":0,"opacity":100.0,"displayName":"default","resourceVersion":"1.0","name":"f812fa23-fb11-449f-ae46-606124cec996","tags":[],"resourceType":"GMImageLayer",},
+    {"visible":true,"isLocked":false,"blendMode":0,"opacity":100.0,"displayName":"default","resourceVersion":"1.0","name":"39a5d25b-740d-4557-bb91-9a7d2e688493","tags":[],"resourceType":"GMImageLayer",},
   ],
   "parent": {
     "name": "character faces",

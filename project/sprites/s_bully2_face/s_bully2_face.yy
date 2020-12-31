@@ -8,14 +8,14 @@
   "collisionTolerance": 0,
   "swfPrecision": 2.525,
   "bbox_left": 0,
-  "bbox_right": 27,
+  "bbox_right": 22,
   "bbox_top": 0,
-  "bbox_bottom": 25,
+  "bbox_bottom": 24,
   "HTile": false,
   "VTile": false,
   "For3D": false,
-  "width": 28,
-  "height": 26,
+  "width": 23,
+  "height": 25,
   "textureGroupId": {
     "name": "Default",
     "path": "texturegroups/Default",
@@ -24,15 +24,15 @@
   "gridX": 0,
   "gridY": 0,
   "frames": [
-    {"compositeImage":{"FrameId":{"name":"97b65355-656f-4e26-a6bb-3be6c678d179","path":"sprites/s_bully2_face/s_bully2_face.yy",},"LayerId":null,"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMSpriteBitmap",},"images":[
-        {"FrameId":{"name":"97b65355-656f-4e26-a6bb-3be6c678d179","path":"sprites/s_bully2_face/s_bully2_face.yy",},"LayerId":{"name":"4d2451a9-1f80-4d3f-9fbb-80b18e815f1e","path":"sprites/s_bully2_face/s_bully2_face.yy",},"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMSpriteBitmap",},
-      ],"parent":{"name":"s_bully2_face","path":"sprites/s_bully2_face/s_bully2_face.yy",},"resourceVersion":"1.0","name":"97b65355-656f-4e26-a6bb-3be6c678d179","tags":[],"resourceType":"GMSpriteFrame",},
+    {"compositeImage":{"FrameId":{"name":"3e732f56-13b7-4256-a149-8e2fe2458292","path":"sprites/s_bully2_face/s_bully2_face.yy",},"LayerId":null,"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMSpriteBitmap",},"images":[
+        {"FrameId":{"name":"3e732f56-13b7-4256-a149-8e2fe2458292","path":"sprites/s_bully2_face/s_bully2_face.yy",},"LayerId":{"name":"be2b3fc5-367e-4c7e-ba41-922d6e2d4d56","path":"sprites/s_bully2_face/s_bully2_face.yy",},"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMSpriteBitmap",},
+      ],"parent":{"name":"s_bully2_face","path":"sprites/s_bully2_face/s_bully2_face.yy",},"resourceVersion":"1.0","name":"3e732f56-13b7-4256-a149-8e2fe2458292","tags":[],"resourceType":"GMSpriteFrame",},
   ],
   "sequence": {
     "spriteId": {"name":"s_bully2_face","path":"sprites/s_bully2_face/s_bully2_face.yy",},
     "timeUnits": 1,
     "playback": 1,
-    "playbackSpeed": 30.0,
+    "playbackSpeed": 10.0,
     "playbackSpeedType": 0,
     "autoRecord": true,
     "volume": 1.0,
@@ -41,7 +41,7 @@
     "moments": {"Keyframes":[],"resourceVersion":"1.0","resourceType":"KeyframeStore<MomentsEventKeyframe>",},
     "tracks": [
       {"name":"frames","spriteId":null,"keyframes":{"Keyframes":[
-            {"id":"e8eacbbe-df1e-4bf4-a7be-23d86ccb67dd","Key":0.0,"Length":1.0,"Stretch":false,"Disabled":false,"IsCreationKey":false,"Channels":{"0":{"Id":{"name":"97b65355-656f-4e26-a6bb-3be6c678d179","path":"sprites/s_bully2_face/s_bully2_face.yy",},"resourceVersion":"1.0","resourceType":"SpriteFrameKeyframe",},},"resourceVersion":"1.0","resourceType":"Keyframe<SpriteFrameKeyframe>",},
+            {"id":"19f56299-3781-45fe-90c4-fea8603fda22","Key":0.0,"Length":1.0,"Stretch":false,"Disabled":false,"IsCreationKey":false,"Channels":{"0":{"Id":{"name":"3e732f56-13b7-4256-a149-8e2fe2458292","path":"sprites/s_bully2_face/s_bully2_face.yy",},"resourceVersion":"1.0","resourceType":"SpriteFrameKeyframe",},},"resourceVersion":"1.0","resourceType":"Keyframe<SpriteFrameKeyframe>",},
           ],"resourceVersion":"1.0","resourceType":"KeyframeStore<SpriteFrameKeyframe>",},"trackColour":0,"inheritsTrackColour":true,"builtinName":0,"traits":0,"interpolation":1,"tracks":[],"events":[],"modifiers":[],"isCreationTrack":false,"resourceVersion":"1.0","tags":[],"resourceType":"GMSpriteFramesTrack",},
     ],
     "visibleRange": null,
@@ -65,7 +65,7 @@
     "resourceType": "GMSequence",
   },
   "layers": [
-    {"visible":true,"isLocked":false,"blendMode":0,"opacity":100.0,"displayName":"default","resourceVersion":"1.0","name":"4d2451a9-1f80-4d3f-9fbb-80b18e815f1e","tags":[],"resourceType":"GMImageLayer",},
+    {"visible":true,"isLocked":false,"blendMode":0,"opacity":100.0,"displayName":"default","resourceVersion":"1.0","name":"be2b3fc5-367e-4c7e-ba41-922d6e2d4d56","tags":[],"resourceType":"GMImageLayer",},
   ],
   "parent": {
     "name": "character faces",

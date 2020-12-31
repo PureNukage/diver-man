@@ -12,6 +12,6 @@ draw_nine_tile(s_parchment_9slice, width, height, xx, yy, string(string_copy(tex
 
 var scale = 5
 var sprite = ID.myDialogue[2, ID.dialogueIndex]
-draw_sprite_ext(sprite,0, xx-sprite_get_width(sprite)*scale/4,yy-sprite_get_height(sprite)*scale/2, scale,scale, 0,c_white,1)
+draw_sprite_ext(sprite,0, xx,yy-sprite_get_height(sprite)*scale, scale,scale, 0,c_white,1)
 
 draw_reset()
