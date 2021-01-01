@@ -52,12 +52,12 @@ if cameraRefresh {
 }
 
 if newRoom {
-	//	Regen the static shade units
-	if instance_exists(class_unit) with class_unit if shadeStatic {
-		if surface_exists(shadeSurface) surface_free(shadeSurface)
-		if buffer_exists(shadeBuffer) buffer_delete(shadeBuffer)
-	}
-	newRoom = false
+	////	Regen the static shade units
+	//if instance_exists(class_unit) with class_unit if shadeStatic {
+	//	if surface_exists(shadeSurface) surface_free(shadeSurface)
+	//	if buffer_exists(shadeBuffer) buffer_delete(shadeBuffer)
+	//}
+	//newRoom = false
 }
 
 var viewportID = layer_get_id("Viewport")

@@ -8,6 +8,7 @@ suitOn = false
 gold = 1
 
 newRoom = false
+roomPrevious = -1
 
 var Layer = "Instances"
 instance_create_layer(0,0,Layer,input)
@@ -366,9 +367,9 @@ function roomTransitioning() {
 		
 			if roomTransitionTimer > -1 roomTransitionTimer--
 			else {
-				//if roomTransitionFrom != RoomMainMenu app.save_game(false)
 				roomTransitionStage = 2
 				app.load_game(true)
+				scene_loader()
 				if roomTransitionFrom != RoomMainMenu app.save_game(false)
 			}
 		break
@@ -504,6 +505,9 @@ function scene_loader() {
 					switch(Quest.index) {
 						//	Bullies are throwing watch off the dock
 						case quests.streetDance:
+						
+							suitPile.interactibility = false // deact suit
+							cage.interactibility = false	 // deact cage
 							
 							instance_create_layer(0,0,Layer,bullysTossWatch)
 						
@@ -513,6 +517,39 @@ function scene_loader() {
 							bully2.image_xscale = -1
 							var bully1 = instance_create_layer(1296,384,Layer,bully1Watch)
 							bully1.image_xscale = -1
+							
+							//	Replace room change with collision
+							collisionRoomChange.replace_with_collision()
+							
+						break
+						//	
+						case quests.watch:
+							if roomPrevious == Room1 {
+								
+								//	Use the cage
+								cage.y += 360
+								cage.lowered = true
+								cage.inUse = true
+								cage.liftDirection = up
+								cage.filled = true
+								
+								//	We left the underwater without finding the watch
+								if player.item_check(item.watch) == -1 {
+									var Pete = instance_create_layer(400,432,Layer,sailorPeteGotSuit)
+									Pete.stage = 1
+									Pete.dialogueIndex++
+									
+									var Brother = instance_create_layer(754,360,Layer,brotherGotSuit)
+									Brother.image_xscale = -1
+								}
+								//	We have the watch!
+								else {
+									var Brother = instance_create_layer(768,352,Layer,brotherGivingWatch)
+								}
+								
+								//	Replace room change with collision
+								collisionRoomChange.replace_with_collision()
+							}
 							
 						break
 					}

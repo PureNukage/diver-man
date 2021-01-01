@@ -29,8 +29,8 @@ function lift(up_or_down) {
 			
 			if app.underwater {
 				if z >= 100 and app.roomTransitionTo == -1 {
-					var Room = questManager2.roomSurface
-					if Room == -1 Room = RoomDock
+					var Room = RoomDocks
+					if Room == -1 Room = RoomDocks
 					app.roomTransition(Room, 5)
 				}
 				
@@ -55,6 +55,16 @@ function lift(up_or_down) {
 		debug.log("Cage has been lifted")	
 		inUse = false
 		lowered = false
+		
+		liftDirection = down
+		
+		player.canMove = true
+		player.muted = false
+		player.groundY -= 32
+		player.y -= 32
+		
+		z = 0
+		y -= 360
 		
 		//liftDirection = down
 		//room_goto(RoomMainMenu)

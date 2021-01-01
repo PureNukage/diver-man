@@ -7,4 +7,4 @@ if interactable {
 	}
 }
 
-depth = -y
+//depth = -(y+32)

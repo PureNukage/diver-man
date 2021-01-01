@@ -24,6 +24,7 @@ else if stage == 2 {
 	if instance_exists(watch) and watch.pickedUp {
 		stage = 3
 		instance_destroy(watch)
+		player.create_item(item.watch)
 		roomSurface = RoomDockGivingWatch
 	}
 }

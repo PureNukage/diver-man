@@ -38,6 +38,7 @@ pos = 1
 xGoto = -1
 yGoto = -1
 timer = -1
+depthY = true
 image_index = irandom_range(0,image_number-1)
 
 madeFootprint = false

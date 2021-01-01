@@ -22,4 +22,4 @@ if shadeStatic and !surface_exists(shadeSurface) and buffer_exists(shadeBuffer) 
 	//surface_save(shadeSurface,"shadeSurface"+string(id)+".png")
 }
 
-depth = -y
+if depthY depth = -y

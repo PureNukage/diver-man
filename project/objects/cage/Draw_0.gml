@@ -1,4 +1,5 @@
-if app.underwater draw_shadow()
+if app.underwater drawShadow = true
+else drawShadow = false
 
 if !inUse {
 	drawUnit = true

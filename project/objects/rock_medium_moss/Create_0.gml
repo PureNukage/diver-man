@@ -5,3 +5,5 @@ event_inherited()
 damagedTimer = -1
 smashed = false
 image_speed = 0 
+image_index = 0
+heightMap.createSurface()

@@ -25,6 +25,7 @@ else if stage == 2 {
 	if !instance_exists(textbox) {
 		Layer = layer_create(-1)
 		sailorPeteEntrance.move_to(980,369)
+		app.cameraFocus(980,369,"~",true)
 		stage = 3
 		image_xscale = -1
 		player.image_xscale = -1
@@ -68,11 +69,19 @@ else if stage == 6 {
 		brotherAfterWatch.move_to(754,360)
 		app.cameraFocus(player.x,player.y,1,true)
 		player.canMove = true
+		brotherAfterWatch.interactibility = false
+		sailorPeteEntrance.interactibility = false
 	}
 }
 //	Wait till Pete arrives at the cage/suit
 else if stage == 7 {
 	if !sailorPeteEntrance.moving {
-			
+		var Pete = instance_create_layer(sailorPeteEntrance.x,sailorPeteEntrance.y,"Instances",sailorPeteGivingSuit)
+		Pete.image_xscale = 1
+		instance_destroy(sailorPeteEntrance)
+		var Brother = instance_create_layer(x,y,"Instances",brotherGivingSuit)
+		Brother.image_xscale = image_xscale
+		Brother.interactibility = false
+		instance_destroy()
 	}
 }

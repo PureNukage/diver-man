@@ -29,9 +29,19 @@ else if stage == 2 {
 //	Let pete finish his last line
 else if stage == 3 {
 	if !instance_exists(textbox) and dialogueIndex == 7 {
-		app.roomTransition(RoomDock, 5)
-		app.suitOn = true
-		app.cameraFocusOnPlayer = true
+		app.cameraFocus(player.x,player.y,1,true)
 		stage = 4
+		suitPile.interactibility = true // act suit
+		cage.interactibility = true	 // act cage
+	}
+}
+//	Wait till player puts on diving suit
+else if stage == 4 {
+	if player.suitOn {
+		instance_create_layer(x,y,"Instances",sailorPeteGotSuit)
+		var Brother = instance_create_layer(brotherGivingSuit.x,brotherGivingSuit.y,"Instances",brotherGotSuit)
+		Brother.image_xscale = brotherGivingSuit.image_xscale
+		instance_destroy(brotherGivingSuit)
+		instance_destroy()
 	}
 }

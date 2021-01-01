@@ -30,11 +30,9 @@ switch(menu) {
 					case 0:
 						text = "New Game"
 						if pressed {
-							room_goto(Room1)
+							room_goto(RoomIntro)
 							app.cameraRefresh = true
-							//questManager.add_quest(quests.streetDance)
-							//questManager.questList[| 0].stage++
-							//app.scene_loader()
+							//questManager.add_quest(quests.watch)
 						}
 					break
 					//	Load game
