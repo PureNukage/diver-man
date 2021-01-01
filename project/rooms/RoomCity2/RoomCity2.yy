@@ -111,8 +111,8 @@
     "PhysicsWorldPixToMetres": 0.1,
   },
   "parent": {
-    "name": "Rooms",
-    "path": "folders/Rooms.yy",
+    "name": "Intro",
+    "path": "folders/Rooms/Intro.yy",
   },
   "resourceVersion": "1.0",
   "name": "RoomCity2",

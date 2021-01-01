@@ -25,7 +25,6 @@ else if stage == 2 {
 		stage = 3
 		instance_destroy(watch)
 		player.create_item(item.watch)
-		roomSurface = RoomDockGivingWatch
 	}
 }
 //	player just can leave now

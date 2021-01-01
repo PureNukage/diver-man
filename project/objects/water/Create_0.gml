@@ -2,7 +2,7 @@ function check_room_underwater() {
 	
 	//	list of underwater rooms
 	var list = ds_list_create() 
-	ds_list_add(list, Room1)
+	ds_list_add(list, RoomDocks_Underwater)
 	ds_list_add(list, RoomMainMenu)
 	
 	//	This room is underwater

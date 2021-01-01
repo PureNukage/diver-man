@@ -43,7 +43,7 @@ function lift(up_or_down) {
 			
 			if !app.underwater {
 				if z <= -100 and app.roomTransitionTo == -1 {
-					app.roomTransition(Room1, 5)	
+					app.roomTransition(RoomDocks_Underwater, 5)	
 				}
 			}
 		break
@@ -66,16 +66,6 @@ function lift(up_or_down) {
 		z = 0
 		y -= 360
 		
-		//liftDirection = down
-		//room_goto(RoomMainMenu)
-		//app.cameraRefresh()
-		//app.underwaterChange(false)
-		
-		//	We're underwater, lets surface
-		if app.underwater and room != RoomDock {
-			//app.roomTransition(RoomDock, 5)
-		//	app.underwaterChange(false)
-		}
 	}
 	else if (app.underwater and !lowered and z <= 0) or (!app.underwater and !lowered and z <= -360) {
 		debug.log("Cage has been lowered")
@@ -90,16 +80,6 @@ function lift(up_or_down) {
 		}
 		
 		liftDirection = up
-		
-		//	We're on the surface
-		if !app.underwater and room == RoomDock {
-			//app.roomTransition(Room1, 5)
-			//room_goto(Room1)
-			//app.cameraRefresh = true
-			//app.underwaterChange(true)
-		}
-		
-		//liftDirection = up
 		
 	}
 	

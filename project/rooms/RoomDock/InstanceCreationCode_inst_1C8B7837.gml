@@ -1,2 +1,0 @@
-lowered = false
-liftDirection = down

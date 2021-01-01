@@ -351,7 +351,7 @@ function roomTransitioning() {
 				room_goto(roomTransitionTo)
 				app.cameraRefresh = true
 				roomTransitionStage = 1
-				if roomTransitionTo == Room1 app.underwaterChange(true)
+				if roomTransitionTo == RoomDocks_Underwater app.underwaterChange(true)
 				else app.underwaterChange(false)
 				roomTransitionTimer = 5
 			}
@@ -531,7 +531,7 @@ function scene_loader() {
 						break
 						//	
 						case quests.watch:
-							if roomPrevious == Room1 {
+							if roomPrevious == RoomDocks_Underwater {
 								
 								//	Use the cage
 								cage.y += 360

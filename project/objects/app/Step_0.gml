@@ -2,7 +2,7 @@ if input.keyPause {
 	paused = !paused	
 }
 
-if room == Room1 {
+if room == RoomDocks_Underwater {
 	//if instance_exists(class_foliage) with class_foliage instance_deactivate_object(self)
 }
 
