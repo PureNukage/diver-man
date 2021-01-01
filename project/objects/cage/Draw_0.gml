@@ -17,7 +17,7 @@ if !app.underwater {
 	draw_sprite(s_chain,0,x,y-z-sprite_get_height(s_chain))
 	
 	gpu_set_blendmode(bm_subtract)
-	draw_rectangle(0,0,room_width,125,false)
+	draw_rectangle(0,0,room_width,306,false)
 	gpu_set_blendmode(bm_normal)
 	
 	surface_reset_target()

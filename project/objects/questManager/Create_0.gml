@@ -17,7 +17,9 @@ function quest_check() {
 		//	Run the quest script
 		var finished = quest_script(Quest)
 		if finished {
+			var Index = Quest.index
 			_remove_quest(i)
+			if Index == quests.intro app.scene_loader()
 			i = questCount
 		}
 	
@@ -40,6 +42,12 @@ function find_quest(quest_index) {
 	}
 	
 	return quest
+}
+
+function current_quest() {
+	if questCount > 0 var Quest = questList[| 0]
+	else var Quest = -1
+	return Quest
 }
 
 function find_active_quest(quest_index) {

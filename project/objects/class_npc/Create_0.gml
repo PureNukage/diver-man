@@ -41,5 +41,7 @@ function _moving() {
 		moveForce += .10
 		moveForce = clamp(moveForce,-maxMovespeed,maxMovespeed)
 		mp_potential_step_object(xGoto,yGoto,moveForce,collision)
+		if xGoto > x image_xscale = 1
+		else image_xscale = -1
 	}
 }

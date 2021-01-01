@@ -1,7 +1,7 @@
 {
   "spriteId": {
-    "name": "s_sailor_pete",
-    "path": "sprites/s_sailor_pete/s_sailor_pete.yy",
+    "name": "s_brother",
+    "path": "sprites/s_brother/s_brother.yy",
   },
   "solid": false,
   "visible": true,
@@ -23,9 +23,7 @@
   "physicsStartAwake": true,
   "physicsKinematic": false,
   "physicsShapePoints": [],
-  "eventList": [
-    {"isDnD":false,"eventNum":0,"eventType":0,"collisionObjectId":null,"parent":{"name":"sailorPeteEntrance","path":"objects/sailorPeteEntrance/sailorPeteEntrance.yy",},"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMEvent",},
-  ],
+  "eventList": [],
   "properties": [],
   "overriddenProperties": [],
   "parent": {
@@ -33,7 +31,7 @@
     "path": "folders/Game/scenes/get brothers watch.yy",
   },
   "resourceVersion": "1.0",
-  "name": "sailorPeteEntrance",
+  "name": "brotherWatchToss",
   "tags": [],
   "resourceType": "GMObject",
 }

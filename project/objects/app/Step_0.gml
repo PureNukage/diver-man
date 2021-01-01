@@ -6,10 +6,28 @@ if room == Room1 {
 	//if instance_exists(class_foliage) with class_foliage instance_deactivate_object(self)
 }
 
-if !cameraFocusOnPlayer {
-	x = cameraFocusX
-	y = cameraFocusY
+//	Camera is not focused on the player
+var coordX = cameraFocusX
+var coordY = cameraFocusY
+if cameraFocusOnPlayer and instance_exists(player) {
+	coordX = player.x
+	coordY = player.y
 }
+if cameraLerp {
+	x = floor(lerp(x,coordX,0.05))
+	y = floor(lerp(y,coordY,0.05))
+}
+else {
+	x = coordX
+	y = coordY
+}
+if cameraFocusDuration == "~" {
+	
+} else if cameraFocusDuration > -1 {
+	cameraFocusDuration--
+	if cameraFocusDuration == 0 cameraFocusOnPlayer = true
+}
+//	Camera is focused on the player
 
 if cameraRefresh {
 	water.check_room_underwater()

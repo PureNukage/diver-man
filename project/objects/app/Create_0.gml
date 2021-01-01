@@ -250,11 +250,14 @@ cameraFocusOnPlayer = true
 cameraFocusX = x
 cameraFocusY = y
 cameraFocusDuration = -1
-function cameraFocus(_x, _y, _duration){
+cameraLerp = true
+function cameraFocus(_x, _y, _duration, _lerp){
 	
 	cameraFocusX = _x
 	cameraFocusY = _y
 	cameraFocusDuration = _duration
+	cameraLerp = _lerp
+	cameraFocusOnPlayer = false
 	
 }
 	
@@ -426,4 +429,97 @@ if room == RoomAppStart {
 	room_goto(RoomMainMenu)
 	underwaterChange(true)
 	cameraRefresh = true
+}
+
+function scene_loader() {
+	//	room
+	//	main quest
+	//	side quests
+	//	character data
+	
+	var Quest = questManager.current_quest()
+	var Layer = "Instances"
+	
+	if Quest == -1 debug.log("SCENELOADER - NO ACTIVE QUEST")
+	
+	switch(room) {
+		#region City
+			case RoomCityHub:
+				if Quest > -1 {
+					switch(Quest.index) {
+						//	Final Coin quest
+						case quests.spendFinalCoin:
+							var Vendor = instance_create_layer(1232,352,Layer,vendor)
+							Vendor.image_xscale = 1.863
+							Vendor.image_yscale = 1.863
+							var vendorCart = instance_create_layer(1328,384,Layer,cart)
+						
+							var Pete = instance_create_layer(1408,848,Layer,sailorPeteSitting)
+						
+							var bully1 = instance_create_layer(868,832,Layer,bully2Dice)
+							var bully2 = instance_create_layer(960,896,Layer,bully1Stand)
+							bully2.image_xscale = -1
+							var diceKid = instance_create_layer(912,864,Layer,dicekid1)
+							diceKid.image_xscale = -1
+						
+							var Adult = instance_create_layer(576,608,Layer,adultHub)
+							var Adult = instance_create_layer(320,512,Layer,adultHub)
+							var Car = instance_create_layer(384,608,Layer,car)
+						
+							//	destroy the dock room change
+							if instance_exists(collisionRoomChange) instance_destroy(collisionRoomChange)
+						
+							var Collision = instance_create_layer(1600,208,Layer,collision)
+							Collision.image_yscale = 8.75
+						
+						break
+						//	Street dance / chasing after brother
+						case quests.streetDance:
+							var Vendor = instance_create_layer(1232,352,Layer,vendorPlayerChase)
+							Vendor.image_xscale = 1.863
+							Vendor.image_yscale = 1.863
+						
+							var Adult = instance_create_layer(576,608,Layer,adultHub)
+							var Adult = instance_create_layer(320,512,Layer,adultHub)
+							var Car = instance_create_layer(384,608,Layer,car)
+						
+							var Adult = instance_create_layer(951,840,Layer,adultHub)
+						
+							var Adult = instance_create_layer(1440,238,Layer,adultHub)
+							Adult.image_xscale = -1
+						
+							var Adult = instance_create_layer(1440,822,Layer,adultHub)
+							Adult.image_xscale = -1
+						
+						break
+					}
+					debug.log("SCENELOADER - Loading for Quest: "+string_upper(questManager.questNames[Quest.index]))
+				}
+			break
+		#endregion
+		
+		#region Docks
+			case RoomDocks:
+				if Quest > -1 {
+					switch(Quest.index) {
+						//	Bullies are throwing watch off the dock
+						case quests.streetDance:
+							
+							instance_create_layer(0,0,Layer,bullysTossWatch)
+						
+							var Brother = instance_create_layer(1152,384,Layer,brotherWatchToss)
+							
+							var bully2 = instance_create_layer(1248,384,Layer,bully2Watch)
+							bully2.image_xscale = -1
+							var bully1 = instance_create_layer(1296,384,Layer,bully1Watch)
+							bully1.image_xscale = -1
+							
+						break
+					}
+				}	
+			break	
+		#endregion
+	}
+	
+	debug.log(string_upper(room_get_name(room)))
 }

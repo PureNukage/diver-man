@@ -27,6 +27,7 @@
     {"compositeImage":{"FrameId":{"name":"3c210657-8023-4e56-9e73-e4c74a46483f","path":"sprites/s_dock_pole/s_dock_pole.yy",},"LayerId":null,"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMSpriteBitmap",},"images":[
         {"FrameId":{"name":"3c210657-8023-4e56-9e73-e4c74a46483f","path":"sprites/s_dock_pole/s_dock_pole.yy",},"LayerId":{"name":"b9baa8be-610f-472a-8b16-bde895702776","path":"sprites/s_dock_pole/s_dock_pole.yy",},"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMSpriteBitmap",},
         {"FrameId":{"name":"3c210657-8023-4e56-9e73-e4c74a46483f","path":"sprites/s_dock_pole/s_dock_pole.yy",},"LayerId":{"name":"c08fc511-2415-4629-95c0-b5582b359d59","path":"sprites/s_dock_pole/s_dock_pole.yy",},"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMSpriteBitmap",},
+        {"FrameId":{"name":"3c210657-8023-4e56-9e73-e4c74a46483f","path":"sprites/s_dock_pole/s_dock_pole.yy",},"LayerId":{"name":"6d01b4cb-d9ca-4f84-a857-1eac53e681fa","path":"sprites/s_dock_pole/s_dock_pole.yy",},"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMSpriteBitmap",},
       ],"parent":{"name":"s_dock_pole","path":"sprites/s_dock_pole/s_dock_pole.yy",},"resourceVersion":"1.0","name":"3c210657-8023-4e56-9e73-e4c74a46483f","tags":[],"resourceType":"GMSpriteFrame",},
   ],
   "sequence": {
@@ -66,8 +67,7 @@
     "resourceType": "GMSequence",
   },
   "layers": [
-    {"visible":true,"isLocked":false,"blendMode":0,"opacity":100.0,"displayName":"Layer 3","resourceVersion":"1.0","name":"b9baa8be-610f-472a-8b16-bde895702776","tags":[],"resourceType":"GMImageLayer",},
-    {"visible":true,"isLocked":false,"blendMode":0,"opacity":100.0,"displayName":"Layer 1","resourceVersion":"1.0","name":"c08fc511-2415-4629-95c0-b5582b359d59","tags":[],"resourceType":"GMImageLayer",},
+    {"visible":true,"isLocked":false,"blendMode":0,"opacity":100.0,"displayName":"Layer 3","resourceVersion":"1.0","name":"6d01b4cb-d9ca-4f84-a857-1eac53e681fa","tags":[],"resourceType":"GMImageLayer",},
   ],
   "parent": {
     "name": "misc items",

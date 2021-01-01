@@ -1,11 +1,12 @@
 if stage == 0 {
-	if timer < 3000 {
+	if timer < 100 {
 		timer++	
 	}
 	else {
-		app.cameraFocusOnPlayer = false
-		app.cameraFocusX = 0
-		app.cameraFocusY = 230
+		//app.cameraFocusOnPlayer = false
+		//app.cameraFocusX = 0
+		//app.cameraFocusY = 230
+		app.cameraFocus(0,230,"~",false)
 		stage = 1
 		var Textbox = instance_create_layer(0,0,"Instances",textbox)
 		Textbox.ID = id
@@ -43,7 +44,8 @@ else if stage == 3 {
 //	Wait for sequence 5 to finish
 else if stage == 4 {
 	if layer_sequence_is_finished(Sequence) {
-		app.cameraFocusOnPlayer = true
+		//app.cameraFocusOnPlayer = true
+		app.cameraFocus(player.x,player.y,1,true)
 		instance_create_layer(player.x,player.y,"Instances",playerChase)
 		instance_destroy()
 	}

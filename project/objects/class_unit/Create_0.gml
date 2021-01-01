@@ -740,3 +740,6 @@ function item_check(item_index) {
 function _create_item(item_index) constructor {
 	index = item_index
 }
+	
+	
+	

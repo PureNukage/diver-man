@@ -13,7 +13,7 @@ else if stage == 1 {
 		timer++
 		if timer >= 120 {
 			stage = 2
-			var Pete = instance_create_layer(0,0,"Instances",sailorPeteEntrance)
+			var Pete = instance_create_layer(820,369,"Instances",sailorPeteEntrance)
 			var Textbox = instance_create_layer(0,0,"Instances",textbox)
 			Textbox.ID = Pete
 			Textbox.text = Pete.myDialogue[1, Pete.dialogueIndex]
@@ -24,7 +24,7 @@ else if stage == 1 {
 else if stage == 2 {
 	if !instance_exists(textbox) {
 		Layer = layer_create(-1)
-		Sequence = layer_sequence_create(Layer,0,0,Sequence7)	
+		sailorPeteEntrance.move_to(980,369)
 		stage = 3
 		image_xscale = -1
 		player.image_xscale = -1
@@ -33,7 +33,7 @@ else if stage == 2 {
 }
 //	Wait till sailor pete walks in 
 else if stage == 3 {
-	if layer_sequence_is_finished(Sequence) {
+	if !sailorPeteEntrance.moving {
 		var Textbox = instance_create_layer(0,0,"Instances",textbox)
 		var Pete = sailorPeteEntrance
 		Textbox.ID = Pete
@@ -63,7 +63,16 @@ else if stage == 5 {
 //	Wait till Petes last dialogue is finished
 else if stage == 6 {
 	if !instance_exists(textbox) and sailorPeteEntrance.dialogueIndex == 9 {
-		app.roomTransition(RoomDockGettingSuit, 5)
 		stage = 7
+		sailorPeteEntrance.move_to(636,sailorPeteEntrance.y)
+		brotherAfterWatch.move_to(754,360)
+		app.cameraFocus(player.x,player.y,1,true)
+		player.canMove = true
+	}
+}
+//	Wait till Pete arrives at the cage/suit
+else if stage == 7 {
+	if !sailorPeteEntrance.moving {
+			
 	}
 }

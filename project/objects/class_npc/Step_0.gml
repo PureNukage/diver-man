@@ -1,5 +1,7 @@
 event_inherited()
 
+if moving _moving()
+
 if interactable and interactibility {
 	if input.keyInteract and !inConversation and dialogueIndex > -1 {
 		//	Condition check this dialogue

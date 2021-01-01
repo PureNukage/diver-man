@@ -1,7 +1,7 @@
 {
   "spriteId": {
-    "name": "s_sailor_pete",
-    "path": "sprites/s_sailor_pete/s_sailor_pete.yy",
+    "name": "s_vendor",
+    "path": "sprites/s_vendor/s_vendor.yy",
   },
   "solid": false,
   "visible": true,
@@ -24,16 +24,16 @@
   "physicsKinematic": false,
   "physicsShapePoints": [],
   "eventList": [
-    {"isDnD":false,"eventNum":0,"eventType":0,"collisionObjectId":null,"parent":{"name":"sailorPeteEntrance","path":"objects/sailorPeteEntrance/sailorPeteEntrance.yy",},"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMEvent",},
+    {"isDnD":false,"eventNum":0,"eventType":0,"collisionObjectId":null,"parent":{"name":"vendorPlayerChase","path":"objects/vendorPlayerChase/vendorPlayerChase.yy",},"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMEvent",},
   ],
   "properties": [],
   "overriddenProperties": [],
   "parent": {
-    "name": "get brothers watch",
-    "path": "folders/Game/scenes/get brothers watch.yy",
+    "name": "street dancing",
+    "path": "folders/Game/scenes/street dancing.yy",
   },
   "resourceVersion": "1.0",
-  "name": "sailorPeteEntrance",
+  "name": "vendorPlayerChase",
   "tags": [],
   "resourceType": "GMObject",
 }
