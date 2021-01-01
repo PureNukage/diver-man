@@ -31,47 +31,49 @@ function quest_script(quest) {
 				switch(stage) {
 					//	Wait for player to say Yes to going back then count quest stats
 					case -1:
-						if brother.dialogueIndex == 5 {
+						if room == RoomCityHub {
+							if instance_exists(brother) and brother.dialogueIndex == 5 {
 														
-							//	Quest variables
-							quest.keptCoin = false
-							quest.listenedToPete = false
-							quest.boughtSandwich = false
-							quest.gambled = false
-							quest.profited = false
-							quest.lostItAll = false 
+								//	Quest variables
+								quest.keptCoin = false
+								quest.listenedToPete = false
+								quest.boughtSandwich = false
+								quest.gambled = false
+								quest.profited = false
+								quest.lostItAll = false 
 							
-							quest._listenedToPete = false
-							quest._boughtSandwich = false
-							quest._gambled = false
+								quest._listenedToPete = false
+								quest._boughtSandwich = false
+								quest._gambled = false
 							
-							//	Did the player listen to Pete?
-							quest.listenedToPete = sailorPeteSitting.toldStory
+								//	Did the player listen to Pete?
+								quest.listenedToPete = sailorPeteSitting.toldStory
 							
-							//	Did the player buy a sandwich?
-							if player.item_check(item.sandwich) > -1 quest.boughtSandwich = true
+								//	Did the player buy a sandwich?
+								if player.item_check(item.sandwich) > -1 quest.boughtSandwich = true
 							
-							//	Did the player gamble at all?
-							if (bully2Dice.roundOne) {
-								quest.gambled = true	
+								//	Did the player gamble at all?
+								if (bully2Dice.roundOne) {
+									quest.gambled = true	
+								}
+							
+								//	Did the player gamble, make profit, and do nothing?
+								if (bully2Dice.roundOne or bully2Dice.roundTwo) and player.gold > 0 and !quest.boughtSandwich and !quest.listenedToPete {
+									quest.profited = true
+								}
+							
+								//	Did the player keep the coin?
+								if player.gold == 1 and !quest.gambled and !quest.boughtSandwich and !quest.listenedToPete {
+									quest.keptCoin = true	
+								}
+							
+								//	Did the player lose it all?
+								if bully2Dice.roundThree and !quest.boughtSandwich and !quest.listenedToPete and player.gold == 0 {
+									quest.lostItAll = true	
+								}
+							
+								quest.stage++	
 							}
-							
-							//	Did the player gamble, make profit, and do nothing?
-							if (bully2Dice.roundOne or bully2Dice.roundTwo) and player.gold > 0 and !quest.boughtSandwich and !quest.listenedToPete {
-								quest.profited = true
-							}
-							
-							//	Did the player keep the coin?
-							if player.gold == 1 and !quest.gambled and !quest.boughtSandwich and !quest.listenedToPete {
-								quest.keptCoin = true	
-							}
-							
-							//	Did the player lose it all?
-							if bully2Dice.roundThree and !quest.boughtSandwich and !quest.listenedToPete and player.gold == 0 {
-								quest.lostItAll = true	
-							}
-							
-							quest.stage++	
 						}
 					break
 					//	Wait for player to go back to alley

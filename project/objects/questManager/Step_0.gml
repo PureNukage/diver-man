@@ -1,1 +1,1 @@
-quest_check()
+if app.scene_loaded quest_check()

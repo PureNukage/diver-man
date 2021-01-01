@@ -44,6 +44,7 @@ function find_quest(quest_index) {
 	return quest
 }
 
+
 function current_quest() {
 	if questCount > 0 var Quest = questList[| 0]
 	else var Quest = -1

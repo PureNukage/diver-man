@@ -94,6 +94,7 @@ function load_game(quick) {
 		
 		if is_string(questListString) {
 			decode_gamedata(questManager.questList, questListString)
+			questManager.questCount = ds_list_size(questManager.questList)
 		}
 		else debug.log("ERROR LOADING Can't read questManager.questList string")
 		
@@ -450,6 +451,12 @@ function scene_loader() {
 					switch(Quest.index) {
 						//	Final Coin quest
 						case quests.spendFinalCoin:
+						
+							if !instance_exists(brother) {
+								var Brother = instance_create_layer(944,224,Layer,brother)
+								Brother.image_xscale = -1
+							}
+						
 							var Vendor = instance_create_layer(1232,352,Layer,vendor)
 							Vendor.image_xscale = 1.863
 							Vendor.image_yscale = 1.863
@@ -557,6 +564,8 @@ function scene_loader() {
 			break	
 		#endregion
 	}
+	
+	scene_loaded = true
 	
 	debug.log(string_upper(room_get_name(room)))
 }
