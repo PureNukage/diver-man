@@ -239,6 +239,7 @@
     {"id":{"name":"class_light","path":"objects/class_light/class_light.yy",},"order":0,},
     {"id":{"name":"chest","path":"objects/chest/chest.yy",},"order":7,},
     {"id":{"name":"debug","path":"objects/debug/debug.yy",},"order":2,},
+    {"id":{"name":"s_keyboard_d","path":"sprites/s_keyboard_d/s_keyboard_d.yy",},"order":2,},
     {"id":{"name":"RoomCityHub","path":"rooms/RoomCityHub/RoomCityHub.yy",},"order":0,},
     {"id":{"name":"walkAndTalk","path":"objects/walkAndTalk/walkAndTalk.yy",},"order":3,},
     {"id":{"name":"brothersbox","path":"objects/brothersbox/brothersbox.yy",},"order":2,},

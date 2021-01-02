@@ -71,3 +71,22 @@ if drawNewQuest {
 	}
 	draw_reset()
 }
+	
+////	Walk and Talk D ->
+if instance_exists(walkAndTalk) or instance_exists(walkAndTalk2) {
+	var draw = true
+	if instance_exists(walkAndTalk) {
+		if walkAndTalk.stage == 1 draw = false
+		
+		if walkAndTalk.dialogueIndex == 0 and instance_exists(textbox) {
+			draw_sprite_ext(s_keyboard_e,0,display_get_gui_width()/2,80,2,2,0,c_white,1)	
+		}
+	} else if instance_exists(walkAndTalk2) {
+		if walkAndTalk2.stage > 0 draw = false
+	}
+	var _x = display_get_gui_width()/2
+	var _y = 110
+	if !input.keyRight and draw {
+		draw_sprite_ext(s_keyboard_d,0,_x,_y,2,2,0,c_white,1)
+	}
+}
