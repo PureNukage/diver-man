@@ -1,5 +1,3 @@
-if live_call() return live_result
-
 var widthSpacer = 20
 var heightSpacer = 40
 draw_set_font(font_dialogue)

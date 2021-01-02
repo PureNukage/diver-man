@@ -14,9 +14,7 @@ if stage == 0 {
 			if timer < 120 timer++
 		
 			if timer >= 120 and !inConversation {
-				var Textbox = instance_create_layer(0,0,"Instances",textbox)
-				Textbox.ID = id
-				Textbox.text = myDialogue[1, dialogueIndex]
+				create_textbox(id,myDialogue[1, dialogueIndex])
 				inConversation = true
 			}
 		}
@@ -42,9 +40,7 @@ if stage == 0 {
 else if stage == 1 {
 	if gap < gapMax gap++
 	else if !inConversation and dialogueIndex < 12 {
-		var Textbox = instance_create_layer(0,0,"Instances",textbox)
-		Textbox.ID = id
-		Textbox.text = myDialogue[1, dialogueIndex]
+		create_textbox(id,myDialogue[1, dialogueIndex])
 		inConversation = true	
 	}
 	
@@ -62,12 +58,6 @@ else if stage == 1 {
 		exit
 	}
 }
-
-//if instance_exists(player) with player {
-//	player.muted = true
-//	player.x = x
-//	player.y = y
-//}
 
 if instance_exists(brotherShadow) {
 	brotherShadow.x = x + 96 + gap	
