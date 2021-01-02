@@ -34,5 +34,15 @@ for(var i=0;i<ResponseCount;i++) {
 	if responseIndex == i slice_index = s_parchment_9slice
 	draw_nine_tile(slice_index, width, height, xx,yy, responses[1, i])
 	
+	var pixels = 42
+	var tilesWidth = ceil(width / pixels)
+	var tilesHeight = ceil(height / pixels)
+	var _string = responses[1, i]
+	
+	draw_set_color(c_black)
+	draw_set_halign(fa_center)
+	draw_set_valign(fa_middle)
+	draw_text_ext(xx+(tilesWidth*pixels)/2, yy+(tilesHeight*pixels)/2, _string, string_height(_string), width)
+	
 	yy += height + 10
 }

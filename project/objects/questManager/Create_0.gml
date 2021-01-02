@@ -19,7 +19,10 @@ function quest_check() {
 		if finished {
 			var Index = Quest.index
 			_remove_quest(i)
-			if Index == quests.intro app.scene_loader()
+			if Index == quests.intro {
+				app.scene_loader()
+				app.save_game(false)
+			}
 			i = questCount
 		}
 	
