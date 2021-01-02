@@ -3,14 +3,9 @@ if stage == 0 {
 		timer++	
 	}
 	else {
-		//app.cameraFocusOnPlayer = false
-		//app.cameraFocusX = 0
-		//app.cameraFocusY = 230
 		app.cameraFocus(0,230,"~",false)
 		stage = 1
-		var Textbox = instance_create_layer(0,0,"Instances",textbox)
-		Textbox.ID = id
-		Textbox.text = myDialogue[1, dialogueIndex]
+		create_textbox(id, myDialogue[1, dialogueIndex])
 	}
 }
 //	Wait for dialogue to finish
@@ -28,9 +23,7 @@ else if stage == 2 {
 	app.cameraFocusX += 5
 	if layer_sequence_is_finished(Sequence) {
 		stage = 3
-		var Textbox = instance_create_layer(0,0,"Instances",textbox)
-		Textbox.ID = id
-		Textbox.text = myDialogue[1, dialogueIndex]
+		create_textbox(id, myDialogue[1, dialogueIndex])
 	}	
 }
 //	Wait for dialogue to finish

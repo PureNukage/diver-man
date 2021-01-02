@@ -8,9 +8,7 @@ if stage == 0 {
 		Sequence = layer_sequence_create(Layer,0,0,Sequence6)
 		layer_sequence_pause(Sequence)
 		layer_set_visible(Layer,false)
-		var Textbox = instance_create_layer(0,0,"Instances",textbox)
-		Textbox.ID = id
-		Textbox.text = myDialogue[1, dialogueIndex]
+		create_textbox(id, myDialogue[1, dialogueIndex])
 	}
 }
 //	Wait for dialogue to finish then start sequence
@@ -35,9 +33,7 @@ else if stage == 2 {
 		brotherWatchToss.visible = true
 		bully2Watch.visible = true
 		bully1Watch.visible = true
-		var Textbox = instance_create_layer(0,0,"Instances",textbox)
-		Textbox.ID = id
-		Textbox.text = myDialogue[1, dialogueIndex]
+		create_textbox(id, myDialogue[1, dialogueIndex])
 	}
 }
 //	Wait for dialogue to finish then finish the Sequence
