@@ -573,9 +573,58 @@ function create_textbox(ID, _text) {
 		
 	//	Determine how many lines we have
 	draw_set_font(font_dialogue)
+	var widthSpacer = 20
+	var heightSpacer = 40
 	var width = 558
+	var height = string_height_ext(_text,string_height(_text),width-(widthSpacer*2)) + heightSpacer*2
+	var xx = display_get_gui_width()/2 - width/2
+	var yy = display_get_gui_height() - height - heightSpacer
 	
-	
+	var array = []
+	var index = -1
+	var wordIndex = 0
+	//	Break string apart into individual words
+	for(var i=0;i<string_length(_text);i++) {
+		if (string_char_at(_text,i) == " " and i > 0 and i != index) or (i = string_length(_text)-1) {
+			var Count = i-1-index
+			if i = string_length(_text)-1 Count = i+1//-index
+			var String = string_copy(_text,index+1,Count)
+			
+			//	Clean up any spaces in word
+			while string_count(" ",String) > 0 {
+				String = string_delete(String,string_pos(" ",String),1)
+			}
+			
+			array[wordIndex] = String
+			index = i
+			wordIndex++
+			
+		}
+	}
+	//	Find each line break
+	var usedWordIndex = 0
+	var rowWords = 0
+	var rows = []
+	var row = 0
+	while usedWordIndex < wordIndex {
+		if rowWords == 0 {
+			rows[row] = array[usedWordIndex]
+			usedWordIndex++
+			rowWords++
+		}
+		else {
+			if string_width(rows[row] + " " + array[usedWordIndex]) < width {
+				rows[row] += " " + array[usedWordIndex]
+				usedWordIndex++
+				rowWords++
+			}
+			else {
+				row++
+				rowWords = 0	
+			}
+		}
+	}
+	Textbox.rows = rows
 	
 }
 	
