@@ -3,7 +3,7 @@ event_inherited()
 if moving _moving()
 
 if interactable and interactibility {
-	if input.keyInteract and !inConversation and dialogueIndex > -1 {
+	if input.keyInteract and !inConversation and dialogueIndex > -1 and dialogueIndex < array_length(myDialogue) {
 		//	Condition check this dialogue
 		condition_check_dialogue(id)
 		

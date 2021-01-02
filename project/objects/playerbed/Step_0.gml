@@ -8,9 +8,7 @@ if interactable {
 		player.muted = true
 		
 		var Convo = instance_create_layer(player.x,player.y,"Instances",roomAlleyConvo)
-		var Textbox = instance_create_layer(0,0,"Instances",textbox)
-		Textbox.ID = Convo
-		Textbox.text = Convo.myDialogue[1, Convo.dialogueIndex]
+		create_textbox(Convo, Convo.myDialogue[1, Convo.dialogueIndex])
 		Convo.inConversation = true
 	}
 }

@@ -19,9 +19,7 @@ else if stage == 1 {
 }
 //	Start new dialogue
 else if stage == 2 {
-	var Textbox = instance_create_layer(0,0,"Instances",textbox)
-	Textbox.ID = id
-	Textbox.text = myDialogue[1, dialogueIndex]
+	create_textbox(id, myDialogue[1, dialogueIndex])
 	inConversation = true
 	stage = 3
 }
