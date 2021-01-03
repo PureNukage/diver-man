@@ -389,7 +389,7 @@ function condition_check_dialogue(ID) {
 					case 3:
 						//	Player does not have one coin
 						if player.gold < 1 {
-							ID.dialogueIndex = 18
+							ID.dialogueIndex = 17
 							debug.log("Player does not have enough money to hear Petes tale")
 						}
 					break
