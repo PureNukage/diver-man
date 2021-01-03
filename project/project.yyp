@@ -64,6 +64,7 @@
     {"id":{"name":"RoomCityHub_chasingBrother","path":"rooms/RoomCityHub_chasingBrother/RoomCityHub_chasingBrother.yy",},"order":2,},
     {"id":{"name":"bully1Stand","path":"objects/bully1Stand/bully1Stand.yy",},"order":9,},
     {"id":{"name":"s_grass_small","path":"sprites/s_grass_small/s_grass_small.yy",},"order":1,},
+    {"id":{"name":"sound_sans","path":"sounds/sound_sans/sound_sans.yy",},"order":11,},
     {"id":{"name":"s_brother","path":"sprites/s_brother/s_brother.yy",},"order":4,},
     {"id":{"name":"car","path":"objects/car/car.yy",},"order":11,},
     {"id":{"name":"RoomCityHub_test","path":"rooms/RoomCityHub_test/RoomCityHub_test.yy",},"order":1,},
