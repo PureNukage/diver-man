@@ -53,17 +53,21 @@ if textIndex < string_length(text) {	//	Only play if they're talking
 	var Sound = -1
 	switch(Sprite) {
 		case s_brother_face:
-			//Sound = choose()
+			Sound = choose(Brother_1_1_6, Brother_2_1_6, Brother_3_1_6, Brother_4_1_6, Brother_5_1_6, Brother_6_1_6)
 		break
 		//	case s_sailorpete_face:
 		
 		//	break
 	}
 	//	Fire off a sound effect
-	if soundEffect == -1 {
+	if string_char_at(text,textIndex) == " " or textIndex == string_length(text)-1 {
 		soundEffect = Sound
 		sound.playSoundEffect(soundEffect)
+	
+	//if soundEffect == -1 {
+		//soundEffect = Sound
+		//sound.playSoundEffect(soundEffect)
 	}
 	//	Check if audio is not playing, if not lets reset
-	else if !audio_is_playing(soundEffect) soundEffect = -1
+	//else if !audio_is_playing(soundEffect) soundEffect = -1
 }
