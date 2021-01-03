@@ -10,14 +10,14 @@
     "name": "audiogroup_default",
     "path": "audiogroups/audiogroup_default",
   },
-  "soundFile": "Brother_4_1_6.mp3",
-  "duration": 0.2662,
+  "soundFile": "Brother_2_1_7.mp3",
+  "duration": 0.34455,
   "parent": {
     "name": "Brother_Dialogue",
     "path": "folders/Sounds/Brother_Dialogue.yy",
   },
   "resourceVersion": "1.0",
-  "name": "Brother_4_1_6",
+  "name": "Brother_2_1_7",
   "tags": [],
   "resourceType": "GMSound",
 }

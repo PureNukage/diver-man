@@ -53,7 +53,7 @@ if textIndex < string_length(text) {	//	Only play if they're talking
 	var Sound = -1
 	switch(Sprite) {
 		case s_brother_face:
-			Sound = choose(Brother_1_1_6, Brother_2_1_6, Brother_3_1_6, Brother_4_1_6, Brother_5_1_6, Brother_6_1_6)
+			Sound = choose(Brother_1_1_7, Brother_2_1_7, Brother_3_1_7, Brother_4_1_7, Brother_5_1_7, Brother_6_1_7)
 		break
 		//	case s_sailorpete_face:
 		
