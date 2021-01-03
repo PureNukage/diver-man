@@ -53,8 +53,10 @@ function save_game(quick) {
 		ini_write_string(section,"characterList",characterList)
 		
 		////	Room
-		debug.log("Saving room: "+string_upper(string(room_get_name(room))))
-		ini_write_real(section,"room",room)
+		if room != RoomMainMenu {
+			debug.log("Saving room: "+string_upper(string(room_get_name(room))))
+			ini_write_real(section,"room",room)
+		}
 		
 	}
 	
@@ -283,6 +285,37 @@ function underwaterChange(on) {
 		if audio_is_playing(sound_underwater) {
 			audio_stop_sound(sound_underwater)
 		}
+	}
+}
+	
+pauseSurface = -1
+pauseSurfaceBuffer = -1
+function pause() {
+	paused = !paused
+	//	Paused
+	if paused {
+		if pauseSurfaceBuffer > -1 and buffer_exists(pauseSurfaceBuffer) buffer_delete(pauseSurfaceBuffer)
+		if surface_exists(pauseSurface) surface_free(pauseSurface)
+		pauseSurfaceBuffer = buffer_create(display_get_gui_width()*display_get_gui_height()*4,buffer_grow,1)
+		pauseSurface = surface_create(display_get_gui_width(), display_get_gui_height())
+		surface_set_target(pauseSurface)
+		draw_clear_alpha(c_black, 0)
+		
+		draw_surface(application_surface,0,0)
+		
+		surface_reset_target()
+		buffer_get_surface(pauseSurfaceBuffer,pauseSurface,0)
+		instance_deactivate_object(class_unit)
+		instance_deactivate_object(rope)
+		
+		if !instance_exists(mainmenu) instance_create_layer(0,0,"Instances",mainmenu)
+	}
+	//	Unpaused
+	else {
+		instance_activate_object(class_unit)
+		instance_activate_object(rope)
+		
+		if instance_exists(mainmenu) instance_destroy(mainmenu)
 	}
 }
 

@@ -1,6 +1,6 @@
 if surface > -1 and surface_exists(surface) surface_free(surface)
 
-surface = surface_create(room_width, room_height)
+surface = surface_create(display_get_gui_width(), display_get_gui_height())
 surface_set_target(surface)
 draw_clear_alpha(c_white, 0)
 
@@ -16,20 +16,23 @@ switch(menu) {
 	#region Main Menu
 		case menu.main:
 			
-			var xx = room_width/2
+			var xx = display_get_gui_width()/2
 			var yy = 128
+			var menu_items = 4
 
-			for(var i=0;i<3;i++) {
+			for(var i=0;i<menu_items;i++) {
 				var text = ""
 				var pressed = false
+				var active = true
 	
 				if menuIndex == i and (input.keyEnterPress or input.keyInteract) pressed = true
-	
+				
 				switch(i) {
 					//	New Game
 					case 0:
 						text = "New Game"
-						if pressed {
+						if room != RoomMainMenu active = false
+						if pressed and active {
 							room_goto(RoomIntro)
 							app.cameraRefresh = true
 							//questManager.add_quest(quests.watch)
@@ -43,10 +46,11 @@ switch(menu) {
 						ini_open("save.ini")
 						var saved = ini_read_real("SETTINGS","saved",0)
 						
-						if saved and pressed {
+						if room != RoomMainMenu active = false
+						
+						if saved and pressed and active {
 							app.load_game(false)	
 						}
-
 					break
 					//	Settings
 					case 2:
@@ -56,32 +60,47 @@ switch(menu) {
 							menuIndex = 0
 						}
 					break
+					//	Exit to Main Menu
+					case 3:
+						text = "Exit to Main Menu"
+						if room == RoomMainMenu active = false
+						if pressed and active {
+							app.save_game(false)
+							app.roomTransition(RoomMainMenu, 10)
+							app.pause()
+						}
+					break
 				}
-
-				if menuIndex == i draw_set_alpha(0.95)
-				else draw_set_alpha(0.8)
 				
-				if i == 1 and !saved {
-					draw_set_alpha(0.5)
+				if active {
 					if menuIndex == i draw_set_alpha(0.95)
-				}
+					else draw_set_alpha(0.8)
+				
+					if i == 1 and !saved {
+						draw_set_alpha(0.5)
+						if menuIndex == i draw_set_alpha(0.95)
+					}
 	
-				draw_text(xx,yy,text)
-				yy += 64
+					draw_text(xx,yy,text)
+					yy += 64
+				}
+				else {
+					if menuIndex == i menuIndex++	
+				}
 			}
 
 			if input.keyUpPress menuIndex--
 			if input.keyDownPress menuIndex++
 
-			if menuIndex < 0 menuIndex = 2
-			else if menuIndex > 2 menuIndex = 0
+			if menuIndex < 0 menuIndex = menu_items-1
+			else if menuIndex > menu_items-1 menuIndex = 0
 			
 		break
 	#endregion
 	#region Settings
 		case menu.settings:
 			
-			var xx = room_width/2
+			var xx = display_get_gui_width()/2
 			var yy = 128
 			
 			for(var i=0;i<3;i++) {

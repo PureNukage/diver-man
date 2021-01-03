@@ -41,9 +41,9 @@ if on {
 		draw_sprite_ext(s_shade, image_index, x,y, image_xscale,image_yscale, image_angle, image_blend, image_alpha)
 	}
 	
-	if instance_exists(mainmenu) with mainmenu {
-		if surface_exists(surface) draw_surface(surface,0,0)	
-	}
+	//if (instance_exists(mainmenu) and room == RoomMainMenu) with mainmenu {
+	//	if surface_exists(surface) draw_surface(surface,camera_get_view_x(app.camera),camera_get_view_y(app.camera))	
+	//}
 
 	surface_reset_target()
 	
