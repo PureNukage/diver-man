@@ -22,9 +22,9 @@ if !app.paused {
 		
 			image_alpha = duration / durationMax
 		
-			if place_meeting(x,y,collisionMap) {
-				visible = false	
-			}
+			//if place_meeting(x,y,collisionMap) {
+			//	visible = false	
+			//}
 		
 		break
 		case particles.jellyfish:

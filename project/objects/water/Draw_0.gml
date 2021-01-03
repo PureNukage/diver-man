@@ -59,10 +59,6 @@ if on {
 	surface_copy(causticSurfaceOriginal,0,0,surface)
 	surface_free(surface)
 	
-	with particle if particles == particles.footprint if z > 0 {
-		draw_self()	
-	}
-	
 	draw_set_alpha(0.15)
 	draw_surface(causticSurface,0,0)
 }

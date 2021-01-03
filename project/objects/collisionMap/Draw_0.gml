@@ -32,7 +32,7 @@ if drawSurface {
 	
 	surface_reset_target()
 	
-	with particle if particles == particles.footprint if z > 0 {
+	with particle if particles == particles.footprint if z == other.z {
 		draw_self()
 	}
 	
