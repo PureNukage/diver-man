@@ -564,7 +564,7 @@ function scene_loader() {
 						break
 						//	
 						case quests.watch:
-							if roomPrevious == RoomDocks_Underwater {
+							//if roomPrevious == RoomDocks_Underwater {
 								
 								//	Use the cage
 								cage.y += 360
@@ -585,11 +585,12 @@ function scene_loader() {
 								//	We have the watch!
 								else {
 									var Brother = instance_create_layer(768,352,Layer,brotherGivingWatch)
+									Brother.interactable = true
 								}
 								
 								//	Replace room change with collision
 								collisionRoomChange.replace_with_collision()
-							}
+							//}
 							
 						break
 					}

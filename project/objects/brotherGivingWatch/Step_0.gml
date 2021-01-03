@@ -1,3 +1,5 @@
+event_inherited()
+
 if player.suitOn {
 	if dialogueIndex != 11 and oldDialogueIndex == -1 {
 		oldDialogueIndex = dialogueIndex
@@ -14,5 +16,3 @@ else {
 if dialogueIndex == 12 {
 	game_end()	
 }
-
-event_inherited()

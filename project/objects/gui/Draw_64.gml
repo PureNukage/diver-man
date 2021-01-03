@@ -43,7 +43,7 @@ if instance_exists(player) {
 	
 	
 	////	Gold
-	if drawGold {
+	if drawGold and app.roomTransitionTo == -1 {
 		var xx = 500
 		var yy = 32
 	
