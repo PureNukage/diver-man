@@ -46,3 +46,24 @@ if input.keyInteract and interactCD == -1 {
 if interactCD > -1 interactCD--
 
 textIndex++
+
+//	Dialogue sound effects
+if textIndex < string_length(text) {	//	Only play if they're talking
+	var Sprite = ID.myDialogue[2, ID.dialogueIndex]
+	var Sound = -1
+	switch(Sprite) {
+		case s_brother_face:
+			//Sound = choose()
+		break
+		//	case s_sailorpete_face:
+		
+		//	break
+	}
+	//	Fire off a sound effect
+	if soundEffect == -1 {
+		soundEffect = Sound
+		sound.playSoundEffect(soundEffect)
+	}
+	//	Check if audio is not playing, if not lets reset
+	else if !audio_is_playing(soundEffect) soundEffect = -1
+}
