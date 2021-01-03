@@ -108,55 +108,19 @@ function applyThrust() {
 			
 			sound.playSoundEffect(sound_jumpdown_water)
 		
-			//jumpHaltDuration = 30
 			jumpHalt = true
-			//canMove = false
 		}
 		
 		
 		////	Footprints
 		if object_index == player and app.underwater {
-			////	Footsteps
-			switch(sign(image_xscale))
-			{
-				//	Facing Right
-				case 1:
-					//	Right foot
-					if floor(image_index) == 2 {
-						var X = x
-					} 
-					//	Left foot
-					else {
-						var X = x - 18
-					}
-				break
-				//	Facing Left
-				case -1:
-					//	Right foot
-					if floor(image_index) == 6 {
-						var X = x + 18
-					} 
-					//	Left foot
-					else {
-						var X = x
-					}
-				break
-			}
-			
-			var Footprint = createParticle(X,groundY, particles.footprint, 180, 0)
+			var Footprint = createParticle(groundX+4,groundY-2,particles.footprint,180,0)
 			Footprint.sprite_index = s_footprint
-			Footprint.image_xscale = round(image_xscale)
 			Footprint.z = z
 			
-			if sign(image_xscale) == 1 {
-				var XX = X + (16*image_xscale)		
-			} else {
-				var XX = X - (16*image_xscale)
-			}
-			var Footprint2 = createParticle(XX,groundY, particles.footprint, 180, 0)
-			Footprint2.sprite_index = s_footprint
-			Footprint2.image_xscale = round(image_xscale)
-			Footprint2.z = z
+			var Footprint = createParticle(groundX-14,groundY-2,particles.footprint,180,0)
+			Footprint.sprite_index = s_footprint
+			Footprint.z = z
 		}
 	}
 	

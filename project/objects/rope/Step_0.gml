@@ -74,12 +74,12 @@ for(var i=0;i<verticeCount;i++) {
 		}
 		else if player.sprite_index == s_diverman_jump and player.image_index > 2 and player.image_index < 6 {
 			if floor(player.image_index) == 3 or floor(player.image_index) == 5 {
-				vertex.x = player.x + (player.image_xscale * 8)	
-				vertex.y = player.y-player.z-45
+				//vertex.x = player.x + (player.image_xscale * 8)	
+				//vertex.y = player.y-player.z-45
 			}
 			else {
-				vertex.x = player.x + (player.image_xscale * 8)	
-				vertex.y = player.y-player.z-45	
+				//vertex.x = player.x + (player.image_xscale * 8)	
+				//vertex.y = player.y-player.z-45	
 			}
 		}
 		else {
