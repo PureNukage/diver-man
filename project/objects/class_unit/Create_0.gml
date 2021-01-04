@@ -229,7 +229,7 @@ function changeMap(Map) {
 
 function applyMovement() {
 	
-	while (abs(xx) > 0 or abs(yy) > 0) {
+	repeat(4) {
 		var pixelsX = 0
 		var pixelsY = 0
 		var sub = false
@@ -310,7 +310,7 @@ function applyMovement() {
 					else {
 						var collisionCount = maps_collision_count(x,y)
 						//	We're behind this map
-						if map != Map and map == -1 and groundY <= Map.bbox_bottom - Map.width and collisionCount == 0 {
+						if map != Map and map == -1 and groundY + pY <= Map.bbox_bottom - Map.width and collisionCount == 0 {
 							groundX += pX
 							groundY += pY
 							if !onGround y += pY
