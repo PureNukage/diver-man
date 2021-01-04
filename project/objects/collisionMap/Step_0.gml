@@ -37,4 +37,17 @@ if (instance_exists(class_unit) and place_meeting(x,y,class_unit))
 	}
 }
 
+if instance_exists(player) and point_in_rectangle(player.x,player.y,bbox_left-64,bbox_top-64,bbox_right+64,bbox_bottom+64) {
+	var oldMask = player.mask_index
+	player.mask_index = player.sprite_index
+	if place_meeting(x,y,player) {
+		if player.bbox_top < bbox_bottom-z and player.bbox_bottom < bbox_bottom and player.z < z {
+			depth = player.depth - 1
+			drawSurface = true
+			drawNearbyMaps()
+		}
+	}
+	player.mask_index = oldMask
+}
+
 if !foundNearbyMaps findNearbyMaps()
