@@ -67,7 +67,8 @@ if !muted {
 				//	I have movement input!
 				if (hspd != 0 or vspd != 0) {
 					moveDirection = point_direction(0,0,hspd,vspd)
-					moveForce += 0.05
+					//moveForce += 0.05
+					moveForce += 0.1
 					moveForce = clamp(moveForce,0,maxMovespeed)
 
 					setForce(moveForce, moveDirection)

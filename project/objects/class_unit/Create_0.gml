@@ -186,7 +186,9 @@ function changeMap(Map) {
 		}
 		//	I am jumping up
 		else {
-			groundY = y - Map.z
+			var _groundY = groundY 
+			if map > -1 _groundY += map.z
+			groundY = _groundY - Map.z
 		}
 		
 	}
@@ -199,9 +201,23 @@ function changeMap(Map) {
 			if !place_meeting(groundX, groundY + 1, collision) {
 				if !place_meeting(groundX,groundY + 1, collisionMap) groundY += 1	
 				else {
+					var list = ds_list_create()
+					var count = instance_place_list(groundX, groundY + 1, collisionMap, list, true)
 					var ID = instance_place(groundX, groundY + 1, collisionMap)
+					//	We're colliding with more than one map, lets change to a map that isn't our previous map (find more conditions)
+					if count > 1 and ID == oldMap {
+						for(var a=0;a<count;a++) {
+							var _id = list[| a]
+							if _id != oldMap var ID = _id
+						}
+					}
+					//	We've landed on a different map! exit loop
+					if ID != oldMap and ID.z == z {
+						changeMap(ID)
+						ds_list_destroy(list)
+						exit
+					}
 					//	We're above the map
-					//if groundY + 1 < ID.bbox_top + ID.width {
 					if groundY + 1 < ID.bbox_bottom - ID.width {
 						groundY += 1
 						if above_or_below == -1 above_or_below = 0
@@ -214,6 +230,7 @@ function changeMap(Map) {
 					else if (map.z - i) > ID.z {
 						groundY += 1
 					}
+					ds_list_destroy(list)
 				}
 			}
 		}
@@ -282,6 +299,7 @@ function applyMovement() {
 					if !onGround y += pY
 					if map > -1 {
 						changeMap(-1)
+						debug.log("poop1")
 					}
 				}
 				//	Colliding with a map
@@ -296,15 +314,19 @@ function applyMovement() {
 							//	Check if we're actually on it
 							if y > Map.bbox_bottom - Map.width and y-z < Map.bbox_top + Map.width and place_meeting(groundX, groundY, Map) and place_meeting(groundX, y, Map) {
 								changeMap(Map)
+								debug.log("poop2")
 							} else if map > -1 {
 								//	If we're not colliding with current map anymore
-								if !place_meeting(groundX + pX, groundY + pY, map) and groundY > Map.bbox_top + Map.width + 16 {
+								//if !place_meeting(groundX + pX, groundY + pY, map) and groundY > Map.bbox_top + Map.width + 16 {
+								if !place_meeting(groundX, groundY, map) and groundY > Map.bbox_top + Map.width + 16 {
 									changeMap(-1)
+									debug.log("poop3")
 								}
 							}
 						}
 						else if map == Map and groundY >= (Map.bbox_top + Map.width + 16) {
 							changeMap(-1)	
+							debug.log("poop4")
 						}
 					}
 					else {
