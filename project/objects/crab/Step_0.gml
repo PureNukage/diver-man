@@ -1,100 +1,98 @@
-if !app.paused {
-	switch(state) 
-	{
-		#region Free
-			case state.free:
+switch(state) 
+{
+	#region Free
+		case state.free:
 			
-				stunCheck()
+			stunCheck()
 			
-				//if timer == -1 {
-				//	idlewalk()	
-				//} else timer--
+			//if timer == -1 {
+			//	idlewalk()	
+			//} else timer--
 			
-				//	Run to next node
-				if point_distance(x,y, player.x,player.y) < 200 {
-					changeNode()
-				}
+			//	Run to next node
+			if point_distance(x,y, player.x,player.y) < 200 {
+				changeNode()
+			}
 			
-			break
-		#endregion
+		break
+	#endregion
 		
-		#region Walk 
-			case state.walk:
+	#region Walk 
+		case state.walk:
 			
-				stunCheck()
+			stunCheck()
 				
-				moveDirection = point_direction(groundX,groundY,xGoto,yGoto)
+			moveDirection = point_direction(groundX,groundY,xGoto,yGoto)
 			
-				//	If player is in between crab and next node
-				if point_in_rectangle(player.x,player.y, x,y, nodes[0,currentNode],nodes[1,currentNode]) {
-					reverseNode()
-				}
+			//	If player is in between crab and next node
+			if point_in_rectangle(player.x,player.y, x,y, nodes[0,currentNode],nodes[1,currentNode]) {
+				reverseNode()
+			}
 			
-				if point_distance(groundX,groundY, xGoto,yGoto) < 4 {
-					if pos++ >= path_get_number(path) - 1 {
-						if flee {
-							instance_destroy()	
-						}
-						else {
-							state = state.free
-							timer = irandom_range(60,90)
-						}
+			if point_distance(groundX,groundY, xGoto,yGoto) < 4 {
+				if pos++ >= path_get_number(path) - 1 {
+					if flee {
+						instance_destroy()	
 					}
-				
 					else {
-						xGoto = path_get_point_x(path, pos)
-						yGoto = path_get_point_y(path, pos)	
+						state = state.free
+						timer = irandom_range(60,90)
 					}
 				}
-			
+				
 				else {
-					moveForce += 0.5
-					moveForce = clamp(moveForce,0,maxMovespeed)
-					setForce(moveForce, moveDirection)
+					xGoto = path_get_point_x(path, pos)
+					yGoto = path_get_point_y(path, pos)	
+				}
+			}
+			
+			else {
+				moveForce += 0.5
+				moveForce = clamp(moveForce,0,maxMovespeed)
+				setForce(moveForce, moveDirection)
 				
-				}
+			}
 			
-				if xx > 0.25 {
-					image_xscale = 1
-				} if xx < -0.25 {
-					image_xscale = -1	
-				}
+			if xx > 0.25 {
+				image_xscale = 1
+			} if xx < -0.25 {
+				image_xscale = -1	
+			}
 			
-			break
-		#endregion
+		break
+	#endregion
 		
-		#region Stunned
-			case state.stunned:
+	#region Stunned
+		case state.stunned:
 				
-				if onGround {
-					sprite_index = s_crab_insand
-					if timer > -1 timer--
-					else {
-						if pathfind(grid.mpGrid,path, x,y, 826,30, true)	{
-							state = state.walk
-							pos = 1 
-							xGoto = path_get_point_x(path,pos)
-							yGoto = path_get_point_y(path,pos)
-							flee = true
-						}
-						sprite_index = s_crab
+			if onGround {
+				sprite_index = s_crab_insand
+				if timer > -1 timer--
+				else {
+					if pathfind(grid.mpGrid,path, x,y, 826,30, true)	{
+						state = state.walk
+						pos = 1 
+						xGoto = path_get_point_x(path,pos)
+						yGoto = path_get_point_y(path,pos)
+						flee = true
 					}
+					sprite_index = s_crab
 				}
+			}
 				
-			break
-		#endregion
-	}
-	
-	if !onGround applyThrust()
-	
-	applyMovement()
-	
-	if onGround {
-		x = groundX
-		y = groundY + z
-	} else {
-		x = groundX	
-	}
-
-	depth = -y
+		break
+	#endregion
 }
+	
+if !onGround applyThrust()
+	
+applyMovement()
+	
+if onGround {
+	x = groundX
+	y = groundY + z
+} else {
+	x = groundX	
+}
+
+depth = -y

@@ -307,6 +307,7 @@ function pause() {
 		buffer_get_surface(pauseSurfaceBuffer,pauseSurface,0)
 		instance_deactivate_object(class_unit)
 		instance_deactivate_object(rope)
+		instance_deactivate_object(particle)
 		
 		if !instance_exists(mainmenu) instance_create_layer(0,0,"Instances",mainmenu)
 	}
@@ -314,6 +315,7 @@ function pause() {
 	else {
 		instance_activate_object(class_unit)
 		instance_activate_object(rope)
+		instance_activate_object(particle)
 		
 		if instance_exists(mainmenu) instance_destroy(mainmenu)
 	}

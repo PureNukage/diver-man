@@ -49,7 +49,7 @@ function lift(up_or_down) {
 		break
 	}
 	
-	if !app.paused z += Z
+	z += Z
 	
 	if lowered and z >= 360 {
 		debug.log("Cage has been lifted")	

@@ -229,221 +229,110 @@ function changeMap(Map) {
 
 function applyMovement() {
 	
-	var subX = (abs(xx) - floor(abs(xx))) * sign(xx)
-	var subY = (abs(yy) - floor(abs(yy))) * sign(yy)
-	
-	for(var X=0;X<abs(xx);X++) {
-		//	Not colliding with collision
-		if !detectCollision or !place_meeting(groundX + sign(xx), groundY, collision) {
-			//	Not colliding with a collisionMap
-			if !detectCollision or !place_meeting(groundX + sign(xx), groundY, collisionMap) {
-				groundX += sign(xx)
-				if map > -1 {
-					changeMap(-1)
-				}
+	while (abs(xx) > 0 or abs(yy) > 0) {
+		var pixelsX = 0
+		var pixelsY = 0
+		var sub = false
+		
+		var signX = sign(xx)
+		var signY = sign(yy)
+		
+		//	Whole horizontal pixels
+		if abs(xx) > 0 and abs(xx) >= 1 {
+			pixelsX = floor(abs(xx))
+			xx -= sign(xx) * floor(abs(xx))
+		}
+		//	Sub horizontal pixels
+		else if abs(xx) > 0 and abs(xx) < 1 {
+			pixelsX = abs(xx)
+			xx = 0
+			sub = true
+		}
+		//	Whole vertical pixels
+		else if abs(yy) > 0  and abs(yy) >= 1 {
+			pixelsY = floor(abs(yy))
+			yy -= sign(yy) * floor(abs(yy))
+		}
+		//	Sub vertical pixels
+		else if abs(yy) > 0 and abs(yy) < 1 {
+			pixelsY = abs(yy)
+			yy = 0
+			sub = true
+		}
+		
+		//	Movement code
+		var loops = ceil(pixelsX + pixelsY)
+		pixelsX *= signX
+		pixelsY *= signY
+		for(var i=0;i<loops;i++) {
+			if !sub {
+				var pX = sign(pixelsX)
+				var pY = sign(pixelsY)
 			}
-			//	Colliding with a map
 			else {
-				var Map = instance_place_highest(groundX + sign(xx), groundY, collisionMap)
-				//	We are higher than it or its our map
-				if (z >= Map.z ) {
-					groundX += sign(xx)
-					if (map == -1 or Map != map) {
-						//	Check if we're actually on it
-						if y > Map.bbox_bottom - Map.width and y-z < Map.bbox_top + Map.width and place_meeting(groundX, groundY, Map) and place_meeting(groundX, y, Map) {
-							changeMap(Map)
-						} else if map > -1 {
-							//	If we're not colliding with current map anymore
-							if !place_meeting(groundX + sign(xx), groundY, map) and groundY > Map.bbox_top + Map.width + 16 {
-								changeMap(-1)
+				var pX = pixelsX
+				var pY = pixelsY
+			}
+			//	Not colliding with collision
+			if !detectCollision or !place_meeting(groundX + pX, groundY + pY, collision) {
+				//	Not colliding with a collisionMap
+				if !detectCollision or !place_meeting(groundX + pX, groundY + pY, collisionMap) {
+					groundX += pX
+					groundY += pY
+					if !onGround y += pY
+					if map > -1 {
+						changeMap(-1)
+					}
+				}
+				//	Colliding with a map
+				else {
+					var Map = instance_place_highest(groundX + pX, groundY + pY, collisionMap)
+					//	We are higher than it or its our map
+					if (z >= Map.z ) {
+						groundX += pX
+						groundY += pY
+						if !onGround y += pY
+						if (map == -1 or Map != map) {
+							//	Check if we're actually on it
+							if y > Map.bbox_bottom - Map.width and y-z < Map.bbox_top + Map.width and place_meeting(groundX, groundY, Map) and place_meeting(groundX, y, Map) {
+								changeMap(Map)
+							} else if map > -1 {
+								//	If we're not colliding with current map anymore
+								if !place_meeting(groundX + pX, groundY + pY, map) and groundY > Map.bbox_top + Map.width + 16 {
+									changeMap(-1)
+								}
+							}
+						}
+						else if map == Map and groundY >= (Map.bbox_top + Map.width + 16) {
+							changeMap(-1)	
+						}
+					}
+					else {
+						var collisionCount = maps_collision_count(x,y)
+						//	We're behind this map
+						if map != Map and map == -1 and groundY <= Map.bbox_bottom - Map.width and collisionCount == 0 {
+							groundX += pX
+							groundY += pY
+							if !onGround y += pY
+						}
+						else {
+							//	Check if we're actually on it
+							if map == Map and groundY <= (Map.bbox_top + Map.width + 16) {
+								groundX += pX
+								groundY += pY
+								if !onGround y += pY
+							}
+							//	Not on the map, fall
+							else {
+								//if map > -1 changeMap(-1)	
 							}
 						}
 					}
-					else if map == Map and groundY >= (Map.bbox_top + Map.width + 16) {
-						changeMap(-1)	
-					}
-				}
-				else {
-					var collisionCount = maps_collision_count(x,y)
-					//	We're behind this map
-					if map != Map and map == -1 and groundY <= Map.bbox_bottom - Map.width and collisionCount == 0 {
-						groundX += sign(xx)
-					}
-					else {
-						//	Check if we're actually on it
-						if map == Map and groundY <= (Map.bbox_top + Map.width + 16) {
-							groundX += sign(xx)	
-						}
-						//	Not on the map, fall
-						else {
-							//if map > -1 changeMap(-1)	
-						}
-					}
 				}
 			}
 		}
-	}
-	
-	for(var Y=0;Y<abs(yy);Y++) {
-		//	Not colliding with collision
-		if !detectCollision or !place_meeting(groundX, groundY + sign(yy), collision) {
-			//	Not colliding with a collisionMap
-			if !detectCollision or !place_meeting(groundX, groundY + sign(yy), collisionMap) {
-				groundY += sign(yy)
-				if !onGround y += sign(yy)
-				if map > -1 {
-					changeMap(-1)
-				}
-			}
-			//	Colliding with a map
-			else {
-				var Map = instance_place_highest(groundX, groundY + sign(yy), collisionMap)
-				//	We are higher than it
-				if (z >= Map.z) {
-					groundY += sign(yy)
-					if !onGround y += sign(yy)
-					if map == -1 or map != Map {
-						if y > Map.bbox_bottom - Map.width and y-z < Map.bbox_top + Map.width and place_meeting(groundX, groundY, Map) and place_meeting(groundX, y, Map) {
-							changeMap(Map)
-						} else if map > -1 {
-							if !place_meeting(groundX, groundY + sign(yy), map) and groundY > Map.bbox_top + Map.width + 16 changeMap(-1)
-						}
-					}
-					else if map == Map and groundY + sign(yy) >= (Map.bbox_top + Map.width + 16) {
-						changeMap(-1)	
-					}
-				}
-				else {
-					var collisionCount = maps_collision_count(x,y)
-					//	We're behind this map 
-					if map != Map and groundY + sign(yy) <= Map.bbox_bottom - Map.width {
-						groundY += sign(yy)
-						if !onGround y += sign(yy)
-					}
-					else {
-						//	Check if we're actually on it
-						if map == Map and groundY + sign(yy) <= (Map.bbox_top + Map.width + 16) {	
-							groundY += sign(yy)
-							if !onGround y += sign(yy)
-						}
-						//	We are not on the map, fall
-						else if map > -1 {
-							//changeMap(-1)
-						}
-					}
-				}
-			}
-		}
-	}
 		
-	if subX > 0 {
-		//	Not colliding with collision
-		if !detectCollision or !place_meeting(groundX + subX, groundY, collision) {
-			//	Not colliding with a collisionMap
-			if !detectCollision or !place_meeting(groundX + subX, groundY, collisionMap) {
-				groundX += subX
-				if map > -1 {
-					changeMap(-1)
-				}
-			}
-			//	Colliding with a map
-			else {
-				var Map = instance_place_highest(groundX + subX, groundY, collisionMap)
-				//	We are higher than it or its our map
-				if (z >= Map.z ) {
-					groundX += subX
-					if (map == -1 or Map != map) {
-						//	Check if we're actually on it
-						if y > Map.bbox_bottom - Map.width and y-z < Map.bbox_top + Map.width and place_meeting(groundX, groundY, Map) and place_meeting(groundX, y, Map) {
-							changeMap(Map)
-						} else if map > -1 {
-							//	If we're not colliding with current map anymore
-							if !place_meeting(groundX + subX, groundY, map) changeMap(-1)
-						}
-					}
-					else if map == Map and groundY >= (Map.bbox_top + Map.width + 16) {
-						changeMap(-1)	
-					}
-				}
-				else {
-					var collisionCount = maps_collision_count(x,y)
-					//	We're behind this map
-					if map != Map and map == -1 and groundY <= Map.bbox_bottom - Map.width and collisionCount == 0 {
-						groundX += subX
-					}
-					else {
-						//	Check if we're actually on it
-						if map == Map and groundY <= (Map.bbox_top + Map.width + 16) {
-							groundX += subX
-						}
-						//	Not on the map, fall
-						else {
-							//if map > -1 changeMap(-1)	
-						}
-					}
-				}
-			}
-		}
 	}
-	
-	if subY > 0 {
-		//	Not colliding with collision
-		if !detectCollision or !place_meeting(groundX, groundY + subY, collision) {
-			//	Not colliding with a collisionMap
-			if !detectCollision or !place_meeting(groundX, groundY + subY, collisionMap) {
-				groundY += subY
-				if !onGround y += subY
-				if map > -1 {
-					changeMap(-1)
-				}
-			}
-			//	Colliding with a map
-			else {
-				var Map = instance_place_highest(groundX, groundY + subY, collisionMap)
-				//	We are higher than it
-				if (z >= Map.z) {
-					groundY += subY
-					if !onGround y += subY
-					if map == -1 or map != Map {
-						if y > Map.bbox_bottom - Map.width and y-z < Map.bbox_top + Map.width and place_meeting(groundX, groundY, Map) and place_meeting(groundX, y, Map) {
-							changeMap(Map)
-						} else if map > -1 {
-							if !place_meeting(groundX + sign(xx), groundY, map) changeMap(-1)
-						}
-					}
-					else if map == Map and groundY + subY >= (Map.bbox_top + Map.width + 16) {
-						changeMap(-1)	
-					}
-				}
-				else {
-					var collisionCount = maps_collision_count(x,y)
-					//	We're behind this map 
-					if map != Map and groundY + subY <= Map.bbox_bottom - Map.width {
-						groundY += subY
-						if !onGround y += subY
-					}
-					else {
-						//	Check if we're actually on it
-						if map == Map and groundY + subY <= (Map.bbox_top + Map.width + 16) {	
-							groundY += subY
-							if !onGround y += subY
-						}
-						//	We are not on the map, fall
-						else if map > -1 {
-							//changeMap(-1)
-						}
-					}
-				}
-			}
-		}	
-	}
-		
-	
-	//debug.log("xx: "+string(floor(abs(xx))))
-	//debug.log("yy: "+string(floor(abs(yy))))
-	//debug.log("subX: "+string(subX))
-	//debug.log("subY: "+string(subY))
-	
 	
 	xx = 0
 	yy = 0
