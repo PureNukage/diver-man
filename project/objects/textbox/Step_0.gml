@@ -60,7 +60,7 @@ if textIndex < string_length(text) {	//	Only play if they're talking
 		//	break
 	}
 	if string_char_at(text,textIndex) == " " or textIndex == string_length(text)-1 {
-		sound.playSoundEffect(Sound)	
+		if Sound > -1 sound.playSoundEffect(Sound)	
 	}
 	
 }
