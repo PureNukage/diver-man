@@ -49,6 +49,28 @@ function generate_map() {
 		surface_free(Surface)
 	}
 	
+	//	Shift shadows for collisionMaps up
+	if instance_exists(collisionMap) with collisionMap if rock == -1 {
+		var x1 = bbox_left
+		var y1 = bbox_top+z
+		var x2 = bbox_right
+		var y2 = bbox_bottom
+		//	Create copy of shadow 
+		var mapSurface = surface_create(x2-x1,y2-y1)
+		surface_copy_part(mapSurface,0,0,shadows.surface,x1,y1,x2-x1,y2-y1)
+		//	Clear entire collisionMap from shadow surface
+		surface_set_target(shadows.surface)
+		gpu_set_blendmode(bm_subtract)
+		var cliffSurface = surface_create(sprite_get_width(sprite_index)*image_xscale,sprite_get_height(sprite_index)*image_yscale)
+		buffer_set_surface(surfaceBuffer,cliffSurface,0)
+		draw_surface_ext(cliffSurface,x,y,1,1,0,c_black,1)
+		gpu_set_blendmode(bm_normal)
+		//	Paste our copy back in but shifted up z
+		draw_surface(mapSurface,bbox_left,bbox_top)
+		surface_reset_target()
+		surface_free(mapSurface)
+	}
+	
 	//	Main menu shadow text
 	if instance_exists(mainmenu) with mainmenu {
 		draw_set_alpha(1)

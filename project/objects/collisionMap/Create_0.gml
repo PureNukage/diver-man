@@ -68,9 +68,9 @@ function drawNearbyMaps() {
 }
 
 function createSurface() {
-	var surface = surface_create(room_width, room_height) // sprite_get_width(sprite_index)*image_xscale, sprite_get_height(sprite_index)*image_yscale
+	var Surface = surface_create(room_width, room_height) // sprite_get_width(sprite_index)*image_xscale, sprite_get_height(sprite_index)*image_yscale
 	
-	surface_set_target(surface)
+	surface_set_target(Surface)
 	draw_clear_alpha(c_black, 0)
 	
 	var layerString = ""
@@ -88,7 +88,7 @@ function createSurface() {
 	
 	var finalSurface = surface_create(sprite_get_width(sprite_index)*image_xscale, sprite_get_height(sprite_index)*image_yscale + 16)
 	
-	surface_copy_part(finalSurface,0,0, surface, x,y, sprite_get_width(sprite_index)*image_xscale, sprite_get_height(sprite_index)*image_yscale + 16)
+	surface_copy_part(finalSurface,0,0, Surface, x,y, sprite_get_width(sprite_index)*image_xscale, sprite_get_height(sprite_index)*image_yscale + 16)
 	
 	var width = surface_get_width(finalSurface)
 	var height = surface_get_height(finalSurface)
@@ -141,7 +141,7 @@ function createSurface() {
 	inverseSurfaceBuffer = buffer_create(room_width*room_height*4, buffer_grow, 1)
 	buffer_get_surface(inverseSurfaceBuffer, inverseSurface, 0)
 	
-	surface_free(surface)
+	surface_free(Surface)
 	surface_free(inverseSurface)
 	surface_free(cookieCutSurface)
 	

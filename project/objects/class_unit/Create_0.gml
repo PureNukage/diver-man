@@ -470,7 +470,7 @@ function draw_shade() {
 		draw_clear_alpha(c_black, 0)
 		surface_reset_target()
 	
-		surface_copy_part(surface,0,0,shadows.surface, floor(bbox_left)+z,floor(bbox_top), bbox_width,bbox_height)
+		surface_copy_part(surface,0,0,shadows.surface, floor(bbox_left),floor(bbox_top-z), bbox_width,bbox_height)
 
 		//	Draw the surface stretched on top of the sprite_index
 		var surface2 = surface_create(room_width,room_height)

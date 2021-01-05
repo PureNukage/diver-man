@@ -24,6 +24,11 @@ if drawSurface and surface_exists(surface) {
 	
 		draw_set_alpha(0.15)
 		draw_surface(causticSurf,x,y)
+		
+		//	Draw shadow
+		if surface_exists(shadows.surface) {
+			if rock == -1 draw_surface_part(shadows.surface,bbox_left,bbox_top,bbox_right-bbox_left,(bbox_bottom-z)-bbox_top,bbox_left,bbox_top)
+		}
 	
 		draw_reset()
 	

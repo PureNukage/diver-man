@@ -26,5 +26,5 @@ heightMap.width = abs((topY) - bbox_top)
 heightMap.rock = id
 heightMap.createSurface()
 
-depth = player.depth - 1
-heightMap.depth = player.depth - 1
+depth = -(y - sprite_get_yoffset(sprite_index))
+heightMap.depth = depth

@@ -10,6 +10,7 @@ if player.state == state.attack and damagedTimer == -1 and !smashed {
 		debug.log("Getting smacked!")
 		damagedTimer = 30
 		image_index++
+		surface_free(heightMap.surface)
 		heightMap.createSurface()
 		if image_index >= 3 {
 			debug.log("SMASHED")
