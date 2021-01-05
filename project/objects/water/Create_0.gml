@@ -47,7 +47,12 @@ cliffSurface = -1
 
 sec = 0
 
+function generate_blue() {
+		
+}
+
 causticBuffer = -1
+causticSurfaceCutout = -1
 function generate_caustic_map() {
 	var Surface = surface_create(room_width, room_height)
 	surface_set_target(Surface)

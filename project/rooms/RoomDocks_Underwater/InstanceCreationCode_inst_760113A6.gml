@@ -1,1 +1,0 @@
-moveDirection = 45

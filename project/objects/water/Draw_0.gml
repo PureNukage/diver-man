@@ -37,18 +37,17 @@ if on {
 	var HH = room_height / Height
 	for(var w=0;w<WW;w++) {
 		for(var h=0;h<HH;h++) {
-			draw_surface(surface, w*Width,h*Height)
+			//if rectangle_in_rectangle(w*Width,h*Height,w*Width+Width,h*Height+Height, app.cameraX1,app.cameraY1,app.cameraX2,app.cameraY2) {
+				draw_surface(surface, w*Width,h*Height)
+			//}
 		}
 	}
 	
 	////	Remove collisionMap cliffs
-	if causticBuffer > -1 {
-		var Surface = surface_create(room_width, room_height)
-		buffer_set_surface(causticBuffer,Surface,0)
+	if surface_exists(causticSurfaceCutout) {
 		gpu_set_blendmode(bm_subtract)
-		draw_surface_ext(Surface,0,0,1,1,0,c_black,1)
+		draw_surface_ext(causticSurfaceCutout,0,0,1,1,0,c_black,1)
 		gpu_set_blendmode(bm_normal)
-		surface_free(Surface)
 	}
 	
 	surface_reset_target()

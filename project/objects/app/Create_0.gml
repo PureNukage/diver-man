@@ -599,6 +599,22 @@ function scene_loader() {
 				}	
 			break	
 		#endregion
+		
+		#region Docks - Underwater 
+			case RoomDocks_Underwater:
+				if Quest > -1 {
+					switch(Quest.index) {
+						case quests.watch:
+							var Watch = instance_create_layer(832,152,Layer,watch)
+							var QM2 = instance_create_layer(0,0,Layer,questManager2)
+						break
+					}
+				}
+				else {
+						
+				}
+			break
+		#endregion
 	}
 	
 	scene_loaded = true

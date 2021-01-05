@@ -1,5 +1,5 @@
 {
-  "bboxMode": 0,
+  "bboxMode": 2,
   "collisionKind": 1,
   "type": 0,
   "origin": 9,
@@ -9,7 +9,7 @@
   "swfPrecision": 2.525,
   "bbox_left": 22,
   "bbox_right": 110,
-  "bbox_top": 0,
+  "bbox_top": 188,
   "bbox_bottom": 502,
   "HTile": false,
   "VTile": false,
@@ -24,12 +24,12 @@
   "gridX": 0,
   "gridY": 0,
   "frames": [
-    {"compositeImage":{"FrameId":{"name":"3c210657-8023-4e56-9e73-e4c74a46483f","path":"sprites/s_dock_pole/s_dock_pole.yy",},"LayerId":null,"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMSpriteBitmap",},"images":[
-        {"FrameId":{"name":"3c210657-8023-4e56-9e73-e4c74a46483f","path":"sprites/s_dock_pole/s_dock_pole.yy",},"LayerId":{"name":"6d01b4cb-d9ca-4f84-a857-1eac53e681fa","path":"sprites/s_dock_pole/s_dock_pole.yy",},"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMSpriteBitmap",},
-      ],"parent":{"name":"s_dock_pole","path":"sprites/s_dock_pole/s_dock_pole.yy",},"resourceVersion":"1.0","name":"3c210657-8023-4e56-9e73-e4c74a46483f","tags":[],"resourceType":"GMSpriteFrame",},
+    {"compositeImage":{"FrameId":{"name":"3c210657-8023-4e56-9e73-e4c74a46483f","path":"sprites/s_dock_pole_collision/s_dock_pole_collision.yy",},"LayerId":null,"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMSpriteBitmap",},"images":[
+        {"FrameId":{"name":"3c210657-8023-4e56-9e73-e4c74a46483f","path":"sprites/s_dock_pole_collision/s_dock_pole_collision.yy",},"LayerId":{"name":"6d01b4cb-d9ca-4f84-a857-1eac53e681fa","path":"sprites/s_dock_pole_collision/s_dock_pole_collision.yy",},"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMSpriteBitmap",},
+      ],"parent":{"name":"s_dock_pole_collision","path":"sprites/s_dock_pole_collision/s_dock_pole_collision.yy",},"resourceVersion":"1.0","name":"3c210657-8023-4e56-9e73-e4c74a46483f","tags":[],"resourceType":"GMSpriteFrame",},
   ],
   "sequence": {
-    "spriteId": {"name":"s_dock_pole","path":"sprites/s_dock_pole/s_dock_pole.yy",},
+    "spriteId": {"name":"s_dock_pole_collision","path":"sprites/s_dock_pole_collision/s_dock_pole_collision.yy",},
     "timeUnits": 1,
     "playback": 1,
     "playbackSpeed": 30.0,
@@ -41,7 +41,7 @@
     "moments": {"Keyframes":[],"resourceVersion":"1.0","resourceType":"KeyframeStore<MomentsEventKeyframe>",},
     "tracks": [
       {"name":"frames","spriteId":null,"keyframes":{"Keyframes":[
-            {"id":"6aa01791-149d-41c8-9523-66b0ac773a3b","Key":0.0,"Length":1.0,"Stretch":false,"Disabled":false,"IsCreationKey":false,"Channels":{"0":{"Id":{"name":"3c210657-8023-4e56-9e73-e4c74a46483f","path":"sprites/s_dock_pole/s_dock_pole.yy",},"resourceVersion":"1.0","resourceType":"SpriteFrameKeyframe",},},"resourceVersion":"1.0","resourceType":"Keyframe<SpriteFrameKeyframe>",},
+            {"id":"7d056d23-0c4c-427c-8abd-c62de9925851","Key":0.0,"Length":1.0,"Stretch":false,"Disabled":false,"IsCreationKey":false,"Channels":{"0":{"Id":{"name":"3c210657-8023-4e56-9e73-e4c74a46483f","path":"sprites/s_dock_pole_collision/s_dock_pole_collision.yy",},"resourceVersion":"1.0","resourceType":"SpriteFrameKeyframe",},},"resourceVersion":"1.0","resourceType":"Keyframe<SpriteFrameKeyframe>",},
           ],"resourceVersion":"1.0","resourceType":"KeyframeStore<SpriteFrameKeyframe>",},"trackColour":0,"inheritsTrackColour":true,"builtinName":0,"traits":0,"interpolation":1,"tracks":[],"events":[],"modifiers":[],"isCreationTrack":false,"resourceVersion":"1.0","tags":[],"resourceType":"GMSpriteFramesTrack",},
     ],
     "visibleRange": null,
@@ -58,9 +58,9 @@
     "yorigin": 504,
     "eventToFunction": {},
     "eventStubScript": null,
-    "parent": {"name":"s_dock_pole","path":"sprites/s_dock_pole/s_dock_pole.yy",},
+    "parent": {"name":"s_dock_pole_collision","path":"sprites/s_dock_pole_collision/s_dock_pole_collision.yy",},
     "resourceVersion": "1.3",
-    "name": "s_dock_pole",
+    "name": "s_dock_pole_collision",
     "tags": [],
     "resourceType": "GMSequence",
   },
@@ -72,7 +72,7 @@
     "path": "folders/Art/misc items.yy",
   },
   "resourceVersion": "1.0",
-  "name": "s_dock_pole",
+  "name": "s_dock_pole_collision",
   "tags": [],
   "resourceType": "GMSprite",
 }

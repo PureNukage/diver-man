@@ -4,8 +4,12 @@ width = sprite_get_height(sprite_index)*image_yscale
 centerX = bbox_left + (sprite_width/2)
 centerY = bbox_top + (sprite_height/2)
 
+surface = -1
 surfaceBuffer = -1
 inverseSurfaceBuffer = -1
+
+cookieBuffer = -1
+cookieSurface = -1
 
 drawSurface = false
 
@@ -114,12 +118,32 @@ function createSurface() {
 	
 	surface_reset_target()
 	
+	//	Cookie Cutter surface
+	var cookieCutSurface = surface_create(sprite_get_width(sprite_index)*image_xscale,sprite_get_height(sprite_index)*image_yscale)
+	surface_set_target(cookieCutSurface)
+	draw_clear_alpha(c_black, 0)
+	
+	draw_set_alpha(1)
+	draw_set_color(c_black)
+	draw_rectangle(0,0,sprite_get_width(sprite_index)*image_xscale,sprite_get_height(sprite_index)*image_yscale,false)
+	
+	gpu_set_blendmode(bm_subtract)
+	draw_surface_ext(finalSurface,0,0,1,1,0,c_black,1)
+	gpu_set_blendmode(bm_normal)
+	
+	surface_reset_target()
+	
+	if cookieBuffer > -1 and buffer_exists(cookieBuffer) buffer_delete(cookieBuffer)
+	cookieBuffer = buffer_create((sprite_get_width(sprite_index)*image_xscale)*(sprite_get_height(sprite_index)*image_yscale)*4,buffer_grow,1)
+	buffer_get_surface(cookieBuffer, cookieCutSurface, 0)
+	
 	if inverseSurfaceBuffer > -1 and buffer_exists(inverseSurfaceBuffer) buffer_delete(inverseSurfaceBuffer)
 	inverseSurfaceBuffer = buffer_create(room_width*room_height*4, buffer_grow, 1)
 	buffer_get_surface(inverseSurfaceBuffer, inverseSurface, 0)
 	
 	surface_free(surface)
 	surface_free(inverseSurface)
+	surface_free(cookieCutSurface)
 	
 }
 

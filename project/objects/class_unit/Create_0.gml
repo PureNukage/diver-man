@@ -453,6 +453,7 @@ function draw_shade() {
 	var YY = floor(y) - yOffset + sprite_get_bbox_top(sprite_index) - z
 	var spriteWidth = sprite_get_bbox_right(sprite_index) - sprite_get_bbox_left(sprite_index)
 	var spriteHeight = sprite_get_bbox_bottom(sprite_index) - sprite_get_bbox_top(sprite_index)
+	//var spriteHeight = sprite_get_height(sprite_index)
 	
 	var surface = -1
 	var surface2 = -1
@@ -472,16 +473,8 @@ function draw_shade() {
 		surface_set_target(surface)
 		draw_clear_alpha(c_black, 0)
 		surface_reset_target()
-		
-		var shadowSurface = surface_create(room_width, room_height)
-		surface_set_target(shadowSurface)
-		draw_clear_alpha(c_white, 0)
-		surface_reset_target()
-		buffer_set_surface(shadows.surfaceBuffer,shadowSurface,0)
 	
-		surface_copy_part(surface,0,0,shadowSurface, floor(bbox_left)+z,floor(bbox_top), bbox_width,bbox_height)
-		
-		surface_free(shadowSurface)
+		surface_copy_part(surface,0,0,shadows.surface, floor(bbox_left)+z,floor(bbox_top), bbox_width,bbox_height)
 
 		//	Draw the surface stretched on top of the sprite_index
 		var surface2 = surface_create(room_width,room_height)
@@ -530,7 +523,7 @@ function draw_shade() {
 		gpu_set_blendmode(bm_normal)
 		surface_reset_target()
 		
-		buffer_get_surface(shadeBuffer, surfaceFinal, 0)
+		if shadeStatic buffer_get_surface(shadeBuffer, surfaceFinal, 0)
 	}
 	
 	else if buffer_exists(shadeBuffer) {

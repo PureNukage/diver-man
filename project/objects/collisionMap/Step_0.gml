@@ -49,5 +49,15 @@ if instance_exists(player) and point_in_rectangle(player.x,player.y,bbox_left-64
 	}
 	player.mask_index = oldMask
 }
+	
+if !surface_exists(surface) and buffer_exists(surfaceBuffer) {
+	surface = surface_create(sprite_get_width(sprite_index)*image_xscale,sprite_get_height(sprite_index)*image_yscale)
+	buffer_set_surface(surfaceBuffer, surface, 0)
+}
+
+if !surface_exists(cookieSurface) and buffer_exists(cookieBuffer) {
+	cookieSurface = surface_create(sprite_get_width(sprite_index)*image_xscale,sprite_get_height(sprite_index)*image_yscale)
+	buffer_set_surface(cookieBuffer, cookieSurface, 0)
+}
 
 if !foundNearbyMaps findNearbyMaps()
