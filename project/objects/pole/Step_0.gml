@@ -2,8 +2,8 @@ event_inherited()
 
 depth = -y
 
-var wholeY = bbox_bottom - (sprite_get_height(sprite_index)/2)
-var zeroY = y - sprite_get_yoffset(sprite_index)
+var wholeY = bbox_bottom - ((sprite_get_height(sprite_index)*image_yscale)/2)
+var zeroY = y - (sprite_get_yoffset(sprite_index)*image_yscale)
 var cameraY = camera_get_view_y(app.camera)
 
 if cameraY < zeroY image_alpha = 0
