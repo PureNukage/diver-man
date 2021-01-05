@@ -19,6 +19,7 @@ function lift(up_or_down) {
 		player.y = y-z
 		player.groundX = x
 		player.groundY = y-z
+		if app.cameraFocusOnPlayer app.cameraFocusOnPlayer = false
 	}
 	
 	var Z = 0
@@ -33,8 +34,10 @@ function lift(up_or_down) {
 					if Room == -1 Room = RoomDocks
 					app.roomTransition(Room, 5)
 				}
-				
-				
+			}
+			
+			if z < 360 {
+				app.cameraFocus(x,y+z,1,true)	
 			}
 		break
 		
@@ -46,6 +49,14 @@ function lift(up_or_down) {
 					app.roomTransition(RoomDocks_Underwater, 5)	
 				}
 			}
+			
+			if z > 0 {
+				app.cameraFocus(x,y+z,1,true)
+			}
+			else {
+				app.cameraFocus(player.x,player.y,1,true)	
+			}
+
 		break
 	}
 	

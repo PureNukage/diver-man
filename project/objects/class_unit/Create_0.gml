@@ -299,7 +299,6 @@ function applyMovement() {
 					if !onGround y += pY
 					if map > -1 {
 						changeMap(-1)
-						debug.log("poop1")
 					}
 				}
 				//	Colliding with a map
@@ -314,19 +313,16 @@ function applyMovement() {
 							//	Check if we're actually on it
 							if y > Map.bbox_bottom - Map.width and y-z < Map.bbox_top + Map.width and place_meeting(groundX, groundY, Map) and place_meeting(groundX, y, Map) {
 								changeMap(Map)
-								debug.log("poop2")
 							} else if map > -1 {
 								//	If we're not colliding with current map anymore
 								//if !place_meeting(groundX + pX, groundY + pY, map) and groundY > Map.bbox_top + Map.width + 16 {
 								if !place_meeting(groundX, groundY, map) and groundY > Map.bbox_top + Map.width + 16 {
 									changeMap(-1)
-									debug.log("poop3")
 								}
 							}
 						}
 						else if map == Map and groundY >= (Map.bbox_top + Map.width + 16) {
 							changeMap(-1)	
-							debug.log("poop4")
 						}
 					}
 					else {
