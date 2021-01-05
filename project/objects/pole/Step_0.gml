@@ -2,8 +2,8 @@ event_inherited()
 
 depth = -y
 
-var wholeY = bbox_bottom - ((sprite_get_height(sprite_index)*image_yscale)/2)
-var zeroY = y - (sprite_get_yoffset(sprite_index)*image_yscale)
+var wholeY = bbox_bottom - ((sprite_get_height(sprite_index)*image_yscale)/2) - z
+var zeroY = y - (sprite_get_yoffset(sprite_index)*image_yscale) - z
 var cameraY = camera_get_view_y(app.camera)
 
 if cameraY < zeroY image_alpha = 0
@@ -12,4 +12,11 @@ else if cameraY >= zeroY and cameraY < wholeY {
 }
 else {
 	image_alpha = 1	
+}
+
+if place_meeting(x,y,collisionMap) and map == -1 {
+	var ID = instance_place(x,y,collisionMap)
+	map = ID
+	y += map.z
+	z = map.z
 }
