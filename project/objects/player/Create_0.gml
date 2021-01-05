@@ -24,6 +24,31 @@ jumpHalt = false
 
 mask_index = s_diverman_collision
 
+////	Inventory
+inventory = ds_list_create()
+
+function create_item(item_index) {
+	var Item = new _create_item(item_index)
+	ds_list_add(inventory, Item)
+}
+
+function remove_item(item_list_index) {
+	if item_list_index > -1 ds_list_delete(inventory, item_list_index)
+	else debug.log("ERROR Trying to remove -1 item from inventory")
+}
+
+function item_check(item_index) {
+	for(var i=0;i<ds_list_size(inventory);i++) {
+		var Item = inventory[| i]
+		if Item.index == item_index return i
+	}
+	return -1
+}
+
+function _create_item(item_index) constructor {
+	index = item_index
+}
+
 function footprint() {
 	var footstepLeft = 0
 	var footstepRight = 0
