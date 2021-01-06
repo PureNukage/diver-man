@@ -1,11 +1,13 @@
 event_inherited()
 
+Crane = -1
+
 shadowEllipse = false
+drawShadow = false
+drawUnit = false
 
 interactibility = true
-if !app.underwater drawShadow = false
 
-//startingGame = false
 lowered = true
 inUse = false
 liftDirection = down
@@ -20,6 +22,7 @@ function lift(up_or_down) {
 		player.groundX = x
 		player.groundY = y-z
 		if app.cameraFocusOnPlayer app.cameraFocusOnPlayer = false
+		//if instance_exists(rope) rope.depth = depth + 1
 	}
 	
 	var Z = 0
@@ -34,28 +37,47 @@ function lift(up_or_down) {
 					if Room == -1 Room = RoomDocks
 					app.roomTransition(Room, 5)
 				}
+				
+				if z < 360 {
+					app.cameraFocus(x,y+z,1,true)	
+				}
 			}
-			
-			if z < 360 {
-				app.cameraFocus(x,y+z,1,true)	
+			else {
+				if z < 180 and Crane > -1 {
+					app.cameraFocus(x,Crane.y,"~",false)	
+				}
+				else {
+					app.cameraFocus(x,y-z-180,1,true)
+				}	
 			}
+		
 		break
 		
 		case down:
 			Z = -2
 			
-			if !app.underwater {
+			if app.underwater {
+
+				
+				if z > 0 {
+					app.cameraFocus(x,y+z,1,true)
+				}
+				else {
+					app.cameraFocus(player.x,player.y,1,true)	
+				}
+			}
+			
+			else {
+				if z < 0 and Crane > -1 {
+					app.cameraFocus(x,Crane.y,"~",false)	
+				}
+				
 				if z <= -100 and app.roomTransitionTo == -1 {
 					app.roomTransition(RoomDocks_Underwater, 5)	
 				}
 			}
 			
-			if z > 0 {
-				app.cameraFocus(x,y+z,1,true)
-			}
-			else {
-				app.cameraFocus(player.x,player.y,1,true)	
-			}
+
 
 		break
 	}
@@ -68,6 +90,8 @@ function lift(up_or_down) {
 		lowered = false
 		
 		liftDirection = down
+		
+		if filled filled = false
 		
 		player.canMove = true
 		player.muted = false
@@ -88,19 +112,14 @@ function lift(up_or_down) {
 			player.muted = false
 			player.groundX = x
 			player.groundY = y
+			filled = false
 		}
 		
 		liftDirection = up
 		
 	}
 	
-	////	Assemble the pieces to the cage (plus the player!)
-	draw_sprite(s_cage_floor,0,x,y-z)
-	
-	if filled draw_sprite_ext(player.sprite_index,player.image_index, x,y-z, player.image_xscale,player.image_yscale,player.image_angle,player.image_blend,player.image_alpha)
-	
-	draw_sprite(s_cage_roof,0,x,y-z)
-	draw_sprite(s_cage_bars,0,x,y-z)
+	if filled draw_sprite_ext(player.sprite_index,player.image_index, x+(2*player.image_xscale),y-z-12, player.image_xscale,player.image_yscale,player.image_angle,player.image_blend,player.image_alpha)
 	
 }
 	

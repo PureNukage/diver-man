@@ -553,11 +553,11 @@ function scene_loader() {
 							
 							instance_create_layer(0,0,Layer,bullysTossWatch)
 						
-							var Brother = instance_create_layer(1152,384,Layer,brotherWatchToss)
+							var Brother = instance_create_layer(1232,352,Layer,brotherWatchToss)
 							
-							var bully2 = instance_create_layer(1248,384,Layer,bully2Watch)
+							var bully2 = instance_create_layer(1328,352,Layer,bully2Watch)
 							bully2.image_xscale = -1
-							var bully1 = instance_create_layer(1296,384,Layer,bully1Watch)
+							var bully1 = instance_create_layer(1376,352,Layer,bully1Watch)
 							bully1.image_xscale = -1
 							
 							//	Replace room change with collision
@@ -577,7 +577,7 @@ function scene_loader() {
 								
 								//	We left the underwater without finding the watch
 								if player.item_check(item.watch) == -1 {
-									var Pete = instance_create_layer(400,432,Layer,sailorPeteGotSuit)
+									var Pete = instance_create_layer(480,400,Layer,sailorPeteGotSuit)
 									Pete.stage = 1
 									Pete.dialogueIndex++
 									

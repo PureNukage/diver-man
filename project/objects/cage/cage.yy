@@ -1,7 +1,7 @@
 {
   "spriteId": {
-    "name": "s_cage_whole",
-    "path": "sprites/s_cage_whole/s_cage_whole.yy",
+    "name": "s_chain3",
+    "path": "sprites/s_chain3/s_chain3.yy",
   },
   "solid": false,
   "visible": true,

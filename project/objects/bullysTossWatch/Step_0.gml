@@ -2,7 +2,7 @@
 if stage == 0 {
 	if player.groundX >= 1050 {
 		player.canMove = false
-		app.cameraFocus(1235,360, "~", true)
+		app.cameraFocus(1262,352, "~", true)
 		stage = 1
 		Layer = layer_create(-1)
 		Sequence = layer_sequence_create(Layer,0,0,Sequence6)
@@ -50,7 +50,7 @@ else if stage == 3 {
 //	Wait for sequence to finish
 else if stage == 4 {
 	if layer_sequence_is_finished(Sequence) {
-		instance_create_layer(1152,384,"Instances",brotherAfterWatch)
+		instance_create_layer(1232,352,"Instances",brotherAfterWatch)
 		instance_destroy(brotherWatchToss)
 		instance_destroy(bully2Watch)
 		instance_destroy(bully1Watch)

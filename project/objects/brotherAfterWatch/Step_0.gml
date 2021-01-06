@@ -11,7 +11,7 @@ else if stage == 1 {
 		timer++
 		if timer >= 120 {
 			stage = 2
-			var Pete = instance_create_layer(820,369,"Instances",sailorPeteEntrance)
+			var Pete = instance_create_layer(854,352,"Instances",sailorPeteEntrance)
 			create_textbox(Pete, Pete.myDialogue[1, Pete.dialogueIndex])
 		}
 	}
@@ -20,8 +20,8 @@ else if stage == 1 {
 else if stage == 2 {
 	if !instance_exists(textbox) {
 		Layer = layer_create(-1)
-		sailorPeteEntrance.move_to(980,369)
-		app.cameraFocus(980,369,"~",true)
+		sailorPeteEntrance.move_to(980,342)
+		app.cameraFocus(960,352,"~",true)
 		stage = 3
 		image_xscale = -1
 		player.image_xscale = -1
