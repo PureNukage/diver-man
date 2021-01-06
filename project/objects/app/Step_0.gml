@@ -50,7 +50,7 @@ if !paused {
 	var coordY = cameraFocusY
 	if cameraFocusOnPlayer and instance_exists(player) {
 		coordX = player.x
-		coordY = player.y
+		coordY = player.y-player.z
 	}
 	if cameraLerp {
 		x = floor(lerp(x,coordX,0.05))

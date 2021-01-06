@@ -517,10 +517,10 @@ function draw_shade() {
 	
 	////	DEBUG
 	if object_index == player {
-		if surface_exists(surfaceShadow) draw_surface_ext(surfaceShadow, XX,YY-64, 1,1, 0, c_white, 1)
-		if surface_exists(surfaceShadowStretched) draw_surface_ext(surfaceShadowStretched, XX + 64,YY - 64, 1,1, 0, c_white, 1)
-		if surface_exists(surfacePlayerCutout) draw_surface_ext(surfacePlayerCutout, XX + 96 + spriteWidth,YY-64, 1,1, 0, c_white, 1)
-		if surface_exists(surfaceFinal) draw_surface_ext(surfaceFinal, XX + 96 + spriteWidth*2 + 16,YY-64, 1,1, 0, c_white, 1)
+		//if surface_exists(surfaceShadow) draw_surface_ext(surfaceShadow, XX,YY-64, 1,1, 0, c_white, 1)
+		//if surface_exists(surfaceShadowStretched) draw_surface_ext(surfaceShadowStretched, XX + 64,YY - 64, 1,1, 0, c_white, 1)
+		//if surface_exists(surfacePlayerCutout) draw_surface_ext(surfacePlayerCutout, XX + 96 + spriteWidth,YY-64, 1,1, 0, c_white, 1)
+		//if surface_exists(surfaceFinal) draw_surface_ext(surfaceFinal, XX + 96 + spriteWidth*2 + 16,YY-64, 1,1, 0, c_white, 1)
 	}
 	
 	if surface_exists(shadeSurface) {

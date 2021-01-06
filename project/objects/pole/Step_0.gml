@@ -20,3 +20,5 @@ if place_meeting(x,y,collisionMap) and map == -1 {
 	y += map.z
 	z = map.z
 }
+
+if map > -1 depth = map.depth-1
