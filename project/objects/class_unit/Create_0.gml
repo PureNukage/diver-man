@@ -446,15 +446,11 @@ function draw_shade() {
 	var xOffset = sprite_get_xoffset(sprite_index)
 	var yOffset = sprite_get_yoffset(sprite_index)
 	var XX = floor(x) - xOffset + sprite_get_bbox_left(sprite_index)
+	if image_xscale == -1 XX = floor(x) - xOffset + (sprite_get_width(sprite_index) - sprite_get_bbox_right(sprite_index))
 	var YY = floor(y) - yOffset + sprite_get_bbox_top(sprite_index) - z
 	var spriteWidth = sprite_get_bbox_right(sprite_index) - sprite_get_bbox_left(sprite_index)
 	var spriteHeight = sprite_get_bbox_bottom(sprite_index) - sprite_get_bbox_top(sprite_index)
-	//var spriteHeight = sprite_get_height(sprite_index)
 	
-	var surface = -1
-	var surface2 = -1
-	var surface3 = -1
-	var surface4 = -1
 	var surfaceFinal = -1
 	
 	if !shadeStatic or !buffer_exists(shadeBuffer) {
@@ -463,62 +459,54 @@ function draw_shade() {
 			shadeBuffer = buffer_create(spriteWidth*spriteHeight*4, buffer_grow, 1)	
 		}
 	
+		//	Create the shadow surface
 		var bbox_width = floor(abs(bbox_right-bbox_left))
 		var bbox_height = floor(abs(bbox_bottom-bbox_top))
-		var surface = surface_create(bbox_width, bbox_height)
-		surface_set_target(surface)
-		draw_clear_alpha(c_black, 0)
-		surface_reset_target()
-	
-		surface_copy_part(surface,0,0,shadows.surface, floor(bbox_left),floor(bbox_top-z), bbox_width,bbox_height)
+		var surfaceShadow = surface_create(bbox_width, bbox_height)
+		surface_copy_part(surfaceShadow,0,0,shadows.surface, floor(bbox_left),floor(bbox_top-z), bbox_width,bbox_height)
 
-		//	Draw the surface stretched on top of the sprite_index
-		var surface2 = surface_create(room_width,room_height)
-		surface_set_target(surface2)
-		draw_clear_alpha(c_black, 0)
-	
+		//	Draw the shadow surface stretched 
 		var ratioWidth = spriteWidth / bbox_width
 		var ratioHeight = spriteHeight / bbox_height
-		draw_surface_ext(surface, XX,YY, ratioWidth,ratioHeight, 0, c_white, 1)
-		//draw_surface_ext(lighting.surface,0,0,1,1,0,c_white,lighting.darkness)
+		var Width = bbox_width * ratioWidth
+		var Height = bbox_height * ratioHeight
+		var surfaceShadowStretched = surface_create(Width, Height)
+		surface_set_target(surfaceShadowStretched)
+		draw_clear_alpha(c_black, 0)
+	
+		draw_surface_ext(surfaceShadow, 0,0, ratioWidth,ratioHeight, 0, c_white, 1)
 	
 		surface_reset_target()
-		draw_set_alpha(1)
 		
-	
-		var surface3 = surface_create(spriteWidth,spriteHeight)
-		surface_set_target(surface3)
+		//	Create the player cutout
+		var surfacePlayerCutout = surface_create(spriteWidth,spriteHeight)
+		surface_set_target(surfacePlayerCutout)
 		draw_clear_alpha(c_black, 0)
 	
 		draw_set_color(c_black)
 		draw_set_alpha(1)
 		draw_rectangle(0,0,spriteWidth,spriteHeight,false)
-		surface_reset_target()
-	
-		var surface4 = surface_create(spriteWidth,spriteHeight)
-		surface_set_target(surface4)
-		draw_clear_alpha(c_black, 0)
-		surface_reset_target()
-	
-		surface_copy_part(surface4,0,0,surface2,XX,YY,spriteWidth,spriteHeight)
-	
-		surface_set_target(surface3)
-		gpu_set_blendmode(bm_subtract)
-		draw_sprite_ext(sprite_index,image_index,xOffset-sprite_get_bbox_left(sprite_index),yOffset-sprite_get_bbox_top(sprite_index),image_xscale,image_yscale,image_angle,c_black,1)
-		gpu_set_blendmode(bm_normal)
-		surface_reset_target()
-	
-		var surfaceFinal = surface_create(surface_get_width(surface3),surface_get_height(surface3))
-		surface_set_target(surfaceFinal)
-		draw_clear_alpha(c_black, 0)
-	
-		draw_surface(surface4,0,0)
 	
 		gpu_set_blendmode(bm_subtract)
-		draw_surface_ext(surface3,0,0,1,1,0,c_black,1)
+		var _xOffset = sprite_get_bbox_left(sprite_index)
+		if image_xscale == -1 _xOffset = sprite_get_width(sprite_index) - sprite_get_bbox_right(sprite_index)
+		draw_sprite_ext(sprite_index,image_index,xOffset-_xOffset,yOffset-sprite_get_bbox_top(sprite_index),image_xscale,image_yscale,image_angle,c_black,1)
 		gpu_set_blendmode(bm_normal)
 		surface_reset_target()
 		
+		//	Create the final shadow surface
+		var surfaceFinal = surface_create(surface_get_width(surfacePlayerCutout),surface_get_height(surfacePlayerCutout))
+		surface_set_target(surfaceFinal)
+		draw_clear_alpha(c_black, 0)
+	
+		draw_surface(surfaceShadowStretched,0,0)
+	
+		gpu_set_blendmode(bm_subtract)
+		draw_surface_ext(surfacePlayerCutout,0,0,1,1,0,c_black,1)
+		gpu_set_blendmode(bm_normal)
+		surface_reset_target()
+		
+		//	If we're a static shaded object, save this surface to a buffer
 		if shadeStatic buffer_get_surface(shadeBuffer, surfaceFinal, 0)
 	}
 	
@@ -529,10 +517,10 @@ function draw_shade() {
 	
 	////	DEBUG
 	if object_index == player {
-		//if surface_exists(surface) draw_surface_ext(surface, XX + 64,YY, 1,1, 0, c_white, 1)
-		//if surface_exists(surface2) draw_surface_ext(surface2, XX + 128 - abs(x),YY - y + abs(spriteHeight), 1,1, 0, c_white, 1)
-		//if surface_exists(surface3) draw_surface_ext(surface3, XX + 192,YY, 1,1, 0, c_white, 1)
-		//if surface_exists(surface4) draw_surface_ext(surface4, XX + 256,YY, 1,1, 0, c_white, 1)
+		if surface_exists(surfaceShadow) draw_surface_ext(surfaceShadow, XX,YY-64, 1,1, 0, c_white, 1)
+		if surface_exists(surfaceShadowStretched) draw_surface_ext(surfaceShadowStretched, XX + 64,YY - 64, 1,1, 0, c_white, 1)
+		if surface_exists(surfacePlayerCutout) draw_surface_ext(surfacePlayerCutout, XX + 96 + spriteWidth,YY-64, 1,1, 0, c_white, 1)
+		if surface_exists(surfaceFinal) draw_surface_ext(surfaceFinal, XX + 96 + spriteWidth*2 + 16,YY-64, 1,1, 0, c_white, 1)
 	}
 	
 	if surface_exists(shadeSurface) {
@@ -542,12 +530,10 @@ function draw_shade() {
 		draw_surface_ext(surfaceFinal,XX,YY,1,1,0,c_white,0.5)	
 	}
 	
-	if surface_exists(surface) surface_free(surface)
-	if surface_exists(surface2) surface_free(surface2)
-	if surface_exists(surface3) surface_free(surface3)
+	if surface_exists(surfaceShadow) surface_free(surfaceShadow)
+	if surface_exists(surfaceShadowStretched) surface_free(surfaceShadowStretched)
+	if surface_exists(surfacePlayerCutout) surface_free(surfacePlayerCutout)
 	if surface_exists(surfaceFinal) surface_free(surfaceFinal)
-	if surface_exists(surface4) surface_free(surface4)
-	//if surface_exists(shadowSurface) surface_free(shadowSurface)
 }
 	
 bubbleTimer = -1
