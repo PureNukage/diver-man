@@ -5,8 +5,8 @@
   "spriteMaskId": null,
   "persistent": false,
   "parentObjectId": {
-    "name": "class_unit",
-    "path": "objects/class_unit/class_unit.yy",
+    "name": "class_prop",
+    "path": "objects/class_prop/class_prop.yy",
   },
   "physicsObject": false,
   "physicsSensor": false,
