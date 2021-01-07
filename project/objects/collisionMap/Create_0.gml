@@ -17,6 +17,7 @@ depth = -1
 
 sand = false
 rock = -1
+altTileLayer = -1
 
 arrayNearbyMaps = []
 foundNearbyMaps = false
@@ -77,6 +78,10 @@ function createSurface() {
 	
 	if sand layerString = "Tiles_Sand"
 	else layerString = "Tiles_Rocks"
+	
+	if is_string(altTileLayer) and layer_exists(altTileLayer) {
+		layerString = altTileLayer	
+	}
 	
 	var LayerID = layer_get_id(layerString)
 	var tileLayerID = layer_tilemap_get_id(LayerID)
