@@ -117,6 +117,7 @@ function load_game(quick) {
 		var section = "PLAYER"
 	
 		player.suitOn = ini_read_real(section,"suitOn",0)
+		app.suitOn = player.suitOn
 		player.gold = ini_read_real(section,"gold",0)
 	
 		var inventoryString = ini_read_string(section,"inventoryString",0)

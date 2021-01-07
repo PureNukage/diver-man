@@ -31,6 +31,7 @@ function lift(up_or_down) {
 		case up:
 			Z = 2
 			
+			////	Underwater
 			if app.underwater {
 				if z >= 100 and app.roomTransitionTo == -1 {
 					var Room = RoomDocks
@@ -42,8 +43,9 @@ function lift(up_or_down) {
 					app.cameraFocus(x,y+z,1,true)	
 				}
 			}
+			////	Surface
 			else {
-				if z < 180 and Crane > -1 {
+				if z < 240 and Crane > -1 {
 					app.cameraFocus(x,Crane.y,"~",false)	
 				}
 				else {
@@ -56,6 +58,7 @@ function lift(up_or_down) {
 		case down:
 			Z = -2
 			
+			////	Underwater
 			if app.underwater {
 
 				
@@ -66,7 +69,7 @@ function lift(up_or_down) {
 					app.cameraFocus(player.x,player.y,1,true)	
 				}
 			}
-			
+			////	Surface
 			else {
 				if z < 0 and Crane > -1 {
 					app.cameraFocus(x,Crane.y,"~",false)	

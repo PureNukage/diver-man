@@ -1,2 +1,2 @@
-mask_index = s_dock_pole_collision
+mask_index = s_dock_pole2_collision
 event_inherited()

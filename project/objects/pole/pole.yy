@@ -1,7 +1,7 @@
 {
   "spriteId": {
-    "name": "s_dock_pole",
-    "path": "sprites/s_dock_pole/s_dock_pole.yy",
+    "name": "s_dock_pole2",
+    "path": "sprites/s_dock_pole2/s_dock_pole2.yy",
   },
   "solid": false,
   "visible": true,
