@@ -60,4 +60,9 @@ if !surface_exists(cookieSurface) and buffer_exists(cookieBuffer) {
 	buffer_set_surface(cookieBuffer, cookieSurface, 0)
 }
 
+if !surface_exists(inverseSurface) and buffer_exists(inverseSurfaceBuffer) {
+	inverseSurface = surface_create((sprite_get_width(sprite_index)*image_xscale)+inverseSurfaceExtraPixels,(sprite_get_height(sprite_index)*image_yscale)+inverseSurfaceExtraPixels)
+	buffer_set_surface(inverseSurfaceBuffer, inverseSurface, 0)
+}
+
 if !foundNearbyMaps findNearbyMaps()

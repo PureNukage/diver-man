@@ -409,18 +409,21 @@ function draw_shadow_ext(_z, _map) {
 	else draw_rectangle(bbox_left,bbox_top-_z,bbox_right,bbox_bottom-_z,false)
 	
 	if _map > -1 {
-		var cutterSurface = surface_create(room_width,room_height)
-		var index = -1
-		for(var i=0;i<water.heightMapCount;i++) {
-			if water.heightMaps[i][0] == _z index = i
-		}
-		if index > -1 and surface_exists(water.heightMaps[index][2]) {
-			gpu_set_blendmode(bm_subtract)
-			draw_surface_ext(water.heightMaps[index][2],0,0,1,1,0,c_black,1)
-			gpu_set_blendmode(bm_normal)
-		}
+		gpu_set_blendmode(bm_subtract)
+		draw_surface_ext(_map.inverseSurface,_map.x-(_map.inverseSurfaceExtraPixels/2),_map.y-(_map.inverseSurfaceExtraPixels/2),1,1,0,c_white,1)
+		gpu_set_blendmode(bm_normal)
+		//var cutterSurface = surface_create(room_width,room_height)
+		//var index = -1
+		//for(var i=0;i<water.heightMapCount;i++) {
+		//	if water.heightMaps[i][0] == _z index = i
+		//}
+		//if index > -1 and surface_exists(water.heightMaps[index][2]) {
+		//	gpu_set_blendmode(bm_subtract)
+		//	draw_surface_ext(water.heightMaps[index][2],0,0,1,1,0,c_black,1)
+		//	gpu_set_blendmode(bm_normal)
+		//}
 		
-		surface_free(cutterSurface)
+		//surface_free(cutterSurface)
 	}
 	//	Use every map as a mask for the base shadow
 	else if map > -1 and _map == -1 {

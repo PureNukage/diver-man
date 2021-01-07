@@ -7,14 +7,14 @@ if !surface_exists(causticSurfaceCutout) and buffer_exists(causticBuffer) {
 	buffer_set_surface(causticBuffer,causticSurfaceCutout,0)
 }
 
-if !surface_exists(collisionMapsSurface) {
+if !surface_exists(collisionMapsSurface) and buffer_exists(collisionMapsBuffer) {
 	collisionMapsSurface = surface_create(room_width, room_height)
 	buffer_set_surface(collisionMapsBuffer,collisionMapsSurface,0)
 }
 
-for(var i=0;i<heightMapCount;i++) {
-	if !surface_exists(heightMaps[i][2]) {
-		heightMaps[i][2] = surface_create(room_width, room_height)
-		buffer_set_surface(heightMaps[i][1],heightMaps[i][2],0)	
-	}
-}
+//for(var i=0;i<heightMapCount;i++) {
+	//if !surface_exists(heightMaps[i][2]) {
+		//heightMaps[i][2] = surface_create(room_width, room_height)
+		//buffer_set_surface(heightMaps[i][1],heightMaps[i][2],0)	
+	//}
+//}
