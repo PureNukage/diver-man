@@ -11,17 +11,17 @@ knocked = false
 grounded = 0
 
 nodes = [[]]
-nodes[0,0] = 850
-nodes[1,0] = 120
+nodes[0,0] = 2174
+nodes[1,0] = 1217
 
-nodes[0,1] = 1260
-nodes[1,1] = 120
+nodes[0,1] = 2526
+nodes[1,1] = 1217
 
-nodes[0,2] = 1260
-nodes[1,2] = 413
+nodes[0,2] = 2526
+nodes[1,2] = 1472
 
-nodes[0,3] = 850
-nodes[1,3] = 413 
+nodes[0,3] = 2174
+nodes[1,3] = 1472 
 
 holdingWatch = true
 

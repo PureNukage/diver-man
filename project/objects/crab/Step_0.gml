@@ -10,7 +10,7 @@ switch(state)
 			//} else timer--
 			
 			//	Run to next node
-			if point_distance(x,y, player.x,player.y) < 200 {
+			if !flee and point_distance(x,y, player.x,player.y) < 200 {
 				changeNode()
 			}
 			
@@ -25,7 +25,7 @@ switch(state)
 			moveDirection = point_direction(groundX,groundY,xGoto,yGoto)
 			
 			//	If player is in between crab and next node
-			if point_in_rectangle(player.x,player.y, x,y, nodes[0,currentNode],nodes[1,currentNode]) {
+			if !flee and point_in_rectangle(player.x,player.y, x,y, nodes[0,currentNode],nodes[1,currentNode]) {
 				reverseNode()
 			}
 			

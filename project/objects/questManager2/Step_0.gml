@@ -2,9 +2,9 @@
 //	Wait for player to get close enough to the watch
 if instance_exists(player) {
 	if stage == 0 {
-		if player.x > 646 and player.y < 280 {
+		if player.x > 1983 and player.y < 1376 {
 			Layer = layer_create(-2000)
-			Sequence = layer_sequence_create(Layer,640,0,Sequence8)
+			Sequence = layer_sequence_create(Layer,1967,1056,Sequence8)
 			player.canMove = false
 			instance_destroy(watch)
 			stage = 1
@@ -16,7 +16,7 @@ if instance_exists(player) {
 		if layer_sequence_is_finished(Sequence) {
 			stage = 2
 			layer_sequence_destroy(Sequence)
-			instance_create_layer(640+271,144,"Instances",crab)
+			instance_create_layer(1967+271,1056+144,"Instances",crab)
 			player.canMove = true
 		}
 	}
