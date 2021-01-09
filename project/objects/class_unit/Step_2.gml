@@ -6,3 +6,7 @@ var y2 = camera_get_view_y(app.camera) + camera_get_view_height(app.camera) + bo
 if room != RoomMainMenu and rectangle_in_rectangle(bbox_left,bbox_top,bbox_right,bbox_bottom,x1,y1,x2,y2) == 0 {
 	instance_deactivate_object(id)
 }
+
+if cell == -1 {
+	cell = new cell_create(x, y)
+}

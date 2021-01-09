@@ -98,19 +98,24 @@ function instance_place_highest(x, y, object) {
 	var instance = noone;
 	var list = ds_list_create();
 	var num = instance_place_list(x, y, object, list, false);
+	
+	//	Conditions
+	//	Sort maps into a list in descending z+height order
+	//	Move down the list and collision check them
+	
 	for(var i = 0; i < num; i++){
-	if (instance == noone || list[| i].z > instance.z)
+	if (instance == noone || (list[| i].z+list[| i].height > instance.z+instance.height))
 	    instance = list[| i];
 	}
 	
 	//	Filter down to a map that we're actually colliding with
-	var Y = self.y
-	if ds_list_size(list) > 1 and list[| 1].z == instance.z {
-		for(var i=0;i<num;i++) {
-			if Y > (list[| i].bbox_bottom - list[| i].width) and list[| i].z == instance.z
-			instance = list[| i]
-		}
-	}
+	//var Y = self.y
+	//if ds_list_size(list) > 1 and list[| 1].z == instance.z {
+	//	for(var i=0;i<num;i++) {
+	//		if Y > (list[| i].bbox_bottom - list[| i].width) and list[| i].z == instance.z
+	//		instance = list[| i]
+	//	}
+	//}
   
 	ds_list_destroy(list);
 
@@ -651,4 +656,9 @@ function decode_gamedata(list_index, String) {
 	for(var i=0;i<array_length(array);i++) {
 		list_index[| i] = array[i]
 	}
+}
+	
+function tile_info(_bottom, _top) constructor {
+	bottom = _bottom
+	top = _top
 }

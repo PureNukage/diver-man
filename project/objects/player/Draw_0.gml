@@ -21,8 +21,8 @@ draw_shadow_ext(0, -1)
 //	Draw the map shadows
 for(var i=0;i<amount;i++) {
 	var Map = list2[| i]
-	var Z = Map.z
-	if (z > Z or map == Map) draw_shadow_ext(Z, Map)
+	var Z = Map.z + Map.height
+	//if (z > Z or map == Map) draw_shadow_ext(Z, Map)
 }
 
 draw_reset()

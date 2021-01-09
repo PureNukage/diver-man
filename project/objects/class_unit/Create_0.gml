@@ -43,6 +43,16 @@ image_index = irandom_range(0,image_number-1)
 
 madeFootprint = false
 
+cell = -1
+function cell_create(_x, _y) constructor {
+	var _xx = floor(_x / grid.cellWidth)
+	var _yy = floor(_y / grid.cellHeight)
+	x = _xx
+	y = _yy
+	z = grid.cell[_xx, _yy].top
+	map = grid.cell[_xx, _yy].map
+}
+
 function setDamage(amount, _flashDuration) {
 	hp -= amount
 	
@@ -92,9 +102,8 @@ function applyThrust() {
 		
 	if y-z >= groundY {
 		onGround = true
-		y = groundY
 		thrust = 0
-		if map > -1 and map.z > -1 z = map.z
+		if map > -1 and map.z > -1 z = map.z + map.height
 		else z = 0
 		
 		if moveForce > 0 moveForce -= 3
@@ -140,7 +149,7 @@ function changeMap(Map) {
 	var Z = -1
 	
 	if map == -1 Z = 0
-	else Z = map.z
+	else Z = map.z + map.height
 	
 	oldMap = map
 	
@@ -154,29 +163,30 @@ function changeMap(Map) {
 		}
 		
 		//	I am stepping down
-		if Z > Map.z {
+		if Z > Map.z + Map.height {
 			if Map.z == -1 {
 				onGround = false	
 			} else {
 				//	Smooth loop to lower groundY (looking for collision)
-				for(var i=0;i<map.z;i++) {
-					if !place_meeting(groundX,groundY + 1, collision) {
-						if !place_meeting(groundX,groundY + 1, collisionMap) groundY += 1	
-						else {
-							var ID = instance_place(groundX, groundY + 1, collisionMap)
-							if (map.z - i) > ID.z {
-								//	We're above the map
-								if groundY + 1 < ID.bbox_top + ID.width {
-									groundY += 1
-								}
-								//	Lower us onto the map
-								else if groundY + 1 >= ID.bbox_bottom-ID.width {
-									groundY += 1	
-								}
-							}
-						}
-					}
-				}
+				//for(var i=0;i<map.z;i++) {
+				//	if !place_meeting(groundX,groundY + 1, collision) {
+				//		if !place_meeting(groundX,groundY + 1, collisionMap) groundY += 1	
+				//		else {
+				//			var ID = instance_place(groundX, groundY + 1, collisionMap)
+				//			if (map.z - i) > ID.z {
+				//				//	We're above the map
+				//				if groundY + 1 < ID.bbox_top + ID.width {
+				//					groundY += 1
+				//				}
+				//				//	Lower us onto the map
+				//				else if groundY + 1 >= ID.bbox_bottom-ID.width {
+				//					groundY += 1	
+				//				}
+				//			}
+				//		}
+				//	}
+				//}
+				groundY += map.z
 
 				if groundY > y-z {
 					onGround = false
@@ -186,9 +196,7 @@ function changeMap(Map) {
 		}
 		//	I am jumping up
 		else {
-			var _groundY = groundY 
-			if map > -1 _groundY += map.z
-			groundY = _groundY - Map.z
+			groundY = y - Map.z - Map.height  
 		}
 		
 	}
@@ -212,7 +220,7 @@ function changeMap(Map) {
 						}
 					}
 					//	We've landed on a different map! exit loop
-					if ID != oldMap and ID.z == z {
+					if ID != oldMap and (ID.z + ID.height) == z {
 						changeMap(ID)
 						ds_list_destroy(list)
 						exit
@@ -299,51 +307,51 @@ function applyMovement() {
 					if !onGround y += pY
 					if map > -1 {
 						changeMap(-1)
+						debug.log("1")
 					}
 				}
 				//	Colliding with a map
 				else {
-					var Map = instance_place_highest(groundX + pX, groundY + pY, collisionMap)
-					//	We are higher than it or its our map
-					if (z >= Map.z ) {
+					
+					var col_x = x
+					var col_y = y
+					if pX > 0 col_x = bbox_right + pX
+					else if pX < 0 col_x = bbox_left + pX
+					if pY > 0 col_y = bbox_bottom + pY
+					else if pY < 0 col_y = bbox_top + pY
+					
+					//	Find new cell
+					var Cell = new cell_create(col_x, col_y)
+					
+					if z >= Cell.z {
 						groundX += pX
 						groundY += pY
 						if !onGround y += pY
-						if (map == -1 or Map != map) {
-							//	Check if we're actually on it
-							if y > Map.bbox_bottom - Map.width and y-z < Map.bbox_top + Map.width and place_meeting(groundX, groundY, Map) and place_meeting(groundX, y, Map) {
-								changeMap(Map)
-							} else if map > -1 {
-								//	If we're not colliding with current map anymore
-								//if !place_meeting(groundX + pX, groundY + pY, map) and groundY > Map.bbox_top + Map.width + 16 {
-								if !place_meeting(groundX, groundY, map) and groundY > Map.bbox_top + Map.width + 16 {
-									changeMap(-1)
+
+						//	Check if we're actually colliding with it ;)
+						if Cell.map > -1 and point_in_rectangle(col_x,col_y, Cell.map.bbox_left,Cell.map.bbox_top+Cell.map.z+Cell.map.height, Cell.map.bbox_right,Cell.map.bbox_bottom+Cell.map.height) {
+							//	This cell has a different map than the one I am one
+							if map > -1 and map != Cell.map {
+								//	This cell is taller than the one I was one
+								if map.z+map.height < Cell.map.z+Cell.map.height {//and !rectangle_in_rectangle(bbox_left,bbox_top-z,bbox_right,bbox_bottom-z, map.bbox_left,map.bbox_top,map.bbox_right,map.bbox_bottom-map.z) {
+									changeMap(Cell.map)
+									debug.log("jumping onto new map")	
+								}
+								//	This cell is smaller
+								else if rectangle_in_rectangle(bbox_left,bbox_top,bbox_right,bbox_bottom, map.bbox_left,map.bbox_top+map.height+map.z,map.bbox_right,map.bbox_bottom+map.height) == 0 {
+									changeMap(Cell.map)
+									debug.log("dropping onto lower map")
 								}
 							}
-						}
-						else if map == Map and groundY >= (Map.bbox_top + Map.width + 16) {
-							changeMap(-1)	
-						}
-					}
-					else {
-						var collisionCount = maps_collision_count(x,y)
-						//	We're behind this map
-						if map != Map and map == -1 and groundY + pY <= Map.bbox_bottom - Map.width and collisionCount == 0 {
-							groundX += pX
-							groundY += pY
-							if !onGround y += pY
-						}
-						else {
-							//	Check if we're actually on it
-							if map == Map and groundY <= (Map.bbox_top + Map.width + 16) {
-								groundX += pX
-								groundY += pY
-								if !onGround y += pY
+							else if map != Cell.map {
+								debug.log("going on new map")
+								changeMap(Cell.map)
 							}
-							//	Not on the map, fall
-							else {
-								//if map > -1 changeMap(-1)	
-							}
+						}
+						//	Standing on cliff, lets fall
+						else if Cell.map == -1 and map > -1 and rectangle_in_rectangle(bbox_left,bbox_top,bbox_right,bbox_bottom, map.bbox_left,map.bbox_top+map.height+map.z,map.bbox_right,map.bbox_bottom+map.height) == 0 {
+							changeMap(-1)
+							debug.log("falling off cliff!")
 						}
 					}
 				}
@@ -410,20 +418,8 @@ function draw_shadow_ext(_z, _map) {
 	
 	if _map > -1 {
 		gpu_set_blendmode(bm_subtract)
-		draw_surface_ext(_map.inverseSurface,_map.x-(_map.inverseSurfaceExtraPixels/2),_map.y-(_map.inverseSurfaceExtraPixels/2),1,1,0,c_white,1)
+		if surface_exists(_map.inverseSurface) draw_surface_ext(_map.inverseSurface,_map.x-(_map.inverseSurfaceExtraPixels/2),_map.y-(_map.inverseSurfaceExtraPixels/2),1,1,0,c_white,1)
 		gpu_set_blendmode(bm_normal)
-		//var cutterSurface = surface_create(room_width,room_height)
-		//var index = -1
-		//for(var i=0;i<water.heightMapCount;i++) {
-		//	if water.heightMaps[i][0] == _z index = i
-		//}
-		//if index > -1 and surface_exists(water.heightMaps[index][2]) {
-		//	gpu_set_blendmode(bm_subtract)
-		//	draw_surface_ext(water.heightMaps[index][2],0,0,1,1,0,c_black,1)
-		//	gpu_set_blendmode(bm_normal)
-		//}
-		
-		//surface_free(cutterSurface)
 	}
 	//	Use every map as a mask for the base shadow
 	else if map > -1 and _map == -1 {

@@ -3,6 +3,8 @@ hoseGrid = -1
 hoseGrid2 = -1
 hoseGrid3 = -1
 
+cell = [[]]
+
 function mpGrid_build() {
 	
 	cellWidth = 16
@@ -32,6 +34,38 @@ function mpGrid_build() {
 	
 	if instance_exists(collision) mp_grid_add_instances(hoseGrid2,collision,false)
 	//if instance_exists(collisionMap) mp_grid_add_instances(hoseGrid,collisionMap,false)
+	
+	
+	////	Build z-map
+	for(var w=0;w<gridWidth;w++) {
+		for(var h=0;h<gridHeight;h++) {
+			cell[w, h] = new tile_info(0,0)
+			cell[w, h].map = -1
+		}
+	}
+	
+	if instance_exists(collisionMap) with collisionMap {
+		if height == 48 {
+			var Break = 0	
+		}
+		var Width = bbox_right-bbox_left
+		var Height = bbox_bottom-(bbox_top+z)
+		var cellsW = floor(Width/grid.cellWidth)+1
+		var cellsH = floor(Height/grid.cellHeight)+1
+		var startX = floor(bbox_left/grid.cellWidth)
+		var startY = floor((bbox_top+z)/grid.cellHeight)
+		for(var w=startX;w<cellsW+startX;w++) {
+			for(var h=startY;h<cellsH+startY;h++) {
+				var _cellHeight = (height / grid.cellHeight)
+				//if _cellHeight > 0 _cellHeight -= 1
+				//	Only place this if its taller than whats there
+				if z+height > grid.cell[w, h+_cellHeight].top {
+					grid.cell[w, h+_cellHeight] = new tile_info(0,z+height)
+					grid.cell[w, h+_cellHeight].map = id
+				}
+			}
+		}
+	}
 	
 }
 

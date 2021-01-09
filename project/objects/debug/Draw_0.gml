@@ -22,10 +22,14 @@ if on {
 	//	Draw the player ground lines
 	if instance_exists(player) with player {
 		draw_set_color(c_yellow)
-		draw_rectangle(x-32,y-z-2,x+32,y-z+2,false)
+		//draw_rectangle(x-32,y-2,x+32,y+2,false)
+		draw_rectangle(bbox_left,bbox_top,bbox_right,bbox_bottom,false)
 		
 		draw_set_color(c_aqua)
 		draw_rectangle(x-32,groundY-2,x+32,groundY+2,false)
+		
+		//draw_set_color(c_green)
+		//draw_rectangle(x-32,groundY+z,x+32,groundY+z+2,false)
 		
 		////	Draw attack hitbox
 		if state == state.attack {
@@ -42,9 +46,40 @@ if on {
 	//	draw_sprite_ext(sprite_index,0,x,y,image_xscale,image_yscale,0,c_white,0.5)
 	//}
 	
+	draw_set_alpha(1)
 	if instance_exists(collisionMap) with collisionMap {
-		draw_sprite_ext(sprite_index,0,x,y,image_xscale,image_yscale,0,c_white,0.5)	
+		//if drawSurface draw_sprite_ext(sprite_index,0,x,y,image_xscale,image_yscale,0,c_white,0.5)
+		
+		////	Draw the height lines
+		draw_set_color(c_yellow)
+		draw_rectangle(bbox_left,bbox_top+height+z,bbox_right,bbox_bottom+height,true)
+		
+		////	Draw the real bottom
+		//draw_set_color(c_red)
+		//draw_rectangle(bbox_left,bbox_top+z,bbox_right,bbox_bottom,true)
 	}
+	
+	////	Draw the height maps
+	//var startCellX = floor(camera_get_view_x(app.camera)/grid.cellWidth)
+	//var startCellY = floor(camera_get_view_y(app.camera)/grid.cellHeight)
+	//var Width = floor(camera_get_view_width(app.camera)/grid.cellWidth)+1
+	//var Height = floor(camera_get_view_height(app.camera)/grid.cellHeight)+1
+	//draw_set_alpha(0.5)
+	//for(var w=startCellX;w<startCellX+Width;w++) {
+	//	for(var h=startCellY;h<startCellY+Height;h++) {
+	//		if point_in_rectangle(w,h,0,0,grid.gridWidth,grid.gridHeight) {
+	//			var Color = c_blue
+	//			switch(grid.cell[w, h].top) {
+	//				case 48: Color = c_red break
+	//				case 80: Color = c_orange break
+	//				case 96: Color = c_green break
+	//			}
+	//			draw_set_color(Color)
+	//			draw_rectangle(w*grid.cellWidth,h*grid.cellHeight,(w*grid.cellWidth)+grid.cellWidth,(h*grid.cellHeight)+grid.cellHeight,false)	
+	//		}
+	//	}
+	//}
+	
 	
 	//	Draw the grid
 	//draw_set_alpha(0.25)

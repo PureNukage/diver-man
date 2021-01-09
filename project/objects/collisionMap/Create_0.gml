@@ -1,5 +1,6 @@
 z = 0
 width = sprite_get_height(sprite_index)*image_yscale
+height = 0
 
 centerX = bbox_left + (sprite_width/2)
 centerY = bbox_top + (sprite_height/2)
@@ -14,6 +15,8 @@ cookieBuffer = -1
 cookieSurface = -1
 
 drawSurface = false
+
+map = -1
 
 depth = -1
 
@@ -61,7 +64,7 @@ function drawNearbyMaps() {
 		for(var i=0;i<4;i++) {
 			if arrayNearbyMaps[i] > -1 and instance_exists(arrayNearbyMaps[i]) {
 				var ID = arrayNearbyMaps[i]
-				if ID.z >= z and player.map != ID and player.groundY <= ID.bbox_bottom - ID.width {
+				if map != ID and ID.z >= z and player.map != ID and player.groundY <= ID.bbox_bottom - ID.width {
 					ID.drawSurface = true
 					ID.depth = depth
 				}
