@@ -17,6 +17,7 @@ cookieSurface = -1
 drawSurface = false
 
 map = -1
+maps = ds_list_create()
 
 depth = -1
 

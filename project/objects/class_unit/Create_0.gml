@@ -167,26 +167,11 @@ function changeMap(Map) {
 			if Map.z == -1 {
 				onGround = false	
 			} else {
-				//	Smooth loop to lower groundY (looking for collision)
-				//for(var i=0;i<map.z;i++) {
-				//	if !place_meeting(groundX,groundY + 1, collision) {
-				//		if !place_meeting(groundX,groundY + 1, collisionMap) groundY += 1	
-				//		else {
-				//			var ID = instance_place(groundX, groundY + 1, collisionMap)
-				//			if (map.z - i) > ID.z {
-				//				//	We're above the map
-				//				if groundY + 1 < ID.bbox_top + ID.width {
-				//					groundY += 1
-				//				}
-				//				//	Lower us onto the map
-				//				else if groundY + 1 >= ID.bbox_bottom-ID.width {
-				//					groundY += 1	
-				//				}
-				//			}
-				//		}
-				//	}
-				//}
-				groundY += map.z
+				
+				if Map.height == 0 var ZZ = Map.z
+				else var ZZ = Map.height
+				
+				groundY = y - ZZ
 
 				if groundY > y-z {
 					onGround = false
@@ -202,46 +187,8 @@ function changeMap(Map) {
 	}
 	//	Changing to no map/z = 0
 	else {
-		
-		//	Smooth loop to lower groundY (looking for collision)
-		var above_or_below = -1	//	0 = above, 1 = below
-		for(var i=0;i<map.z;i++) {
-			if !place_meeting(groundX, groundY + 1, collision) {
-				if !place_meeting(groundX,groundY + 1, collisionMap) groundY += 1	
-				else {
-					var list = ds_list_create()
-					var count = instance_place_list(groundX, groundY + 1, collisionMap, list, true)
-					var ID = instance_place(groundX, groundY + 1, collisionMap)
-					//	We're colliding with more than one map, lets change to a map that isn't our previous map (find more conditions)
-					if count > 1 and ID == oldMap {
-						for(var a=0;a<count;a++) {
-							var _id = list[| a]
-							if _id != oldMap var ID = _id
-						}
-					}
-					//	We've landed on a different map! exit loop
-					if ID != oldMap and (ID.z + ID.height) == z {
-						changeMap(ID)
-						ds_list_destroy(list)
-						exit
-					}
-					//	We're above the map
-					if groundY + 1 < ID.bbox_bottom - ID.width {
-						groundY += 1
-						if above_or_below == -1 above_or_below = 0
-					}
-					//	Lower us onto the map
-					else if groundY + 1 >= ID.bbox_bottom-ID.z {
-						if above_or_below == 1 groundY += 1
-						if above_or_below == -1 above_or_below = 1
-					}
-					else if (map.z - i) > ID.z {
-						groundY += 1
-					}
-					ds_list_destroy(list)
-				}
-			}
-		}
+				
+		groundY = y
 
 		if groundY >= y-z {
 			onGround = false

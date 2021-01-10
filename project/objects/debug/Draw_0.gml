@@ -54,6 +54,9 @@ if on {
 		draw_set_color(c_yellow)
 		draw_rectangle(bbox_left,bbox_top+height+z,bbox_right,bbox_bottom+height,true)
 		
+		draw_set_color(c_blue)
+		draw_rectangle(bbox_left,bbox_top,bbox_right,bbox_bottom-z,true)
+		
 		////	Draw the real bottom
 		//draw_set_color(c_red)
 		//draw_rectangle(bbox_left,bbox_top+z,bbox_right,bbox_bottom,true)
