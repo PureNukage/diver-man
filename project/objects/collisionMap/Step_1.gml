@@ -16,7 +16,7 @@ if map == -1 and place_meeting(x,y,collisionMap) {
 	var ID = tallestMap
 	//	Lets make sure the other map is actually colliding with us
 	if rectangle_in_rectangle(bbox_left,bbox_top+z,bbox_right,bbox_bottom, 
-	ID.bbox_left,ID.bbox_top+ID.z-ID.height,ID.bbox_right,ID.bbox_bottom-ID.height) == 1 {
+	ID.bbox_left,ID.bbox_top,ID.bbox_right,ID.bbox_bottom-ID.z) == 1 {
 		//	Is this map under us? 
 		if ID.z+ID.height >= z+height {
 			map = ID

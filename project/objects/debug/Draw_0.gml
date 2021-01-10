@@ -51,8 +51,14 @@ if on {
 		//if drawSurface draw_sprite_ext(sprite_index,0,x,y,image_xscale,image_yscale,0,c_white,0.5)
 		
 		////	Draw the height lines
+		//draw_set_color(c_yellow)
+		//draw_rectangle(bbox_left,bbox_top+height+z,bbox_right,bbox_bottom+height,true)
+		
+		//draw_set_color(c_blue)
+		//draw_rectangle(bbox_left,bbox_top,bbox_right,bbox_bottom-z,true)
+		
 		draw_set_color(c_yellow)
-		draw_rectangle(bbox_left,bbox_top+height+z,bbox_right,bbox_bottom+height,true)
+		draw_rectangle(bbox_left,bbox_top+z,bbox_right,bbox_bottom,true)
 		
 		draw_set_color(c_blue)
 		draw_rectangle(bbox_left,bbox_top,bbox_right,bbox_bottom-z,true)
