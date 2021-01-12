@@ -1,1 +1,1 @@
-if on draw_surface(surface,0,0)
+if on and surface_exists(surface) draw_surface(surface,0,0)

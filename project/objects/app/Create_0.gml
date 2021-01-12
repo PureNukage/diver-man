@@ -603,11 +603,23 @@ function scene_loader() {
 		
 		#region Docks - Underwater 
 			case RoomDocks_Underwater:
+				
+				//	Use the cage
+				cage.z = 360
+				cage.lowered = false
+				cage.inUse = true
+				cage.liftDirection = down
+				cage.filled = true
+			
 				if Quest > -1 {
 					switch(Quest.index) {
 						case quests.watch:
-							var Watch = instance_create_layer(832,152,Layer,watch)
+							var Watch = instance_create_layer(2156,1213,Layer,watch)
 							var QM2 = instance_create_layer(0,0,Layer,questManager2)
+							var Light = instance_create_layer(2160,1216,Layer,class_light)
+							Light.image_xscale = 1.468
+							Light.image_yscale = 1.375
+							surface_free(lighting.surface)
 						break
 					}
 				}

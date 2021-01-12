@@ -4,7 +4,7 @@ if instance_exists(player) and rectangle_in_rectangle(player.bbox_left,player.bb
 	var oldMask = player.mask_index
 	player.mask_index = player.sprite_index
 	//	If we're colliding with the top of the cliff
-	if player.y < bbox_bottom+height-z and rectangle_in_rectangle(player.bbox_left,player.bbox_top-player.z,player.bbox_right,player.bbox_bottom-player.z, bbox_left,bbox_top,bbox_right,bbox_bottom-z) > 0 {
+	if player.groundY < bbox_bottom-1 and rectangle_in_rectangle(player.bbox_left,player.bbox_top-player.z,player.bbox_right,player.bbox_bottom-player.z, bbox_left,bbox_top,bbox_right,bbox_bottom-z) > 0 {
 		if player.z < z+height {
 			depth = player.depth - 1
 			drawSurface = true
