@@ -16,7 +16,7 @@ for(var i=0;i<amount;i++) {
 var amount = ds_list_size(list2)
 
 //	Draw the base shadow
-draw_shadow_ext(0, -1)
+//draw_shadow_ext(0, -1)
 
 //	Draw the map shadows
 for(var i=0;i<amount;i++) {
