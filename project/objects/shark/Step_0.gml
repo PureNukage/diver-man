@@ -7,7 +7,7 @@ switch(state)
 			//	Finished idling
 			if timer == -1 {
 				
-				idlewalk()
+				//idlewalk()
 				
 			}
 			else timer--

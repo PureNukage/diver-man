@@ -5,6 +5,8 @@ height = 0
 centerX = bbox_left + (sprite_width/2)
 centerY = bbox_top + (sprite_height/2)
 
+cliffDepth = -(bbox_bottom-1)
+
 surface = -1
 surfaceBuffer = -1
 inverseSurfaceBuffer = -1
@@ -15,8 +17,6 @@ cookieBuffer = -1
 cookieSurface = -1
 
 drawSurface = false
-
-frontCliff = true
 
 map = -1
 maps = ds_list_create()
