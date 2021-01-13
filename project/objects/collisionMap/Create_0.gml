@@ -148,8 +148,8 @@ function createSurface() {
 	buffer_get_surface(cookieBuffer, cookieCutSurface, 0)
 	
 	if inverseSurfaceBuffer > -1 and buffer_exists(inverseSurfaceBuffer) buffer_delete(inverseSurfaceBuffer)
-	inverseSurfaceBuffer = buffer_create(room_width*room_height*4, buffer_grow, 1)
-	buffer_get_surface(inverseSurfaceBuffer, inverseSurface, 0)
+	//inverseSurfaceBuffer = buffer_create(room_width*room_height*4, buffer_grow, 1)
+	//buffer_get_surface(inverseSurfaceBuffer, inverseSurface, 0)
 	
 	surface_free(Surface)
 	surface_free(inverseSurface)
