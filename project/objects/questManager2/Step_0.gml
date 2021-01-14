@@ -2,7 +2,8 @@
 //	Wait for player to get close enough to the watch
 if instance_exists(player) {
 	if stage == 0 {
-		if player.x > 1983 and player.y < 1376 {
+		if player.x > 1983 and player.y < 1376
+		and player.x < 2272 and player.groundY > 1055 {
 			Layer = layer_create(-2000)
 			Sequence = layer_sequence_create(Layer,1967,1056,Sequence8)
 			player.canMove = false
