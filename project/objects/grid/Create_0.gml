@@ -69,12 +69,14 @@ function mpGrid_build() {
 		var startY = floor((bbox_top+z)/grid.cellHeight)
 		for(var w=startX;w<cellsW+startX;w++) {
 			for(var h=startY;h<cellsH+startY;h++) {
-				var _cellHeight = (height / grid.cellHeight)
-				//if _cellHeight > 0 _cellHeight -= 1
-				//	Only place this if its taller than whats there
-				if z+height > grid.cell[w, h+_cellHeight].top {
-					grid.cell[w, h+_cellHeight] = new tile_info(0,z+height)
-					grid.cell[w, h+_cellHeight].map = id
+				if point_in_rectangle(w,h, 0,0, grid.gridWidth-1,grid.gridHeight-1) {
+					var _cellHeight = (height / grid.cellHeight)
+					//if _cellHeight > 0 _cellHeight -= 1
+					//	Only place this if its taller than whats there
+					if z+height > grid.cell[w, h+_cellHeight].top {
+						grid.cell[w, h+_cellHeight] = new tile_info(0,z+height)
+						grid.cell[w, h+_cellHeight].map = id
+					}
 				}
 			}
 		}

@@ -1,7 +1,7 @@
 cliffDepth = bbox_bottom-1
 if (map == -1 or (map > -1 and !map.drawSurface))  { // and place_meeting(x,y,player) or place_meeting(x,y,class_enemy) or place_meeting(x,y,class_npc)
 	var list = ds_list_create()
-	var count = collision_rectangle_list(bbox_left-20,bbox_top-20,bbox_right+20,bbox_bottom+z+height+20,class_unit,true,true,list,true)
+	var count = collision_rectangle_list(bbox_left,bbox_top,bbox_right,bbox_bottom+z+height,class_unit,true,true,list,true)
 	var lowestY = -1
 	for(var i=0;i<count;i++) {
 		var Unit = list[| i]

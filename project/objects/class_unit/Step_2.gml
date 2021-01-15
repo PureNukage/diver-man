@@ -7,6 +7,6 @@ if room != RoomMainMenu and rectangle_in_rectangle(bbox_left,bbox_top,bbox_right
 	instance_deactivate_object(id)
 }
 
-if cell == -1 {
+if cell == -1 and point_in_rectangle(floor(x / grid.cellWidth),floor(y / grid.cellHeight), 0,0, grid.gridWidth-1,grid.gridHeight-1) {
 	cell = new cell_create(x, y)
 }

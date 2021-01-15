@@ -4,7 +4,7 @@ if !muted {
 	player.x = x
 	player.y = y
 		
-	if backgroundX >= 600 {
+	if backgroundX >= 450 {
 		adultManager.on = false
 		with adult {
 			var border = 100
@@ -13,10 +13,10 @@ if !muted {
 			}
 		}
 	}
-	if backgroundX >= 1200 and !instance_exists(adult) {
-		room_goto(RoomCityAndDock)
-		app.cameraRefresh = true
-	}
+	//if backgroundX >= 750 and !instance_exists(adult) {
+	//	room_goto(RoomCityAndDock)
+	//	app.cameraRefresh = true
+	//}
 		
 	//	Collision with adult
 	if place_meeting(x,y,adult) and !knocked and grounded == 0 {
