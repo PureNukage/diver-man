@@ -103,7 +103,14 @@ function applyThrust() {
 	if y-z >= groundY {
 		onGround = true
 		thrust = 0
-		if map > -1 and map.z > -1 z = map.z + map.height
+		if map > -1 and map.z > -1 {
+			if map.ramp {
+				var Z = clamp(floor(((groundX-map.bbox_left) / (map.bbox_right - map.bbox_left)) * (map.z)),0,map.z)
+				Z += map.height
+				z = Z
+			}
+			else z = map.z + map.height
+		}
 		else z = 0
 		
 		if moveForce > 0 moveForce -= 3
@@ -301,8 +308,12 @@ function applyMovement() {
 							//	We're on this ramp now
 							if map == -1 or map != Cell.map {
 								map = Cell.map
-								if onGround z = Z
-								groundY = y - Z
+								if onGround {
+									if Z < z {
+										onGround = false	
+									} else z = Z
+									groundY = y - Z
+								}
 							}
 						}
 					
