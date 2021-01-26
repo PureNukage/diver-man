@@ -18,6 +18,8 @@ cookieSurface = -1
 
 drawSurface = false
 
+ramp = false
+
 map = -1
 maps = ds_list_create()
 

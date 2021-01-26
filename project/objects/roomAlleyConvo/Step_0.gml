@@ -12,6 +12,7 @@ if stage == 0 {
 
 //	Wait for brother to finish up
 else if stage == 1 {
+	inConversation = true
 	if layer_sequence_is_finished(Sequence) {
 		//layer_set_visible(Layer, false)
 		stage = 2

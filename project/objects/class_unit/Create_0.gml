@@ -181,7 +181,7 @@ function changeMap(Map) {
 		}
 		//	I am jumping up
 		else {
-			groundY = y - Map.z - Map.height  
+			groundY = y - Map.z - Map.height
 		}
 		
 	}
@@ -191,8 +191,8 @@ function changeMap(Map) {
 		groundY = y
 
 		if groundY >= y-z {
-			onGround = false
-			z -= 1	
+			if groundY > y-z onGround = false
+			if z > 0 z -= 1	
 		}
 	}
 	
@@ -254,7 +254,7 @@ function applyMovement() {
 					if !onGround y += pY
 					if map > -1 {
 						changeMap(-1)
-						debug.log("1")
+						debug.log("dropping off map")
 					}
 				}
 				//	Colliding with a map
@@ -270,37 +270,96 @@ function applyMovement() {
 					//	Find new cell
 					var Cell = new cell_create(col_x, col_y)
 					
-					if z >= Cell.z {
-						groundX += pX
-						groundY += pY
-						if !onGround y += pY
-
-						//	Check if we're actually colliding with it ;)
-						if Cell.map > -1 and point_in_rectangle(col_x,col_y, Cell.map.bbox_left,Cell.map.bbox_top+Cell.map.z+Cell.map.height, Cell.map.bbox_right,Cell.map.bbox_bottom+Cell.map.height) {
-							//	This cell has a different map than the one I am one
-							if map > -1 and map != Cell.map {
-								//	This cell is taller than the one I was one
-								if map.z+map.height < Cell.map.z+Cell.map.height {//and !rectangle_in_rectangle(bbox_left,bbox_top-z,bbox_right,bbox_bottom-z, map.bbox_left,map.bbox_top,map.bbox_right,map.bbox_bottom-map.z) {
-									changeMap(Cell.map)
-									debug.log("jumping onto new map")	
-								}
-								//	This cell is smaller
-								else if rectangle_in_rectangle(bbox_left,bbox_top,bbox_right,bbox_bottom, map.bbox_left,map.bbox_top+map.height+map.z,map.bbox_right,map.bbox_bottom+map.height) == 0 {
-									changeMap(Cell.map)
-									debug.log("dropping onto lower map")
-								}
-							}
-							else if map != Cell.map {
-								debug.log("going on new map")
-								changeMap(Cell.map)
+					var Z = Cell.z
+					if Cell.map > -1 and Cell.map.ramp Z = clamp(floor(((groundX-Cell.map.bbox_left) / (Cell.map.bbox_right - Cell.map.bbox_left)) * (Cell.map.z+Cell.map.height)),Cell.map.height,Cell.map.z+Cell.map.height)
+					
+					//	We're already on a ramp
+					if map > -1 and map.ramp {					
+						var Z = clamp(floor(((groundX-map.bbox_left) / (map.bbox_right - map.bbox_left)) * (map.z)),0,map.z)
+						Z += map.height
+						if pX != 0 {
+							groundY = y - Z	
+							if onGround z = Z
+						}
+						if groundY <= (map.bbox_top+map.height+map.z) - Z {
+							changeMap(-1)
+							debug.log("poop")
+						}
+						
+					}
+					
+					//	This cell has a ramp
+					if (Cell.map > -1 and Cell.map.ramp) {
+						//debug.log(string(Z))
+						
+						//	We're higher than this ramp or its our map
+						if z >= Z or (Cell.map > -1 and Cell.map == map) {
+							groundX += pX
+							groundY += pY
+							if !onGround y += pY
+							
+							//	We're on this ramp now
+							if map == -1 or map != Cell.map {
+								map = Cell.map
+								if onGround z = Z
+								groundY = y - Z
 							}
 						}
-						//	Standing on cliff, lets fall
-						else if Cell.map == -1 and map > -1 and rectangle_in_rectangle(bbox_left,bbox_top,bbox_right,bbox_bottom, map.bbox_left,map.bbox_top+map.height+map.z,map.bbox_right,map.bbox_bottom+map.height) == 0 {
-							changeMap(-1)
-							debug.log("falling off cliff!")
+					
+					}
+					//	Not a ramp
+					else {
+					
+						if z >= Cell.z {
+							groundX += pX
+							groundY += pY
+							if !onGround y += pY
+
+							//	Check if we're actually colliding with it ;)
+							if Cell.map > -1 and point_in_rectangle(col_x,col_y, Cell.map.bbox_left,Cell.map.bbox_top+Cell.map.z+Cell.map.height, Cell.map.bbox_right,Cell.map.bbox_bottom+Cell.map.height) {
+								//	This cell has a different map than the one I am one
+								if map > -1 and map != Cell.map {
+									//	This cell is taller than the one I was one
+									if map.z+map.height < Cell.map.z+Cell.map.height {
+										changeMap(Cell.map)
+										debug.log("jumping onto new map")	
+									}
+									//	This cell is smaller
+									else if rectangle_in_rectangle(bbox_left,bbox_top,bbox_right,bbox_bottom, map.bbox_left,map.bbox_top+map.height+map.z,map.bbox_right,map.bbox_bottom+map.height) == 0 {
+										changeMap(Cell.map)
+										debug.log("dropping onto lower map")
+									}
+								}
+								else if map != Cell.map {
+									debug.log("going on new map")
+									changeMap(Cell.map)
+								}
+							}
+							//	Standing on cliff, lets fall
+							else if Cell.map == -1 and map > -1 and rectangle_in_rectangle(bbox_left,bbox_top,bbox_right,bbox_bottom, map.bbox_left,map.bbox_top+map.height+map.z,map.bbox_right,map.bbox_bottom+map.height) == 0 {
+								if map.ramp {
+									var Z = floor(((groundX-Cell.map.bbox_left) / (Cell.map.bbox_right - Cell.map.bbox_left)) * Cell.map.z)
+									if groundY >= map.bbox_bottom-Z {
+										changeMap(-1)	
+										debug.log("falling off ramp cliff!")
+									}
+								}
+								else {
+									changeMap(-1)
+									debug.log("falling off cliff!")
+								}
+							}
+						}
+						//	This code allows us to continue ontop of a cell with a higher Z if we're on a ramp
+						else {
+							if map > -1 and map.ramp and Cell.z > 0 and ((map.z+map.height) >= Cell.z) {
+								groundX += pX
+								groundY += pY
+								if !onGround y += pY	
+							}
 						}
 					}
+					
 				}
 			}
 		}

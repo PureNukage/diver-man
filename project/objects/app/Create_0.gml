@@ -506,9 +506,9 @@ function scene_loader() {
 							var diceKid = instance_create_layer(912,864,Layer,dicekid1)
 							diceKid.image_xscale = -1
 						
-							var Adult = instance_create_layer(576,608,Layer,adultHub)
-							var Adult = instance_create_layer(320,512,Layer,adultHub)
-							var Car = instance_create_layer(384,608,Layer,car)
+							//var Adult = instance_create_layer(576,608,Layer,adultHub)
+							//var Adult = instance_create_layer(320,512,Layer,adultHub)
+							//var Car = instance_create_layer(384,608,Layer,car)
 						
 							//	destroy the dock room change
 							if instance_exists(collisionRoomChange) instance_destroy(collisionRoomChange)

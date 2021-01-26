@@ -8,7 +8,8 @@ if map == -1 and place_meeting(x,y,collisionMap) {
 	var tallestMap = -1
 	for(var i=0;i<count;i++) {
 		var Map = list[| i]
-		if tallestMap == -1 or Map.z+Map.height >= tallestMap.z+tallestMap.height {
+		if (tallestMap == -1 or Map.z+Map.height >= tallestMap.z+tallestMap.height)
+		and rectangle_in_rectangle(bbox_left,bbox_top+z,bbox_right,bbox_bottom, Map.bbox_left,Map.bbox_top,Map.bbox_right,Map.bbox_bottom-Map.z) == 1 {
 			tallestMap = Map	
 		}
 	}

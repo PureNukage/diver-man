@@ -51,11 +51,23 @@ if on {
 		//if drawSurface draw_sprite_ext(sprite_index,0,x,y,image_xscale,image_yscale,0,c_white,0.5)
 		
 		//	Draw the height lines
-		draw_set_color(c_yellow)
-		draw_rectangle(bbox_left,bbox_top+height+z,bbox_right,bbox_bottom+height,true)
+		if !ramp {
+			draw_set_color(c_yellow)
+			draw_rectangle(bbox_left,bbox_top+height+z,bbox_right,bbox_bottom+height,true)
 		
-		draw_set_color(c_blue)
-		draw_rectangle(bbox_left,bbox_top,bbox_right,bbox_bottom-z,true)
+			draw_set_color(c_blue)
+			draw_rectangle(bbox_left,bbox_top,bbox_right,bbox_bottom-z,true)
+		}
+		//	Ramp
+		else {
+			draw_set_color(c_yellow)
+			draw_rectangle(bbox_left,bbox_top+height+z,bbox_right,bbox_bottom+height,true)
+			
+			draw_set_color(c_blue)
+			draw_line(bbox_left,bbox_bottom,bbox_right,bbox_bottom-z)
+			draw_set_color(c_red)
+			draw_line(bbox_left,bbox_top+z,bbox_right,bbox_top)
+		}
 	}
 	
 	////	Draw the height maps
@@ -67,12 +79,13 @@ if on {
 	//for(var w=startCellX;w<startCellX+Width;w++) {
 	//	for(var h=startCellY;h<startCellY+Height;h++) {
 	//		if point_in_rectangle(w,h,0,0,grid.gridWidth,grid.gridHeight) {
-	//			var Color = c_blue
-	//			switch(grid.cell[w, h].top) {
-	//				case 48: Color = c_red break
-	//				case 80: Color = c_orange break
-	//				case 96: Color = c_green break
-	//			}
+	//			var Color = c_white
+	//			//switch(grid.cell[w, h].top) {
+	//			//	case 48: Color = c_red break
+	//			//	case 80: Color = c_orange break
+	//			//	case 96: Color = c_green break
+	//			//}
+	//			if grid.cell[w,h].top > 0 Color = c_blue
 	//			draw_set_color(Color)
 	//			draw_rectangle(w*grid.cellWidth,h*grid.cellHeight,(w*grid.cellWidth)+grid.cellWidth,(h*grid.cellHeight)+grid.cellHeight,false)	
 	//		}
@@ -81,8 +94,8 @@ if on {
 	
 	
 	//	Draw the grid
-	draw_set_alpha(0.25)
-	mp_grid_draw(grid.mpGrid)
+	//draw_set_alpha(0.25)
+	//mp_grid_draw(grid.mpGrid)
 	
 	draw_reset()
 	

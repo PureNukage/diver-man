@@ -74,9 +74,9 @@ function generate_caustic_map() {
 		draw_surface_part_ext(mapSurface,0,0,abs(bbox_right-bbox_left),abs(bbox_bottom-bbox_top)-z,x,y,1,1,c_black,1)
 		
 		//	Cleanup the top so only the cliff remains
-		//gpu_set_blendmode(bm_subtract)
-		//draw_rectangle(bbox_left,bbox_top,bbox_right,bbox_bottom-z,false)
-		//gpu_set_blendmode(bm_normal)
+		gpu_set_blendmode(bm_subtract)
+		draw_rectangle(bbox_left,bbox_top,bbox_right,bbox_bottom-z,false)
+		gpu_set_blendmode(bm_normal)
 		
 		surface_free(mapSurface)
 	}
