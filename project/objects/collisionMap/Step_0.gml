@@ -33,7 +33,7 @@ if (map == -1 or (map > -1 and !map.drawSurface))  { // and place_meeting(x,y,pl
 					var count = collision_rectangle_list(bbox_left,bbox_top,bbox_right,bbox_bottom,collisionMap,true,true,List,true)
 					for(var i=0;i<count;i++) {
 						var Map = List[| i]
-						if Map.bbox_bottom > bbox_bottom {
+						if Map.bbox_bottom > bbox_bottom and Map != map {
 							Map.drawSurface = true
 							Map.depth = depth - (Map.z+Map.height)
 						}
