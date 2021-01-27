@@ -20,7 +20,7 @@ if !muted {
 				}
 				
 				//	Sprinting
-				if input.keyRun and suitOn {
+				if input.keyRun {
 					if !running {
 						running = true
 					}
@@ -48,7 +48,10 @@ if !muted {
 					if !running maxMovespeed = 2.25
 					else maxMovespeed = 3.25
 				}
-				else maxMovespeed = 4
+				else {
+					if !running maxMovespeed = 2.5
+					else maxMovespeed = 3.5
+				}
 					
 				visible = true
 				
@@ -62,7 +65,7 @@ if !muted {
 					vspd = 0
 				}
 			
-				if !suitOn sprite_index = s_kid_player
+				//if !suitOn sprite_index = s_kid_player
 
 				//	I have movement input!
 				if (hspd != 0 or vspd != 0) {
@@ -129,6 +132,15 @@ if !muted {
 								}
 							}
 						}
+						//	Kid
+						else {
+							if running {
+								sprite_index = s_kid_player_running
+							}
+							else {
+								sprite_index = s_kid_player_walk
+							}
+						}
 					}
 					//	Not moving
 					else {
@@ -136,6 +148,10 @@ if !muted {
 							if moveForce == 0 and sprite_index != s_diverman_idle and !jumpHalt {
 								sprite_index = s_diverman_idle
 							}	
+						}
+						//	Kid
+						else {
+							sprite_index = s_kid_player
 						}
 					}
 				} 

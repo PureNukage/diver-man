@@ -85,7 +85,11 @@ if on {
 	//			//	case 80: Color = c_orange break
 	//			//	case 96: Color = c_green break
 	//			//}
-	//			if grid.cell[w,h].top > 0 Color = c_blue
+	//			if grid.cell[w,h].top > 0 {
+	//				Color = c_blue
+	//				draw_set_alpha(1)
+	//			}
+	//			else draw_set_alpha(0)
 	//			draw_set_color(Color)
 	//			draw_rectangle(w*grid.cellWidth,h*grid.cellHeight,(w*grid.cellWidth)+grid.cellWidth,(h*grid.cellHeight)+grid.cellHeight,false)	
 	//		}
