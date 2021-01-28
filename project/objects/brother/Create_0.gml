@@ -1,5 +1,7 @@
 event_inherited()
 
+mask_index = sprite_index
+
 npcKey = "brother"
 load_dialogue()
 

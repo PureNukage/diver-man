@@ -8,7 +8,7 @@ if (map == -1 or (map > -1 and !map.drawSurface))  { // and place_meeting(x,y,pl
 		var ObjectIndex = Unit.object_index
 		if ObjectIndex == player or (object_get_parent(ObjectIndex) != class_foliage and object_get_parent(ObjectIndex) != class_rock) {
 			if lowestY == -1 or Unit.groundY > lowestY.groundY {
-				if Unit.z < z+height {
+				if Unit.z < z+height and Unit.y < bbox_bottom -1 and Unit.groundY < bbox_bottom-1 {
 					lowestY = Unit
 				}
 			}
@@ -35,7 +35,7 @@ if (map == -1 or (map > -1 and !map.drawSurface))  { // and place_meeting(x,y,pl
 						var Map = List[| i]
 						if Map.bbox_bottom > bbox_bottom and Map != map {
 							Map.drawSurface = true
-							Map.depth = depth - (Map.z+Map.height)
+							Map.depth = depth - (Map.z+Map.height) - i
 						}
 					}
 					ds_list_destroy(List)

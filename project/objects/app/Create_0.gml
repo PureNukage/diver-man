@@ -494,21 +494,16 @@ function scene_loader() {
 							}
 						
 							var Vendor = instance_create_layer(1232,352,Layer,vendor)
-							Vendor.image_xscale = 1.863
-							Vendor.image_yscale = 1.863
+							Vendor.image_xscale = -1
 							var vendorCart = instance_create_layer(1328,384,Layer,cart)
 						
 							var Pete = instance_create_layer(1408,848,Layer,sailorPeteSitting)
 						
-							var bully1 = instance_create_layer(868,832,Layer,bully2Dice)
-							var bully2 = instance_create_layer(960,896,Layer,bully1Stand)
+							var bully1 = instance_create_layer(432,736,Layer,bully2Dice)
+							var bully2 = instance_create_layer(304,736,Layer,bully1Stand)
 							bully2.image_xscale = -1
-							var diceKid = instance_create_layer(912,864,Layer,dicekid1)
+							var diceKid = instance_create_layer(368,752,Layer,dicekid1)
 							diceKid.image_xscale = -1
-						
-							//var Adult = instance_create_layer(576,608,Layer,adultHub)
-							//var Adult = instance_create_layer(320,512,Layer,adultHub)
-							//var Car = instance_create_layer(384,608,Layer,car)
 						
 							//	destroy the dock room change
 							if instance_exists(collisionRoomChange) instance_destroy(collisionRoomChange)
@@ -520,8 +515,6 @@ function scene_loader() {
 						//	Street dance / chasing after brother
 						case quests.streetDance:
 							var Vendor = instance_create_layer(1232,352,Layer,vendorPlayerChase)
-							Vendor.image_xscale = 1.863
-							Vendor.image_yscale = 1.863
 						
 							var Adult = instance_create_layer(576,608,Layer,adultHub)
 							var Adult = instance_create_layer(320,512,Layer,adultHub)

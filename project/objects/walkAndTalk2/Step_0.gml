@@ -5,6 +5,13 @@ if destroy {
 	exit
 }
 
+if gap < gapMax {
+	brotherShadow.sprite_index = s_brother_walk	
+}
+else {
+	brotherShadow.sprite_index = s_kid_crutch	
+}
+
 if stage == 0 {
 	if input.keyRight {
 		layer_x("Background", layer_get_x("Background")-2)

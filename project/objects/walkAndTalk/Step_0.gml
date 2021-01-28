@@ -5,6 +5,13 @@ if destroy {
 	exit
 }
 
+if gap < gapMax {
+	brotherShadow.sprite_index = s_brother_walk	
+}
+else {
+	brotherShadow.sprite_index = s_kid_crutch	
+}
+
 if stage == 0 {
 	if input.keyRight {
 		layer_x("Background", layer_get_x("Background")-2)
@@ -24,7 +31,7 @@ if stage == 0 {
 		if dialogueIndex == 7 {
 			gui.drawGold = true	
 		}
-	
+		playerShadow.sprite_index = s_kid_player_walk
 	}
 	else {
 		if gap < gapMax gap += 2
@@ -38,10 +45,16 @@ if stage == 0 {
 }
 //	After the brother knows how much money is left
 else if stage == 1 {
-	if gap < gapMax gap++
-	else if !inConversation and dialogueIndex < 12 {
-		create_textbox(id,myDialogue[1, dialogueIndex])
-		inConversation = true	
+	if gap < gapMax {
+		gap++
+		//brotherShadow.sprite_index = s_brother_walk
+	}
+	else {
+		//brotherShadow.sprite_index = s_kid_crutch
+		if !inConversation and dialogueIndex < 12 {
+			create_textbox(id,myDialogue[1, dialogueIndex])
+			inConversation = true	
+		}
 	}
 	
 	//	Check for final dialogue

@@ -23,3 +23,4 @@ playerShadow.canMove = false
 
 brotherShadow = instance_create_layer(x+96+gap,y,"Instances",brother)
 brotherShadow.image_alpha = -1
+brotherShadow.mask_index = brotherShadow.sprite_index

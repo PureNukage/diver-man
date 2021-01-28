@@ -21,10 +21,14 @@ var yy = display_get_gui_height()/2 - 56
 var adjustY = 136
 brotherShadow = instance_create_layer(xx+96,yy+adjustY,"Instances",brother)
 brotherShadow.image_alpha = 0
+brotherShadow.mask_index = brotherShadow.sprite_index
+brotherShadow.sprite_index = s_brother_walk
 
 playerShadow = instance_create_layer(xx,yy+adjustY,"Instances",player)
 playerShadow.image_alpha = 0
 playerShadow.canMove = false
+playerShadow.muted = true
+playerShadow.sprite_index = s_kid_player_walk
 
 createdBackground = false
 

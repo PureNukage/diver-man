@@ -11,7 +11,8 @@ if surface_exists(surface) and room == RoomCityHub {
 	}
 	
 	gpu_set_blendmode(bm_subtract)
-	draw_rectangle(720,0,room_width,room_height,false)
+	draw_rectangle(670,0,room_width,room_height,false)
+	draw_rectangle(0,408,room_width,room_height,false)
 	gpu_set_blendmode(bm_normal)
 	
 	surface_reset_target()
