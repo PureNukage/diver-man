@@ -260,7 +260,18 @@ function applyMovement() {
 					groundY += pY
 					if !onGround y += pY
 					if map > -1 {
-						changeMap(-1)
+						var col_x = x
+						var col_y = y
+						if pX > 0 col_x = bbox_right + pX
+						else if pX < 0 col_x = bbox_left + pX
+						if pY > 0 col_y = bbox_bottom + pY
+						else if pY < 0 col_y = bbox_top + pY
+					
+						if col_x > 0 and col_x < room_width and col_y > 0 and col_y < room_height {
+							//	Find new cell
+							var Cell = new cell_create(col_x, col_y)
+						}
+						changeMap(Cell.map)
 						debug.log("dropping off map")
 					}
 				}

@@ -78,16 +78,11 @@ if on {
 	//draw_set_alpha(0.5)
 	//for(var w=startCellX;w<startCellX+Width;w++) {
 	//	for(var h=startCellY;h<startCellY+Height;h++) {
-	//		if point_in_rectangle(w,h,0,0,grid.gridWidth,grid.gridHeight) {
+	//		if point_in_rectangle(w,h,0,0,grid.gridWidth-1,grid.gridHeight-1) {
 	//			var Color = c_white
-	//			//switch(grid.cell[w, h].top) {
-	//			//	case 48: Color = c_red break
-	//			//	case 80: Color = c_orange break
-	//			//	case 96: Color = c_green break
-	//			//}
 	//			if grid.cell[w,h].top > 0 {
 	//				Color = c_blue
-	//				draw_set_alpha(1)
+	//				draw_set_alpha(0.5)
 	//			}
 	//			else draw_set_alpha(0)
 	//			draw_set_color(Color)

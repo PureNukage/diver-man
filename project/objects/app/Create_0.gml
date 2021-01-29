@@ -489,13 +489,15 @@ function scene_loader() {
 						case quests.spendFinalCoin:
 						
 							if !instance_exists(brother) {
-								var Brother = instance_create_layer(944,224,Layer,brother)
+								var Brother = instance_create_layer(976,224,Layer,brother)
 								Brother.image_xscale = -1
 							}
 						
 							var Vendor = instance_create_layer(1232,352,Layer,vendor)
 							Vendor.image_xscale = -1
 							var vendorCart = instance_create_layer(1328,384,Layer,cart)
+							
+							var Girl = instance_create_layer(1392,224,Layer,girl)
 						
 							var Pete = instance_create_layer(1408,848,Layer,sailorPeteSitting)
 						

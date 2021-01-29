@@ -96,8 +96,8 @@
     {"visible":true,"isLocked":false,"blendMode":0,"opacity":100.0,"displayName":"default","resourceVersion":"1.0","name":"c43246f7-634b-44f9-b128-a7037d89edd0","tags":[],"resourceType":"GMImageLayer",},
   ],
   "parent": {
-    "name": "Art",
-    "path": "folders/Art.yy",
+    "name": "characters",
+    "path": "folders/Art/characters.yy",
   },
   "resourceVersion": "1.0",
   "name": "s_vendor",

@@ -175,3 +175,9 @@ dicekid,12,Looks like your luck ran out. ,s_bully2_face
 dicekid,-12,Thanks for playing!,s_bully2_face
 dicekid,0,I know you're poor so I'll be nice. You need some form of money to play. ,s_bully2_face
 vendorPlayerChase,0,I saw your brother run by with some boys a few minutes ago. They went to the docks.,s_vendor_face
+girlLastCoin,1,Hello!,s_girl_face
+girlLastCoin,respGirlFinalCoin,Say... do you know where your brother is?,s_girl_face
+respGirlFinalCoin,2,Can't say that I do.,
+respGirlFinalCoin,3,[Tell her where he is],
+girlLastCoin,0,Well alriiiight. Let me know if you do!,s_girl_face
+girlLastCoin,-3,Oh goody!,s_girl_face

@@ -68,8 +68,8 @@
     {"visible":true,"isLocked":false,"blendMode":0,"opacity":100.0,"displayName":"default","resourceVersion":"1.0","name":"0f0cc54c-c9c7-4bd1-b2c6-9443587124f2","tags":[],"resourceType":"GMImageLayer",},
   ],
   "parent": {
-    "name": "Art",
-    "path": "folders/Art.yy",
+    "name": "characters",
+    "path": "folders/Art/characters.yy",
   },
   "resourceVersion": "1.0",
   "name": "s_dicekid_2",
