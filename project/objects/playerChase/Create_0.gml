@@ -6,6 +6,8 @@ staminaMax = 100
 stamina = staminaMax
 gold = 1
 
+running = false
+
 dancing = false
 knocked = false
 grounded = 0

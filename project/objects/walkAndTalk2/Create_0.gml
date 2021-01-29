@@ -11,7 +11,7 @@ if !createdBackground {
 	surface_set_target(surface)
 	draw_clear_alpha(c_black, 0)
 			
-	draw_tilemap(layer_tilemap_get_id(layer_get_id("Tiles_1")), 0,0)
+	draw_tilemap(layer_tilemap_get_id(layer_get_id("Tiles_3")), 0,0)
 			
 	surface_reset_target()
 			
@@ -36,12 +36,14 @@ dialogueIndex = -1
 
 load_dialogue()
 
-depth = -1000
+depth = -200
 
 playerShadow = instance_create_layer(x,y,"Instances",player)
 playerShadow.image_alpha = -1
-playerShadow.canMove = false
+//playerShadow.canMove = false
+playerShadow.depth = -200
 
 brotherShadow = instance_create_layer(x+96+gap,y,"Instances",brother)
 brotherShadow.image_alpha = -1
 brotherShadow.mask_index = brotherShadow.sprite_index
+brotherShadow.depth = -200

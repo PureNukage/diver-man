@@ -49,7 +49,7 @@ else {
 			draw_clear_alpha(c_black, 0)
 			
 			//draw_tilemap(layer_tilemap_get_id(layer_get_id("Tiles_1")), 0,0)
-			draw_tilemap(layer_tilemap_get_id(layer_get_id("Tiles_2")), 0,0)
+			//draw_tilemap(layer_tilemap_get_id(layer_get_id("Tiles_2")), 0,0)
 			draw_tilemap(layer_tilemap_get_id(layer_get_id("Tiles_3")), 0,0)
 			
 			surface_reset_target()
@@ -71,6 +71,9 @@ else {
 			if backgroundFadeOut > 0 backgroundFadeOut--
 			
 			if backgroundFadeOut <= 0 {
+				if file_exists("save.ini") {
+					file_delete("save.ini")	
+				}
 				room_goto(RoomCity)
 				app.cameraRefresh = true
 				app.canvasX = layer_get_x("Background")
@@ -86,7 +89,7 @@ else {
 		
 		if playerFadeIn >= 100 {
 			if brotherFadeIn < 100 brotherFadeIn++
-			draw_sprite_ext(s_brother_walk,brotherShadow.image_index, xx+96,yy+adjustY, 1,1,0, image_blend,brotherFadeIn/100)
+			draw_sprite_ext(s_brother_walk,playerShadow.image_index, xx+96,yy+adjustY, 1,1,0, image_blend,brotherFadeIn/100)
 
 		}
 		

@@ -23,6 +23,7 @@ brotherShadow = instance_create_layer(xx+96,yy+adjustY,"Instances",brother)
 brotherShadow.image_alpha = 0
 brotherShadow.mask_index = brotherShadow.sprite_index
 brotherShadow.sprite_index = s_brother_walk
+brotherShadow.moving = true
 
 playerShadow = instance_create_layer(xx,yy+adjustY,"Instances",player)
 playerShadow.image_alpha = 0

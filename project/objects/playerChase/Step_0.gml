@@ -17,6 +17,19 @@ if !muted {
 	//	room_goto(RoomCityAndDock)
 	//	app.cameraRefresh = true
 	//}
+	
+	//	Sprinting
+	if input.keyRun {
+		if !running {
+			running = true
+		}
+	}
+	else if running {
+		running = false	
+	}
+	
+	if running maxMovespeed = 3.5
+	else maxMovespeed = 2.5
 		
 	//	Collision with adult
 	if place_meeting(x,y,adult) and !knocked and grounded == 0 {
@@ -34,7 +47,13 @@ if !muted {
 		grounded = 45
 		sprite_index = s_player_kid_onground
 	}
-	else if !knocked and grounded == 0 sprite_index = s_kid_player
+	else if !knocked and grounded == 0 {
+		if (vspd != 0 or hspd != 0) {
+			if !running sprite_index = s_kid_player_walk
+			else sprite_index = s_kid_player_running
+		}
+		else sprite_index = s_kid_player
+	}
 	
 	visible = true
 		
@@ -50,7 +69,7 @@ if !muted {
 	if (hspd != 0 or vspd != 0) {
 		moveDirection = point_direction(0,0,hspd,vspd)
 		moveForce += 0.10
-		moveForce = clamp(moveForce,0,4)
+		moveForce = clamp(moveForce,0,maxMovespeed)
 			
 		if hspd > 0 and backgroundX < 301 {
 			backgroundX += hspd

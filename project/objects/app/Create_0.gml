@@ -506,7 +506,7 @@ function scene_loader() {
 							diceKid.image_xscale = -1
 						
 							//	destroy the dock room change
-							if instance_exists(collisionRoomChange) instance_destroy(collisionRoomChange)
+							if instance_exists(collisionRoomChange) with collisionRoomChange replace_with_collision()
 						
 							var Collision = instance_create_layer(1600,208,Layer,collision)
 							Collision.image_yscale = 8.75
@@ -516,17 +516,17 @@ function scene_loader() {
 						case quests.streetDance:
 							var Vendor = instance_create_layer(1232,352,Layer,vendorPlayerChase)
 						
-							var Adult = instance_create_layer(576,608,Layer,adultHub)
-							var Adult = instance_create_layer(320,512,Layer,adultHub)
-							var Car = instance_create_layer(384,608,Layer,car)
+							//var Adult = instance_create_layer(576,608,Layer,adultHub)
+							//var Adult = instance_create_layer(320,512,Layer,adultHub)
+							//var Car = instance_create_layer(384,608,Layer,car)
 						
-							var Adult = instance_create_layer(951,840,Layer,adultHub)
+							//var Adult = instance_create_layer(951,840,Layer,adultHub)
 						
-							var Adult = instance_create_layer(1440,238,Layer,adultHub)
-							Adult.image_xscale = -1
+							//var Adult = instance_create_layer(1440,238,Layer,adultHub)
+							//Adult.image_xscale = -1
 						
-							var Adult = instance_create_layer(1440,822,Layer,adultHub)
-							Adult.image_xscale = -1
+							//var Adult = instance_create_layer(1440,822,Layer,adultHub)
+							//Adult.image_xscale = -1
 						
 						break
 					}

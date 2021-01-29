@@ -9,7 +9,8 @@ if !muted {
 		sprite_index = s_player_kid_dance
 	}
 	else if !knocked and grounded == 0 {
-		sprite_index = s_kid_player
+		if hspd != 0 or vspd != 0 sprite_index = s_kid_player_walk
+		else sprite_index = s_kid_player
 		dancing = false
 	} 
 		

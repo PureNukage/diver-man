@@ -1,14 +1,17 @@
 //	Wait for player to get close enough
 if stage == 0 {
-	if player.groundX >= 1050 {
-		player.canMove = false
-		app.cameraFocus(1262,352, "~", true)
-		stage = 1
-		Layer = layer_create(-1)
-		Sequence = layer_sequence_create(Layer,0,0,Sequence6)
-		layer_sequence_pause(Sequence)
-		layer_set_visible(Layer,false)
-		create_textbox(id, myDialogue[1, dialogueIndex])
+	if instance_exists(player) {
+		if player.groundX >= 1050 {
+			player.canMove = false
+			app.cameraFocus(1262,352, "~", true)
+			stage = 1
+			Layer = layer_create(-1)
+			Sequence = layer_sequence_create(Layer,0,0,Sequence6)
+			layer_sequence_pause(Sequence)
+			layer_set_visible(Layer,false)
+			layer_depth(Layer,-2000)
+			create_textbox(id, myDialogue[1, dialogueIndex])
+		}
 	}
 }
 //	Wait for dialogue to finish then start sequence
