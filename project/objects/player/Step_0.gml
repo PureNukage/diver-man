@@ -6,7 +6,7 @@ if !muted {
 			case state.free:
 				
 				//	Attacking
-				if input.keyAttack and onGround {
+				if input.keyAttack and onGround and hasWrench and suitOn {
 					if !attack sprite_index = s_diverman_attack
 					else sprite_index = s_diverman_attack2
 					attack = !attack

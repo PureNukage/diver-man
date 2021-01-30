@@ -16,6 +16,8 @@ attack = 0
 
 dancing = false
 
+hasWrench = false
+
 suitOn = app.suitOn
 
 muted = false
