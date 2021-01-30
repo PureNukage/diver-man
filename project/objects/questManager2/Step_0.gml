@@ -8,6 +8,7 @@ if instance_exists(player) {
 			Sequence = layer_sequence_create(Layer,1967,1056,Sequence8)
 			player.canMove = false
 			instance_destroy(watch)
+			app.cameraFocus(2159,1183,"~",true)
 			stage = 1
 		}
 	}
@@ -18,6 +19,7 @@ if instance_exists(player) {
 			stage = 2
 			layer_sequence_destroy(Sequence)
 			instance_create_layer(1967+271,1056+144,"Instances",crab)
+			app.cameraFocus(player.x,player.y,1,true)
 			player.canMove = true
 		}
 	}
