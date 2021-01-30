@@ -165,7 +165,7 @@ dicekid,respFinalCoinKidDice,Try your hand again? ,s_bully2_face
 respFinalCoinKidDice,7,[Give %player.gold% coins],
 respFinalCoinKidDice,6,Not right now.,
 dicekid,-5,Then scram kid!,s_bully2_face
-dicekid,8,Jimmy put down %player.gold% and lets roll!,s_bully2_face
+dicekid,8,"Jimmy, put down %player.gold% and let it roll!",s_bully2_face
 dicekid,-9,"Todays your day, you won again.",s_bully2_face
 dicekid,respCoinKidFinalRoll,Would you give it a rest? You're ruining me.,s_bully2_face
 respCoinKidFinalRoll,11,[Give %player.gold% coins],

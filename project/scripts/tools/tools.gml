@@ -565,6 +565,7 @@ function create_textbox(ID, _text) {
 							var newString = string(variable_instance_get(Object,Variable))
 							Dialogue = string_replace(Dialogue,variableString,newString)
 							text = Dialogue
+							_text = text
 						}
 						else {
 							//debug.log("ERROR with dialogue. KEY: "+string(Key)+" at: "+string(a))	
