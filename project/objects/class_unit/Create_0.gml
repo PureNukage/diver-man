@@ -340,7 +340,7 @@ function applyMovement() {
 								if !onGround y += pY
 
 								//	Check if we're actually colliding with it ;)
-								if Cell.map > -1 and point_in_rectangle(col_x,col_y, Cell.map.bbox_left,Cell.map.bbox_top+Cell.map.z+Cell.map.height, Cell.map.bbox_right,Cell.map.bbox_bottom+Cell.map.height) {
+								if Cell.map > -1 and point_in_rectangle(floor(col_x),floor(col_y), Cell.map.bbox_left,Cell.map.bbox_top+Cell.map.z+Cell.map.height, Cell.map.bbox_right,Cell.map.bbox_bottom+Cell.map.height) {
 									//	This cell has a different map than the one I am one
 									if map > -1 and map != Cell.map {
 										//	This cell is taller than the one I was one
