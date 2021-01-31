@@ -8,7 +8,7 @@ if (map == -1 or (map > -1 and !map.drawSurface))  { // and place_meeting(x,y,pl
 		var ObjectIndex = Unit.object_index
 		if ObjectIndex == player or (object_get_parent(ObjectIndex) != class_foliage and object_get_parent(ObjectIndex) != class_rock) {
 			if lowestY == -1 or Unit.groundY > lowestY.groundY {
-				if Unit.z < z+height and Unit.y < bbox_bottom -1 and Unit.groundY < bbox_bottom-1 {
+				if (Unit.z < z+height or (Unit.map != id and Unit.y <= bbox_top+z)) and (Unit.y < bbox_bottom -1 and Unit.groundY < bbox_bottom-1) {
 					lowestY = Unit
 				}
 			}
@@ -19,9 +19,10 @@ if (map == -1 or (map > -1 and !map.drawSurface))  { // and place_meeting(x,y,pl
                     
 		//var oldMask = ID.mask_index
 		//ID.mask_index = ID.sprite_index
-		if ID.y < bbox_bottom -1 and ID.groundY < bbox_bottom-1 and rectangle_in_rectangle(ID.bbox_left,ID.bbox_top-ID.z,ID.bbox_right,ID.bbox_bottom-ID.z, bbox_left,bbox_top,bbox_right,bbox_bottom+height) > 0 {
-			if ID.z < z+height {
+		if ID.y < bbox_bottom - 1 and ID.groundY < bbox_bottom-1  {
+			if (ID.z < z+height) or (ID.map != id and ID.y <= bbox_top+z) {
 				if ID.map == -1 or (ID.map > -1 and !ID.map.ramp) {
+					debug.log(string(id)+" drawing")
 					depth = ID.depth - 1
 					drawSurface = true
 					for(var i=0;i<ds_list_size(maps);i++) {
@@ -39,9 +40,10 @@ if (map == -1 or (map > -1 and !map.drawSurface))  { // and place_meeting(x,y,pl
 						}
 					}
 					ds_list_destroy(List)
-				}
-			}
+				} else debug.log(string(id)+" NOT drawing 3")
+			} else debug.log(string(id)+" NOT drawing 2")
 		}
+		else debug.log(string(id)+" NOT drawing 1")
 		//ID.mask_index = oldMask
 	}
 	ds_list_destroy(list)
@@ -63,6 +65,7 @@ if !surface_exists(cookieSurface) and buffer_exists(cookieBuffer) {
 if !surface_exists(inverseSurface) and buffer_exists(inverseSurfaceBuffer) {
 	inverseSurface = surface_create((sprite_get_width(sprite_index)*image_xscale)+inverseSurfaceExtraPixels,(sprite_get_height(sprite_index)*image_yscale)+inverseSurfaceExtraPixels)
 	buffer_set_surface(inverseSurfaceBuffer, inverseSurface, 0)
+	//if altTileLayer == "Tiles_Stairs" and room = RoomCityHub surface_save(inverseSurface,"stairsSurface.png")
 }
 
 if !foundNearbyMaps findNearbyMaps()

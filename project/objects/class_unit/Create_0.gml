@@ -440,7 +440,12 @@ function draw_shadow_ext(_z, _map) {
 	//	This should have it be a solid circle if right under the player and invisible if >= zDrop
 	var Alpha = ((zDrop - (z - _z)) / zDrop) * .4
 	
-	var surface = surface_create(room_width, room_height)
+	var SurfaceWidth = 160
+	var SurfaceHeight = 240
+	var offsetX = x - (SurfaceWidth/2)
+	var offsetY = y - z - (SurfaceHeight/2)
+	
+	var surface = surface_create(SurfaceWidth, SurfaceHeight)
 	surface_set_target(surface)
 	draw_clear_alpha(c_black, 0)
 	
@@ -449,25 +454,34 @@ function draw_shadow_ext(_z, _map) {
 	var Width = widthBase * ((zDrop - (z - _z)) / zDrop)
 	//debug.log(string(Width))
 	var correction = 12
-	if shadowEllipse draw_ellipse(bbox_left+correction-Width,bbox_top-_z,bbox_right-correction+Width,bbox_bottom-_z,false)
-	else draw_rectangle(bbox_left,bbox_top-_z,bbox_right,bbox_bottom-_z,false)
+	if shadowEllipse draw_ellipse(bbox_left+correction-Width-offsetX,bbox_top-_z-offsetY,bbox_right-correction+Width-offsetX,bbox_bottom-_z-offsetY,false)
+	else draw_rectangle(bbox_left-offsetX,bbox_top-_z-offsetY,bbox_right-offsetX,bbox_bottom-_z-offsetY,false)
 	
 	if _map > -1 {
 		gpu_set_blendmode(bm_subtract)
-		if surface_exists(_map.inverseSurface) draw_surface_ext(_map.inverseSurface,_map.x-(_map.inverseSurfaceExtraPixels/2),_map.y-(_map.inverseSurfaceExtraPixels/2),1,1,0,c_white,1)
+		if surface_exists(_map.inverseSurface) draw_surface_ext(_map.inverseSurface,_map.x-(_map.inverseSurfaceExtraPixels/2)-offsetX,_map.y-(_map.inverseSurfaceExtraPixels/2)-offsetY,1,1,0,c_black,1)
+		if !ds_list_empty(_map.maps) {
+			for(var i=0;i<ds_list_size(_map.maps);i++) {
+				draw_surface_ext(_map.maps[| i].surface,_map.maps[| i].x-offsetX,_map.maps[| i].y-offsetY,1,1,0,c_black,1)
+			}
+		}
 		gpu_set_blendmode(bm_normal)
 	}
 	//	Use every map as a mask for the base shadow
 	else if map > -1 and _map == -1 {
 		gpu_set_blendmode(bm_subtract)	
-		if surface_exists(water.collisionMapsSurface) draw_surface_ext(water.collisionMapsSurface,0,0,1,1,0,c_black,1)
+		if surface_exists(water.collisionMapsSurface) draw_surface_ext(water.collisionMapsSurface,-offsetX,-offsetY,1,1,0,c_black,1)
 		gpu_set_blendmode(bm_normal)
 	}
 	
 	surface_reset_target()
 	
 	draw_set_alpha(Alpha)
-	draw_surface(surface,0,0)
+	draw_surface(surface,offsetX,offsetY)
+	
+	////	DEBUG
+	//draw_set_color(c_yellow)
+	//draw_rectangle(offsetX,offsetY,offsetX+SurfaceWidth,offsetY+SurfaceHeight,true)
 	
 	surface_free(surface)
 

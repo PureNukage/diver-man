@@ -99,28 +99,33 @@ collisionMapsBuffer = -1
 collisionMapsSurface = -1
 function generate_collision_maps() {
 	
-	//////	Create map of all cliffs, used for the base shadow
-	//var surface = surface_create(room_width, room_height)
-	//surface_set_target(surface) 
-	//draw_clear_alpha(c_black, 0)
+	////	Create map of all cliffs, used for the base shadow
+	var surface = surface_create(room_width, room_height)
+	surface_set_target(surface) 
+	draw_clear_alpha(c_black, 0)
 	
-	//if instance_exists(collisionMap) with collisionMap {
-	//	var Surface = surface_create(sprite_get_width(sprite_index)*image_xscale,sprite_get_height(sprite_index)*image_yscale)
-	//	buffer_set_surface(surfaceBuffer,Surface,0)
+	if instance_exists(collisionMap) with collisionMap {
+		var Surface = surface_create(sprite_get_width(sprite_index)*image_xscale,sprite_get_height(sprite_index)*image_yscale)
+		buffer_set_surface(surfaceBuffer,Surface,0)
 		
-	//	draw_surface_ext(Surface,x,y,1,1,0,c_black,1)
+		draw_surface_ext(Surface,x,y,1,1,0,c_black,1)
 		
-	//	surface_free(Surface)
-	//}
-	//surface_reset_target()
+		surface_free(Surface)
+		
+		////	Cleanup the top so only the cliff remains
+		//gpu_set_blendmode(bm_subtract)
+		//draw_rectangle(bbox_left,bbox_top,bbox_right,bbox_bottom-z,false)
+		//gpu_set_blendmode(bm_normal)
+	}
+	surface_reset_target()
 	
-	//if collisionMapsBuffer > -1 and buffer_exists(collisionMapsBuffer) buffer_delete(collisionMapsBuffer)
-	//if surface_exists(collisionMapsSurface) surface_free(collisionMapsSurface)
-	//collisionMapsBuffer = buffer_create(room_width*room_height*4,buffer_grow,1)
-	//buffer_get_surface(collisionMapsBuffer,surface,0)
+	if collisionMapsBuffer > -1 and buffer_exists(collisionMapsBuffer) buffer_delete(collisionMapsBuffer)
+	if surface_exists(collisionMapsSurface) surface_free(collisionMapsSurface)
+	collisionMapsBuffer = buffer_create(room_width*room_height*4,buffer_grow,1)
+	buffer_get_surface(collisionMapsBuffer,surface,0)
 	
-	////surface_save(surface, "collisionMapsSurface.png")
+	//surface_save(surface, "collisionMapsSurface.png")
 	
-	//surface_free(surface)	
+	surface_free(surface)	
 	
 }

@@ -11,7 +11,7 @@ surface = -1
 surfaceBuffer = -1
 inverseSurfaceBuffer = -1
 inverseSurface = -1
-inverseSurfaceExtraPixels = 128
+inverseSurfaceExtraPixels = 256
 
 cookieBuffer = -1
 cookieSurface = -1
@@ -128,7 +128,14 @@ function createSurface() {
 	draw_surface_ext(finalSurface,inverseSurfaceExtraPixels/2,inverseSurfaceExtraPixels/2,1,1,0,c_black,1)
 	gpu_set_blendmode(bm_normal)
 	
+	//	Factor in the cliff
+	var oX = x - inverseSurfaceExtraPixels/2
+	var oY = y - inverseSurfaceExtraPixels/2
+	draw_rectangle(bbox_left-oX,bbox_top+id.width-oY,bbox_right-oX,bbox_bottom-oY,false)
+	
 	surface_reset_target()
+	
+	//surface_save(inverseSurface,"inverseSurface"+string(id)+".png")
 	
 	//	Cookie Cutter surface
 	var cookieCutSurface = surface_create(sprite_get_width(sprite_index)*image_xscale,sprite_get_height(sprite_index)*image_yscale)
@@ -150,8 +157,8 @@ function createSurface() {
 	buffer_get_surface(cookieBuffer, cookieCutSurface, 0)
 	
 	if inverseSurfaceBuffer > -1 and buffer_exists(inverseSurfaceBuffer) buffer_delete(inverseSurfaceBuffer)
-	//inverseSurfaceBuffer = buffer_create(room_width*room_height*4, buffer_grow, 1)
-	//buffer_get_surface(inverseSurfaceBuffer, inverseSurface, 0)
+	inverseSurfaceBuffer = buffer_create((((sprite_get_width(sprite_index)*image_xscale)+inverseSurfaceExtraPixels)+((sprite_get_height(sprite_index)*image_yscale)+inverseSurfaceExtraPixels))*4, buffer_grow, 1)
+	buffer_get_surface(inverseSurfaceBuffer, inverseSurface, 0)
 	
 	surface_free(Surface)
 	surface_free(inverseSurface)
