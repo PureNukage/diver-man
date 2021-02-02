@@ -39,6 +39,9 @@ xGoto = -1
 yGoto = -1
 timer = -1
 depthY = true
+attemptingToMove = 0
+state = state.free
+timer = 0
 image_index = irandom_range(0,image_number-1)
 
 madeFootprint = false
@@ -117,7 +120,7 @@ function applyThrust() {
 		
 		////	Sand poof
 		if object_index == player and app.underwater {
-			var Poof = instance_create_layer(x,y,"Instances",particle)
+			var Poof = instance_create_layer(x,y-z,"Instances",particle)
 			Poof.particles = particles.dustpoof
 			Poof.sprite_index = s_diverman_jumping_dustpoofs
 			Poof.duration = 30
@@ -420,8 +423,15 @@ function draw_shadow() {
 	draw_set_alpha(Alpha)
 
 	var Z = 0
-	if map > -1 Z = map.z
+	if map > -1 {
+		if map.ramp {
+			Z = clamp(floor(((groundX-map.bbox_left) / (map.bbox_right - map.bbox_left)) * (map.z)),0,map.z)
+			Z += map.height			
+		}
+		else Z = map.z + map.height
+	}
 	else if !onGround Z = 0
+	
 
 	var extraWidth = 6 * ((1 - ((z) / (100+Z))))
 	if shadowEllipse draw_ellipse(bbox_left-extraWidth,bbox_top-Z,bbox_right+extraWidth,bbox_bottom-Z,false)

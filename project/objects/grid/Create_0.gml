@@ -71,6 +71,7 @@ function mpGrid_build() {
 		var Z = z_list[| i]
 		mp_grids[i, 0] = mp_grid_create(0,0,gridWidth,gridHeight,cellWidth,cellHeight)
 		mp_grids[i, 1] = Z
+		mp_grid_add_rectangle(mp_grids[i, 0],0,0,room_width,room_height)
 		if instance_exists(collisionMap) with collisionMap if z+height == Z {
 			var X = floor(bbox_left/grid.cellWidth)
 			var Y = floor((bbox_top+z)/grid.cellHeight)
@@ -78,7 +79,9 @@ function mpGrid_build() {
 			var Height = (bbox_bottom - (bbox_top+z))/grid.cellHeight
 			for(var w=X;w<X+Width;w++) {
 				for(var h=Y;h<Y+Height;h++) {
-					mp_grid_add_cell(grid.mpGrid,w,h)
+					if point_in_rectangle(w,h,0,0,grid.gridWidth-1,grid.gridHeight-1) {
+						mp_grid_clear_cell(grid.mp_grids[i,0],w,h)
+					}
 				}
 			}
 		}

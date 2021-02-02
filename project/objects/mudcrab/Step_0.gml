@@ -1,28 +1,38 @@
 event_inherited()
 
-//	Walk up and down
-if !moving {
+switch(state) {
+	case state.free:
 	
-	var _x = x
-	var _y = y
+		//	Knocked up by player jumping
+		stunCheck()
+		
+		//	Walk up and down
+		if !moving {
 	
-	//	On a map
-	if map > -1 {
+			//	On a map
+			if map > -1 {
 		
-		var Index = grid.return_z_index(z)
+				var ran_x = irandom_range(x-16,x+16)
+				var ran_y = irandom_range(y-16,y+16)
+				move_to(ran_x,ran_y)
 		
-		var ran_x = irandom_range(x-16,x+16)
-		var ran_y = irandom_range(y-16,y+16)
-		move_to(ran_x,ran_y)
-		
-		////	Closer to the left side
-		//if abs(x - map.bbox_left) < abs(x - map.bbox_right) {
-		//	_x = map.bbox_right-5	
-		//}
-		//else {
-		//	_x = map.bbox_left+5
-		//}
-		//move_to(_x,_y)
-	}
+			}
 	
+		}
+		else {
+			if point_distance(x,y,xprevious,yprevious) < 1 {
+				attemptingToMove++	
+			}
+			if attemptingToMove >= 100 {
+				attemptingToMove = 0
+				moving = false
+			}
+		}
+	break
+	case state.stunned:
+		if timer > -1 timer--
+		else {
+			state = state.free	
+		}
+	break
 }

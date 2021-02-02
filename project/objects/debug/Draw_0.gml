@@ -18,6 +18,15 @@ if on {
 		draw_text(xx,yy, "x: "+string(x)) yy += 15
 		draw_text(xx,yy, "y: "+string(y)) yy += 15
 	}
+		
+	//	Draw the NPC ground lines
+	if instance_exists(class_npc) with class_npc {
+		draw_set_color(c_yellow)
+		draw_rectangle(bbox_left,bbox_top,bbox_right,bbox_bottom,false)
+		
+		draw_set_color(c_aqua)
+		draw_rectangle(x-32,groundY-2,x+32,groundY+2,false)	
+	}
 	
 	//	Draw the player ground lines
 	if instance_exists(player) with player {
@@ -57,7 +66,8 @@ if on {
 		
 		//	Draw the selected units z_layer
 		if selected_unit.object_index == mudcrab and selected_unit.map > -1 {
-			mp_grid_draw(grid.mp_grids[grid.return_z_index(z), 0])	
+			draw_set_alpha(0.5)
+			mp_grid_draw(grid.mp_grids[grid.return_z_index(selected_unit.z), 0])	
 		}
 	}
 	

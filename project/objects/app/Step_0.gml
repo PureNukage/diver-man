@@ -22,20 +22,6 @@ if cameraRefresh {
 		x = player.x
 		y = player.y-player.z-32
 	}
-	//	Regen the static shade units
-	//if instance_exists(class_unit) with class_unit if shadeStatic {
-	//	if surface_exists(shadeSurface) surface_free(shadeSurface)
-	//	if buffer_exists(shadeBuffer) buffer_delete(shadeBuffer)
-	//}
-}
-
-if newRoom {
-	////	Regen the static shade units
-	//if instance_exists(class_unit) with class_unit if shadeStatic {
-	//	if surface_exists(shadeSurface) surface_free(shadeSurface)
-	//	if buffer_exists(shadeBuffer) buffer_delete(shadeBuffer)
-	//}
-	//newRoom = false
 }
 
 var viewportID = layer_get_id("Viewport")

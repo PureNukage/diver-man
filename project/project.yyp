@@ -236,6 +236,7 @@
     {"id":{"name":"bullysTossWatch","path":"objects/bullysTossWatch/bullysTossWatch.yy",},"order":1,},
     {"id":{"name":"s_sand_poof_jump","path":"sprites/s_sand_poof_jump/s_sand_poof_jump.yy",},"order":11,},
     {"id":{"name":"s_grass_wide","path":"sprites/s_grass_wide/s_grass_wide.yy",},"order":2,},
+    {"id":{"name":"s_mudcrab_collision","path":"sprites/s_mudcrab_collision/s_mudcrab_collision.yy",},"order":12,},
     {"id":{"name":"shark","path":"objects/shark/shark.yy",},"order":5,},
     {"id":{"name":"s_fence_vertical","path":"sprites/s_fence_vertical/s_fence_vertical.yy",},"order":25,},
     {"id":{"name":"s_girl_walk","path":"sprites/s_girl_walk/s_girl_walk.yy",},"order":18,},

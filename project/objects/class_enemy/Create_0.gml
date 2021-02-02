@@ -1,7 +1,5 @@
 event_inherited()
 
-attemptingToMove = 0
-
 state = state.free
 
 
