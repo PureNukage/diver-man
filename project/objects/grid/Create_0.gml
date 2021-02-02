@@ -3,7 +3,16 @@ hoseGrid = -1
 hoseGrid2 = -1
 hoseGrid3 = -1
 
+z_layers = 0
+
 cell = [[]]
+
+function return_z_index(_z) {
+	for(var i=0;i<z_layers;i++) {
+		if mp_grids[i, 1] == _z return i
+	}
+	return -1
+}
 
 function mpGrid_build() {
 	
@@ -47,6 +56,35 @@ function mpGrid_build() {
 	
 	if instance_exists(collision) mp_grid_add_instances(hoseGrid2,collision,false)
 	//if instance_exists(collisionMap) mp_grid_add_instances(hoseGrid,collisionMap,false)
+	
+	////	Build z layer mp_grids
+	var z_list = ds_list_create()
+	with collisionMap if ds_list_find_index(z_list,z+height) == -1 ds_list_add(z_list,z+height)
+	var amount = ds_list_size(z_list)
+
+	//	Clear old mp_grids
+	for(var i=0;i<z_layers;i++) {
+		mp_grid_destroy(mp_grids[i, 0])	
+	}
+
+	for(var i=0;i<amount;i++) {
+		var Z = z_list[| i]
+		mp_grids[i, 0] = mp_grid_create(0,0,gridWidth,gridHeight,cellWidth,cellHeight)
+		mp_grids[i, 1] = Z
+		if instance_exists(collisionMap) with collisionMap if z+height == Z {
+			var X = floor(bbox_left/grid.cellWidth)
+			var Y = floor((bbox_top+z)/grid.cellHeight)
+			var Width = ((bbox_right-bbox_left)/grid.cellWidth)
+			var Height = (bbox_bottom - (bbox_top+z))/grid.cellHeight
+			for(var w=X;w<X+Width;w++) {
+				for(var h=Y;h<Y+Height;h++) {
+					mp_grid_add_cell(grid.mpGrid,w,h)
+				}
+			}
+		}
+	}
+	z_layers = amount
+	ds_list_destroy(z_list)
 	
 	
 	////	Build z-map

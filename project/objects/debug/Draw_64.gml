@@ -4,6 +4,10 @@ if on {
 	var YY = 15
 	draw_set_color(c_black)
 	
+	draw_text(XX,YY,"selected_unit: "+string(selected_unit)) YY += 15
+	if selected_unit > -1 {
+		draw_text(XX,YY,string_upper(object_get_name(selected_unit.object_index))) YY += 15
+	}
 	draw_text(XX,YY, "mouse_x: "+string(mouse_x)) YY += 15
 	draw_text(XX,YY, "mouse_y: "+string(mouse_y)) YY += 15
 	

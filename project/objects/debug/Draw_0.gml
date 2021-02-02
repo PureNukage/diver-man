@@ -46,6 +46,21 @@ if on {
 	//	draw_sprite_ext(sprite_index,0,x,y,image_xscale,image_yscale,0,c_white,0.5)
 	//}
 	
+	//	Selected unit
+	if selected_unit == -1 {
+		if input.mouseLeftPress and instance_position(mouse_x,mouse_y,all) {
+			selected_unit = instance_position(mouse_x,mouse_y,all)	
+		}
+	}
+	else {
+		if input.mouseLeftPress selected_unit = -1
+		
+		//	Draw the selected units z_layer
+		if selected_unit.object_index == mudcrab and selected_unit.map > -1 {
+			mp_grid_draw(grid.mp_grids[grid.return_z_index(z), 0])	
+		}
+	}
+	
 	draw_set_alpha(1)
 	if instance_exists(collisionMap) with collisionMap {
 		//if drawSurface draw_sprite_ext(sprite_index,0,x,y,image_xscale,image_yscale,0,c_white,0.5)

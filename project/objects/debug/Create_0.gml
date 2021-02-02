@@ -1,5 +1,6 @@
 on = false
 depth = -10000
+selected_unit = -1
 
 function log(String) {
 	

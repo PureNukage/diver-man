@@ -1,5 +1,3 @@
-//if live_call() return live_result 
-
 if on {
 
 	if !surface_exists(causticSurface) {
@@ -33,13 +31,20 @@ if on {
 	surface_set_target(causticSurface)
 	
 	draw_set_alpha(1)
-	var WW = room_width / Width
-	var HH = room_height / Height
-	for(var w=0;w<WW;w++) {
-		for(var h=0;h<HH;h++) {
-			//if rectangle_in_rectangle(w*Width,h*Height,w*Width+Width,h*Height+Height, app.cameraX1,app.cameraY1,app.cameraX2,app.cameraY2) {
-				draw_surface(surface, w*Width,h*Height)
-			//}
+	var border = 256
+	var x1 = camera_get_view_x(app.camera)-border
+	var y1 = camera_get_view_y(app.camera)-border
+	var x2 = x1 + camera_get_view_width(app.camera)+(border*2)
+	var y2 = y1 + camera_get_view_height(app.camera)+(border*2)
+	
+	var startW = floor(x1/256)
+	var startH = floor(y1/256)
+	var endW = floor(x2/256)
+	var endH = floor(y2/256)
+	
+	for(var w=startW;w<endW;w++) {
+		for(var h=startH;h<endH;h++) {
+			draw_surface(surface, w*Width,h*Height)	
 		}
 	}
 	

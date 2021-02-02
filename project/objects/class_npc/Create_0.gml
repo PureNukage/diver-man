@@ -11,7 +11,19 @@ moving = false
 load_dialogue()
 
 function move_to(_x, _y) {
-	if pathfind(grid.mpGrid,path, x,y, _x,_y, true) {
+	
+	//	What mp_grid am I using?
+	var Grid = -1
+	if map > -1 {
+		for(var i=0;i<grid.z_layers;i++) {
+			if grid.mp_grids[i, 1] == z {
+				Grid = grid.mp_grids[i, 0]	
+			}
+		}
+	}
+	else Grid = grid.mpGrid
+	
+	if pathfind(Grid,path, x,y, _x,_y, true) {
 		pos = 1
 		xGoto = path_get_point_x(path,pos)
 		yGoto = path_get_point_y(path,pos)
