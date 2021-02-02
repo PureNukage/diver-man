@@ -3,6 +3,7 @@ surfaceBuffer = -1
 depth = -1
 
 function generate_map() {
+	var amountOfShadows = instance_number(shade)
 	var amountOfShades = 0
 	var surfaceArray = []
 	
