@@ -57,8 +57,8 @@ if on {
 	
 	//	Selected unit
 	if selected_unit == -1 {
-		if input.mouseLeftPress and instance_position(mouse_x,mouse_y,all) {
-			selected_unit = instance_position(mouse_x,mouse_y,all)	
+		if input.mouseLeftPress and instance_position(mouse_x,mouse_y,mudcrab) {
+			selected_unit = instance_position(mouse_x,mouse_y,mudcrab)	
 		}
 	}
 	else {
@@ -67,7 +67,12 @@ if on {
 		//	Draw the selected units z_layer
 		if selected_unit.object_index == mudcrab and selected_unit.map > -1 {
 			draw_set_alpha(0.5)
-			mp_grid_draw(grid.mp_grids[grid.return_z_index(selected_unit.z), 0])	
+			var Z = selected_unit.z
+			if selected_unit.map.ramp {
+				Z = selected_unit.map.z
+			}
+			var Index = grid.return_z_index(Z)
+			if Index > -1 mp_grid_draw(grid.mp_grids[Index, 0])	
 		}
 	}
 	
@@ -118,8 +123,8 @@ if on {
 	
 	
 	//	Draw the grid
-	//draw_set_alpha(0.25)
-	//mp_grid_draw(grid.mpGrid)
+	draw_set_alpha(0.25)
+	mp_grid_draw(grid.mpGrid)
 	
 	draw_reset()
 	

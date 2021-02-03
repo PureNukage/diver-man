@@ -14,7 +14,7 @@ if place_meeting(x,y,collisionMap) {
 }
 
 function stunCheck() {
-	if point_distance(x,y, player.x,player.y) < 30 and player.jumpHalt {
+	if point_distance(x,y, player.x,player.y) < 30 and player.jumpHalt and abs(player.z-z) < 4 {
 		state = state.stunned
 		//sprite_index = s_crab_knocked
 		setThrust(5)

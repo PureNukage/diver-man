@@ -21,8 +21,8 @@ if !interactable and inConversation {
 	if instance_exists(textbox) instance_destroy(textbox)
 }
 
-debug.log("x: "+string(x))
-debug.log("y: "+string(y))
+//debug.log("x: "+string(x))
+//debug.log("y: "+string(y))
 
 if onGround {
 	x = groundX
