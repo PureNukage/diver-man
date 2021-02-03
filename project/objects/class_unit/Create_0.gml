@@ -305,7 +305,7 @@ function applyMovement() {
 							}
 							if groundY <= (map.bbox_top+map.height+map.z) - Z and Cell.z <= z {
 								changeMap(Cell.map)
-								debug.log("poop")
+								debug.log("changing map")
 							}
 						
 						}
@@ -526,6 +526,9 @@ function draw_shade() {
 		var bbox_width = floor(abs(bbox_right-bbox_left))
 		var bbox_height = floor(abs(bbox_bottom-bbox_top))
 		var surfaceShadow = surface_create(bbox_width, bbox_height)
+		surface_set_target(surfaceShadow)
+		draw_clear_alpha(c_black, 0)
+		surface_reset_target()
 		surface_copy_part(surfaceShadow,0,0,shadows.surface, floor(bbox_left),floor(bbox_top-z), bbox_width,bbox_height)
 
 		//	Draw the shadow surface stretched 
@@ -580,17 +583,17 @@ function draw_shade() {
 	
 	////	DEBUG
 	if object_index == player {
-		if surface_exists(surfaceShadow) draw_surface_ext(surfaceShadow, XX,YY-64, 1,1, 0, c_white, 1)
-		if surface_exists(surfaceShadowStretched) draw_surface_ext(surfaceShadowStretched, XX + 64,YY - 64, 1,1, 0, c_white, 1)
-		if surface_exists(surfacePlayerCutout) draw_surface_ext(surfacePlayerCutout, XX + 96 + spriteWidth,YY-64, 1,1, 0, c_white, 1)
-		if surface_exists(surfaceFinal) draw_surface_ext(surfaceFinal, XX + 96 + spriteWidth*2 + 16,YY-64, 1,1, 0, c_white, 1)
+		//if surface_exists(surfaceShadow) draw_surface_ext(surfaceShadow, XX,YY-64, 1,1, 0, c_white, 1)
+		//if surface_exists(surfaceShadowStretched) draw_surface_ext(surfaceShadowStretched, XX + 64,YY - 64, 1,1, 0, c_white, 1)
+		//if surface_exists(surfacePlayerCutout) draw_surface_ext(surfacePlayerCutout, XX + 96 + spriteWidth,YY-64, 1,1, 0, c_white, 1)
+		//if surface_exists(surfaceFinal) draw_surface_ext(surfaceFinal, XX + 96 + spriteWidth*2 + 16,YY-64, 1,1, 0, c_white, 1)
 	}
 	
 	if surface_exists(shadeSurface) {
 		draw_surface_ext(shadeSurface,XX,YY,1,1,0,c_white, 0.5)		
 	}
 	else if !shadeStatic {
-		draw_surface_ext(surfaceFinal,XX,YY,1,1,0,c_white,0.5)	
+		draw_surface_ext(surfaceFinal,XX,YY,1,1,0,c_white,0.5)
 	}
 	
 	if surface_exists(surfaceShadow) surface_free(surfaceShadow)

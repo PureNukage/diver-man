@@ -4,7 +4,6 @@ if input.keyPause and room != RoomMainMenu {
 if paused and !surface_exists(pauseSurface) {
 	pauseSurface = surface_create(display_get_gui_width(),display_get_gui_height())
 	buffer_set_surface(pauseSurfaceBuffer,pauseSurface,0)
-	debug.log("poop")
 }
 
 if cameraRefresh {
