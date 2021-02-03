@@ -16,7 +16,8 @@ if cameraRefresh {
 	water.generate_caustic_map()
 	water.generate_collision_maps()
 	surface_free(water.causticSurface)
-	surface_free(water.causticSurfaceOriginal)
+	surface_free(water.causticSurfaceCutout)
+	//surface_free(water.causticSurfaceOriginal)
 	surface_free(lighting.surface)
 	if instance_exists(player) and cameraFocusOnPlayer {
 		x = player.x

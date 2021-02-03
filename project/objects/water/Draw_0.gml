@@ -57,14 +57,16 @@ if on {
 	
 	surface_reset_target()
 	
-	if !surface_exists(causticSurfaceOriginal) {
-		causticSurfaceOriginal = surface_create(room_width,room_height)	
-	}
-	surface_copy(causticSurfaceOriginal,0,0,surface)
+	//if !surface_exists(causticSurfaceOriginal) {
+	//	causticSurfaceOriginal = surface_create(room_width,room_height)	
+	//}
+	//surface_copy(causticSurfaceOriginal,0,0,surface)
 	surface_free(surface)
 	
 	draw_set_alpha(0.15)
 	draw_surface(causticSurface,0,0)
+	
+	//surface_free(causticSurface)
 }
 	
 	

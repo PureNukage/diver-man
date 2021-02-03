@@ -40,7 +40,7 @@ caustic_resolution = shader_get_uniform(shader_caustic, "iResolution")
 
 caustic_seconds = shader_get_uniform(shader_caustic, "iTime")
 
-causticSurfaceOriginal = -1
+//causticSurfaceOriginal = -1
 causticSurface = -1
 
 //cliffSurface = -1
