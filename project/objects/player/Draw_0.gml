@@ -28,7 +28,7 @@ for(var i=0;i<amount;i++) {
 	}
 	
 	if (z >= Z or map == Map) {
-		if y >= Map.bbox_top+z {
+		if y >= Map.bbox_top+Map.z {
 			draw_shadow_ext(Z, Map)
 		}
 	}

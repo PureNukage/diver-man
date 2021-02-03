@@ -323,6 +323,7 @@ function applyMovement() {
 								//	We're on this ramp now
 								if (map == -1 or map != Cell.map) {
 									map = Cell.map
+									debug.log("on a new ramp")
 									if onGround {
 										if Z < z {
 											onGround = false
@@ -383,8 +384,9 @@ function applyMovement() {
 									groundX += pX
 									groundY += pY
 									if !onGround y += pY	
-									if Cell.map > -1 and Cell.map != map and ((groundY <= (map.bbox_top+map.height+map.z) - Z) or (groundY >= map.bbox_bottom-Z)) {
-										if Cell.map.z > z z = Cell.map.z
+									var _Cell = new cell_create(x,y)
+									if _Cell.map != map and Cell.map > -1 and Cell.map != map and ((groundY <= (map.bbox_top+map.height+map.z) - Z) or (groundY >= map.bbox_bottom-Z)) {
+										z = Cell.map.z
 										changeMap(Cell.map)
 										debug.log("stepping off ramp")
 									}
@@ -490,8 +492,8 @@ function draw_shadow_ext(_z, _map) {
 	draw_surface(surface,offsetX,offsetY)
 	
 	////	DEBUG
-	//draw_set_color(c_yellow)
-	//draw_rectangle(offsetX,offsetY,offsetX+SurfaceWidth,offsetY+SurfaceHeight,true)
+	draw_set_color(c_yellow)
+	draw_rectangle(offsetX,offsetY,offsetX+SurfaceWidth,offsetY+SurfaceHeight,true)
 	
 	surface_free(surface)
 
