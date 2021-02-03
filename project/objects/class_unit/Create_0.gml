@@ -468,8 +468,8 @@ function draw_shadow_ext(_z, _map) {
 	var Width = widthBase * ((zDrop - (z - _z)) / zDrop)
 	//debug.log(string(Width))
 	var correction = 12
-	if shadowEllipse draw_ellipse(bbox_left+correction-Width-offsetX,bbox_top-_z-offsetY,bbox_right-correction+Width-offsetX,bbox_bottom-_z-offsetY,false)
-	else draw_rectangle(bbox_left-offsetX,bbox_top-_z-offsetY,bbox_right-offsetX,bbox_bottom-_z-offsetY,false)
+	if shadowEllipse draw_ellipse(floor(bbox_left+correction-Width-offsetX),floor(bbox_top-_z-offsetY),floor(bbox_right-correction+Width-offsetX),floor(bbox_bottom-_z-offsetY),false)
+	else draw_rectangle(floor(bbox_left-offsetX),floor(bbox_top-_z-offsetY),floor(bbox_right-offsetX),floor(bbox_bottom-_z-offsetY),false)
 	
 	if _map > -1 {
 		gpu_set_blendmode(bm_subtract)
@@ -491,7 +491,7 @@ function draw_shadow_ext(_z, _map) {
 	surface_reset_target()
 	
 	draw_set_alpha(Alpha)
-	draw_surface(surface,offsetX,offsetY)
+	draw_surface(surface,floor(offsetX),floor(offsetY))
 	
 	////	DEBUG
 	//draw_set_color(c_yellow)
@@ -518,7 +518,7 @@ function draw_shade() {
 	
 	if !shadeStatic or !buffer_exists(shadeBuffer) {
 		
-		if !buffer_exists(shadeBuffer) {
+		if !buffer_exists(shadeBuffer) and shadeStatic {
 			shadeBuffer = buffer_create(spriteWidth*spriteHeight*4, buffer_grow, 1)	
 		}
 	
@@ -580,10 +580,10 @@ function draw_shade() {
 	
 	////	DEBUG
 	if object_index == player {
-		//if surface_exists(surfaceShadow) draw_surface_ext(surfaceShadow, XX,YY-64, 1,1, 0, c_white, 1)
-		//if surface_exists(surfaceShadowStretched) draw_surface_ext(surfaceShadowStretched, XX + 64,YY - 64, 1,1, 0, c_white, 1)
-		//if surface_exists(surfacePlayerCutout) draw_surface_ext(surfacePlayerCutout, XX + 96 + spriteWidth,YY-64, 1,1, 0, c_white, 1)
-		//if surface_exists(surfaceFinal) draw_surface_ext(surfaceFinal, XX + 96 + spriteWidth*2 + 16,YY-64, 1,1, 0, c_white, 1)
+		if surface_exists(surfaceShadow) draw_surface_ext(surfaceShadow, XX,YY-64, 1,1, 0, c_white, 1)
+		if surface_exists(surfaceShadowStretched) draw_surface_ext(surfaceShadowStretched, XX + 64,YY - 64, 1,1, 0, c_white, 1)
+		if surface_exists(surfacePlayerCutout) draw_surface_ext(surfacePlayerCutout, XX + 96 + spriteWidth,YY-64, 1,1, 0, c_white, 1)
+		if surface_exists(surfaceFinal) draw_surface_ext(surfaceFinal, XX + 96 + spriteWidth*2 + 16,YY-64, 1,1, 0, c_white, 1)
 	}
 	
 	if surface_exists(shadeSurface) {

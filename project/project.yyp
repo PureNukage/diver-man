@@ -121,6 +121,7 @@
     {"id":{"name":"s_player_kid_onground","path":"sprites/s_player_kid_onground/s_player_kid_onground.yy",},"order":9,},
     {"id":{"name":"roomIntro","path":"objects/roomIntro/roomIntro.yy",},"order":0,},
     {"id":{"name":"crate","path":"objects/crate/crate.yy",},"order":11,},
+    {"id":{"name":"s_coin","path":"sprites/s_coin/s_coin.yy",},"order":35,},
     {"id":{"name":"walkAndTalk2","path":"objects/walkAndTalk2/walkAndTalk2.yy",},"order":0,},
     {"id":{"name":"s_tileset3","path":"sprites/s_tileset3/s_tileset3.yy",},"order":4,},
     {"id":{"name":"s_chain","path":"sprites/s_chain/s_chain.yy",},"order":1,},
