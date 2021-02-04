@@ -13,7 +13,7 @@ maxMovespeed = 1
 
 function player_check() {
 	if instance_exists(player) {
-		if point_distance(x,y, player.x,player.y) < 128 {
+		if (abs(player.moveForce) > 1) and point_distance(x,y, player.x,player.y) < 128 {
 			var DirectionAwayFromPlayer = point_direction(player.x,player.y, x,y)
 			var DirectionWiggleRoom = 45
 			var RandomDirection = irandom_range(DirectionAwayFromPlayer-DirectionWiggleRoom, DirectionAwayFromPlayer+DirectionWiggleRoom)
