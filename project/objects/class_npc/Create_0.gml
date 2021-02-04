@@ -58,6 +58,7 @@ function move_to(_x, _y) {
 				}
 			}
 		}
+			
 		return false	
 	}
 }
@@ -67,7 +68,8 @@ function _moving() {
 	//	Grid-moving
 	if !freemove {
 		//	Arrived at point in path
-		if point_distance(x,y, xGoto,yGoto) < 2 {
+		var Dist = floor(point_distance(x,y, xGoto,yGoto))
+		if floor(point_distance(x,y, xGoto,yGoto)) < 2 {
 			//	Arrived at destination
 			if pos++ >= path_get_number(path)-1 {
 				moving = false
@@ -103,4 +105,13 @@ function _moving() {
 			else image_xscale = -1
 		}
 	}
+}
+	
+function random_move(distance) {
+	var ran_x = irandom_range(x-distance,x+distance)
+	var ran_y = irandom_range(y-distance,y+distance)
+	if move_to(ran_x,ran_y) {
+			
+	}
+	else debug.log("Cannot pathfind here!")
 }

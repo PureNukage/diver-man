@@ -39,20 +39,20 @@ function mpGrid_build() {
 	mpGrid = mp_grid_create(0,0,gridWidth,gridHeight,cellWidth,cellHeight)
 	
 	if instance_exists(collision) mp_grid_add_instances(mpGrid,collision,false)
-	//if instance_exists(collisionMap) with collisionMap {
-	//	//mp_grid_add_instances(mpGrid,collisionMap,false)
-	//	var X = floor(bbox_left/grid.cellWidth)
-	//	var Y = floor((bbox_top+z)/grid.cellHeight)
-	//	var Width = ((bbox_right-bbox_left)/grid.cellWidth)
-	//	var Height = (bbox_bottom - (bbox_top+z))/grid.cellHeight
-	//	for(var w=X;w<X+Width;w++) {
-	//		for(var h=Y;h<Y+Height;h++) {
-	//			//var pX = (w*grid.cellWidth) + 1
-	//			//var pY = (h*grid.cellHeight) + 1
-	//			mp_grid_add_cell(grid.mpGrid,w,h)
-	//		}
-	//	}
-	//}
+	if instance_exists(collisionMap) with collisionMap {
+		//mp_grid_add_instances(mpGrid,collisionMap,false)
+		var X = floor(bbox_left/grid.cellWidth)
+		var Y = floor((bbox_top+z)/grid.cellHeight)
+		var Width = ((bbox_right-bbox_left)/grid.cellWidth)
+		var Height = (bbox_bottom - (bbox_top+z))/grid.cellHeight
+		for(var w=X;w<X+Width;w++) {
+			for(var h=Y;h<Y+Height;h++) {
+				//var pX = (w*grid.cellWidth) + 1
+				//var pY = (h*grid.cellHeight) + 1
+				mp_grid_add_cell(grid.mpGrid,w,h)
+			}
+		}
+	}
 	
 	if instance_exists(collision) mp_grid_add_instances(hoseGrid2,collision,false)
 	//if instance_exists(collisionMap) mp_grid_add_instances(hoseGrid,collisionMap,false)

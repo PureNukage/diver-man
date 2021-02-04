@@ -9,6 +9,7 @@ detectCollision = true
 maxMovespeed = 2
 jumpHalt = false
 z = 0
+floatZ = 0
 xx = 0
 yy = 0
 xscale = 1
@@ -410,7 +411,7 @@ function applyMovement() {
 	
 function draw_unit() {
 	if flash shader_set(shader_flash)
-	draw_sprite_ext(sprite_index,image_index,floor(x),floor(y-z),image_xscale,image_yscale,image_angle,image_blend,image_alpha)	
+	draw_sprite_ext(sprite_index,image_index,floor(x),floor(y-z-floatZ),image_xscale,image_yscale,image_angle,image_blend,image_alpha)	
 	shader_reset()
 }
 

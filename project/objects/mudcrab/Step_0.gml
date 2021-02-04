@@ -10,9 +10,7 @@ switch(state) {
 		else {
 			//	Walk up and down
 			if !moving {
-				var ran_x = irandom_range(x-16,x+16)
-				var ran_y = irandom_range(y-16,y+16)
-				move_to(ran_x,ran_y)
+				random_move(16)
 				timer = irandom_range(90,120)
 	
 			}

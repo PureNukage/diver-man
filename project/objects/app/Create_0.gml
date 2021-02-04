@@ -1,6 +1,8 @@
 creator = ""
 version = ""
 
+math_set_epsilon(0.000000001)
+
 canvasX = 0
 
 paused = false
