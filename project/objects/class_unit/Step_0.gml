@@ -22,4 +22,10 @@ if shadeStatic and !surface_exists(shadeSurface) and buffer_exists(shadeBuffer) 
 	//surface_save(shadeSurface,"shadeSurface"+string(id)+".png")
 }
 
-if depthY depth = -y
+if depthY {
+	depth = -y
+	//	If the map under us is being drawn, lets make sure we're on top of it
+	if map > -1 and map.drawSurface {
+		depth = map.depth - 1	
+	}
+}

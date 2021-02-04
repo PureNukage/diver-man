@@ -22,7 +22,7 @@ if (map == -1 or (map > -1 and !map.drawSurface))  { // and place_meeting(x,y,pl
 		if ID.y < bbox_bottom - 1 and ID.groundY < bbox_bottom-1  {
 			if (ID.z < z+height) or (ID.map != id and ID.y <= bbox_top+z) {
 				if ID.map == -1 or (ID.map > -1 and !ID.map.ramp) {
-					depth = ID.depth - 1
+					depth = ID.depth - 10
 					drawSurface = true
 					for(var i=0;i<ds_list_size(maps);i++) {
 						var Map = maps[| i]
