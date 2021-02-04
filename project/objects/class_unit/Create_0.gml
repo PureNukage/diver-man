@@ -481,6 +481,10 @@ function draw_shadow_ext(_z, _map) {
 			}
 		}
 		gpu_set_blendmode(bm_normal)
+		
+		////	DEBUG
+		//draw_set_alpha(0.5)
+		//if surface_exists(_map.inverseSurface) draw_surface_ext(_map.inverseSurface,_map.x-(_map.inverseSurfaceExtraPixels/2)-offsetX,_map.y-(_map.inverseSurfaceExtraPixels/2)-offsetY,1,1,0,c_black,1)
 	}
 	//	Use every map as a mask for the base shadow
 	else if map > -1 and _map == -1 {

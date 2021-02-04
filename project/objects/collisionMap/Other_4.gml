@@ -1,0 +1,1 @@
+if altTileLayer == -1 createSurface()

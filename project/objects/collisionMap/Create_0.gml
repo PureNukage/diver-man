@@ -116,13 +116,13 @@ function createSurface() {
 	buffer_get_surface(surfaceBuffer, finalSurface, 0)
 	
 	////	Inverse surface used for shadow masks
-	var inverseSurface = surface_create((sprite_get_width(sprite_index)*image_xscale)+inverseSurfaceExtraPixels,(sprite_get_height(image_yscale)*image_yscale)+inverseSurfaceExtraPixels)
+	var inverseSurface = surface_create((sprite_get_width(sprite_index)*image_xscale)+inverseSurfaceExtraPixels,(sprite_get_height(sprite_index)*image_yscale)+inverseSurfaceExtraPixels)
 	surface_set_target(inverseSurface)
 	draw_clear_alpha(c_black, 0)
 	
 	draw_set_color(c_black)
 	draw_set_alpha(1)
-	draw_rectangle(0,0,(sprite_get_width(sprite_index)*image_xscale)+inverseSurfaceExtraPixels,(sprite_get_height(image_yscale)*image_yscale)+inverseSurfaceExtraPixels,false)
+	draw_rectangle(0,0,(sprite_get_width(sprite_index)*image_xscale)+inverseSurfaceExtraPixels,(sprite_get_height(sprite_index)*image_yscale)+inverseSurfaceExtraPixels,false)
 	
 	gpu_set_blendmode(bm_subtract)
 	draw_surface_ext(finalSurface,inverseSurfaceExtraPixels/2,inverseSurfaceExtraPixels/2,1,1,0,c_black,1)
@@ -131,11 +131,12 @@ function createSurface() {
 	//	Factor in the cliff
 	var oX = x - inverseSurfaceExtraPixels/2
 	var oY = y - inverseSurfaceExtraPixels/2
-	draw_rectangle(bbox_left-oX,bbox_top+id.width-oY,bbox_right-oX,bbox_bottom-oY,false)
+	draw_set_color(c_blue)
+	draw_rectangle(bbox_left-oX,bbox_bottom-z-oY,bbox_right-oX,bbox_bottom-oY,false)
 	
 	surface_reset_target()
 	
-	//surface_save(inverseSurface,"inverseSurface"+string(id)+".png")
+	surface_save(inverseSurface,"inverseSurface"+string(id)+".png")
 	
 	//	Cookie Cutter surface
 	var cookieCutSurface = surface_create(sprite_get_width(sprite_index)*image_xscale,sprite_get_height(sprite_index)*image_yscale)
@@ -159,6 +160,10 @@ function createSurface() {
 	if inverseSurfaceBuffer > -1 and buffer_exists(inverseSurfaceBuffer) buffer_delete(inverseSurfaceBuffer)
 	inverseSurfaceBuffer = buffer_create((((sprite_get_width(sprite_index)*image_xscale)+inverseSurfaceExtraPixels)+((sprite_get_height(sprite_index)*image_yscale)+inverseSurfaceExtraPixels))*4, buffer_grow, 1)
 	buffer_get_surface(inverseSurfaceBuffer, inverseSurface, 0)
+	
+	//if id == 100730 {
+	//	surface_save(inverseSurface,"inverseSurface.png")	
+	//}
 	
 	surface_free(Surface)
 	surface_free(inverseSurface)
