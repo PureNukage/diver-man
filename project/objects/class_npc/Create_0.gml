@@ -27,6 +27,16 @@ function move_to(_x, _y) {
 	}
 	else Grid = grid.mpGrid
 	
+	////	Fish schools
+	if object_index == fish and school > -1 {
+		if !point_in_rectangle(_x,_y, school.x-school.width/2,school.x+school.width/2, school.y-school.height/2,school.y+school.height/2) {
+			_x = irandom_range(school.x-school.width/2,school.x+school.width/2)	
+			_y = irandom_range(school.y-school.height/2,school.y+school.height/2)
+		}
+		//_x = clamp(_x, school.x-school.width/2,school.x+school.width/2)
+		//_y = clamp(_y, school.y-school.height/2,school.y+school.height/2)
+	}
+	
 	if pathfind(Grid,path, x,y, _x,_y, true) {
 		pos = 1
 		xGoto = path_get_point_x(path,pos)
@@ -68,7 +78,7 @@ function _moving() {
 	//	Grid-moving
 	if !freemove {
 		//	Arrived at point in path
-		var Dist = floor(point_distance(x,y, xGoto,yGoto))
+		//var Dist = floor(point_distance(x,y, xGoto,yGoto))
 		if floor(point_distance(x,y, xGoto,yGoto)) < 2 {
 			//	Arrived at destination
 			if pos++ >= path_get_number(path)-1 {
@@ -90,7 +100,7 @@ function _moving() {
 			else image_xscale = -1
 		}
 	}
-	//	Fre-moving
+	//	Free-moving
 	else {
 		if point_distance(x,y, xGoto,yGoto) < 2 {
 			moving = false
@@ -110,8 +120,18 @@ function _moving() {
 function random_move(distance) {
 	var ran_x = irandom_range(x-distance,x+distance)
 	var ran_y = irandom_range(y-distance,y+distance)
+	
+	//////	Fish schools
+	//if object_index == fish and school > -1 {
+	//	ran_x = clamp(ran_x, school.x-school.width/2,school.x+school.width/2)
+	//	ran_y = clamp(ran_y, school.y-school.height/2,school.y+school.height/2)
+	//}
+	
 	if move_to(ran_x,ran_y) {
-			
+		return true	
 	}
-	else debug.log("Cannot pathfind here!")
+	else {
+		return false	
+		debug.log("Cannot pathfind here!")
+	}
 }

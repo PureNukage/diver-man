@@ -72,6 +72,7 @@
     {"id":{"name":"s_bubble","path":"sprites/s_bubble/s_bubble.yy",},"order":18,},
     {"id":{"name":"bully1Stand","path":"objects/bully1Stand/bully1Stand.yy",},"order":9,},
     {"id":{"name":"s_grass_small","path":"sprites/s_grass_small/s_grass_small.yy",},"order":1,},
+    {"id":{"name":"schoolController","path":"objects/schoolController/schoolController.yy",},"order":9,},
     {"id":{"name":"sound_sans","path":"sounds/sound_sans/sound_sans.yy",},"order":11,},
     {"id":{"name":"s_dock_pole2","path":"sprites/s_dock_pole2/s_dock_pole2.yy",},"order":6,},
     {"id":{"name":"s_brother","path":"sprites/s_brother/s_brother.yy",},"order":6,},

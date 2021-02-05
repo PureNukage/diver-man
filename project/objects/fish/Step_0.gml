@@ -14,6 +14,10 @@ switch(state) {
 			}
 		}
 		else {
+			if speedBurst {
+				maxMovespeed = 1 
+				speedBurst = false
+			}
 			if point_distance(x,y,xprevious,yprevious) < 1 {
 				attemptingToMove++	
 			}
@@ -24,6 +28,12 @@ switch(state) {
 					moving = false
 				}
 			}	
+		}
+		
+		if school > -1 and !point_in_rectangle(x,y, school.x-school.width/2,school.y-school.height/2, school.x+school.width/2,school.y+school.height/2) and !speedBurst {
+			move_to(irandom_range(school.x-school.width/2, school.x+school.width/2), irandom_range(school.y-school.height/2, school.y+school.height/2))
+			speedBurst = true
+			maxMovespeed = 3
 		}
 		
 	break
