@@ -3,20 +3,22 @@ event_inherited()
 shadeStatic = false
 
 running = false
+runningPress = false
 
 state = state.free
 
-staminaMax = 100
-stamina = staminaMax
 gold = app.gold
 
 jumping = -1
 
 attack = 0
 
+oxygenMax = 100
+oxygen = oxygenMax
+
 dancing = false
 
-hasWrench = false
+hasWrench = true
 
 suitOn = app.suitOn
 

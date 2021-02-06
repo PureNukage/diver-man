@@ -68,6 +68,8 @@ else if stage == 1 {
 		roomIntroSurface.brotherX = x+96+gap
 		roomIntroSurface.brotherY = y
 		app.cameraRefresh = true
+		gui.drawHealth = true
+		gui.drawStamina = true
 		exit
 	}
 }

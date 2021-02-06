@@ -57,14 +57,16 @@ function move_to(_x, _y) {
 			}
 			//	the x,y is not a valid cell, lets see though if our stairs leads to it
 			else {
-				//	is the cell to the left of it our stairs
-				var Cell = new cell_create(_x-16,_y)
-				if Cell.map == map {
-					freemove = true
-					moving = true
-					xGoto = _x
-					yGoto = _y
-					debug.log("Free moving")
+				if point_in_rectangle(_x-16,_y, 0,0,room_width,room_height) {
+					//	is the cell to the left of it our stairs
+					var Cell = new cell_create(_x-16,_y)
+					if Cell.map == map {
+						freemove = true
+						moving = true
+						xGoto = _x
+						yGoto = _y
+						debug.log("Free moving")
+					}
 				}
 			}
 		}

@@ -111,6 +111,8 @@ function load_game(quick) {
 		} else debug.log("ERROR LOADING Can't read characterManager.characterList string")
 		
 		gui.drawGold = true
+		gui.drawHealth = true
+		gui.drawStamina = true
 		
 	}
 	

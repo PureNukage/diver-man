@@ -33,6 +33,9 @@ interactable = false
 interactCD = -1
 drawShadow = true
 drawUnit = true
+staminaMax = 100
+stamina = staminaMax
+staminaRechargeCooldown = 0
 depth = -y
 path = path_add()
 pos = 1
@@ -407,6 +410,11 @@ function applyMovement() {
 	xx = 0
 	yy = 0
 	
+}
+	
+function useStamina(amount, duration) {
+	stamina -= amount
+	staminaRechargeCooldown = duration
 }
 	
 function draw_unit() {

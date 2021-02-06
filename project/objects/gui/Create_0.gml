@@ -1,5 +1,9 @@
 interactable = false
 
+drawHealth = false
+drawStamina = false
+drawOxygen = false
+
 drawGold = false
 
 drawNewQuest = false

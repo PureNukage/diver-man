@@ -13,48 +13,62 @@
 ////	Health and stamina bars
 if instance_exists(player) {
 	
-	//var XX = 6
-	//var YY = 6
-	//var Width = 200
-	//var Height = 30
+	////	Health bar
+	if drawHealth and app.roomTransitionTo == -1 { 
+		var XX = 6
+		var YY = 6
+		//	Back
+		draw_sprite_ext(s_bar_back,0,XX,YY,1,1,0,c_black,1)
+		//	Front
+		var spriteWidth = sprite_get_width(s_bar_front)
+		var ratio = player.hp / player.hpMax
+		var barWidth = spriteWidth * ratio
+		draw_sprite_part_ext(s_bar_front,0,0,0,barWidth,sprite_get_height(s_bar_front),XX,YY,1,1,make_color_rgb(146,0,0),1)
+		draw_sprite(s_logo_health,0,XX,YY)
+	}
 	
-	//var healthWidth = (player.hp / player.hpMax) * Width
+	////	Stamina bar
+	if drawStamina and app.roomTransitionTo == -1 {
+		var XX = 6
+		var YY = 6 + sprite_get_height(s_bar_back) + 6
+		//	Back
+		draw_sprite_ext(s_bar_back,0,XX,YY,1,1,0,c_black,1)
+		//	Front
+		var spriteWidth = sprite_get_width(s_bar_front)
+		var ratio = player.stamina / player.staminaMax
+		var barWidth = spriteWidth * ratio
+		draw_sprite_part_ext(s_bar_front,0,0,0,barWidth,sprite_get_height(s_bar_front),XX,YY,1,1,make_color_rgb(60,114,59),1)
+		draw_sprite(s_logo_stamina,0,XX,YY)
+	}
 	
-	//draw_set_color(c_black)
-	//draw_roundrect(XX-2,YY-2,XX+Width+2,YY+Height+2,false)
-	
-	//draw_set_color(make_color_rgb(146,0,0))
-	//draw_roundrect(XX,YY,XX+healthWidth,YY+Height,false)
-	
-	
-	
-	
-	//var XX = 6
-	//var YY = 6 + Height + 6
-	
-	//var staminaWidth = (player.stamina / player.staminaMax) * Width
-	
-	//draw_set_color(c_black)
-	//draw_roundrect(XX-2,YY-2,XX+Width+2,YY+Height+2,false)
-	
-	//draw_set_color(make_color_rgb(60,114,59))
-	//draw_roundrect(XX,YY,XX+staminaWidth,YY+Height,false)
-	
+	////	o2 bar
+	if drawOxygen and app.roomTransitionTo == -1 {
+		var XX = 6
+		var YY = 6 + (sprite_get_height(s_bar_back)*2) + 12
+		//	Back
+		draw_sprite_ext(s_bar_back,0,XX,YY,1,1,0,c_black,1)
+		//	Front
+		var spriteWidth = sprite_get_width(s_bar_front)
+		var ratio = player.oxygen / player.oxygenMax
+		var barWidth = spriteWidth * ratio
+		draw_sprite_part_ext(s_bar_front,0,0,0,barWidth,sprite_get_height(s_bar_front),XX,YY,1,1,make_color_rgb(0,139,185),1)
+		draw_sprite(s_logo_oxygen,0,XX,YY)
+	}
 	
 	
 	////	Gold
-	if drawGold and app.roomTransitionTo == -1 {
-		var xx = 500
-		var yy = 32
+	if drawGold and app.roomTransitionTo == -1 {		
+		var xx = 515
+		var yy = 35
 	
 		draw_sprite(s_coins,0,xx,yy)
 	
-		var xx = 571
-		var yy = 28
+		var xx = 515
+		var yy = 55
 	
 		draw_set_color(c_yellow)
 		draw_set_font(font_coins)
-		draw_set_halign(fa_left)
+		draw_set_halign(fa_center)
 		draw_set_valign(fa_top)
 		draw_text(xx,yy, string(player.gold))
 	}

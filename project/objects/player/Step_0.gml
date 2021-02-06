@@ -6,7 +6,8 @@ if !muted {
 			case state.free:
 				
 				//	Attacking
-				if input.keyAttack and onGround and hasWrench and suitOn {
+				if input.keyAttack and onGround and hasWrench and suitOn and stamina >= 20 {
+					useStamina(20, 10)
 					if !attack sprite_index = s_diverman_attack
 					else sprite_index = s_diverman_attack2
 					attack = !attack
@@ -20,13 +21,20 @@ if !muted {
 				}
 				
 				//	Sprinting
-				if input.keyRun {
-					if !running {
+				if input.keyRun and stamina >= 1 and onGround {
+					if !running and !runningPress {
 						running = true
+						runningPress = true
 					}
+					var staminaAmount = 1
+					if !suitOn staminaAmount = 0.5
+					useStamina(staminaAmount, 5)
 				}
-				else if running {
-					running = false	
+				else {
+					if !input.keyRun and runningPress runningPress = false
+					if running {
+						running = false
+					}
 				}
 					
 				//	Jump halt logic
@@ -106,7 +114,8 @@ if !muted {
 					jumping--
 				}
 				////	Jumping
-				if input.keyJump and onGround and app.underwater and !jumpHalt {
+				if input.keyJump and onGround and app.underwater and !jumpHalt and stamina >= 20 {
+					useStamina(20, 30)
 					setThrust(3)
 					image_speed = 1
 					jumping = 10
@@ -203,6 +212,18 @@ if !muted {
 		y = groundY + z
 	} else {
 		x = groundX	
+	}
+	
+	//	Recharge stamina
+	if staminaRechargeCooldown > 0 staminaRechargeCooldown--
+	else {
+		var staminaRecharge = 0.5
+		if !suitOn staminaRecharge = 0.75
+		if moveForce == 0 staminaRecharge = 1
+		if stamina < staminaMax {
+			stamina += staminaRecharge
+			stamina = clamp(stamina,0,staminaMax)
+		}
 	}
 
 	depth = -y
