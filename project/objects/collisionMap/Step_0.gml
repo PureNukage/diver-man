@@ -8,7 +8,7 @@ if (map == -1 or (map > -1 and !map.drawSurface))  { // and place_meeting(x,y,pl
 		var ObjectIndex = Unit.object_index
 		if ObjectIndex == player or (object_get_parent(ObjectIndex) != class_foliage and object_get_parent(ObjectIndex) != class_rock) {
 			if lowestY == -1 or Unit.groundY > lowestY.groundY {
-				if (Unit.z < z+height or (Unit.map != id and Unit.y <= bbox_top+z)) and (Unit.y < bbox_bottom -1 and Unit.groundY < bbox_bottom-1) {
+				if (Unit.z < z+height or (Unit.map != id and Unit.y <= bbox_top+z)) and (Unit.y < bbox_bottom+height-1 and Unit.groundY < bbox_bottom-1) {
 					lowestY = Unit
 				}
 			}
@@ -19,7 +19,7 @@ if (map == -1 or (map > -1 and !map.drawSurface))  { // and place_meeting(x,y,pl
                     
 		//var oldMask = ID.mask_index
 		//ID.mask_index = ID.sprite_index
-		if ID.y < bbox_bottom - 1 and ID.groundY < bbox_bottom-1  {
+		if ID.y < bbox_bottom+height - 1 and ID.groundY < bbox_bottom-1  {
 			if (ID.z < z+height) or (ID.map != id and ID.y <= bbox_top+z) {
 				if ID.map == -1 or (ID.map > -1 and !ID.map.ramp) {
 					depth = ID.depth - 10
