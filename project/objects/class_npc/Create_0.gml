@@ -71,6 +71,15 @@ function move_to(_x, _y) {
 			}
 		}
 			
+		//	If the _x,_y are in my grid
+		if mp_grid_get_cell(Grid, floor(_x/grid.cellWidth),floor(_y/grid.cellHeight)) == 0 {
+			freemove = true
+			moving = true
+			xGoto = _x
+			yGoto = _y
+			debug.log("Free moving!")
+		}
+			
 		return false	
 	}
 }
