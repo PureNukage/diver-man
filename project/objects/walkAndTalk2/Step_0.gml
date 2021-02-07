@@ -13,7 +13,7 @@ else {
 }
 
 if stage == 0 {
-	if input.keyRight {
+	if input.keyRight or gamepad_axis_value(0, gp_axislh) > 0.5 {
 		layer_x("Background", layer_get_x("Background")-2)
 		if gap > 0 gap -= 3
 	
@@ -41,6 +41,12 @@ else if stage == 1 {
 	if gap > 0 gap -= 2
 	else {
 		x += 2
+		playerShadow.x = x
+		playerShadow.groundX = x
+		playerShadow.y = y
+		playerShadow.groundY = y
+		brotherShadow.x = x
+		brotherShadow.groundX = x
 		player.x = x
 		player.groundX = x
 		
@@ -63,8 +69,11 @@ else if stage == 2 {
 
 if instance_exists(brotherShadow) {
 	brotherShadow.x = x + 96 + gap	
+	brotherShadow.groundX = x + 96 + gap
 }
 if instance_exists(playerShadow) {
 	playerShadow.x = x	
 	playerShadow.groundX = x
+	playerShadow.y = y
+	playerShadow.groundY = y
 }

@@ -1,5 +1,5 @@
 if stage == 0 {
-	if timer < 100 {
+	if timer < 2000 {
 		timer++	
 	}
 	else {

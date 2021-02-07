@@ -25,7 +25,7 @@ switch(menu) {
 				var pressed = false
 				var active = true
 	
-				if menuIndex == i and (input.keyEnterPress or input.keyInteract) pressed = true
+				if menuIndex == i and (input.keyEnterPress or input.keyInteract or gamepad_button_check_pressed(0, gp_face1)) pressed = true
 				
 				switch(i) {
 					//	New Game
@@ -132,7 +132,7 @@ switch(menu) {
 					case 2:
 						text = "Back"
 						
-						if menuIndex == i and (input.keyEnterPress or input.keyInteract) {
+						if menuIndex == i and (input.keyEnterPress or input.keyInteract or gamepad_button_check_pressed(0, gp_face1)) {
 							menu = menu.main
 							menuIndex = 2
 						}

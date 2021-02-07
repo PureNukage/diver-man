@@ -11,6 +11,12 @@ if on {
 	draw_text(XX,YY, "mouse_x: "+string(mouse_x)) YY += 15
 	draw_text(XX,YY, "mouse_y: "+string(mouse_y)) YY += 15
 	
+	var _string = ""
+	if input.keyboardOrController == 0 _string = "keyboard"
+	else _string = "controller"
+	draw_text(XX,YY, "input: "+_string) YY += 15
+	draw_text(XX,YY,"controllerType: "+string(input.controllerType)) YY += 15
+	
 	with player {
 		draw_text(XX,YY, "x: "+string(x)) YY += 15
 		draw_text(XX,YY, "y: "+string(y)) YY += 15

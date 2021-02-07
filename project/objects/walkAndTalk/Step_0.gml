@@ -13,7 +13,7 @@ else {
 }
 
 if stage == 0 {
-	if input.keyRight {
+	if input.keyRight or gamepad_axis_value(0, gp_axislh) > 0.5 {
 		layer_x("Background", layer_get_x("Background")-2)
 		if gap > 0 gap -= 3
 	
