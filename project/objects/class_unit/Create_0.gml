@@ -10,6 +10,7 @@ maxMovespeed = 2
 jumpHalt = false
 z = 0
 floatZ = 0
+floating = false
 xx = 0
 yy = 0
 xscale = 1
@@ -165,6 +166,8 @@ function changeMap(Map) {
 	if map == -1 Z = 0
 	else Z = map.z + map.height
 	
+	if floating onGround = false
+	
 	oldMap = map
 	
 	//	Changing to a map
@@ -319,7 +322,7 @@ function applyMovement() {
 							//debug.log(string(Z))
 						
 							//	We're higher than this ramp or its our map
-							if z >= Z or (Cell.map > -1 and Cell.map == map) {
+							if z >= Z or floating or (Cell.map > -1 and Cell.map == map) {
 								groundX += pX
 								groundY += pY
 								if !onGround y += pY
@@ -344,7 +347,7 @@ function applyMovement() {
 						//	Not a ramp
 						else {
 					
-							if z >= Cell.z {
+							if z >= Cell.z or floating {
 								groundX += pX
 								groundY += pY
 								if !onGround y += pY
