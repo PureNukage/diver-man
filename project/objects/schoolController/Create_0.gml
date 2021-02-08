@@ -15,7 +15,7 @@ for(var i=0;i<count;i++) {
 
 function player_check() {
 	if instance_exists(player) {
-		if (abs(player.moveForce) > 1) and point_distance(x,y, player.x,player.y) < width {
+		if (abs(player.moveForce) > 1) and point_distance(x,y, player.x,player.y) < 250 {
 			var DirectionAwayFromPlayer = point_direction(player.x,player.y, x,y)
 			var DirectionWiggleRoom = 45
 			var RandomDirection = irandom_range(DirectionAwayFromPlayer-DirectionWiggleRoom, DirectionAwayFromPlayer+DirectionWiggleRoom)

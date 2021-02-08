@@ -35,6 +35,11 @@ gamepadAxisLH = gamepad_axis_value(0, gp_axislh)
 
 keyEnterPress = keyboard_check_pressed(vk_enter)
 
+keyArrowRight = keyboard_check(vk_right)
+keyArrowLeft = keyboard_check(vk_left)
+keyArrowUp = keyboard_check(vk_up)
+keyArrowDown = keyboard_check(vk_down)
+
 if keyboard_check(vk_anykey) {
 	keyboardOrController = 0
 }

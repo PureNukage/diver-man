@@ -69,6 +69,7 @@
     {"id":{"name":"s_tileset","path":"sprites/s_tileset/s_tileset.yy",},"order":2,},
     {"id":{"name":"s_diverman_idle","path":"sprites/s_diverman_idle/s_diverman_idle.yy",},"order":1,},
     {"id":{"name":"rock_small_coral","path":"objects/rock_small_coral/rock_small_coral.yy",},"order":1,},
+    {"id":{"name":"debugFish","path":"objects/debugFish/debugFish.yy",},"order":10,},
     {"id":{"name":"s_light","path":"sprites/s_light/s_light.yy",},"order":0,},
     {"id":{"name":"s_diverman_sprint","path":"sprites/s_diverman_sprint/s_diverman_sprint.yy",},"order":4,},
     {"id":{"name":"shader_quake","path":"shaders/shader_quake/shader_quake.yy",},"order":1,},

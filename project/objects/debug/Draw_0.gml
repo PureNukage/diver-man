@@ -28,7 +28,7 @@ if on {
 		draw_rectangle(x-32,groundY-2,x+32,groundY+2,false)	
 	}
 	
-	if instance_exists(coin) with coin {
+	if instance_exists(class_rock) with class_rock {
 		draw_set_color(c_yellow)
 		draw_rectangle(bbox_left,bbox_top,bbox_right,bbox_bottom,false)
 		
@@ -65,8 +65,8 @@ if on {
 	
 	//	Selected unit
 	if selected_unit == -1 {
-		if input.mouseLeftPress and instance_position(mouse_x,mouse_y,mudcrab) {
-			selected_unit = instance_position(mouse_x,mouse_y,mudcrab)	
+		if input.mouseLeftPress and instance_position(mouse_x,mouse_y,class_rock) {
+			selected_unit = instance_position(mouse_x,mouse_y,class_rock)	
 		}
 	}
 	else {
