@@ -2,7 +2,7 @@
 //	How many shadows do we have? 
 var list = ds_list_create()
 var list2 = ds_list_create()
-var amount = collision_rectangle_list(bbox_left,bbox_top,bbox_right,bbox_bottom,collisionMap,true,true,list,true)
+var amount = collision_rectangle_list(bbox_left,bbox_top-z,bbox_right,bbox_bottom,collisionMap,true,true,list,true)
 for(var i=0;i<amount;i++) {
 	var Z = list[| i].z
 	
