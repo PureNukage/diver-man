@@ -1,8 +1,9 @@
 if on {
+	var Alpha = 0.28
 	//	No surface, just draw the blue tint
 	if !(app.roomTransitionStage > -1 and buffer_exists(app.roomTransitionBuffer)) {
 		draw_set_color(c_blue)
-		draw_set_alpha(0.25)
+		draw_set_alpha(Alpha)
 		draw_rectangle(app.cameraX1,app.cameraY1,app.cameraX2,app.cameraY2,false)
 		draw_set_alpha(1)
 	}
@@ -33,7 +34,7 @@ if on {
 	
 		surface_reset_target()
 	
-		draw_set_alpha(0.25)
+		draw_set_alpha(Alpha)
 	
 		draw_surface(surface,0,0)
 	
