@@ -46,8 +46,10 @@ function quest_script(quest) {
 								quest._boughtSandwich = false
 								quest._gambled = false
 							
-								//	Did the player listen to Pete?
-								quest.listenedToPete = sailorPeteSitting.toldStory
+								if instance_exists(sailorPeteSitting) {
+									//	Did the player listen to Pete?
+									quest.listenedToPete = sailorPeteSitting.toldStory
+								}
 							
 								//	Did the player buy a sandwich?
 								if player.item_check(item.sandwich) > -1 quest.boughtSandwich = true
