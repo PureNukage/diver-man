@@ -1,5 +1,5 @@
 if on {
-	var Alpha = 0.28
+	var Alpha = 0.25
 	//	No surface, just draw the blue tint
 	if !(app.roomTransitionStage > -1 and buffer_exists(app.roomTransitionBuffer)) {
 		draw_set_color(c_blue)

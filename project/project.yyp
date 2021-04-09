@@ -133,6 +133,7 @@
     {"id":{"name":"crate","path":"objects/crate/crate.yy",},"order":11,},
     {"id":{"name":"s_coin","path":"sprites/s_coin/s_coin.yy",},"order":26,},
     {"id":{"name":"walkAndTalk2","path":"objects/walkAndTalk2/walkAndTalk2.yy",},"order":0,},
+    {"id":{"name":"RoomPlayground","path":"rooms/RoomPlayground/RoomPlayground.yy",},"order":7,},
     {"id":{"name":"s_tileset3","path":"sprites/s_tileset3/s_tileset3.yy",},"order":4,},
     {"id":{"name":"s_chain","path":"sprites/s_chain/s_chain.yy",},"order":1,},
     {"id":{"name":"s_vendor","path":"sprites/s_vendor/s_vendor.yy",},"order":22,},
@@ -372,6 +373,7 @@
     {"roomId":{"name":"RoomDocks","path":"rooms/RoomDocks/RoomDocks.yy",},},
     {"roomId":{"name":"RoomDocks_bulliesWatch","path":"rooms/RoomDocks_bulliesWatch/RoomDocks_bulliesWatch.yy",},},
     {"roomId":{"name":"RoomCityHub_finalCoin","path":"rooms/RoomCityHub_finalCoin/RoomCityHub_finalCoin.yy",},},
+    {"roomId":{"name":"RoomPlayground","path":"rooms/RoomPlayground/RoomPlayground.yy",},},
   ],
   "Folders": [
     {"folderPath":"folders/Tile Sets.yy","order":0,"resourceVersion":"1.0","name":"Tile Sets","tags":[],"resourceType":"GMFolder",},
@@ -569,7 +571,7 @@
     {"CopyToMask":-1,"filePath":"datafiles","resourceVersion":"1.0","name":"dialogue.csv","resourceType":"GMIncludedFile",},
   ],
   "MetaData": {
-    "IDEVersion": "2.3.1.542",
+    "IDEVersion": "2.3.2.556",
   },
   "resourceVersion": "1.4",
   "name": "project",

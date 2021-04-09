@@ -10,6 +10,7 @@ if drawSurface and surface_exists(surface) {
 	
 		if surface_exists(water.causticSurface) surface_copy_part(causticSurf,0,0, water.causticSurface,x,y,sprite_get_width(sprite_index)*image_xscale,sprite_get_height(sprite_index)*image_yscale)
 	
+		//	Removing the outside edges of the caustic surface resulting in the caustic only existing on the art
 		if surface_exists(cookieSurface) {
 			gpu_set_blendmode(bm_subtract)
 			draw_surface_ext(cookieSurface,0,0,1,1,0,c_black,1)

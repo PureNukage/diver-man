@@ -136,6 +136,10 @@ function createSurface() {
 	
 	surface_reset_target()
 	
+	if inverseSurfaceBuffer > -1 and buffer_exists(inverseSurfaceBuffer) buffer_delete(inverseSurfaceBuffer)
+	inverseSurfaceBuffer = buffer_create((((sprite_get_width(sprite_index)*image_xscale)+inverseSurfaceExtraPixels)+((sprite_get_height(sprite_index)*image_yscale)+inverseSurfaceExtraPixels))*4, buffer_grow, 1)
+	buffer_get_surface(inverseSurfaceBuffer, inverseSurface, 0)
+	
 	surface_save(inverseSurface,"inverseSurface"+string(id)+".png")
 	
 	//	Cookie Cutter surface
@@ -157,17 +161,10 @@ function createSurface() {
 	cookieBuffer = buffer_create((sprite_get_width(sprite_index)*image_xscale)*(sprite_get_height(sprite_index)*image_yscale)*4,buffer_grow,1)
 	buffer_get_surface(cookieBuffer, cookieCutSurface, 0)
 	
-	if inverseSurfaceBuffer > -1 and buffer_exists(inverseSurfaceBuffer) buffer_delete(inverseSurfaceBuffer)
-	inverseSurfaceBuffer = buffer_create((((sprite_get_width(sprite_index)*image_xscale)+inverseSurfaceExtraPixels)+((sprite_get_height(sprite_index)*image_yscale)+inverseSurfaceExtraPixels))*4, buffer_grow, 1)
-	buffer_get_surface(inverseSurfaceBuffer, inverseSurface, 0)
-	
-	//if id == 100730 {
-	//	surface_save(inverseSurface,"inverseSurface.png")	
-	//}
-	
 	surface_free(Surface)
 	surface_free(inverseSurface)
 	surface_free(cookieCutSurface)
+	surface_free(finalSurface)
 	
 }
 

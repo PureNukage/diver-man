@@ -42,6 +42,15 @@ if on {
 	var clicked = draw_button_ext(display_get_gui_width()-128-8,80, 128,64, "gui: "+_string) 
 	if clicked {
 		gui.drawGold = !gui.drawGold
+		gui.drawHealth = !gui.drawHealth
+		gui.drawStamina = !gui.drawStamina
+	}
+	
+	//	Playground
+	var _string = "Playground" 
+	var clicked = draw_button_ext(display_get_gui_width()-128-8,152, 128,64, _string) 
+	if clicked {
+		app.roomTransition(RoomPlayground, 20)
 	}
 	
 	draw_reset()
