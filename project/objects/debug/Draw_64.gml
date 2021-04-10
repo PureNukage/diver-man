@@ -53,6 +53,13 @@ if on {
 		app.roomTransition(RoomPlayground, 20)
 	}
 	
+	//	Playground
+	var _string = "DEBUG" if app.mode == mode_PRODUCTION _string = "PROD"
+	var clicked = draw_button_ext(display_get_gui_width()-128-8,224, 128,64,"mode: "+_string) 
+	if clicked {
+		app.mode = !app.mode
+	}
+	
 	draw_reset()
 	
 }

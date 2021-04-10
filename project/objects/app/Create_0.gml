@@ -1,6 +1,8 @@
 creator = ""
 version = ""
 
+mode = mode_DEBUG
+
 math_set_epsilon(0.000000001)
 
 canvasX = 0
@@ -11,6 +13,8 @@ gold = 1
 
 newRoom = false
 roomPrevious = -1
+
+collisionMaps = 0
 
 var Layer = "Instances"
 instance_create_layer(0,0,Layer,input)
@@ -346,6 +350,8 @@ function roomTransition(Room, Speed) {
 	roomTransitionStage = 0
 	
 	depth = -2000
+	
+	collisionMaps = 0
 	
 }
 

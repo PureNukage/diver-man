@@ -1,3 +1,6 @@
+ID = app.collisionMaps
+app.collisionMaps++
+
 z = 0
 width = sprite_get_height(sprite_index)*image_yscale
 height = 0
@@ -63,108 +66,114 @@ function findNearbyMaps() {
 		
 	}
 }
-	
-function drawNearbyMaps() {
-	if foundNearbyMaps {
-		for(var i=0;i<4;i++) {
-			if arrayNearbyMaps[i] > -1 and instance_exists(arrayNearbyMaps[i]) {
-				var ID = arrayNearbyMaps[i]
-				if map != ID and ID.z >= z and player.map != ID and player.groundY <= ID.bbox_bottom - ID.width {
-					ID.drawSurface = true
-					ID.depth = depth
-				}
-			}
-		}
-	}
-}
 
 function createSurface() {
-	var Surface = surface_create(room_width, room_height) // sprite_get_width(sprite_index)*image_xscale, sprite_get_height(sprite_index)*image_yscale
 	
-	surface_set_target(Surface)
-	draw_clear_alpha(c_black, 0)
+	var bufferName = room_get_name(room) + string(ID)
 	
-	var layerString = ""
+	if app.mode == mode_DEBUG {
 	
-	if sand layerString = "Tiles_Sand"
-	else layerString = "Tiles_Rocks"
+		////	Room size surface
+		var Surface = surface_create(room_width, room_height)
 	
-	if is_string(altTileLayer) and layer_exists(altTileLayer) {
-		layerString = altTileLayer	
+		surface_set_target(Surface)
+		draw_clear_alpha(c_black, 0)
+	
+		if sand var layerString = "Tiles_Sand"
+		else var layerString = "Tiles_Rocks"
+	
+		if is_string(altTileLayer) and layer_exists(altTileLayer) {
+			layerString = altTileLayer	
+		}
+	
+		var LayerID = layer_get_id(layerString)
+		var tileLayerID = layer_tilemap_get_id(LayerID)
+	
+		if rock == -1 draw_tilemap(tileLayerID, 0,0)
+		else with rock draw_self()
+	
+		surface_reset_target()
+	
+		////	Cliff size surface
+		var finalSurface = surface_create(sprite_get_width(sprite_index)*image_xscale, sprite_get_height(sprite_index)*image_yscale + 16)
+	
+		surface_copy_part(finalSurface,0,0, Surface, x,y, sprite_get_width(sprite_index)*image_xscale, sprite_get_height(sprite_index)*image_yscale + 16)
+	
+		var width = surface_get_width(finalSurface)
+		var height = surface_get_height(finalSurface)
+	
+		if surfaceBuffer > -1 and buffer_exists(surfaceBuffer) buffer_delete(surfaceBuffer)
+		surfaceBuffer = buffer_create(width*height*4, buffer_grow, 1)
+		buffer_get_surface(surfaceBuffer, finalSurface, 0)
+		buffer_save(surfaceBuffer, bufferName+"finalSurface.sav")
+	
+		////	Inverse surface used for shadow masks
+		var inverseSurface = surface_create((sprite_get_width(sprite_index)*image_xscale)+inverseSurfaceExtraPixels,(sprite_get_height(sprite_index)*image_yscale)+inverseSurfaceExtraPixels)
+		surface_set_target(inverseSurface)
+		draw_clear_alpha(c_black, 0)
+	
+		draw_set_color(c_black)
+		draw_set_alpha(1)
+		draw_rectangle(0,0,(sprite_get_width(sprite_index)*image_xscale)+inverseSurfaceExtraPixels,(sprite_get_height(sprite_index)*image_yscale)+inverseSurfaceExtraPixels,false)
+	
+		gpu_set_blendmode(bm_subtract)
+		draw_surface_ext(finalSurface,inverseSurfaceExtraPixels/2,inverseSurfaceExtraPixels/2,1,1,0,c_black,1)
+		gpu_set_blendmode(bm_normal)
+	
+		//	Factor in the cliff
+		var oX = x - inverseSurfaceExtraPixels/2
+		var oY = y - inverseSurfaceExtraPixels/2
+		draw_set_color(c_blue)
+		draw_rectangle(bbox_left-oX,bbox_bottom-z-oY,bbox_right-oX,bbox_bottom-oY,false)
+	
+		surface_reset_target()
+	
+		if inverseSurfaceBuffer > -1 and buffer_exists(inverseSurfaceBuffer) buffer_delete(inverseSurfaceBuffer)
+		inverseSurfaceBuffer = buffer_create((((sprite_get_width(sprite_index)*image_xscale)+inverseSurfaceExtraPixels)+((sprite_get_height(sprite_index)*image_yscale)+inverseSurfaceExtraPixels))*4, buffer_grow, 1)
+		buffer_get_surface(inverseSurfaceBuffer, inverseSurface, 0)
+		buffer_save(inverseSurfaceBuffer, bufferName+"inverseSurface.sav")
+	
+		//surface_save(inverseSurface,"inverseSurface"+string(id)+".png")
+	
+		//	Cookie Cutter surface
+		var cookieCutSurface = surface_create(sprite_get_width(sprite_index)*image_xscale,sprite_get_height(sprite_index)*image_yscale)
+		surface_set_target(cookieCutSurface)
+		draw_clear_alpha(c_black, 0)
+	
+		draw_set_alpha(1)
+		draw_set_color(c_black)
+		draw_rectangle(0,0,sprite_get_width(sprite_index)*image_xscale,sprite_get_height(sprite_index)*image_yscale,false)
+	
+		gpu_set_blendmode(bm_subtract)
+		draw_surface_ext(finalSurface,0,0,1,1,0,c_black,1)
+		gpu_set_blendmode(bm_normal)
+	
+		surface_reset_target()
+	
+		if cookieBuffer > -1 and buffer_exists(cookieBuffer) buffer_delete(cookieBuffer)
+		cookieBuffer = buffer_create((sprite_get_width(sprite_index)*image_xscale)*(sprite_get_height(sprite_index)*image_yscale)*4,buffer_grow,1)
+		buffer_get_surface(cookieBuffer, cookieCutSurface, 0)
+		buffer_save(cookieBuffer, bufferName+"cookieCutSurface.sav")
+	
+		surface_free(Surface)
+		surface_free(inverseSurface)
+		surface_free(cookieCutSurface)
+		surface_free(finalSurface)
+		
 	}
-	
-	var LayerID = layer_get_id(layerString)
-	var tileLayerID = layer_tilemap_get_id(LayerID)
-	
-	if rock == -1 draw_tilemap(tileLayerID, 0,0)
-	else with rock draw_self()
-	
-	surface_reset_target()
-	
-	var finalSurface = surface_create(sprite_get_width(sprite_index)*image_xscale, sprite_get_height(sprite_index)*image_yscale + 16)
-	
-	surface_copy_part(finalSurface,0,0, Surface, x,y, sprite_get_width(sprite_index)*image_xscale, sprite_get_height(sprite_index)*image_yscale + 16)
-	
-	var width = surface_get_width(finalSurface)
-	var height = surface_get_height(finalSurface)
-	
-	
-	if buffer_exists(surfaceBuffer) buffer_delete(surfaceBuffer)
-	
-	surfaceBuffer = buffer_create(width*height*4, buffer_grow, 1)
-	
-	buffer_get_surface(surfaceBuffer, finalSurface, 0)
-	
-	////	Inverse surface used for shadow masks
-	var inverseSurface = surface_create((sprite_get_width(sprite_index)*image_xscale)+inverseSurfaceExtraPixels,(sprite_get_height(sprite_index)*image_yscale)+inverseSurfaceExtraPixels)
-	surface_set_target(inverseSurface)
-	draw_clear_alpha(c_black, 0)
-	
-	draw_set_color(c_black)
-	draw_set_alpha(1)
-	draw_rectangle(0,0,(sprite_get_width(sprite_index)*image_xscale)+inverseSurfaceExtraPixels,(sprite_get_height(sprite_index)*image_yscale)+inverseSurfaceExtraPixels,false)
-	
-	gpu_set_blendmode(bm_subtract)
-	draw_surface_ext(finalSurface,inverseSurfaceExtraPixels/2,inverseSurfaceExtraPixels/2,1,1,0,c_black,1)
-	gpu_set_blendmode(bm_normal)
-	
-	//	Factor in the cliff
-	var oX = x - inverseSurfaceExtraPixels/2
-	var oY = y - inverseSurfaceExtraPixels/2
-	draw_set_color(c_blue)
-	draw_rectangle(bbox_left-oX,bbox_bottom-z-oY,bbox_right-oX,bbox_bottom-oY,false)
-	
-	surface_reset_target()
-	
-	if inverseSurfaceBuffer > -1 and buffer_exists(inverseSurfaceBuffer) buffer_delete(inverseSurfaceBuffer)
-	inverseSurfaceBuffer = buffer_create((((sprite_get_width(sprite_index)*image_xscale)+inverseSurfaceExtraPixels)+((sprite_get_height(sprite_index)*image_yscale)+inverseSurfaceExtraPixels))*4, buffer_grow, 1)
-	buffer_get_surface(inverseSurfaceBuffer, inverseSurface, 0)
-	
-	surface_save(inverseSurface,"inverseSurface"+string(id)+".png")
-	
-	//	Cookie Cutter surface
-	var cookieCutSurface = surface_create(sprite_get_width(sprite_index)*image_xscale,sprite_get_height(sprite_index)*image_yscale)
-	surface_set_target(cookieCutSurface)
-	draw_clear_alpha(c_black, 0)
-	
-	draw_set_alpha(1)
-	draw_set_color(c_black)
-	draw_rectangle(0,0,sprite_get_width(sprite_index)*image_xscale,sprite_get_height(sprite_index)*image_yscale,false)
-	
-	gpu_set_blendmode(bm_subtract)
-	draw_surface_ext(finalSurface,0,0,1,1,0,c_black,1)
-	gpu_set_blendmode(bm_normal)
-	
-	surface_reset_target()
-	
-	if cookieBuffer > -1 and buffer_exists(cookieBuffer) buffer_delete(cookieBuffer)
-	cookieBuffer = buffer_create((sprite_get_width(sprite_index)*image_xscale)*(sprite_get_height(sprite_index)*image_yscale)*4,buffer_grow,1)
-	buffer_get_surface(cookieBuffer, cookieCutSurface, 0)
-	
-	surface_free(Surface)
-	surface_free(inverseSurface)
-	surface_free(cookieCutSurface)
-	surface_free(finalSurface)
+	//	app.mode == mode_PRODUCTION
+	else {
+		
+		if surfaceBuffer > -1 and buffer_exists(surfaceBuffer) buffer_delete(surfaceBuffer)
+		surfaceBuffer = buffer_load(bufferName + "finalSurface.sav")
+		
+		if inverseSurfaceBuffer > -1 and buffer_exists(inverseSurfaceBuffer) buffer_delete(inverseSurfaceBuffer)
+		inverseSurfaceBuffer = buffer_load(bufferName + "inverseSurface.sav")
+		
+		if cookieBuffer > -1 and buffer_exists(cookieBuffer) buffer_delete(cookieBuffer)
+		cookieBuffer = buffer_load(bufferName + "cookieCutSurface.sav")
+		
+	}
 	
 }
 

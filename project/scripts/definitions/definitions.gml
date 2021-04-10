@@ -8,6 +8,9 @@
 #macro down 2
 #macro left 3
 
+#macro mode_DEBUG 0
+#macro mode_PRODUCTION 1
+
 enum particles {
 	bubble,
 	footprint,
