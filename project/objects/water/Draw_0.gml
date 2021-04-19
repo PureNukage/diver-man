@@ -1,14 +1,6 @@
 if on {
-
-	if !surface_exists(causticSurface) {
-		causticSurface = surface_create(room_width, room_height)	
 	
-		surface_set_target(causticSurface)
-		draw_clear_alpha(c_black, 0)
-	
-		surface_reset_target()
-	}
-	
+	////	256x256 Caustic Shader Tile
 	var Width = 256
 	var Height = 256
 
@@ -16,35 +8,42 @@ if on {
 	surface_set_target(surface)
 	draw_clear_alpha(c_black, 0)
 	
-	////	WIP CAUSTIC
 	shader_set(shader_caustic)
-
 	shader_set_uniform_f(caustic_resolution, Width, Height)
 	shader_set_uniform_f(caustic_seconds, sec)
 
 	draw_rectangle(0,0,Width,Height,false)
 	
 	shader_reset()
-	
 	surface_reset_target()
 	
+	////	Caustic Surface
+	if !surface_exists(causticSurface) causticSurface = surface_create(room_width, room_height)
+	//if !surface_exists(causticSurface) causticSurface = surface_create(app.width, app.height)
 	surface_set_target(causticSurface)
+	draw_clear_alpha(c_black, 0)
 	
 	draw_set_alpha(1)
-	//draw_set_color(c_black)
-	//draw_rectangle(0,0,room_width,room_height,false)
-	
-	//draw_set_alpha(1)
 	var border = 256
 	var x1 = camera_get_view_x(app.camera)-border
 	var y1 = camera_get_view_y(app.camera)-border
 	var x2 = x1 + camera_get_view_width(app.camera)+(border*2)
 	var y2 = y1 + camera_get_view_height(app.camera)+(border*2)
 	
+	//var x1 = app.x - app.width/2
+	//var y1 = app.y - app.height/2
+	//var x2 = app.x + app.width/2
+	//var y2 = app.y + app.height/2
+	
+	//var x1 = -border
+	//var y1 = -border
+	//var x2 = app.width+border
+	//var y2 = app.height+border
+	
 	var startW = floor(x1/256)
 	var startH = floor(y1/256)
-	var endW = floor(x2/256)
-	var endH = floor(y2/256)
+	var endW = floor(x2/256) //+ 1
+	var endH = floor(y2/256) //+ 1
 	
 	for(var w=startW;w<endW;w++) {
 		for(var h=startH;h<endH;h++) {
@@ -81,10 +80,6 @@ if on {
 	
 	surface_reset_target()
 	
-	//if !surface_exists(causticSurfaceOriginal) {
-	//	causticSurfaceOriginal = surface_create(room_width,room_height)	
-	//}
-	//surface_copy(causticSurfaceOriginal,0,0,surface)
 	surface_free(surface)
 	
 	draw_set_alpha(0.15)

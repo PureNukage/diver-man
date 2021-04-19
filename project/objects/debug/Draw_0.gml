@@ -7,6 +7,19 @@ if on {
 		//draw_rectangle(bbox_left,bbox_top,bbox_right,bbox_bottom,false)
 	}
 	
+	var border = 256
+	var x1 = camera_get_view_x(app.camera)-border
+	var y1 = camera_get_view_y(app.camera)-border
+	var x2 = x1 + camera_get_view_width(app.camera)+(border*2)
+	var y2 = y1 + camera_get_view_height(app.camera)+(border*2)
+	
+	var x1 = app.x - app.width/2
+	var y1 = app.y - app.height/2
+	var x2 = app.x + app.width/2
+	var y2 = app.y + app.height/2
+	draw_set_color(c_red)
+	draw_rectangle(x1,y1,x2,y2,true)
+	
 	//	Draw the enemies path
 	if instance_exists(class_enemy) with class_enemy {
 		draw_set_color(c_white)
