@@ -52,6 +52,7 @@ if on {
 		for(var h=startH;h<endH;h++) {
 			//draw_surface(surface, w*Width,h*Height)
 			draw_sprite(water.sprite_index,water.image_index,w*Width,h*Height)
+			draw_rectangle(w*Width,h*Height, w*Width+256,h*Height+256,true)
 		}
 	}
 	
@@ -60,9 +61,14 @@ if on {
 		gpu_set_blendmode(bm_subtract)
 		draw_surface_ext(causticSurfaceCutout,0,0,1,1,0,c_black,1)
 		
-		if instance_exists(class_unit) {
-			with class_unit if visible draw_sprite_ext(sprite_index,image_index,x,y-z-floatZ,image_xscale,image_yscale,image_angle,image_blend,image_alpha)	
+		var List = ds_list_create()
+		collision_rectangle_list(app.x-app.width/2,app.y-app.height/2, app.x+app.width/2,app.y+app.height/2, class_unit,false,false,List,false)
+		if !ds_list_empty(List) {
+			for(var i=0;i<ds_list_size(List);i++) {
+				with List[| i] if visible draw_sprite_ext(sprite_index,image_index,x,y-z-floatZ,image_xscale,image_yscale,image_angle,image_blend,image_alpha)	
+			}
 		}
+		ds_list_destroy(List)
 		
 		gpu_set_blendmode(bm_normal)
 		
