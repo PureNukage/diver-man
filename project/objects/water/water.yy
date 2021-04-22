@@ -1,5 +1,8 @@
 {
-  "spriteId": null,
+  "spriteId": {
+    "name": "s_caustic",
+    "path": "sprites/s_caustic/s_caustic.yy",
+  },
   "solid": false,
   "visible": true,
   "spriteMaskId": null,

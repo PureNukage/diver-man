@@ -45,6 +45,16 @@ causticSurface = -1
 
 sec = 0
 
+function caustic_sprite() {
+	if image_index >= image_number-1 {
+		if sprite_index == s_caustic sprite_index = s_caustic_reversed
+		else sprite_index = s_caustic
+		image_index = 0
+	}
+	
+	
+}
+
 causticBuffer = -1
 causticSurfaceCutout = -1
 function generate_caustic_map() {

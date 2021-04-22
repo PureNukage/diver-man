@@ -12,4 +12,6 @@ if !surface_exists(collisionMapsSurface) and buffer_exists(collisionMapsBuffer) 
 	buffer_set_surface(collisionMapsBuffer,collisionMapsSurface,0)
 }
 
+caustic_sprite()
+
 depth = -room_height

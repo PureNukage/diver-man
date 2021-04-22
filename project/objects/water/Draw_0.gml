@@ -4,18 +4,21 @@ if on {
 	var Width = 256
 	var Height = 256
 
-	var surface = surface_create(Width, Height)
-	surface_set_target(surface)
-	draw_clear_alpha(c_black, 0)
+	//var surface = surface_create(Width, Height)
+	//surface_set_target(surface)
+	//draw_clear_alpha(c_black, 0)
 	
-	shader_set(shader_caustic)
-	shader_set_uniform_f(caustic_resolution, Width, Height)
-	shader_set_uniform_f(caustic_seconds, sec)
+	//shader_set(shader_caustic)
+	//shader_set_uniform_f(caustic_resolution, Width, Height)
+	//shader_set_uniform_f(caustic_seconds, sec)
 
-	draw_rectangle(0,0,Width,Height,false)
+	//draw_rectangle(0,0,Width,Height,false)
 	
-	shader_reset()
-	surface_reset_target()
+	//shader_reset()
+	//surface_reset_target()
+	
+	//var loopAmount = 120
+	//if time.stream <= loopAmount surface_save(surface,"causticSurface"+string(time.stream)+".png")
 	
 	////	Caustic Surface
 	if !surface_exists(causticSurface) causticSurface = surface_create(room_width, room_height)
@@ -47,7 +50,8 @@ if on {
 	
 	for(var w=startW;w<endW;w++) {
 		for(var h=startH;h<endH;h++) {
-			draw_surface(surface, w*Width,h*Height)	
+			//draw_surface(surface, w*Width,h*Height)
+			draw_sprite(water.sprite_index,water.image_index,w*Width,h*Height)
 		}
 	}
 	
@@ -85,7 +89,7 @@ if on {
 	
 	surface_reset_target()
 	
-	surface_free(surface)
+	//surface_free(surface)
 	
 	draw_set_alpha(0.15)
 	draw_surface(causticSurface,0,0)
