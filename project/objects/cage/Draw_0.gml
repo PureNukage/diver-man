@@ -3,8 +3,8 @@ if !app.underwater {
 	surface_set_target(surface)
 	draw_clear_alpha(c_black, 0)
 	
-	draw_sprite(s_chain2,0,x,y-z-64)
-	draw_sprite(s_chain2,0,x,y-z-sprite_get_height(s_chain2))
+	draw_sprite(sprite_index,0,x,y-z-floatZ)
+	draw_sprite(sprite_index,0,x,y-z-sprite_get_height(s_chain2))
 	
 	gpu_set_blendmode(bm_subtract)
 	draw_rectangle(0,0,room_width,crane.y-81,false)
@@ -17,7 +17,7 @@ if !app.underwater {
 	surface_free(surface)
 }
 else {
-	draw_sprite(s_chain2,0,x,y-z-64)
+	draw_sprite(sprite_index,0,x,y-z-floatZ)
 }
 
 if !inUse {

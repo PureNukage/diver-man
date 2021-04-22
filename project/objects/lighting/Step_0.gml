@@ -27,3 +27,4 @@ if on {
 	surface_reset_target()
 		
 }
+depth = -room_height-1

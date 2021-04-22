@@ -30,10 +30,10 @@ if on {
 	var x2 = x1 + camera_get_view_width(app.camera)+(border*2)
 	var y2 = y1 + camera_get_view_height(app.camera)+(border*2)
 	
-	//var x1 = app.x - app.width/2
-	//var y1 = app.y - app.height/2
-	//var x2 = app.x + app.width/2
-	//var y2 = app.y + app.height/2
+	var x1 = app.x - app.width/2
+	var y1 = app.y - app.height/2
+	var x2 = app.x + app.width/2
+	var y2 = app.y + app.height/2
 	
 	//var x1 = -border
 	//var y1 = -border
@@ -42,8 +42,8 @@ if on {
 	
 	var startW = floor(x1/256)
 	var startH = floor(y1/256)
-	var endW = floor(x2/256) //+ 1
-	var endH = floor(y2/256) //+ 1
+	var endW = floor(x2/256) + 1
+	var endH = floor(y2/256) + 1
 	
 	for(var w=startW;w<endW;w++) {
 		for(var h=startH;h<endH;h++) {
@@ -55,6 +55,11 @@ if on {
 	if surface_exists(causticSurfaceCutout) {
 		gpu_set_blendmode(bm_subtract)
 		draw_surface_ext(causticSurfaceCutout,0,0,1,1,0,c_black,1)
+		
+		if instance_exists(class_unit) {
+			with class_unit if visible draw_sprite_ext(sprite_index,image_index,x,y-z-floatZ,image_xscale,image_yscale,image_angle,image_blend,image_alpha)	
+		}
+		
 		gpu_set_blendmode(bm_normal)
 		
 		////	Fill in the missing cliff caustic with black

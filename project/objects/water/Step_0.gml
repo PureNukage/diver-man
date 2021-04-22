@@ -11,3 +11,5 @@ if !surface_exists(collisionMapsSurface) and buffer_exists(collisionMapsBuffer) 
 	collisionMapsSurface = surface_create(room_width, room_height)
 	buffer_set_surface(collisionMapsBuffer,collisionMapsSurface,0)
 }
+
+depth = -room_height

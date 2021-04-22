@@ -6,6 +6,8 @@ shadowEllipse = false
 drawShadow = false
 drawUnit = false
 
+floatZ = 64
+
 interactibility = true
 
 lowered = true

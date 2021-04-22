@@ -26,6 +26,8 @@ ramp = false
 map = -1
 maps = ds_list_create()
 
+inList = false
+
 depth = -1
 
 sand = false
