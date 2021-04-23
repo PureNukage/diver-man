@@ -8,16 +8,17 @@ if on {
 	}
 	
 	var border = 256
-	var x1 = camera_get_view_x(app.camera)-border
-	var y1 = camera_get_view_y(app.camera)-border
-	var x2 = x1 + camera_get_view_width(app.camera)+(border*2)
-	var y2 = y1 + camera_get_view_height(app.camera)+(border*2)
-	
 	var x1 = app.x - app.width/2
 	var y1 = app.y - app.height/2
 	var x2 = app.x + app.width/2
 	var y2 = app.y + app.height/2
+	
+	var startW = floor(x1/256)
+	var startH = floor(y1/256)
+	var endW = floor(x2/256) + 1
+	var endH = floor(y2/256) + 1
 	draw_set_color(c_red)
+	
 	draw_rectangle(x1,y1,x2,y2,true)
 	
 	//	Draw the enemies path
@@ -76,26 +77,26 @@ if on {
 	//	draw_sprite_ext(sprite_index,0,x,y,image_xscale,image_yscale,0,c_white,0.5)
 	//}
 	
-	//	Selected unit
-	if selected_unit == -1 {
-		if input.mouseLeftPress and instance_position(mouse_x,mouse_y,class_rock) {
-			selected_unit = instance_position(mouse_x,mouse_y,class_rock)	
-		}
-	}
-	else {
-		if input.mouseLeftPress selected_unit = -1
+	////	Selected unit
+	//if selected_unit == -1 {
+	//	if input.mouseLeftPress and instance_position(mouse_x,mouse_y,class_rock) {
+	//		selected_unit = instance_position(mouse_x,mouse_y,class_rock)	
+	//	}
+	//}
+	//else {
+	//	if input.mouseLeftPress selected_unit = -1
 		
-		//	Draw the selected units z_layer
-		if selected_unit.object_index == mudcrab and selected_unit.map > -1 {
-			draw_set_alpha(0.5)
-			var Z = selected_unit.z
-			if selected_unit.map.ramp {
-				Z = selected_unit.map.z
-			}
-			var Index = grid.return_z_index(Z)
-			if Index > -1 mp_grid_draw(grid.mp_grids[Index, 0])	
-		}
-	}
+	//	//	Draw the selected units z_layer
+	//	if selected_unit.object_index == mudcrab and selected_unit.map > -1 {
+	//		draw_set_alpha(0.5)
+	//		var Z = selected_unit.z
+	//		if selected_unit.map.ramp {
+	//			Z = selected_unit.map.z
+	//		}
+	//		var Index = grid.return_z_index(Z)
+	//		if Index > -1 mp_grid_draw(grid.mp_grids[Index, 0])	
+	//	}
+	//}
 	
 	draw_set_alpha(1)
 	if instance_exists(collisionMap) with collisionMap {
@@ -144,8 +145,8 @@ if on {
 	
 	
 	//	Draw the grid
-	draw_set_alpha(0.25)
-	mp_grid_draw(grid.mpGrid)
+	//draw_set_alpha(0.25)
+	//mp_grid_draw(grid.mpGrid)
 	
 	draw_reset()
 	

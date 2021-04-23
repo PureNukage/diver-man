@@ -3,26 +3,12 @@ if on {
 	////	256x256 Caustic Shader Tile
 	var Width = 256
 	var Height = 256
-
-	//var surface = surface_create(Width, Height)
-	//surface_set_target(surface)
-	//draw_clear_alpha(c_black, 0)
-	
-	//shader_set(shader_caustic)
-	//shader_set_uniform_f(caustic_resolution, Width, Height)
-	//shader_set_uniform_f(caustic_seconds, sec)
-
-	//draw_rectangle(0,0,Width,Height,false)
-	
-	//shader_reset()
-	//surface_reset_target()
 	
 	//var loopAmount = 120
 	//if time.stream <= loopAmount surface_save(surface,"causticSurface"+string(time.stream)+".png")
 	
 	////	Caustic Surface
 	if !surface_exists(causticSurface) causticSurface = surface_create(room_width, room_height)
-	//if !surface_exists(causticSurface) causticSurface = surface_create(app.width, app.height)
 	surface_set_target(causticSurface)
 	draw_clear_alpha(c_black, 0)
 	
@@ -38,21 +24,19 @@ if on {
 	var x2 = app.x + app.width/2
 	var y2 = app.y + app.height/2
 	
-	//var x1 = -border
-	//var y1 = -border
-	//var x2 = app.width+border
-	//var y2 = app.height+border
-	
 	var startW = floor(x1/256)
 	var startH = floor(y1/256)
 	var endW = floor(x2/256) + 1
 	var endH = floor(y2/256) + 1
 	
+	//debug.log("Tiles Width: "+string(endW-startW))
+	//debug.log("Tiles Height: "+string(endH-startH))
+	
 	for(var w=startW;w<endW;w++) {
 		for(var h=startH;h<endH;h++) {
 			//draw_surface(surface, w*Width,h*Height)
 			draw_sprite(water.sprite_index,water.image_index,w*Width,h*Height)
-			draw_rectangle(w*Width,h*Height, w*Width+256,h*Height+256,true)
+			//draw_rectangle(w*Width,h*Height, w*Width+256,h*Height+256,true)
 		}
 	}
 	
@@ -63,13 +47,13 @@ if on {
 		
 		var List = ds_list_create()
 		collision_rectangle_list(app.x-app.width/2,app.y-app.height/2, app.x+app.width/2,app.y+app.height/2, class_unit,false,false,List,false)
+		if instance_exists(player) and ds_list_find_index(List,player.id) == -1 ds_list_add(List,player.id)
 		if !ds_list_empty(List) {
 			for(var i=0;i<ds_list_size(List);i++) {
 				with List[| i] if visible draw_sprite_ext(sprite_index,image_index,x,y-z-floatZ,image_xscale,image_yscale,image_angle,image_blend,image_alpha)	
 			}
 		}
 		ds_list_destroy(List)
-		
 		gpu_set_blendmode(bm_normal)
 		
 		////	Fill in the missing cliff caustic with black
@@ -94,8 +78,6 @@ if on {
 	}
 	
 	surface_reset_target()
-	
-	//surface_free(surface)
 	
 	draw_set_alpha(0.15)
 	draw_surface(causticSurface,0,0)

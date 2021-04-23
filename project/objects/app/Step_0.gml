@@ -103,3 +103,5 @@ if !paused {
 	x = clamp(x,0+edgeX,room_width-edgeX)
 	y = clamp(y,0+edgeY,room_height-edgeY)
 }
+
+depth = -room_height-2000

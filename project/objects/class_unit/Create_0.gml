@@ -186,7 +186,7 @@ function changeMap(Map) {
 			} else {
 				
 				if Map.height == 0 var ZZ = Map.z
-				else var ZZ = Map.height
+				else var ZZ = Map.height + Map.z
 				
 				groundY = y - ZZ
 
