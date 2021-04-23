@@ -18,6 +18,7 @@ if on {
 	//draw_text(XX,YY,"controllerType: "+string(input.controllerType)) YY += 15
 	
 	with player {
+		draw_text(XX,YY, "player_depth: "+string(depth)) YY += 15
 		//draw_text(XX,YY, "x: "+string(x)) YY += 15
 		//draw_text(XX,YY, "y: "+string(y)) YY += 15
 		//draw_text(XX,YY, "z: "+string(z)) YY += 15
