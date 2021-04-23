@@ -50,7 +50,10 @@ if on {
 		if instance_exists(player) and ds_list_find_index(List,player.id) == -1 ds_list_add(List,player.id)
 		if !ds_list_empty(List) {
 			for(var i=0;i<ds_list_size(List);i++) {
-				with List[| i] if visible draw_sprite_ext(sprite_index,image_index,x,y-z-floatZ,image_xscale,image_yscale,image_angle,image_blend,image_alpha)	
+				with List[| i] {
+					if object_get_parent(object_index) == class_rock continue
+					if visible draw_sprite_ext(sprite_index,image_index,x,y-z-floatZ,image_xscale,image_yscale,image_angle,image_blend,image_alpha)	
+				}
 			}
 		}
 		ds_list_destroy(List)

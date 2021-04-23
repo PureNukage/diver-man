@@ -34,41 +34,6 @@ sand = false
 rock = -1
 altTileLayer = -1
 
-arrayNearbyMaps = []
-foundNearbyMaps = false
-function findNearbyMaps() {
-	for(var i=0;i<4;i++) {
-		var X = 0
-		var Y = 0
-		arrayNearbyMaps[i] = -1
-		switch(i)
-		{
-			case up:
-				Y = -1	
-			break
-			case right:
-				X = 1
-			break
-			case down:
-				Y = 1
-			break
-			case left:
-				X = -1
-			break
-		}
-		
-		if place_meeting(x+X,y+Y,collisionMap) {
-			var ID = instance_place(x+X,y+Y,collisionMap)	
-			if ID.z > -1 {
-				arrayNearbyMaps[i] = ID
-			}
-		}
-		
-		foundNearbyMaps = true
-		
-	}
-}
-
 function createSurface() {
 	
 	var bufferName = room_get_name(room) + string(ID)

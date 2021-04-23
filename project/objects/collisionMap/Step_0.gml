@@ -18,5 +18,3 @@ if !surface_exists(inverseSurface) and buffer_exists(inverseSurfaceBuffer) {
 	buffer_set_surface(inverseSurfaceBuffer, inverseSurface, 0)
 	//if altTileLayer == "Tiles_Stairs" and room = RoomCityHub surface_save(inverseSurface,"stairsSurface.png")
 }
-
-//if !foundNearbyMaps findNearbyMaps()
