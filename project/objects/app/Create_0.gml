@@ -61,7 +61,7 @@ function save_game(quick) {
 		////	Room
 		if room != RoomMainMenu {
 			debug.log("Saving room: "+string_upper(string(room_get_name(room))))
-			ini_write_real(section,"room",room)
+			ini_write_string(section,"room",room_get_name(room))
 		}
 		
 	}
@@ -137,10 +137,12 @@ function load_game(quick) {
 	
 	////	Main Menu Room Transition
 	if !quick and room == RoomMainMenu {
-		var Room = ini_read_real("GAMEDATA","room",RoomIntro)
-		debug.log("Loading room: "+string_upper(string(room_get_name(Room))))
+		var Room = ini_read_string("GAMEDATA","room","RoomIntro")
+		debug.log("Loading room: "+string_upper(string(Room)))
 		ini_close()
-		app.roomTransition(Room, 10)
+		var RoomIndex = asset_get_index(Room)
+		if RoomIndex == -1 RoomIndex = 0
+		app.roomTransition(RoomIndex, 10)
 		exit
 	}
 	
