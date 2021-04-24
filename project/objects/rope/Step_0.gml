@@ -1,6 +1,3 @@
-if instance_exists(cage) and cage.filled depth = cage.depth + 1
-else depth = player.depth + 1
-
 keyUp = keyboard_check(vk_up)
 keyDown = keyboard_check(vk_down)
 
