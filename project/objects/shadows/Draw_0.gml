@@ -1,4 +1,5 @@
 if surface_exists(surface) {
+	//debug.log("shadow alpha: "+string(draw_get_alpha()))
 	draw_surface(surface,0,0)
 }
 

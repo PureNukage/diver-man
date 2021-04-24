@@ -10,7 +10,10 @@ if drawSurface and surface_exists(surface) {
 		
 		//	Draw shadow
 		if surface_exists(shadows.surface) {
-			if rock == -1 draw_surface_part(shadows.surface,bbox_left,bbox_top,bbox_right-bbox_left,(bbox_bottom-z)-bbox_top,bbox_left,bbox_top)
+			if rock == -1 {
+				draw_set_alpha(.10)
+				draw_surface_part(shadows.surface,bbox_left,bbox_top,bbox_right-bbox_left,(bbox_bottom-z)-bbox_top,bbox_left,bbox_top)
+			}
 		}
 	
 		draw_reset()
