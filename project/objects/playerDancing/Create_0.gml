@@ -32,6 +32,7 @@ function add_dance() {
 	dances--
 	//	Add the key presses to the list
 	var amount = 20
+	var amount = irandom_range(12,20)
 	for(var i=0;i<amount;i++) {
 		ds_list_add(list, choose(up, down, left, right))
 	}	

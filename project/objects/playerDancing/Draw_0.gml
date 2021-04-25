@@ -15,6 +15,8 @@ if on {
 	draw_set_valign(fa_middle)
 	draw_text(xx-200,yy-12,"Mistakes: "+string(mistakes)+"/5")
 	
+	if !audio_is_playing(sound_electroswing) sound.playMusic(sound_electroswing, true)
+	
 	//	Send a person away
 	if mistakes >= 5 and !sentPersonAway {
 		sentPersonAway = true

@@ -145,6 +145,7 @@
     {"id":{"name":"s_tileset3","path":"sprites/s_tileset3/s_tileset3.yy",},"order":2,},
     {"id":{"name":"s_chain","path":"sprites/s_chain/s_chain.yy",},"order":1,},
     {"id":{"name":"s_vendor","path":"sprites/s_vendor/s_vendor.yy",},"order":22,},
+    {"id":{"name":"sound_electroswing","path":"sounds/sound_electroswing/sound_electroswing.yy",},"order":12,},
     {"id":{"name":"Step_water_3_1_0","path":"sounds/Step_water_3_1_0/Step_water_3_1_0.yy",},"order":2,},
     {"id":{"name":"s_diverman_attack","path":"sprites/s_diverman_attack/s_diverman_attack.yy",},"order":5,},
     {"id":{"name":"docksign","path":"objects/docksign/docksign.yy",},"order":14,},

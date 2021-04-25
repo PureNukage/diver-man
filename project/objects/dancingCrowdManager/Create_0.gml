@@ -18,28 +18,28 @@ function add_person() {
 		switch(number) {
 			case 0: 
 				newDestX = x 
-				newDestY = y+100
+				newDestY = 75
 			break
 			case 1: 
 				newDestX = x-50
-				newDestY = y+50
+				newDestY = 50
 			break
 			case 2: 
 				newDestX = x-100 
-				newDestY = y+25
+				newDestY = 25
 			break
 			case 3: 
 				newDestX = x+50
-				newDestY = y+50
+				newDestY = 50
 			break
 			case 4: 
 				newDestX = x+100 
-				newDestY = y+25
+				newDestY = 25
 			break
 		}
 		var Person = instance_create_layer(x+randomX,y,"Instances",crowdAdult)
 		ds_list_add(list,Person)
-		Person.move_to(newDestX,300)
+		Person.move_to(newDestX,300+newDestY)
 		Person.number = number
 	}
 }
