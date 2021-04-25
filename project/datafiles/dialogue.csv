@@ -103,7 +103,7 @@ brotherGivingSuit,respGettingSuit,Well?,s_sailorpete_face
 respGettingSuit,1,I'll do it.,
 respGettingSuit,1,I'd rather not.,
 brotherGivingSuit,2,He'll do it. I can't afford to get sweaty.,s_brother_face
-brotherGivingSuit,-3,"Who knows, the Pompnose girl might see me.",s_brother_face
+brotherGivingSuit,-3,I can't afford Nadya seeing me in that.,s_brother_face
 sailorPeteGivingSuit,-7,"Alright, come here boy.",s_sailorpete_face
 brotherGotSuit,1,Yeah...,s_brother_face
 brotherGotSuit,2,Can't understand you.,s_brother_face

@@ -67,9 +67,10 @@
   "layers": [
     {"visible":true,"isLocked":false,"blendMode":0,"opacity":100.0,"displayName":"default","resourceVersion":"1.0","name":"d0e2ba4e-c25b-4b5d-afa0-a89ed7134205","tags":[],"resourceType":"GMImageLayer",},
   ],
+  "nineSlice": null,
   "parent": {
-    "name": "Art",
-    "path": "folders/Art.yy",
+    "name": "tilesets",
+    "path": "folders/Art/tilesets.yy",
   },
   "resourceVersion": "1.0",
   "name": "s_tileset5",

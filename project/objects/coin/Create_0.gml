@@ -4,8 +4,8 @@ mask_index = s_coin_collision
 
 stage = 0
 
-gui_x = 0
-gui_y = 0
+gui_x = x - camera_get_view_x(app.camera)
+gui_y = y - z - floatZ - camera_get_view_y(app.camera)
 
 floating = true
 

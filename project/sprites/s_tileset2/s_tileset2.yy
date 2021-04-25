@@ -69,9 +69,10 @@
     {"visible":true,"isLocked":false,"blendMode":0,"opacity":100.0,"displayName":"Layer 1","resourceVersion":"1.0","name":"a2d9cb21-c994-4ae2-8cb0-a638c3519c8e","tags":[],"resourceType":"GMImageLayer",},
     {"visible":true,"isLocked":false,"blendMode":0,"opacity":100.0,"displayName":"default","resourceVersion":"1.0","name":"c3ef999d-dd3b-4d11-9730-cf739b7755c8","tags":[],"resourceType":"GMImageLayer",},
   ],
+  "nineSlice": null,
   "parent": {
-    "name": "Art",
-    "path": "folders/Art.yy",
+    "name": "tilesets",
+    "path": "folders/Art/tilesets.yy",
   },
   "resourceVersion": "1.0",
   "name": "s_tileset2",

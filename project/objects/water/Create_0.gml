@@ -4,7 +4,7 @@ function check_room_underwater() {
 	var list = ds_list_create() 
 	ds_list_add(list, RoomDocks_Underwater)
 	ds_list_add(list, RoomMainMenu)
-	ds_list_add(list, RoomPlayground)
+	//ds_list_add(list, RoomPlayground)
 	
 	//	This room is underwater
 	if ds_list_find_index(list, room) > -1 {

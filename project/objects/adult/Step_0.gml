@@ -1,9 +1,12 @@
 if !payingAttention {
 	if leftOrRight {
 		x += 3
-		image_xscale = -1
+		image_xscale = 1
 	}
-	else x -= 3 
+	else {
+		x -= 3 
+		image_xscale = -1	
+	}
 }
 
 if x < -150 or x > room_width+150 {
