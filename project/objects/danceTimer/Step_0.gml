@@ -35,16 +35,20 @@ else if stage == 1 {
 else if stage == 2 {
 	app.cameraFocusX += 5
 	if layer_sequence_is_finished(Sequence) {
+		layer_sequence_destroy(Sequence)
 		stage = 3
 		create_textbox(id, myDialogue[1, dialogueIndex])
 	}	
 }
 //	Wait for dialogue to finish
 else if stage == 3 {
+	brotherMusic.visible = true
+	brotherMusic.image_xscale = -1
 	if !instance_exists(textbox) and dialogueIndex == 8 {
 		layer_sequence_destroy(Sequence)
 		Sequence = layer_sequence_create(Layer,0,0,Sequence5)
 		stage = 4
+		instance_destroy(brotherMusic)
 	}
 }
 //	Wait for sequence 5 to finish
