@@ -1,3 +1,7 @@
+event_inherited()
+
+hasDialogue = false
+
 on = false
 
 dances = 6

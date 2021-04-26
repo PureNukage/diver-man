@@ -1,10 +1,9 @@
-if live_call() return live_result
-
-draw_self()
-
+//event_inherited()
 
 //	Dancing!
 if on {
+	
+	draw_self()
 	
 	var xx = x
 	var yy = y - 100
@@ -60,6 +59,9 @@ if on {
 					list_success = 0
 					dancingCrowdManager.add_person()
 				}
+				if sprite_index == s_player_kid_dance_right_idle sprite_index = s_player_kid_dance_right_legsup
+				else if sprite_index == s_player_kid_dance_left_idle sprite_index = s_player_kid_dance_left_legsup
+				image_index = 0
 			}
 			else if Key and list_offset >= 5 and list_offset <= 15 {
 				list_remove_one()
@@ -83,11 +85,13 @@ if on {
 			mistakes = 0
 			sentPersonAway = false
 
-			sound.playSoundEffect(sound_coins)
-			var Random = irandom_range(0,ds_list_size(dancingCrowdManager.list)-1)
-			var RandomPerson = dancingCrowdManager.list[| Random]
-			var Coin = instance_create_layer(RandomPerson.x,RandomPerson.y,"Instances",coin)
-			Coin.stage = 2
+			if !ds_list_empty(dancingCrowdManager.list) {
+				sound.playSoundEffect(sound_coins)
+				var Random = irandom_range(0,ds_list_size(dancingCrowdManager.list)-1)
+				var RandomPerson = dancingCrowdManager.list[| Random]
+				var Coin = instance_create_layer(RandomPerson.x,RandomPerson.y,"Instances",coin)
+				Coin.stage = 2
+			}
 			
 			add_dance()
 			
@@ -99,6 +103,22 @@ if on {
 	}
 	list_offset -= list_speed
 
+}
+
+//	Golden aura
+else {
+	if interactable {
+		var xx = x 
+		var yy = y-(sprite_get_yoffset(sprite_index)*image_yscale) + 25
+	
+		if object_index == cage {
+			yy = y - 100		
+		}
+	
+		var Sprite = s_keyboard_e
+		if input.keyboardOrController == 1 Sprite = s_controller_xbox_y
+		draw_sprite_ext(Sprite,0,xx,yy,2,2,0,c_white,1)
+	}
 }
 
 draw_reset()

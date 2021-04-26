@@ -1,5 +1,7 @@
 if surface > -1 and surface_exists(surface) surface_free(surface)
 
+//depth = -room_height
+
 surface = surface_create(display_get_gui_width(), display_get_gui_height())
 surface_set_target(surface)
 draw_clear_alpha(c_white, 0)

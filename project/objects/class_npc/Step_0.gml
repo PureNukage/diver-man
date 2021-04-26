@@ -6,7 +6,7 @@ applyMovement()
 
 if !onGround applyThrust()
 
-if interactable and interactibility {
+if interactable and interactibility and hasDialogue {
 	if input.keyInteract and !inConversation and dialogueIndex > -1 and dialogueIndex < array_length(myDialogue[0]) {
 		//	Condition check this dialogue
 		condition_check_dialogue(id)

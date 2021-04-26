@@ -1,13 +1,16 @@
 {
   "spriteId": {
-    "name": "s_player_kid_dance",
-    "path": "sprites/s_player_kid_dance/s_player_kid_dance.yy",
+    "name": "s_player_kid_dance_right_idle",
+    "path": "sprites/s_player_kid_dance_right_idle/s_player_kid_dance_right_idle.yy",
   },
   "solid": false,
   "visible": true,
   "spriteMaskId": null,
   "persistent": false,
-  "parentObjectId": null,
+  "parentObjectId": {
+    "name": "class_npc",
+    "path": "objects/class_npc/class_npc.yy",
+  },
   "physicsObject": false,
   "physicsSensor": false,
   "physicsShape": 1,

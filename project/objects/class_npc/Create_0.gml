@@ -6,6 +6,8 @@ npcSprite = s_brother_face
 inConversation = false
 dialogueIndex = -1
 
+hasDialogue = true
+
 moving = false
 freemove = false
 
