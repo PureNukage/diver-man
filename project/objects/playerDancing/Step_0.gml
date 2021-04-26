@@ -1,6 +1,6 @@
 event_inherited()
 
-if input.keyInteract and interactable {
+if input.keyInteract and !dancingFinished and interactable and !on and !instance_exists(walkAndTalk2) {
 	on = true
 	player.muted = true
 	

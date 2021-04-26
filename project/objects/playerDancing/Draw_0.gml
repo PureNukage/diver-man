@@ -13,6 +13,7 @@ if on {
 	draw_set_halign(fa_left)
 	draw_set_valign(fa_middle)
 	draw_text(xx-200,yy-12,"Mistakes: "+string(mistakes)+"/5")
+	draw_text(xx-200,yy+36,"Dances: "+string(dances))
 	
 	if !audio_is_playing(sound_electroswing) sound.playMusic(sound_electroswing, true)
 	
@@ -49,7 +50,7 @@ if on {
 			if i == 0 draw_set_alpha(1)
 			else if i == 1 draw_set_alpha(0.5)
 			else draw_set_alpha(0)
-			draw_sprite(Sprite,0,xx+list_offset,yy)
+			if list_offset <= 90 draw_sprite(Sprite,0,xx+list_offset,yy)
 			
 			if Key and list_offset < 5 {
 				list_remove_one()
@@ -95,10 +96,20 @@ if on {
 			
 			add_dance()
 			
-			if dances == 3 list_speed += 0.12
-			if dances == 2 list_speed += 0.13
-			if dances == 1 list_speed += .10
-			list_offset = list_offset_start
+			if dances == 3 list_speed = 1.20
+			if dances == 1 list_speed = 1.40
+			//if dances == 1 list_speed = 1.35
+			
+			if dances == 3 or dances == 1 list_offset = list_offset_start*2
+			else list_offset = list_offset_start
+		}
+		else {
+			if ds_list_empty(list) and ds_list_empty(list_active) and !dancingFinished {
+				instance_create_layer(0,0,"Instances",danceTimer)
+				dancingFinished = true
+				//on = false
+				interactability = false
+			}
 		}
 	}
 	list_offset -= list_speed
@@ -107,7 +118,7 @@ if on {
 
 //	Golden aura
 else {
-	if interactable {
+	if interactable and !instance_exists(walkAndTalk2) and !dancingFinished {
 		var xx = x 
 		var yy = y-(sprite_get_yoffset(sprite_index)*image_yscale) + 25
 	

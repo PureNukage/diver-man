@@ -37,7 +37,7 @@ function add_person() {
 				newDestY = 25
 			break
 		}
-		var Person = instance_create_layer(x+randomX,y,"Instances",crowdAdult)
+		var Person = instance_create_layer(x+randomX,y+50,"Instances",crowdAdult)
 		ds_list_add(list,Person)
 		Person.move_to(newDestX,300+newDestY)
 		Person.number = number

@@ -4,7 +4,7 @@ hasDialogue = false
 
 on = false
 
-dances = 6
+dances = 1
 
 list = ds_list_create()
 list_active = ds_list_create()
@@ -15,6 +15,7 @@ list_speed = 1
 list_success = 0
 mistakes = 0
 sentPersonAway = false
+dancingFinished = false
 function list_unpack() {
 	var amount = 3 - ds_list_size(list_active)
 	for(var i=0;i<amount;i++) {
@@ -36,7 +37,7 @@ function add_dance() {
 	dances--
 	//	Add the key presses to the list
 	var amount = 20
-	var amount = irandom_range(12,20)
+	var amount = irandom_range(5,10)
 	for(var i=0;i<amount;i++) {
 		ds_list_add(list, choose(up, down, left, right))
 	}	

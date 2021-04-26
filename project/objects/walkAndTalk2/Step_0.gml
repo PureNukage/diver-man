@@ -50,8 +50,8 @@ else if stage == 1 {
 		player.x = x
 		player.groundX = x
 		
-		if x >= room_width/2 {
-			x = room_width/2
+		if x >= room_width/2 + 50 {
+			x = room_width/2 + 50
 			
 			stage = 2
 		}
@@ -61,8 +61,8 @@ else if stage == 1 {
 else if stage == 2 {
 	destroy = true
 	instance_create_layer(x+96+gap,y,"Instances",brotherMusic)
-	instance_create_layer(x,y,"Instances",playerDance)
-	instance_create_layer(0,0,"Instances",danceTimer)
+	instance_create_layer(x,y,"Instances",player)
+	//instance_create_layer(0,0,"Instances",danceTimer)
 	gui.drawGold = true
 	exit
 }
@@ -77,3 +77,4 @@ if instance_exists(playerShadow) {
 	playerShadow.y = y
 	playerShadow.groundY = y
 }
+depth = -y
