@@ -57,11 +57,18 @@ if on {
 		app.roomTransition(RoomPlayground, 20)
 	}
 	
-	//	Playground
+	//	DEBUG
 	var _string = "DEBUG" if app.mode == mode_PRODUCTION _string = "PROD"
 	var clicked = draw_button_ext(display_get_gui_width()-128-8,224, 128,64,"mode: "+_string) 
 	if clicked {
 		app.mode = !app.mode
+	}
+	
+	//	Underwater
+	var clicked = draw_button_ext(display_get_gui_width()-128-8,296, 128,64,"go underwater") 
+	if clicked {
+		app.roomTransition(RoomDocks_Underwater, 20)
+		if questManager.find_quest(quests.watch) == -1 questManager.add_quest(quests.watch)
 	}
 	
 	draw_reset()
