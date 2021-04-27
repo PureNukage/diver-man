@@ -66,8 +66,10 @@ if !paused {
 			y = player.y
 		}
 	}
-
-	zoom_level = clamp((zoom_level + (mouse_wheel_down()-mouse_wheel_up())*0.1),0.25,4.0)
+	
+	if debug.on {
+		zoom_level = clamp((zoom_level + (mouse_wheel_down()-mouse_wheel_up())*0.1),0.25,4.0)
+	}
 
 	camera_set_view_pos(camera,
 			clamp( camera_get_view_x(camera), 0, room_width - camera_get_view_width(camera) ),
