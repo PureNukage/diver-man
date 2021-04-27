@@ -37,3 +37,63 @@ function draw_button_ext(x,y,width,height,text) {
 	
 	return clicked
 }
+	
+rebuilding = false
+rebuildIndex = -1
+rebuildList = ds_list_create()
+rebuildTimer = -1
+function rebuild() {
+	
+	rebuildList[| 0] = RoomCityHub
+	rebuildList[| 1] = RoomDocks
+	rebuildList[| 2] = RoomDocks_Underwater
+	
+	app.mode = mode_DEBUG
+	
+	rebuilding = true
+	
+}
+function _rebuild() {
+	
+	if rebuildIndex == -1 {
+		if !ds_list_empty(rebuildList) {
+			rebuildIndex = rebuildList[| 0]
+			ds_list_delete(rebuildList, 0)
+			room_goto(rebuildIndex)
+			app.collisionMaps = 0
+		}
+		//	Done rebuilding
+		else {
+			rebuilding = false
+			rebuildIndex = -1
+			rebuildTimer = -1
+			app.roomTransition(RoomMainMenu, 20)
+			app.mode = mode_PRODUCTION
+		}
+	}
+	//	Save collisionMap surfaces into buffers
+	else {
+		if room == rebuildIndex {
+			if rebuildTimer < 5 rebuildTimer++	
+			else {
+				
+				var carton = carton_create()
+				
+				with collisionMap {
+					var bufferName = room_get_name(room) + string(ID)
+					
+					carton_add(carton, bufferName+"finalSurface", surfaceBuffer)
+					carton_add(carton, bufferName+"inverseSurface", inverseSurfaceBuffer)
+					carton_add(carton, bufferName+"cookieCutSurface", cookieBuffer)
+					
+				}
+				carton_save(carton, room_get_name(room)+"buffers.bin", true)
+				carton_destroy(carton)
+				
+				rebuildIndex = -1
+				rebuildTimer = 0
+			}
+		}
+	}
+	
+}

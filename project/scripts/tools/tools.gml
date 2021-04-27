@@ -663,3 +663,15 @@ function tile_info(_bottom, _top) constructor {
 	bottom = _bottom
 	top = _top
 }
+	
+function carton_unpack(carton, _metadata) {
+	var List = ds_list_create()
+	
+	var amount = carton_count(carton)
+	for(var i=0;i<amount;i++) {
+		if _metadata ds_list_add(List, carton_get_metadata(carton,i))
+		else ds_list_add(List, carton_get_buffer(carton,i))
+	}
+	
+	return List
+}

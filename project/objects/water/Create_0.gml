@@ -97,7 +97,7 @@ function generate_caustic_map() {
 	causticBuffer = buffer_create(room_width*room_height*4,buffer_grow,1)
 	buffer_get_surface(causticBuffer,Surface,0)
 	
-	surface_save(Surface,"causticMap.png")
+	//surface_save(Surface,"causticMap.png")
 	
 	surface_free(Surface)
 }

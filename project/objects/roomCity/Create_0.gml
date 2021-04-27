@@ -14,7 +14,7 @@ if !createdBackground {
 			
 	layer_background_sprite(layer_background_get_id(layer_get_id("Background")), sprite)
 			
-	surface_save(surface,"roomCitySurface.png")
+	//surface_save(surface,"roomCitySurface.png")
 			
 	surface_free(surface)
 			

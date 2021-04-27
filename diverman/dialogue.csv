@@ -1,0 +1,183 @@
+﻿default,0,Hello world!,
+intro,1,It's been a week since I lost my job.,s_brother_face
+intro,2,I lasted a few more months using butter...,s_brother_face
+intro,3,But I'm too large for chimneys now.,s_brother_face
+intro,respintru,Did you get chosen for the factory today?,s_brother_face
+respintru,4,No,
+respintru,5,...,
+intro,6,Nuts,s_brother_face
+intro,6,Darn.,s_brother_face
+intro,7,"Well, hopefully we have enough for a while.",s_brother_face
+intro,respintr1,...,
+intro,9,Today sucks.,s_brother_face
+intro,10,It's getting late...,s_brother_face
+intro,11,If you want to spend that coin nows the time.,s_brother_face
+intro,-12,Then lets head home.,s_brother_face
+intro,13,INTRO OVER,
+respintr1,-8,We have 1 coin left.,
+respintr1,7,...,
+brother,1,<gghhrrrr>,s_brother_face
+brother,2,I'm hungry.,s_brother_face
+brother,resphome,Do you want to head home?,s_brother_face
+resphome,3,Yes,
+resphome,4,No,
+brother,-5,Ok lets go.,s_brother_face
+brother,-2,Make it snappy.,s_brother_face
+brother,-6,HEAD HOME,
+brotherFinalCoin,respBrotherCoin,What'd you spend the coin on?,s_brother_face
+respBrotherCoin,1,Decided to keep it.,
+respBrotherCoin,2,Played street craps and made some money!,
+respBrotherCoin,3,Here's a sandwich.,
+respBrotherCoin,6,Listened to Sailor Petes tale about losing his leg.,
+respBrotherCoin,10,...I gambled and I lost it all.,
+respBrotherCoin,9,Played street craps and flipped the coin into profit.,
+respBrotherCoin,11,That's it.,
+brotherFinalCoin,11,Smart. We may need it.,s_brother_face
+brotherFinalCoin,respBrotherCoin,Nice!,s_brother_face
+brotherFinalCoin,4,Oh wow! And It's my favorite. ,s_brother_face
+brotherFinalCoin,5,*munch munch munch*,s_brother_face
+brotherFinalCoin,respBrotherCoin,Thanks!,s_brother_face
+brotherFinalCoin,respBrotherPeteTale,How'd he lose it? Was it a shark like I guessed?,s_brother_face
+brotherFinalCoin,8,Davey Jones! Ha!,s_brother_face
+brotherFinalCoin,respBrotherCoin,Well that's one mystery solved.,s_brother_face
+brotherFinalCoin,11,An investment for later? Ok I'm trusting you.,s_brother_face
+brotherFinalCoin,11,Oh.,s_brother_face
+brotherFinalCoin,-12,What a day.,s_brother_face
+respBrotherPeteTale,8,His battleship sunk in a storm.,
+respBrotherPeteTale,7,He says Davey Jones sunk the battleship he was on.,
+brotherNightChat,respNightChat,Do you have a plan for us?,s_brother_face
+respNightChat,1,I think so,
+respNightChat,1,I don't know,
+brotherNightChat,2,Ok.,s_brother_face
+brotherNightChat,3,I've been playing my flute recently.,s_brother_face
+brotherNightChat,4,And I have an idea for tomorrow.,s_brother_face
+brotherNightChat,5,...,s_brother_face
+brotherNightChat,6,!!!,s_brother_face
+brotherNightChat,-7,"Hey, I can't find my watch!!!",s_brother_face
+brotherNightChat,8,Ok good its out here.,s_brother_face
+brotherNightChat,9,Inside this watch...,s_brother_face
+brotherNightChat,10,...is our last photo of Mom and Dad.,s_brother_face
+brotherNightChat,11,...,s_brother_face
+brotherNightChat,-12,Ok NIGHT,s_brother_face
+musicMorning1,1,Okay so the plan is...,s_brother_face
+musicMorning1,2,...I'm going to play my flute...,s_brother_face
+musicMorning1,3,... and you're going to dance.,s_brother_face
+musicMorning1,4,The city is BUSY this morning! ,s_brother_face
+musicMorning1,5,Better for business!,s_brother_face
+musicMorning1,-6,Hop on the boxes when you're ready.,s_brother_face
+bullys1,-1,HEY TWERP!!,s_bully1_face
+bullys1,2,I told you it was the little twerp.,s_bully1_face
+bullys1,3,Can you IMAGINE not having parents? ,s_bully1_face
+bullys1,4,Who would you try and impress??,s_bully2_face
+bullys1,5,Only to be told your dreams of...,s_bully2_face
+bullys1,6,...working on engines are stupid.,s_bully2_face
+bullys1,7,Ha! Can you imagine?,s_bully1_face
+bullys1,-8,I think we should wedgie the little twerp!,s_bully2_face
+bullys2,1,Give me back my watch!,s_brother_face
+bullys2,2,Oh yeah?,s_bully1_face
+bullys2,-3,Watch this!,s_bully1_face
+bullys2,-4,Hahaha. Lets beat it.,s_bully2_face
+brotherAfterWatch,1,Those jerks threw the watch off the dock!,s_brother_face
+brotherAfterWatch,2,"Well, the photo is behind glass...",s_brother_face
+brotherAfterWatch,3,... so it should be fine. ,s_brother_face
+brotherAfterWatch,4,And I thought yesterday was bad.,s_brother_face
+brotherAfterWatch,-5,This confirms that life sucks.,s_brother_face
+sailorPeteEntrance,-1,You could say that again.,s_sailorpete_face
+sailorPeteEntrance,2,*burp*,s_sailorpete_face
+sailorPeteEntrance,3,Hey boys... You're looking glum.,s_sailorpete_face
+sailorPeteEntrance,4,Glummer than usual for orphans.,s_sailorpete_face
+sailorPeteEntrance,-5,*burp*,s_sailorpete_face
+brotherAfterWatch,6,The Roosh brothers threw something...,s_brother_face
+brotherAfterWatch,-7,...very important to me off the dock.,s_brother_face
+sailorPeteEntrance,6,*burp*,s_sailorpete_face
+sailorPeteEntrance,7,That's a reason to take a drink.,s_sailorpete_face
+sailorPeteEntrance,8,I might have something that'll help.,s_sailorpete_face
+sailorPeteEntrance,-9,Other than rum.,s_sailorpete_face
+sailorPeteGivingSuit,1,*burp*,s_sailorpete_face
+sailorPeteGivingSuit,2,On this box is one of my old diving suits.,s_sailorpete_face
+sailorPeteGivingSuit,3,I used them to do repairs back in the Navy.,s_sailorpete_face
+sailorPeteGivingSuit,4,Also how I lost my leg to Davey Jones!,s_sailorpete_face
+sailorPeteGivingSuit,5,*burp*,s_sailorpete_face
+sailorPeteGivingSuit,-6,Which one of ya is getting in?,s_sailorpete_face
+brotherGivingSuit,respGettingSuit,Well?,s_sailorpete_face
+respGettingSuit,1,I'll do it.,
+respGettingSuit,1,I'd rather not.,
+brotherGivingSuit,2,He'll do it. I can't afford to get sweaty.,s_brother_face
+brotherGivingSuit,-3,I can't afford Nadya seeing me in that.,s_brother_face
+sailorPeteGivingSuit,-7,"Alright, come here boy.",s_sailorpete_face
+brotherGotSuit,1,Yeah...,s_brother_face
+brotherGotSuit,2,Can't understand you.,s_brother_face
+brotherGotSuit,0,Good luck though!,s_brother_face
+peteGotSuit,1,*burp* Good good,s_sailorpete_face
+peteGotSuit,-1,Get in the crane and I'll lower you down,s_sailorpete_face
+brotherGivingWatch,1,You found it!,s_brother_face
+brotherGivingWatch,2,And the photo is dry! Amazing!,s_brother_face
+brotherGivingWatch,3,What was it like down there? ,s_brother_face
+brotherGivingWatch,4,Before Sailor Pete left we were talking...,s_brother_face
+brotherGivingWatch,5,...and he was telling me about the docks.,s_brother_face
+brotherGivingWatch,6,Rumor is there are chests all around!,s_brother_face
+brotherGivingWatch,7,Although they can be hard to reach. ,s_brother_face
+brotherGivingWatch,8,Pete says we can use his suit. ,s_brother_face
+brotherGivingWatch,respDiving,What do you think?,s_brother_face
+respDiving,9,Lets find some treasure!,
+brotherGivingWatch,10,Heck yes! This will be our best endeavor yet!,s_brother_face
+brotherGivingWatch,-12,We'll sleep on a pile of gold doubloons!,s_brother_face
+brotherGivingWatch,-11,Can't understand you. Take off the suit!,s_brother_face
+vendorFinalCoin,1,"Oh hello there, I was just about to wrap up shop. But..",s_vendor_face
+vendorFinalCoin,2,I have time to make a quick sandwich. ,s_vendor_face
+vendorFinalCoin,respFinalCoinVendor,"For you? Hmm, one coin. ",s_vendor_face
+respFinalCoinVendor,3,Okay. My brother and I love your sandwiches. ,
+respFinalCoinVendor,4,Let me think about it. ,
+vendorFinalCoin,5,Aww that's sweet. ,s_vendor_face
+vendorFinalCoin,-1,No problem dear. ,s_vendor_face
+vendorFinalCoin,-5,Have a good night dear!,s_vendor_face
+vendorFinalCoin,-1,Unfortunately dear these sandwiches aren't free. ,s_vendor_face
+sailorPeteFinalCoin,1,zzz...zzz...zz- hgnhh?,s_sailorpete_face
+sailorPeteFinalCoin,2,The orphan... h-howsh it going?,s_sailorpete_face
+sailorPeteFinalCoin,3,Spare a coin for an old sailor like me...,s_sailorpete_face
+sailorPeteFinalCoin,4,*hiccup*,s_sailorpete_face
+sailorPeteFinalCoin,respFinalCoinSailorPete,...and I'll entertain ye with a tale of the sea.,s_sailorpete_face
+respFinalCoinSailorPete,5,Spin me a tale.,
+respFinalCoinSailorPete,6,I'll think about it. ,
+sailorPeteFinalCoin,7,Years ago I was in the Navy on a battleship.,s_sailorpete_face
+sailorPeteFinalCoin,-2,Your loss. It's a good one. ,s_sailorpete_face
+sailorPeteFinalCoin,8,The sky was telling of a storm and we were miles from land. ,s_sailorpete_face
+sailorPeteFinalCoin,9,We had not expected this so we prepared best we could.,s_sailorpete_face
+sailorPeteFinalCoin,10,The waves tossed the ship as the wind whipped across our faces.,s_sailorpete_face
+sailorPeteFinalCoin,11,The loudest noise I've ever heard blared as a humongous figure rose from the water...,s_sailorpete_face
+sailorPeteFinalCoin,12,...it was Davey Jones!,s_sailorpete_face
+sailorPeteFinalCoin,13,Suffice to say the ship did not survive the storm. Or my leg. ,s_sailorpete_face
+sailorPeteFinalCoin,respFinalCoinSaylorPete,And with my leg went my Navy career. They don't have much need of a cripple.,s_sailorpete_face
+respFinalCoinSaylorPete,15,Davey Jones! Really!?,
+respFinalCoinSaylorPete,14,I don't believe you.,
+sailorPeteFinalCoin,15,Go ahead and don't believe. *hiccup* But let me tell you. ,s_sailorpete_face
+sailorPeteFinalCoin,16,If I ever lay my eyes on Davey Jones again...,s_sailorpete_face
+sailorPeteFinalCoin,-15,...he'll rue the day he sank my life.,s_sailorpete_face
+sailorPeteFinalCoin,-2,Find me a coin and I'll let you hear a tale... *hiccup*,s_sailorpete_face
+dicekid,1,Hey kid! We're playing street craps.,s_bully2_face
+dicekid,respFinalCoinDiceKid,I know you're poor and all so I'll let you wager one coin. How about it? ,s_bully2_face
+respFinalCoinDiceKid,3,Put me down for one.,
+respFinalCoinDiceKid,2,Maybe later.,
+dicekid,0,Time is money and my times expensive so don't waste it. ,s_bully2_face
+dicekid,4,Atta boy. Heyo Jimmy put one down and give them a roll.,s_bully2_face
+dicekid,-5,"Oh you won. Eh, beginners luck. Enjoy the coins.",s_bully2_face
+dicekid,respFinalCoinKidDice,Try your hand again? ,s_bully2_face
+respFinalCoinKidDice,7,[Give %player.gold% coins],
+respFinalCoinKidDice,6,Not right now.,
+dicekid,-5,Then scram kid!,s_bully2_face
+dicekid,8,"Jimmy, put down %player.gold% and let it roll!",s_bully2_face
+dicekid,-9,"Todays your day, you won again.",s_bully2_face
+dicekid,respCoinKidFinalRoll,Would you give it a rest? You're ruining me.,s_bully2_face
+respCoinKidFinalRoll,11,[Give %player.gold% coins],
+respCoinKidFinalRoll,10,I'm good,
+dicekid,-10,Get outta here.,s_bully2_face
+dicekid,12,Looks like your luck ran out. ,s_bully2_face
+dicekid,-12,Thanks for playing!,s_bully2_face
+dicekid,0,I know you're poor so I'll be nice. You need some form of money to play. ,s_bully2_face
+vendorPlayerChase,0,I saw your brother run by with some boys a few minutes ago. They went to the docks.,s_vendor_face
+girlLastCoin,1,Hello!,s_girl_face
+girlLastCoin,respGirlFinalCoin,Say... do you know where your brother is?,s_girl_face
+respGirlFinalCoin,2,Can't say that I do.,
+respGirlFinalCoin,3,[Tell her where he is],
+girlLastCoin,0,Well alriiiight. Let me know if you do!,s_girl_face
+girlLastCoin,-3,Oh goody!,s_girl_face

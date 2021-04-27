@@ -63,6 +63,7 @@ else if stage == 1 {
 		player.canMove = false
 		instance_create_layer(x+96+gap,y,"Instances",brother)
 		destroy = true
+		app.buffer_loader(RoomCityHub)
 		room_goto(RoomCityHub)
 		roomIntroSurface.surfaceX = layer_get_x("Background")
 		roomIntroSurface.brotherX = x+96+gap

@@ -1,7 +1,7 @@
 creator = ""
 version = ""
 
-mode = mode_DEBUG
+mode = mode_PRODUCTION
 
 math_set_epsilon(0.000000001)
 
@@ -15,6 +15,8 @@ newRoom = false
 roomPrevious = -1
 
 collisionMaps = 0
+collisionMapsBuffers = ds_list_create()
+collisionMapsMetadata = ds_list_create()
 
 var Layer = "Instances"
 instance_create_layer(0,0,Layer,input)
@@ -395,6 +397,9 @@ function roomTransitioning() {
 			
 			//	Transition over, lets go to the next room
 			if roomTransitionLerp == 0 {
+				
+				buffer_loader(roomTransitionTo)
+				
 				if room != RoomMainMenu app.save_game(false)
 				room_goto(roomTransitionTo)
 				app.cameraRefresh = true
@@ -640,4 +645,21 @@ function scene_loader() {
 	scene_loaded = true
 	
 	debug.log(string_upper(room_get_name(room)))
+}
+	
+function buffer_loader(roomIndex) {
+	//	Prep collisionMap buffers and metadata
+	var filename = room_get_name(roomIndex)+"buffers.bin"
+	if file_exists(filename) {
+		var carton = carton_load(filename, true)
+		if collisionMapsBuffers > -1 ds_list_destroy(collisionMapsBuffers)
+		if collisionMapsMetadata > -1 ds_list_destroy(collisionMapsMetadata)
+		collisionMapsBuffers = carton_unpack(carton, false)
+		collisionMapsMetadata = carton_unpack(carton, true)
+		carton_destroy(carton)
+		return true
+	}
+	else {
+		return false	
+	}
 }

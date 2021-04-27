@@ -72,7 +72,7 @@ function createSurface() {
 		if surfaceBuffer > -1 and buffer_exists(surfaceBuffer) buffer_delete(surfaceBuffer)
 		surfaceBuffer = buffer_create(width*height*4, buffer_grow, 1)
 		buffer_get_surface(surfaceBuffer, finalSurface, 0)
-		buffer_save(surfaceBuffer, bufferName+"finalSurface.sav")
+		//buffer_save(surfaceBuffer, bufferName+"finalSurface.sav")
 	
 		////	Inverse surface used for shadow masks
 		var inverseSurface = surface_create((sprite_get_width(sprite_index)*image_xscale)+inverseSurfaceExtraPixels,(sprite_get_height(sprite_index)*image_yscale)+inverseSurfaceExtraPixels)
@@ -98,7 +98,7 @@ function createSurface() {
 		if inverseSurfaceBuffer > -1 and buffer_exists(inverseSurfaceBuffer) buffer_delete(inverseSurfaceBuffer)
 		inverseSurfaceBuffer = buffer_create((((sprite_get_width(sprite_index)*image_xscale)+inverseSurfaceExtraPixels)+((sprite_get_height(sprite_index)*image_yscale)+inverseSurfaceExtraPixels))*4, buffer_grow, 1)
 		buffer_get_surface(inverseSurfaceBuffer, inverseSurface, 0)
-		buffer_save(inverseSurfaceBuffer, bufferName+"inverseSurface.sav")
+		//buffer_save(inverseSurfaceBuffer, bufferName+"inverseSurface.sav")
 	
 		//surface_save(inverseSurface,"inverseSurface"+string(id)+".png")
 	
@@ -120,7 +120,7 @@ function createSurface() {
 		if cookieBuffer > -1 and buffer_exists(cookieBuffer) buffer_delete(cookieBuffer)
 		cookieBuffer = buffer_create((sprite_get_width(sprite_index)*image_xscale)*(sprite_get_height(sprite_index)*image_yscale)*4,buffer_grow,1)
 		buffer_get_surface(cookieBuffer, cookieCutSurface, 0)
-		buffer_save(cookieBuffer, bufferName+"cookieCutSurface.sav")
+		//buffer_save(cookieBuffer, bufferName+"cookieCutSurface.sav")
 	
 		surface_free(Surface)
 		surface_free(inverseSurface)
@@ -131,14 +131,29 @@ function createSurface() {
 	//	app.mode == mode_PRODUCTION
 	else {
 		
-		if surfaceBuffer > -1 and buffer_exists(surfaceBuffer) buffer_delete(surfaceBuffer)
-		surfaceBuffer = buffer_load(bufferName + "finalSurface.sav")
+		var MD = app.collisionMapsMetadata
+		var BF = app.collisionMapsBuffers
 		
-		if inverseSurfaceBuffer > -1 and buffer_exists(inverseSurfaceBuffer) buffer_delete(inverseSurfaceBuffer)
-		inverseSurfaceBuffer = buffer_load(bufferName + "inverseSurface.sav")
+		var Index = ds_list_find_index(MD, bufferName+"finalSurface")
+		if Index > -1 {
+			surfaceBuffer = BF[| Index]
+			ds_list_delete(BF, Index)
+			ds_list_delete(MD, Index)
+		}
 		
-		if cookieBuffer > -1 and buffer_exists(cookieBuffer) buffer_delete(cookieBuffer)
-		cookieBuffer = buffer_load(bufferName + "cookieCutSurface.sav")
+		var Index = ds_list_find_index(MD, bufferName+"inverseSurface")
+		if Index > -1 {
+			inverseSurfaceBuffer = BF[| Index]
+			ds_list_delete(BF, Index)
+			ds_list_delete(MD, Index)
+		}
+		
+		var Index = ds_list_find_index(MD, bufferName+"cookieCutSurface")
+		if Index > -1 {
+			cookieBuffer = BF[| Index]
+			ds_list_delete(BF, Index)
+			ds_list_delete(MD, Index)
+		}
 		
 	}
 	
