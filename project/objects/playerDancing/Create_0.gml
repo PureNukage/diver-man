@@ -4,7 +4,7 @@ hasDialogue = false
 
 on = false
 
-dances = 0
+dances = 6
 
 list = ds_list_create()
 list_active = ds_list_create()

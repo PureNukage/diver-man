@@ -96,8 +96,8 @@ if on {
 			
 			add_dance()
 			
-			if dances == 3 list_speed = 1.20
-			if dances == 1 list_speed = 1.40
+			if dances == 3 list_speed = 1.25
+			if dances == 1 list_speed = 1.50
 			//if dances == 1 list_speed = 1.35
 			
 			if dances == 3 or dances == 1 list_offset = list_offset_start*2
@@ -105,6 +105,15 @@ if on {
 		}
 		else {
 			if ds_list_empty(list) and ds_list_empty(list_active) and !dancingFinished {
+				
+				if !ds_list_empty(dancingCrowdManager.list) {
+					sound.playSoundEffect(sound_coins)
+					var Random = irandom_range(0,ds_list_size(dancingCrowdManager.list)-1)
+					var RandomPerson = dancingCrowdManager.list[| Random]
+					var Coin = instance_create_layer(RandomPerson.x,RandomPerson.y,"Instances",coin)
+					Coin.stage = 2
+				}
+				
 				instance_create_layer(0,0,"Instances",danceTimer)
 				dancingFinished = true
 				//on = false
