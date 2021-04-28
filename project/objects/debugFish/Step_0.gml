@@ -10,7 +10,13 @@ if (hspd != 0 or vspd != 0) {
 	setForce(moveForce, moveDirection)
 }
 
+if input.keyJump {
+	setThrust(10)	
+}
+
 applyMovement()
+
+if !onGround applyThrust()
 
 if onGround {
 	x = groundX

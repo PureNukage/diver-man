@@ -1,6 +1,6 @@
 event_inherited()
 
-if moving _moving()
+if moving and !inConversation _moving()
 
 applyMovement()
 

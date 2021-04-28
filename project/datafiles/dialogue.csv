@@ -103,7 +103,7 @@ brotherGivingSuit,respGettingSuit,Well?,s_sailorpete_face
 respGettingSuit,1,I'll do it.,
 respGettingSuit,1,I'd rather not.,
 brotherGivingSuit,2,He'll do it. I can't afford to get sweaty.,s_brother_face
-brotherGivingSuit,-3,I can't afford Nadya seeing me in that.,s_brother_face
+brotherGivingSuit,-3,"Who knows, Nadya might see me in that.",s_brother_face
 sailorPeteGivingSuit,-7,"Alright, come here boy.",s_sailorpete_face
 brotherGotSuit,1,Yeah...,s_brother_face
 brotherGotSuit,2,Can't understand you.,s_brother_face
@@ -181,3 +181,6 @@ respGirlFinalCoin,2,Can't say that I do.,
 respGirlFinalCoin,3,[Tell her where he is],
 girlLastCoin,0,Well alriiiight. Let me know if you do!,s_girl_face
 girlLastCoin,-3,Oh goody!,s_girl_face
+crabLost,1,aahhh !!,s_mudcrab_face
+crabLost,2,i cant get to my friends!,s_mudcrab_face
+crabLost,0,"mister, would you help bounce me onto the next cliff?",s_mudcrab_face

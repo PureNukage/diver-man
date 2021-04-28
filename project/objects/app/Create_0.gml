@@ -632,6 +632,8 @@ function scene_loader() {
 							Light.image_xscale = 1.468
 							Light.image_yscale = 1.375
 							surface_free(lighting.surface)
+							
+							var LostCrab = instance_create_layer(1440,2064,Layer,mudcrab_lost)
 						break
 					}
 				}

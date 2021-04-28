@@ -2,6 +2,7 @@ mpGrid = -1
 hoseGrid = -1
 hoseGrid2 = -1
 hoseGrid3 = -1
+blankGrid = -1
 
 z_layers = 0
 
@@ -26,6 +27,7 @@ function mpGrid_build() {
 	if hoseGrid > -1 mp_grid_destroy(hoseGrid)
 	if hoseGrid2 > -1 mp_grid_destroy(hoseGrid2)
 	if hoseGrid3 > -1 mp_grid_destroy(hoseGrid3)
+	if blankGrid > -1 mp_grid_destroy(blankGrid)
 	
 	hoseCW = 8
 	hoseCH = 8
@@ -35,6 +37,7 @@ function mpGrid_build() {
 	hoseGrid = mp_grid_create(0,0,gridWidth*2,gridHeight*2,cellWidth/2,cellHeight/2)
 	hoseGrid2 = mp_grid_create(0,0,gW,gH,hoseCW,hoseCH)
 	hoseGrid3 = mp_grid_create(0,0,room_width/96,room_height/96,96,96)
+	blankGrid = mp_grid_create(0,0,gridWidth,gridHeight,cellWidth,cellHeight)
 	
 	mpGrid = mp_grid_create(0,0,gridWidth,gridHeight,cellWidth,cellHeight)
 	

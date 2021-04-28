@@ -23,7 +23,7 @@ if (map == -1 or (map > -1 and !map.drawSurface))  {
 		//var oldMask = ID.mask_index
 		//ID.mask_index = ID.sprite_index
 		if ID.y < bbox_bottom+height - 1 and ID.groundY < bbox_bottom-1  {
-			if (ID.z < z+height) or (ID.map != id and ID.y <= bbox_top+z) {
+			if (ID.z < z+height) {//or (ID.map != id and ID.y <= bbox_top+z) {
 				if ID.map == -1 or (ID.map > -1 and !ID.map.ramp) {
 					depth = ID.depth - 10
 					drawSurface = true

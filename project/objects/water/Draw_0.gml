@@ -85,6 +85,8 @@ if on {
 	draw_set_alpha(0.15)
 	draw_surface(causticSurface,0,0)
 	
+	draw_reset()
+	
 	//surface_free(causticSurface)
 }
 	

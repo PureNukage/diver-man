@@ -4,10 +4,13 @@ if drawUnit draw_unit()
 
 if interactable {
 	var xx = x 
-	var yy = y-(sprite_get_yoffset(sprite_index)*image_yscale)
+	var yy = y-(sprite_get_yoffset(sprite_index)*image_yscale)-z
 	
 	if object_index == cage {
 		yy = y - 100		
+	}
+	else if object_index == mudcrab_lost {
+		yy = bbox_top - 50	- z
 	}
 	
 	var Sprite = s_keyboard_e

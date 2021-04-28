@@ -148,3 +148,11 @@ function random_move(distance) {
 		debug.log("Cannot pathfind here!")
 	}
 }
+	
+function free_move(_x, _y) {
+	freemove = true
+	pos = 1
+	xGoto = _x
+	yGoto = _y
+	moving = true
+}
