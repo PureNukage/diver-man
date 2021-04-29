@@ -1,4 +1,11 @@
+event_inherited()
+
 if opening open()
+
+if opened and treasure == -1 {
+	interactibility = false
+	interactable = false
+}
 
 var spacer = 64
 if player.onGround and player.z >= z and point_in_rectangle(player.groundX,player.groundY,x-spacer,y-spacer,x+spacer,y+spacer) {

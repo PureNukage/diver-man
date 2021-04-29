@@ -1,8 +1,12 @@
-//event_inherited()	
+event_inherited()
+
+hasDialogue = false
+drawShadow = false
 
 z = 0
 
 image_speed = 0
+image_index = 0
 
 highlight = false
 
