@@ -70,12 +70,12 @@ if on {
 		rebuild()
 	}
 	
-	////	Underwater
-	//var clicked = draw_button_ext(display_get_gui_width()-128-8,296, 128,64,"go underwater") 
-	//if clicked {
-	//	app.roomTransition(RoomDocks_Underwater, 20)
-	//	if questManager.find_quest(quests.watch) == -1 questManager.add_quest(quests.watch)
-	//}
+	//	Underwater
+	var clicked = draw_button_ext(display_get_gui_width()-256-8,296, 128,64,"go underwater") 
+	if clicked {
+		app.roomTransition(RoomDocks_Underwater, 20)
+		if questManager.find_quest(quests.watch) == -1 questManager.add_quest(quests.watch)
+	}
 	
 	draw_reset()
 	

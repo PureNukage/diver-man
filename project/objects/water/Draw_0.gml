@@ -46,7 +46,7 @@ if on {
 		draw_surface_ext(causticSurfaceCutout,0,0,1,1,0,c_black,1)
 		
 		var List = ds_list_create()
-		collision_rectangle_list(app.x-app.width/2,app.y-app.height/2, app.x+app.width/2,app.y+app.height/2, class_unit,false,false,List,false)
+		collision_rectangle_list(app.x-app.width/2,app.y-app.height/2, app.x+app.width/2,app.y+app.height/2 +200, class_unit,false,false,List,false)
 		if instance_exists(player) and ds_list_find_index(List,player.id) == -1 ds_list_add(List,player.id)
 		if !ds_list_empty(List) {
 			for(var i=0;i<ds_list_size(List);i++) {

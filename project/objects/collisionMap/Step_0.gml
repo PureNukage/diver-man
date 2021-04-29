@@ -11,7 +11,7 @@ if drawSurface {
 		var Map = List[| i]
 		if Map.bbox_bottom > bbox_bottom and Map != map {
 			Map.drawSurface = true
-			Map.depth = depth - (Map.z+Map.height) - i
+			Map.depth = depth - ((Map.z+Map.height)/16) - i
 		}
 	}
 	ds_list_destroy(List)	
