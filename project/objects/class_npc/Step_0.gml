@@ -16,7 +16,7 @@ if interactable and interactibility and hasDialogue {
 	}
 }
 
-if !interactable and inConversation {
+if !interactable and inConversation and interactDistance {
 	inConversation = false
 	if instance_exists(textbox) instance_destroy(textbox)
 }

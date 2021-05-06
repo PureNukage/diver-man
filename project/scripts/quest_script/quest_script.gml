@@ -80,7 +80,7 @@ function quest_script(quest) {
 					break
 					//	Wait for player to go back to alley
 					case 0:
-						if room == RoomAlley {
+						if room == RoomAlleyHub {
 							quest_finished = true
 						}
 					break

@@ -31,6 +31,7 @@ hp = hpMax
 shadowEllipse = true
 interactibility = false
 interactable = false
+interactDistance = true
 interactCD = -1
 drawShadow = true
 drawUnit = true

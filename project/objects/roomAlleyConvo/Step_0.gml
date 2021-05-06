@@ -6,6 +6,7 @@ if stage == 0 {
 		Sequence = layer_sequence_create(Layer,0,0,Sequence2)
 		stage = 1
 		inConversation = true
+		brothersbox.filled = false
 	}
 	
 }
@@ -39,5 +40,6 @@ else if stage == 4 {
 		layer_set_visible(Layer, false)
 		app.roomTransition(RoomCity2, 5)
 		stage = 5
+		brothersbox.filled = true
 	}
 }

@@ -112,17 +112,22 @@ peteGotSuit,1,*burp* Good good,s_sailorpete_face
 peteGotSuit,-1,Get in the crane and I'll lower you down,s_sailorpete_face
 brotherGivingWatch,1,You found it!,s_brother_face
 brotherGivingWatch,2,And the photo is dry! Amazing!,s_brother_face
-brotherGivingWatch,3,What was it like down there? ,s_brother_face
-brotherGivingWatch,4,Before Sailor Pete left we were talking...,s_brother_face
-brotherGivingWatch,5,...and he was telling me about the docks.,s_brother_face
-brotherGivingWatch,6,Rumor is there are chests all around!,s_brother_face
-brotherGivingWatch,7,Although they can be hard to reach. ,s_brother_face
-brotherGivingWatch,8,Pete says we can use his suit. ,s_brother_face
-brotherGivingWatch,respDiving,What do you think?,s_brother_face
-respDiving,9,Lets find some treasure!,
-brotherGivingWatch,10,Heck yes! This will be our best endeavor yet!,s_brother_face
-brotherGivingWatch,-12,We'll sleep on a pile of gold doubloons!,s_brother_face
-brotherGivingWatch,-11,Can't understand you. Take off the suit!,s_brother_face
+brotherGivingWatch,respDiving,What was it like down there? ,s_brother_face
+respDiving,3,So far not a fan of crabs.,
+respDiving,4,Wet.,
+brotherGivingWatch,5,Too funny.,s_brother_face
+brotherGivingWatch,5,I bet.,s_brother_face
+brotherGivingWatch,-7,"Its late, lets head back to the alley.",s_brother_face
+brotherGivingWatch,-6,Can't understand you. Take off the suit!,s_brother_face
+brotherInAlleyAfterWatch,1,Before Sailor Pete left we were talking...,s_brother_face
+brotherInAlleyAfterWatch,2,...and he was telling me about the docks.,s_brother_face
+brotherInAlleyAfterWatch,3,Rumor is there are chests all around!,s_brother_face
+brotherInAlleyAfterWatch,4,Although they can be hard to reach. ,s_brother_face
+brotherInAlleyAfterWatch,5,Pete says we can use his suit. ,s_brother_face
+brotherInAlleyAfterWatch,respInAlleyAfterWatch,What do you think?,s_brother_face
+respInAlleyAfterWatch,6,Lets find some treasure!,
+brotherInAlleyAfterWatch,7,Heck yes! This will be our best endeavor yet!,s_brother_face
+brotherInAlleyAfterWatch,-8,We'll sleep on a pile of gold doubloons!,s_brother_face
 vendorFinalCoin,1,"Oh hello there, I was just about to wrap up shop. But..",s_vendor_face
 vendorFinalCoin,2,I have time to make a quick sandwich. ,s_vendor_face
 vendorFinalCoin,respFinalCoinVendor,"For you? Hmm, one coin. ",s_vendor_face

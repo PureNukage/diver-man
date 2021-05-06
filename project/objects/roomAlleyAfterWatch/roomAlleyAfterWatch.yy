@@ -1,15 +1,15 @@
 {
   "spriteId": {
-    "name": "s_watch",
-    "path": "sprites/s_watch/s_watch.yy",
+    "name": "s_collision_blue",
+    "path": "sprites/s_collision_blue/s_collision_blue.yy",
   },
   "solid": false,
   "visible": true,
   "spriteMaskId": null,
   "persistent": false,
   "parentObjectId": {
-    "name": "class_unit",
-    "path": "objects/class_unit/class_unit.yy",
+    "name": "class_npc",
+    "path": "objects/class_npc/class_npc.yy",
   },
   "physicsObject": false,
   "physicsSensor": false,
@@ -24,18 +24,18 @@
   "physicsKinematic": false,
   "physicsShapePoints": [],
   "eventList": [
-    {"isDnD":false,"eventNum":0,"eventType":8,"collisionObjectId":null,"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMEvent",},
     {"isDnD":false,"eventNum":0,"eventType":0,"collisionObjectId":null,"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMEvent",},
     {"isDnD":false,"eventNum":0,"eventType":3,"collisionObjectId":null,"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMEvent",},
+    {"isDnD":false,"eventNum":0,"eventType":8,"collisionObjectId":null,"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMEvent",},
   ],
   "properties": [],
   "overriddenProperties": [],
   "parent": {
-    "name": "misc",
-    "path": "folders/Game/misc.yy",
+    "name": "alley",
+    "path": "folders/Game/scenes/alley.yy",
   },
   "resourceVersion": "1.0",
-  "name": "watch",
+  "name": "roomAlleyAfterWatch",
   "tags": [],
   "resourceType": "GMObject",
 }

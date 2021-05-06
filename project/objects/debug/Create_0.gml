@@ -47,6 +47,7 @@ function rebuild() {
 	rebuildList[| 0] = RoomCityHub
 	rebuildList[| 1] = RoomDocks
 	rebuildList[| 2] = RoomDocks_Underwater
+	rebuildList[| 3] = RoomAlleyHub
 	
 	app.mode = mode_DEBUG
 	

@@ -79,6 +79,17 @@ function save_game(quick) {
 		var inventoryString = encode_gamedata(player.inventory)
 		ini_write_string(section,"inventoryString",inventoryString)
 	}
+	else {
+		var section = "PLAYER"
+		
+		ini_write_real(section,"suitOn",false)
+		ini_write_real(section,"gold",app.gold)
+		
+		var List = ds_list_create()
+		var inventoryString = encode_gamedata(List)
+		ini_write_string(section,"inventoryString",inventoryString)
+		ds_list_destroy(List)
+	}
 	
 	ini_close()
 }
@@ -639,6 +650,29 @@ function scene_loader() {
 				}
 				else {
 						
+				}
+			break
+		#endregion
+		
+		#region Alleyway
+			case RoomAlleyHub:
+				if (Quest > -1 and Quest.index == quests.spendFinalCoin) or (Quest == -1 and questManager.find_finished_quest(quests.spendFinalCoin) > -1) {
+					var Watch = instance_create_layer(292,168,"Instances",watch)
+					var Brother = instance_create_layer(384,336,"Instances",brotherFinalCoin)
+					Brother.image_xscale = -1
+					lighting.darkness = 0.2
+					lighting.on = true
+					surface_free(lighting.surface)
+				}
+				else if (Quest > -1 and Quest.index == quests.watch) {
+					lighting.darkness = 0.2
+					lighting.on = true
+					surface_free(lighting.surface)
+					brothersbox.filled = true
+					playerbed.filled = true
+					player.muted = true
+					instance_create_layer(0,0,"Instances",roomAlleyAfterWatch)
+					
 				}
 			break
 		#endregion

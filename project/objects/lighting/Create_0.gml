@@ -3,4 +3,4 @@ darkness = 0.1
 
 surface = -1
 
-on = false
+on = true

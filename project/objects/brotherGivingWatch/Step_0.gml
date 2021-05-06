@@ -1,9 +1,9 @@
 event_inherited()
 
 if player.suitOn {
-	if dialogueIndex != 11 and oldDialogueIndex == -1 {
+	if dialogueIndex != 6 and oldDialogueIndex == -1 {
 		oldDialogueIndex = dialogueIndex
-		dialogueIndex = 11
+		dialogueIndex = 6
 	}
 }
 else {
@@ -13,6 +13,9 @@ else {
 	}
 }
 
-if dialogueIndex == 12 {
-	game_end()	
+if dialogueIndex == 7 {
+	//game_end()
+	//	Go to alley
+	app.roomTransition(RoomAlleyHub, 10)
+	dialogueIndex = -7
 }

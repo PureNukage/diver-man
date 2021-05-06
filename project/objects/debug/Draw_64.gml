@@ -75,6 +75,7 @@ if on {
 	if clicked {
 		app.roomTransition(RoomDocks_Underwater, 20)
 		if questManager.find_quest(quests.watch) == -1 questManager.add_quest(quests.watch)
+		app.save_game(true)
 	}
 	
 	draw_reset()

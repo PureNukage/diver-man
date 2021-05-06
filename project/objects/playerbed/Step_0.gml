@@ -7,8 +7,16 @@ if interactable {
 		filled = true
 		player.muted = true
 		
-		var Convo = instance_create_layer(player.x,player.y,"Instances",roomAlleyConvo)
-		create_textbox(Convo, Convo.myDialogue[1, Convo.dialogueIndex])
-		Convo.inConversation = true
+		//var Quest = questManager.current_quest()
+		////	Intro alleyway
+		//if (Quest > -1 and Quest.index == quests.spendFinalCoin) or (Quest == -1 and questManager.find_finished_quest(quests.spendFinalCoin) > -1) {
+			var Convo = instance_create_layer(player.x,player.y,"Instances",roomAlleyConvo)
+			create_textbox(Convo, Convo.myDialogue[1, Convo.dialogueIndex])
+			Convo.inConversation = true
+		//}
+		////	After getting watch 
+		//else {
+		//	var Convo = instance_create_layer(0,0,"Instances",roomAlleyAfterWatch)
+		//}
 	}
 }
