@@ -3,6 +3,8 @@ stage = 0
 
 destroy = false
 
+//sound.playMusic(music_surface, true)
+
 if instance_exists(player) player.muted = true
 
 gapMax = 96

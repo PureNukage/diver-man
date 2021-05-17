@@ -32,7 +32,7 @@ function quest_script(quest) {
 					//	Wait for player to say Yes to going back then count quest stats
 					case -1:
 						if room == RoomCityHub {
-							if instance_exists(brother) and brother.dialogueIndex == 5 {
+							if instance_exists(brotherIntro) and brotherIntro.dialogueIndex == 5 {
 														
 								//	Quest variables
 								quest.keptCoin = false
@@ -109,7 +109,9 @@ function quest_script(quest) {
 		#region GET BROTHERS WATCH
 			case quests.watch:
 				
-				
+				if room == RoomAlleyHub {
+					quest_finished = true	
+				}
 				
 			break
 		#endregion

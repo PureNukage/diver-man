@@ -189,3 +189,27 @@ girlLastCoin,-3,Oh goody!,s_girl_face
 crabLost,1,aahhh !!,s_mudcrab_face
 crabLost,2,i cant get to my friends!,s_mudcrab_face
 crabLost,0,"mister, would you help bounce me onto the next cliff?",s_mudcrab_face
+wife,1,"I'm sorry about your necklace, dear.",s_husband_face
+wife,-2,"It's okay, things happen. Maybe something else could use it, haha.",s_wife_face
+wife,3,Helloooo. I couldn't help but overhear your situation.,s_brother_face
+wife,4,My brother and I specialize in underwater retrieval services. ,s_brother_face
+wife,5,If you two are willing to hang around we can get it back for you!,s_brother_face
+wife,-6,For a fee of course.,s_brother_face
+bobRossIntro,respBobRossIntro,Hey there kid.,s_bobross_face
+respBobRossIntro,1,What are you doing?,
+respBobRossIntro,2,Your hair is goofy.,
+bobRossIntro,3,I'm just tending to my garden. ,s_bobross_face
+bobRossIntro,0,I started growing it out and at first I thought it a mistake but now I view it as a happy accident.,s_bobross_face
+bobRossIntro,4,Helping out other forms of life no matter the size is one of the most rewarding things.,s_bobross_face
+bobRossIntro,respBobRossInquire,Enough about my garden though. How is your day going?,s_bobross_face
+respBobRossInquire,5,Not so good. We have one coin left.,
+respBobRossInquire,6,Can't complain.,
+bobRossIntro,8,That is a situation. May I offer an option?,s_bobross_face
+bobRossIntro,7,"Ah, so you're a stoic. Wanting to save face amongst strangers. ",s_bobross_face
+bobRossIntro,0,"Myself, I like to talk to my plants. I tell them about my day and I listen to theirs. ",s_bobross_face
+bobRossIntro,respBobRossDonate,If you invest the coin into my garden I will pay it back once I harvest and sell my tomatoes.,s_bobross_face
+respBobRossDonate,9,Sure!,
+respBobRossDonate,10,No thanks.,
+bobRossIntro,-11,My plants and I appreciate it. ,s_bobross_face
+bobRossIntro,0,I understand.,s_bobross_face
+bobRossIntro,-11,The tomato plants will be fully grown in a couple of days and then I'll harvest. ,s_bobross_face

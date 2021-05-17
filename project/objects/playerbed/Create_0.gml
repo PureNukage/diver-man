@@ -1,6 +1,6 @@
 event_inherited()
 
-interactibility = true
+//interactibility = true
 drawShadow = false
 interactable = false
 

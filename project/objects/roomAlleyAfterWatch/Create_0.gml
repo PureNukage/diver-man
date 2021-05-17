@@ -8,3 +8,5 @@ interactDistance = false
 timer = 120
 
 used = false
+
+newRoom = false

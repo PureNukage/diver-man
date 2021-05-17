@@ -61,7 +61,8 @@ else if stage == 1 {
 	if dialogueIndex == 12 {
 		player.muted = false
 		player.canMove = false
-		instance_create_layer(x+96+gap,y,"Instances",brother)
+		instance_create_layer(x+96+gap,y,"Instances",brotherIntro)
+		questManager.add_quest(quests.spendFinalCoin)
 		destroy = true
 		app.buffer_loader(RoomCityHub)
 		room_goto(RoomCityHub)

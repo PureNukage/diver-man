@@ -50,4 +50,9 @@ enum quests {
 	spendFinalCoin,
 	streetDance,
 	watch,
+	necklace,
+}
+
+enum cutscene {
+	coupleComingOffBoat,
 }

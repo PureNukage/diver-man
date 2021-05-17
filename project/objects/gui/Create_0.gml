@@ -71,3 +71,16 @@ function draw_new_quest_popup(quest) {
 	draw_text_outlined(xx+width/2,yy+height/2,text,c_white,c_black)
 	
 }
+	
+function toggle(true_or_false) {
+	if true_or_false {
+		drawHealth = true
+		drawStamina = true
+		drawGold = true
+	}
+	else {
+		drawHealth = false
+		drawStamina = false
+		drawGold = false
+	}
+}

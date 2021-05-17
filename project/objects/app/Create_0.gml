@@ -30,6 +30,7 @@ instance_create_layer(0,0,Layer,grid)
 instance_create_layer(0,0,Layer,gui)
 instance_create_layer(0,0,Layer,questManager)
 instance_create_layer(0,0,Layer,characterManager)
+instance_create_layer(0,0,Layer,cutsceneManager)
 instance_create_layer(0,0,Layer,game)
 
 function save_game(quick) {
@@ -60,6 +61,8 @@ function save_game(quick) {
 		ini_write_string(section,"finishedQuestListString",finishedQuestListString)
 		ini_write_string(section,"characterList",characterList)
 		
+		ini_write_real(section,"cutsceneManager",cutsceneManager.cutscene)
+		
 		////	Room
 		if room != RoomMainMenu {
 			debug.log("Saving room: "+string_upper(string(room_get_name(room))))
@@ -67,7 +70,6 @@ function save_game(quick) {
 		}
 		
 	}
-	
 	
 	////	Save player stuff
 	if instance_exists(player) {
@@ -126,6 +128,8 @@ function load_game(quick) {
 		if is_string(characterListString) {
 			decode_gamedata(characterManager.characterList, characterListString)
 		} else debug.log("ERROR LOADING Can't read characterManager.characterList string")
+		
+		cutsceneManager.cutscene = ini_read_real(section,"cutsceneManager",-1)
 		
 		gui.drawGold = true
 		gui.drawHealth = true
@@ -418,6 +422,12 @@ function roomTransitioning() {
 				if roomTransitionTo == RoomDocks_Underwater app.underwaterChange(true)
 				else app.underwaterChange(false)
 				roomTransitionTimer = 5
+				
+				//	Kill music
+				if sound.musicIndex > -1 {
+					audio_stop_sound(sound.musicIndex)
+					sound.musicIndex = -1
+				}
 			}
 		break
 		//	Pause on new room
@@ -513,13 +523,15 @@ function scene_loader() {
 			case RoomCityHub:
 				if Quest > -1 {
 					switch(Quest.index) {
-						//	Final Coin quest
+						#region	Final Coin quest
 						case quests.spendFinalCoin:
 						
-							if !instance_exists(brother) {
-								var Brother = instance_create_layer(976,224,Layer,brother)
+							if !instance_exists(brotherIntro) {
+								var Brother = instance_create_layer(976,224,Layer,brotherIntro)
 								Brother.image_xscale = -1
 							}
+							
+							sound.playMusic(music_surface, true)
 						
 							var Vendor = instance_create_layer(1232,352,Layer,vendor)
 							Vendor.image_xscale = -1
@@ -534,6 +546,8 @@ function scene_loader() {
 							bully2.image_xscale = -1
 							var diceKid = instance_create_layer(368,752,Layer,dicekid1)
 							diceKid.image_xscale = -1
+							
+							var bobRoss = instance_create_layer(992,672,"Instances",bobross)
 						
 							//	destroy the dock room change
 							if instance_exists(collisionRoomChange) with collisionRoomChange replace_with_collision()
@@ -542,9 +556,13 @@ function scene_loader() {
 							Collision.image_yscale = 8.75
 						
 						break
-						//	Street dance / chasing after brother
+						#endregion
+						
+						#region	Street dance / chasing after brother
 						case quests.streetDance:
 							var Vendor = instance_create_layer(1232,352,Layer,vendorPlayerChase)
+							
+							//sound.playMusic(music_surface, true)
 						
 							//var Adult = instance_create_layer(576,608,Layer,adultHub)
 							//var Adult = instance_create_layer(320,512,Layer,adultHub)
@@ -559,6 +577,22 @@ function scene_loader() {
 							//Adult.image_xscale = -1
 						
 						break
+						#endregion
+						
+						#region Necklace
+						case quests.necklace:
+						
+							sound.playMusic(music_surface, true)
+							
+							if roomPrevious == RoomAlleyHub or roomPrevious == RoomMainMenu or roomPrevious == -1 {
+								player.groundX = 912
+								player.groundY = 80
+								app.x = player.groundX
+								app.y = player.groundY
+							}
+							
+						break
+						#endregion
 					}
 					debug.log("SCENELOADER - Loading for Quest: "+string_upper(questManager.questNames[Quest.index]))
 				}
@@ -590,7 +624,7 @@ function scene_loader() {
 						break
 						//	
 						case quests.watch:
-							//if roomPrevious == RoomDocks_Underwater {
+							if roomPrevious == RoomDocks_Underwater {
 								
 								//	Use the cage
 								cage.y += 360
@@ -616,7 +650,10 @@ function scene_loader() {
 								
 								//	Replace room change with collision
 								collisionRoomChange.replace_with_collision()
-							//}
+							}
+							else if roomPrevious == RoomCityHub {
+									
+							}
 							
 						break
 					}
@@ -633,6 +670,8 @@ function scene_loader() {
 				cage.inUse = true
 				cage.liftDirection = down
 				cage.filled = true
+				
+				if !debug.rebuilding sound.playMusic(music_underwater, true)
 			
 				if Quest > -1 {
 					switch(Quest.index) {
@@ -656,6 +695,7 @@ function scene_loader() {
 		
 		#region Alleyway
 			case RoomAlleyHub:
+				//	After the final coin
 				if (Quest > -1 and Quest.index == quests.spendFinalCoin) or (Quest == -1 and questManager.find_finished_quest(quests.spendFinalCoin) > -1) {
 					var Watch = instance_create_layer(292,168,"Instances",watch)
 					var Brother = instance_create_layer(384,336,"Instances",brotherFinalCoin)
@@ -663,7 +703,10 @@ function scene_loader() {
 					lighting.darkness = 0.2
 					lighting.on = true
 					surface_free(lighting.surface)
+					playerbed.interactibility = true
+					playerbed.interactable = true
 				}
+				//	The night after getting the watch
 				else if (Quest > -1 and Quest.index == quests.watch) {
 					lighting.darkness = 0.2
 					lighting.on = true
@@ -672,7 +715,22 @@ function scene_loader() {
 					playerbed.filled = true
 					player.muted = true
 					instance_create_layer(0,0,"Instances",roomAlleyAfterWatch)
+				}
+				//	The morning of the necklace
+				else if (Quest > -1 and Quest.index == quests.necklace) {
+					player.groundX = playerbed.x
+					player.groundY = playerbed.y + 32
+					playerbed.interactability = false
+					playerbed.interactable = false
 					
+					app.cameraFocus(player.x,player.y,1,true)
+					
+					var Col = instance_position(339,399,collision)
+					var ColRoomChange = instance_create_layer(Col.x,Col.y,"Instances",collisionRoomChange)
+					ColRoomChange.image_xscale = Col.image_xscale
+					ColRoomChange.image_yscale = Col.image_yscale
+					ColRoomChange.Room = RoomCityHub
+					instance_destroy(Col)
 				}
 			break
 		#endregion

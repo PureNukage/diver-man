@@ -8,6 +8,7 @@ questNames[quests.intro] = "Intro"
 questNames[quests.spendFinalCoin] = "The Last Coin"
 questNames[quests.streetDance] = "Performing for the Streets"
 questNames[quests.watch] = "The Family Watch"
+questNames[quests.necklace] = "Necklace Overboard"
 
 
 function quest_check() {
@@ -46,7 +47,6 @@ function find_quest(quest_index) {
 	
 	return quest
 }
-
 
 function current_quest() {
 	if questCount > 0 var Quest = questList[| 0]

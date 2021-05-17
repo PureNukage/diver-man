@@ -4,8 +4,8 @@ if !surface_exists(surface) and surfaceBuffer > -1 and buffer_exists(surfaceBuff
 }
 
 if brotherX > 0 and !createdBrother {
-	if instance_exists(brother) instance_destroy(brother)
-	var Bro = instance_create_layer(brotherX,brotherY,"Instances",brother)
+	if instance_exists(brotherIntro) instance_destroy(brotherIntro)
+	var Bro = instance_create_layer(brotherX,brotherY,"Instances",brotherIntro)
 	Bro.move_to(976,224)
 	createdBrother = true
 }

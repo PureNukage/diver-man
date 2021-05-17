@@ -9,3 +9,9 @@ else {
 		used = true
 	}
 }
+
+if dialogueIndex == 8 and !newRoom {
+	newRoom = true
+	cutsceneManager.cutscene = cutscene.coupleComingOffBoat
+	app.roomTransition(RoomDocks, 10)
+}
