@@ -4,6 +4,12 @@ if !muted {
 	{
 		#region FREE STATE
 			case state.free:
+			
+				//	Inventory
+				if input.keyInventory {
+					if inventoryOpen inventory_close()
+					else inventory_open()
+				}
 				
 				//	Attacking
 				if input.keyAttack and onGround and hasWrench and suitOn and stamina >= 20 {

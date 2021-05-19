@@ -30,6 +30,19 @@ mask_index = s_diverman_collision
 
 ////	Inventory
 inventory = ds_list_create()
+inventoryOpen = false
+
+function inventory_open() {
+	inventoryOpen = true
+	app.zoom_level = 0.70
+	canMove = false
+}
+
+function inventory_close() {
+	inventoryOpen = false
+	app.zoom_level = 1
+	canMove = true
+}
 
 function create_item(item_index) {
 	var Item = new _create_item(item_index)
@@ -51,6 +64,13 @@ function item_check(item_index) {
 
 function _create_item(item_index) constructor {
 	index = item_index
+	
+	switch(item_index) {
+		case item.sandwich:
+			image = s_sandwich
+			text = "Sandwich"
+		break
+	}
 }
 
 function footprint() {

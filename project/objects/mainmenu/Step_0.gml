@@ -129,6 +129,10 @@ switch(menu) {
 							if input.keyLeftPress sound.volumeMusic -= 0.1
 							else if input.keyRightPress sound.volumeMusic += 0.1
 							sound.volumeMusic = clamp(sound.volumeMusic,0,1)
+							
+							if sound.musicIndex > -1 {
+								audio_sound_gain(sound.musicIndex, sound.volumeMusic, 0)	
+							}
 						}
 					break
 					case 2:

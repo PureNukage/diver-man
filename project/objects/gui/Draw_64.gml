@@ -1,14 +1,64 @@
-//////	Interactable
-//if interactable {
-//	var xx = display_get_gui_width()/2
-//	var yy = display_get_gui_height()/2
-//	yy -= 100
+if live_call() return live_result
+
+////	Inventory
+if instance_exists(player) and player.inventoryOpen {
+	draw_set_color(c_gray)
+	var X = 16
+	var Y = 120
+	var Width = 280
+	var Height = 200
+	draw_rectangle(X,Y, X+Width, Y+Height, false)
 	
-//	draw_set_color(c_white)
-//	draw_set_halign(fa_center)
-//	draw_set_valign(fa_middle)
-//	draw_text(xx,yy,"Press E to interact")
-//}
+	var heightSpacer = 64
+	var XX = X + 10
+	var YY = Y + heightSpacer
+	var WWidth = 64
+	var HHeight = 64
+	var index = 0
+	
+	if input.keyboardOrController == 1 {
+		if input.keyRightPress inventoryIndex++
+		if input.keyLeftPress inventoryIndex--
+		if input.keyUpPress inventoryIndex -= 4
+		if input.keyDownPress inventoryIndex += 4
+		inventoryIndex = clamp(inventoryIndex, 0, 7)
+	}
+	
+	draw_set_halign(fa_center)
+	draw_set_valign(fa_middle)
+	for(var h=0;h<2;h++) {
+		for(var w=0;w<4;w++) {
+			
+			var Item = ds_list_find_value(player.inventory, index)
+			
+			//	Mouseover
+			draw_set_color(c_ltgray)
+			if (input.keyboardOrController == 0 and point_in_rectangle(mouse_gui_x,mouse_gui_y, XX,YY,XX+WWidth,YY+HHeight))
+			or (input.keyboardOrController == 1 and index == inventoryIndex) {
+				draw_rectangle(XX,YY, XX+WWidth,YY+HHeight, false)
+				
+				if !is_undefined(Item) or Item > 0 {
+					draw_set_color(c_black)
+					draw_text(X+Width/2, Y+heightSpacer/2, Item.text)
+				}
+			}
+			
+			draw_set_color(c_black)
+			draw_rectangle(XX,YY, XX+WWidth, YY+HHeight, true)
+		
+			if !is_undefined(Item) or Item > 0 {
+				draw_sprite(Item.image,0,XX,YY)
+			}
+			
+			index++
+			XX += WWidth + 2
+		}
+		XX = X + 10
+		YY += HHeight + 2
+		//XX += WWidth+2
+		//YY = Y + heightSpacer
+	}
+}
 
 ////	Health and stamina bars
 if instance_exists(player) {
