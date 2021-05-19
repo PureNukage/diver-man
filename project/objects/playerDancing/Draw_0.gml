@@ -63,6 +63,7 @@ if on {
 				if sprite_index == s_player_kid_dance_right_idle sprite_index = s_player_kid_dance_right_legsup
 				else if sprite_index == s_player_kid_dance_left_idle sprite_index = s_player_kid_dance_left_legsup
 				image_index = 0
+				frameHold = 0
 			}
 			else if Key and list_offset >= 5 and list_offset <= 15 {
 				list_remove_one()

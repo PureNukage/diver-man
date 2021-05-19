@@ -13,6 +13,27 @@ freemove = false
 
 load_dialogue()
 
+emoting = false
+emoteTimer = 0
+emoteIndex = -1
+function emote(index, duration) {
+	emoteIndex = index
+	emoteTimer = duration
+	emoting = true
+}
+function _emote() {
+	var Scale = 0.5
+	draw_sprite_ext(emoteIndex,0,x,interactableY-40, Scale,Scale, 0,c_white,1)
+	if is_string(emoteTimer) and emoteTimer == "~" {
+		
+	}
+	else if emoteTimer > 0 emoteTimer--
+	else if emoteTimer == 0 {
+		emoting = false
+		emoteIndex = -1
+	}
+}
+
 function move_to(_x, _y) {
 	
 	//	What mp_grid am I using?

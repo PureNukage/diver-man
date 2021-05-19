@@ -9,6 +9,8 @@ load_dialogue()
 
 maxMovespeed = 0.5
 
+emote(s_emoji_cry, "~")
+
 stage0map = -1
 stage1map = -1
 stage2map = -1

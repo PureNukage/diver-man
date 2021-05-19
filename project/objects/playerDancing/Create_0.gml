@@ -4,6 +4,9 @@ hasDialogue = false
 
 on = false
 
+frameHold = 0
+frameHoldMax = 15
+
 dances = 6
 
 list = ds_list_create()

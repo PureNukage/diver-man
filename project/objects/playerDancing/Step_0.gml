@@ -15,7 +15,10 @@ if input.keyInteract and !dancingFinished and interactable and !on and !instance
 }
 
 if on {
-	if animation_end and (sprite_index == s_player_kid_dance_left_legsup or sprite_index == s_player_kid_dance_right_legsup) {
+	
+	if frameHold < frameHoldMax frameHold++
+	
+	if animation_end and frameHold >= frameHoldMax and (sprite_index == s_player_kid_dance_left_legsup or sprite_index == s_player_kid_dance_right_legsup) {
 		if sprite_index == s_player_kid_dance_right_legsup sprite_index = s_player_kid_dance_left_idle
 		else if sprite_index == s_player_kid_dance_left_legsup sprite_index = s_player_kid_dance_right_idle
 	}
