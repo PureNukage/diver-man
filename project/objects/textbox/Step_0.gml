@@ -55,9 +55,9 @@ if textIndex < string_length(text) {	//	Only play if they're talking
 		case s_brother_face:
 			Sound = choose(Brother_1_1_7, Brother_2_1_7, Brother_3_1_7, Brother_4_1_7, Brother_5_1_7, Brother_6_1_7)
 		break
-		//	case s_sailorpete_face:
-		
-		//	break
+		case s_sailorpete_face:
+			Sound = choose(Seaman1_1_0,Seaman2_1_0,Seaman3_1_0,Seaman4_1_0,Seaman5_1_0,Seaman6_1_0,Seaman7_1_0,Seaman8_1_0,Seaman9_1_0,Seaman10_1_0,Seaman11_1_0,Seaman12_1_0)
+		break
 	}
 	if string_char_at(text,textIndex) == " " or textIndex == string_length(text)-1 {
 		if Sound > -1 sound.playSoundEffect(Sound)	
