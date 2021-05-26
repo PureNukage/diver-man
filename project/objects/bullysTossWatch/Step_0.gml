@@ -28,9 +28,8 @@ else if stage == 1 {
 //	Wait for bullies to toss watch into the water 
 else if stage == 2 {
 	var Frame = layer_sequence_get_headpos(Sequence)
-	if Frame >= 140 {
+	if Frame >= 141 {
 		stage = 3 
-		//layer_sequence_headpos(Sequence, 141)
 		layer_sequence_pause(Sequence)
 		layer_set_visible(Layer,false)
 		brotherWatchToss.visible = true
@@ -49,9 +48,6 @@ else if stage == 3 {
 		bully2Watch.visible = false
 		bully1Watch.visible = false
 		stage = 4
-	}
-	else {
-		layer_sequence_headpos(Sequence, 142)
 	}
 }
 //	Wait for pete shadow to rise from behind crates
