@@ -1,3 +1,7 @@
+if file_exists("save.ini") {
+	file_delete("save.ini")	
+}
+
 //	Add the intro quest
 questManager.add_quest(quests.intro)
 

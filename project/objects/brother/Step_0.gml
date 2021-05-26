@@ -1,6 +1,6 @@
 event_inherited()
 
-if moving {
+if moving and !inConversation {
 	sprite_index = s_brother_walk
 }
 else {

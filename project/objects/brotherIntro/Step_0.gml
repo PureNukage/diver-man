@@ -3,7 +3,7 @@ event_inherited()
 
 if !moving image_xscale = -1
 
-if moving {
+if moving and !inConversation {
 	sprite_index = s_brother_walk
 }
 else {

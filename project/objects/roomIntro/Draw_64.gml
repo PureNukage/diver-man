@@ -71,9 +71,6 @@ else {
 			if backgroundFadeOut > 0 backgroundFadeOut--
 			
 			if backgroundFadeOut <= 0 {
-				if file_exists("save.ini") {
-					file_delete("save.ini")	
-				}
 				room_goto(RoomCity)
 				app.cameraRefresh = true
 				app.canvasX = layer_get_x("Background")
