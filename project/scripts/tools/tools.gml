@@ -321,32 +321,36 @@ function condition_check_dialogue(ID) {
 					var quest = questManager.find_quest(quests.spendFinalCoin)
 					
 					switch(i) {
-						//	Decided to keep it
+						//	Donated
 						case 0:
+							if !quest._donated keep = false
+						break
+						//	Decided to keep it
+						case 1:
 							if !quest.keptCoin keep = false
 						break
 						//	Played street craps and made some money!
-						case 1:
+						case 2:
 							if !quest.gambled or (quest.profited or quest.lostItAll) keep = false	
 						break
 						//	Here's a sandwich
-						case 2:
+						case 3:
 							if !quest.boughtSandwich or player.item_check(item.sandwich) == -1 keep = false
 						break
 						//	Listened to Sailor Pete
-						case 3:
+						case 4:
 							if !quest.listenedToPete keep = false
 						break
 						//	...and I lost it all
-						case 4:
+						case 5:
 							if !quest.lostItAll keep = false
 						break
 						//	Gambled and profited
-						case 5:
+						case 6:
 							if !quest.profited keep = false
 						break
 						//	That's it
-						case 6:
+						case 7:
 							if !quest._listenedToPete and !quest._boughtSandwich and !quest._gambled keep = false
 						break
 					}
@@ -359,9 +363,6 @@ function condition_check_dialogue(ID) {
 		var _dialogueIndex = 0
 		for(var i=0;i<array_length(ID.myDialogue[1]);i++) {
 			if keepArray[i] {
-				//_myDialogue[_dialogueIndex, 0] = ID.myDialogue[i, 0]
-				//_myDialogue[_dialogueIndex, 1] = ID.myDialogue[i, 1]
-				//_myDialogue[_dialogueIndex, 2] = ID.myDialogue[i, 2]
 				_myDialogue[0, _dialogueIndex] = ID.myDialogue[0, i]
 				_myDialogue[1, _dialogueIndex] = ID.myDialogue[1, i]
 				_myDialogue[2, _dialogueIndex] = ID.myDialogue[2, i]
@@ -375,6 +376,16 @@ function condition_check_dialogue(ID) {
 	else {
 	
 		switch(key) {
+			case "bobRossIntro":
+				switch(index) {
+					case 5:
+						if player.gold < 1 {
+							ID.dialogueIndex = 12
+							debug.log("Player does not have enough money to invest")
+						}
+					break
+				}
+			break
 			case "dicekid":
 				switch(index) {
 					//	Make sure the player has at least one coin

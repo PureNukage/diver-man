@@ -1,5 +1,12 @@
 event_inherited()
 
+if moving {
+	sprite_index = s_brother_walk
+}
+else {
+	sprite_index = s_brother	
+}
+
 //	Start dialogue
 if stage == 0 {
 	create_textbox(id, myDialogue[1, dialogueIndex])

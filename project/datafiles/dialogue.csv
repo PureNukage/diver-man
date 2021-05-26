@@ -25,12 +25,13 @@ brother,-5,Ok lets go.,s_brother_face
 brother,-2,Make it snappy.,s_brother_face
 brother,-6,HEAD HOME,
 brotherFinalCoin,respBrotherCoin,What'd you spend the coin on?,s_brother_face
-respBrotherCoin,1,Decided to keep it.,
-respBrotherCoin,2,Played street craps and made some money!,
-respBrotherCoin,3,Here's a sandwich.,
-respBrotherCoin,6,Listened to Sailor Petes tale about losing his leg.,
-respBrotherCoin,10,...I gambled and I lost it all.,
-respBrotherCoin,9,Played street craps and flipped the coin into profit.,
+respBrotherCoin,1,I invested it into a garden.,
+respBrotherCoin,2,Decided to keep it.,
+respBrotherCoin,3,Played street craps and made some money!,
+respBrotherCoin,4,Here's a sandwich.,
+respBrotherCoin,7,Listened to Sailor Petes tale about losing his leg.,
+respBrotherCoin,11,...I gambled and I lost it all.,
+respBrotherCoin,10,Played street craps and flipped the coin into profit.,
 respBrotherCoin,11,That's it.,
 brotherFinalCoin,11,Smart. We may need it.,s_brother_face
 brotherFinalCoin,respBrotherCoin,Nice!,s_brother_face
@@ -213,3 +214,4 @@ respBobRossDonate,10,No thanks.,
 bobRossIntro,-11,My plants and I appreciate it. ,s_bobross_face
 bobRossIntro,0,I understand.,s_bobross_face
 bobRossIntro,-11,The tomato plants will be fully grown in a couple of days and then I'll harvest. ,s_bobross_face
+bobRossIntro,0,That is a situation.,s_bobross_face

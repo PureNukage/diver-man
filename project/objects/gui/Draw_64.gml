@@ -55,8 +55,6 @@ if instance_exists(player) and player.inventoryOpen {
 		}
 		XX = X + 10
 		YY += HHeight + 2
-		//XX += WWidth+2
-		//YY = Y + heightSpacer
 	}
 }
 
