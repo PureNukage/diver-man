@@ -582,6 +582,8 @@ function scene_loader() {
 						#region Necklace
 						case quests.necklace:
 						
+							instance_create_layer(1248,352,"Instances",vendorShop)
+						
 							sound.playMusic(music_surface, true)
 							
 							if roomPrevious == RoomAlleyHub or roomPrevious == RoomMainMenu or roomPrevious == -1 {

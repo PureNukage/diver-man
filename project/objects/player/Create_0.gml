@@ -69,6 +69,12 @@ function _create_item(item_index) constructor {
 		case item.sandwich:
 			image = s_sandwich
 			text = "Sandwich"
+			description = "A sandwich made with love. Restores HP"
+		break
+		case item.watch:
+			image = s_watch_image
+			text = "Watch"
+			description = "A watch passed down from your parents"
 		break
 	}
 }

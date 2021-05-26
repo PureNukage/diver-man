@@ -215,3 +215,7 @@ bobRossIntro,-11,My plants and I appreciate it. ,s_bobross_face
 bobRossIntro,0,I understand.,s_bobross_face
 bobRossIntro,-11,The tomato plants will be fully grown in a couple of days and then I'll harvest. ,s_bobross_face
 bobRossIntro,0,That is a situation.,s_bobross_face
+vendorShop,respVendorShop,Hello dear!,s_vendor_face
+respVendorShop,-1,I'd like to purchase something.,
+respVendorShop,0,Bye.,
+vendorShop,0,<shop text>,s_vendor_face

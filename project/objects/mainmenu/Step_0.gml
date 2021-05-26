@@ -114,8 +114,14 @@ switch(menu) {
 						if string_count(".00",text) text = string_delete(text,string_pos(".",text),3)
 						
 						if menuIndex == i {
-							if input.keyLeftPress sound.volumeSound -= 0.1
-							else if input.keyRightPress sound.volumeSound += 0.1
+							if input.keyLeftPress {
+								sound.volumeSound -= 0.1
+								app.save_game(true)
+							}
+							else if input.keyRightPress {
+								sound.volumeSound += 0.1
+								app.save_game(true)
+							}
 							sound.volumeSound = clamp(sound.volumeSound,0,1)
 							
 							if audio_is_playing(sound_underwater) audio_sound_gain(sound_underwater,sound.volumeSound,0)
@@ -126,8 +132,14 @@ switch(menu) {
 						if string_count(".00",text) text = string_delete(text,string_pos(".",text),3)
 						
 						if menuIndex == i {
-							if input.keyLeftPress sound.volumeMusic -= 0.1
-							else if input.keyRightPress sound.volumeMusic += 0.1
+							if input.keyLeftPress {
+								sound.volumeMusic -= 0.1
+								app.save_game(true)
+							}
+							else if input.keyRightPress {
+								sound.volumeMusic += 0.1
+								app.save_game(true)
+							}
 							sound.volumeMusic = clamp(sound.volumeMusic,0,1)
 							
 							if sound.musicIndex > -1 {
