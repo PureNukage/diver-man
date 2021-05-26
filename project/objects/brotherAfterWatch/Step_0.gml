@@ -14,54 +14,38 @@ if stage == 0 {
 }
 //	Wait till dialogue finishes then start sailor pete entrance dialogue
 else if stage == 1 {
-	if !instance_exists(textbox) and dialogueIndex == 5 {
-		timer++
-		if timer >= 120 {
-			stage = 2
-			var Pete = instance_create_layer(854,352,"Instances",sailorPeteEntrance)
-			create_textbox(Pete, Pete.myDialogue[1, Pete.dialogueIndex])
-		}
-	}
-}
-//	Brief pause before sailor pete interrupts
-else if stage == 2 {
-	if !instance_exists(textbox) {
-		Layer = layer_create(-1)
-		sailorPeteEntrance.move_to(980,342)
-		app.cameraFocus(960,352,"~",true)
-		stage = 3
-		image_xscale = -1
-		player.image_xscale = -1
-		questManager.add_quest(quests.watch)
+	if !instance_exists(textbox) and dialogueIndex == 1 {
+		stage = 2
+		sailorPeteEntrance.move_to(1311, 351)
 	}
 }
 //	Wait till sailor pete walks in 
-else if stage == 3 {
+else if stage == 2 {
 	if !sailorPeteEntrance.moving {
 		var Pete = sailorPeteEntrance
 		create_textbox(Pete.id, Pete.myDialogue[1, Pete.dialogueIndex])
-		stage = 4
+		stage = 3
 	}
 }
 //	Wait till petes done talking then start more brother dialogue
-else if stage == 4 {
-	if !instance_exists(textbox) and sailorPeteEntrance.dialogueIndex == 5 {
+else if stage == 3 {
+	if !instance_exists(textbox) and sailorPeteEntrance.dialogueIndex == 4 {
 		create_textbox(id, myDialogue[1, dialogueIndex])
-		stage = 5
+		stage = 4
 	}
 }
 //	Wait till brother stops talking then start Petes last dialogue
-else if stage == 5 {
-	if !instance_exists(textbox) and dialogueIndex == 7 {
+else if stage == 4 {
+	if !instance_exists(textbox) and dialogueIndex == 3 {
 		var Pete = sailorPeteEntrance
 		create_textbox(Pete.id, Pete.myDialogue[1, Pete.dialogueIndex])
-		stage = 6
+		stage = 5
 	}
 }
 //	Wait till Petes last dialogue is finished
-else if stage == 6 {
-	if !instance_exists(textbox) and sailorPeteEntrance.dialogueIndex == 9 {
-		stage = 7
+else if stage == 5 {
+	if !instance_exists(textbox) and sailorPeteEntrance.dialogueIndex == 8 {
+		stage = 6
 		sailorPeteEntrance.move_to(636,sailorPeteEntrance.y)
 		brotherAfterWatch.move_to(754,360)
 		app.cameraFocus(player.x,player.y,1,true)
@@ -71,7 +55,7 @@ else if stage == 6 {
 	}
 }
 //	Wait till Pete arrives at the cage/suit
-else if stage == 7 {
+else if stage == 6 {
 	if !sailorPeteEntrance.moving {
 		var Pete = instance_create_layer(sailorPeteEntrance.x,sailorPeteEntrance.y,"Instances",sailorPeteGivingSuit)
 		Pete.image_xscale = 1

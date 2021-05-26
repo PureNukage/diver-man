@@ -77,23 +77,19 @@ bullys1,-8,I think we should wedgie the little twerp!,s_bully2_face
 bullys2,1,Give me back my watch!,s_brother_face
 bullys2,2,Oh yeah?,s_bully1_face
 bullys2,-3,Watch this!,s_bully1_face
-bullys2,-4,Hahaha. Lets beat it.,s_bully2_face
-brotherAfterWatch,1,Those jerks threw the watch off the dock!,s_brother_face
-brotherAfterWatch,2,"Well, the photo is behind glass...",s_brother_face
-brotherAfterWatch,3,... so it should be fine. ,s_brother_face
-brotherAfterWatch,4,And I thought yesterday was bad.,s_brother_face
-brotherAfterWatch,-5,This confirms that life sucks.,s_brother_face
-sailorPeteEntrance,-1,You could say that again.,s_sailorpete_face
-sailorPeteEntrance,2,*burp*,s_sailorpete_face
-sailorPeteEntrance,3,Hey boys... You're looking glum.,s_sailorpete_face
-sailorPeteEntrance,4,Glummer than usual for orphans.,s_sailorpete_face
-sailorPeteEntrance,-5,*burp*,s_sailorpete_face
-brotherAfterWatch,6,The Roosh brothers threw something...,s_brother_face
-brotherAfterWatch,-7,...very important to me off the dock.,s_brother_face
-sailorPeteEntrance,6,*burp*,s_sailorpete_face
-sailorPeteEntrance,7,That's a reason to take a drink.,s_sailorpete_face
-sailorPeteEntrance,8,I might have something that'll help.,s_sailorpete_face
-sailorPeteEntrance,-9,Other than rum.,s_sailorpete_face
+bullys2,-4,Hahaha. Now time for that wedgie.,s_bully2_face
+bullys2,-5,AHHHH. Lets scram!,s_bully2_face
+brotherAfterWatch,-1,It's Sailor Pete! ,s_brother_face
+sailorPeteEntrance,1,*burp*,s_sailorpete_face
+sailorPeteEntrance,2,Hey boys... You're looking glum.,s_sailorpete_face
+sailorPeteEntrance,3,Glummer than usual for orphans.,s_sailorpete_face
+sailorPeteEntrance,-4,*burp*,s_sailorpete_face
+brotherAfterWatch,2,The Roosh brothers threw something...,s_brother_face
+brotherAfterWatch,-3,...very important to me off the dock.,s_brother_face
+sailorPeteEntrance,5,*burp*,s_sailorpete_face
+sailorPeteEntrance,6,That's a reason to take a drink.,s_sailorpete_face
+sailorPeteEntrance,7,I might have something that'll help.,s_sailorpete_face
+sailorPeteEntrance,-8,Other than rum.,s_sailorpete_face
 sailorPeteGivingSuit,1,*burp*,s_sailorpete_face
 sailorPeteGivingSuit,2,On this box is one of my old diving suits.,s_sailorpete_face
 sailorPeteGivingSuit,3,I used them to do repairs back in the Navy.,s_sailorpete_face
