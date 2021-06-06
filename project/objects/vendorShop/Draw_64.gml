@@ -22,6 +22,7 @@ if shop {
 		player.muted = false
 		dialogueIndex = 0
 		inConversation = false
+		interactCD = 5
 	}
 	
 	for(var i=0;i<ds_list_size(shopList);i++) {

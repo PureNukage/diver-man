@@ -4,8 +4,10 @@ if input.keyInteract {
 	var nextIndex = responses[0, responseIndex]
 	
 	//	if nextIndex is negative
-	if sign(real(nextIndex)) == -1 {
+	if sign(real(nextIndex)) < 1 {
 		ID.dialogueIndex = real(nextIndex) * -1
+		ID.inConversation = false
+		ID.interactCD = 5
 	}
 	else {
 	

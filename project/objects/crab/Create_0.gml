@@ -23,7 +23,10 @@ nodes[1,2] = 1472
 nodes[0,3] = 2174
 nodes[1,3] = 1472 
 
-holdingWatch = true
+fleeX = 2184
+fleeY = 1520
+
+holdingItem = watch
 
 currentNode = 0
 
@@ -75,11 +78,11 @@ function stunCheck() {
 		state = state.stunned
 		sprite_index = s_crab_knocked
 		setThrust(5)
-		if holdingWatch { 
-			var Watch = instance_create_layer(x,y-30,"Instances",watch)
-			with Watch setThrust(8)
+		if holdingItem > -1 { 
+			var Item = instance_create_layer(x,y-30,"Instances",holdingItem)
+			with Item setThrust(8)
 		}
-		holdingWatch = false
+		holdingItem = -1
 		timer = 90
 	}
 }

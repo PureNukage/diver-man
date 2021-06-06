@@ -55,4 +55,5 @@ enum quests {
 
 enum cutscene {
 	coupleComingOffBoat,
+	mafiaVendorShake,
 }

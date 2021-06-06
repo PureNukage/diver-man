@@ -69,4 +69,18 @@ switch(cutscene)
 			break
 		}
 	break
+	case cutscene.mafiaVendorShake:
+		switch(stage)
+		{
+			//	Wait for mafia0 to be back at the diner
+			case -1:
+				if instance_exists(mafia0) and point_distance(mafia0.x,mafia0.y, 1104,240) < 2 {
+					stage++
+					finish_cutscene()
+					mafia0.image_xscale = 1
+					app.save_game(false)
+				}
+			break
+		}
+	break
 }

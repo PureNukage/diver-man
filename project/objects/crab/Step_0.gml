@@ -69,7 +69,7 @@ switch(state)
 				sprite_index = s_crab_insand
 				if timer > -1 timer--
 				else {
-					if pathfind(grid.mpGrid,path, x,y, 2184,1520, true)	{
+					if pathfind(grid.mpGrid,path, x,y, fleeX,fleeY, true)	{
 						state = state.walk
 						pos = 1 
 						xGoto = path_get_point_x(path,pos)

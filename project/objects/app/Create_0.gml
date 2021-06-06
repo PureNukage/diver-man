@@ -56,10 +56,12 @@ function save_game(quick) {
 		var questListString = encode_gamedata(questManager.questList)
 		var finishedQuestListString = encode_gamedata(questManager.finishedQuestList)
 		var characterList = encode_gamedata(characterManager.characterList)
+		var cutsceneList = encode_gamedata(cutsceneManager.cutsceneList)
 		
 		ini_write_string(section,"questListString",questListString)
 		ini_write_string(section,"finishedQuestListString",finishedQuestListString)
 		ini_write_string(section,"characterList",characterList)
+		ini_write_string(section,"cutsceneList",cutsceneList)
 		
 		ini_write_real(section,"cutsceneManager",cutsceneManager.cutscene)
 		
@@ -114,6 +116,7 @@ function load_game(quick) {
 		var questListString = ini_read_string(section,"questListString",0)
 		var finishedQuestListString = ini_read_string(section,"finishedQuestListString",0)
 		var characterListString = ini_read_string(section,"characterList",0)
+		var cutsceneListString = ini_read_string(section,"cutsceneList",0)
 		
 		if is_string(questListString) {
 			decode_gamedata(questManager.questList, questListString)
@@ -128,6 +131,10 @@ function load_game(quick) {
 		if is_string(characterListString) {
 			decode_gamedata(characterManager.characterList, characterListString)
 		} else debug.log("ERROR LOADING Can't read characterManager.characterList string")
+		
+		if is_string(cutsceneListString) {
+			decode_gamedata(cutsceneManager.cutsceneList, cutsceneListString)	
+		} else debug.log("ERROR LOADING Can't read cutsceneManager.cutsceneList string")
 		
 		cutsceneManager.cutscene = ini_read_real(section,"cutsceneManager",-1)
 		
@@ -519,6 +526,7 @@ function scene_loader() {
 	if Quest == -1 debug.log("SCENELOADER - NO ACTIVE QUEST")
 	
 	switch(room) {
+		
 		#region City
 			case RoomCityHub:
 				if Quest > -1 {
@@ -533,13 +541,18 @@ function scene_loader() {
 							
 							sound.playMusic(music_surface, true)
 						
-							var Vendor = instance_create_layer(1232,352,Layer,vendor)
+							var Vendor = instance_create_layer(1232,512,Layer,vendor)
 							Vendor.image_xscale = -1
-							var vendorCart = instance_create_layer(1328,384,Layer,cart)
+							var vendorCart = instance_create_layer(1328,544,Layer,cart)
 							
-							var Girl = instance_create_layer(1392,224,Layer,girl)
+							var Girl = instance_create_layer(1440,496,Layer,girl)
 						
 							var Pete = instance_create_layer(1408,848,Layer,sailorPeteSitting)
+							
+							var _mafia0 = instance_create_layer(1104,240,Layer,mafia0)
+							var _mafia1 = instance_create_layer(1296,240,Layer,mafia1)
+							_mafia1.image_xscale = -1
+							var mafiaDoors = instance_create_layer(1184,256,Layer,mafiaDoor)
 						
 							var bully1 = instance_create_layer(432,736,Layer,bully2Dice)
 							var bully2 = instance_create_layer(304,736,Layer,bully1Stand)
@@ -560,7 +573,9 @@ function scene_loader() {
 						
 						#region	Street dance / chasing after brother
 						case quests.streetDance:
-							var Vendor = instance_create_layer(1232,352,Layer,vendorPlayerChase)
+							var Vendor = instance_create_layer(1232,512,Layer,vendor)
+							Vendor.image_xscale = -1
+							var vendorCart = instance_create_layer(1328,544,Layer,cart)
 							
 							//sound.playMusic(music_surface, true)
 						
@@ -582,13 +597,35 @@ function scene_loader() {
 						#region Necklace
 						case quests.necklace:
 						
-							instance_create_layer(1248,352,"Instances",vendorShop)
+							var Vendor = instance_create_layer(1248,512,Layer,vendorShop)
+							Vendor.image_xscale = -1
+							
+							var Nadya = instance_create_layer(1398,752,Layer,nadya)
+							Nadya.npcKey = "nadyaNecklace"
+							with Nadya load_dialogue()
+							
+							if cutsceneManager.find_cutscene(cutscene.mafiaVendorShake) == -1 {
+								cutsceneManager.cutscene = cutscene.mafiaVendorShake
+								var _mafia0 = instance_create_layer(1184,512,Layer,mafia0)
+								instance_create_layer(0,0,Layer,mafiaVendorShakedown)
+								_mafia0.interactibility = false
+							}
+							else {
+								var _mafia0 = instance_create_layer(1104,240,Layer,mafia0)
+								_mafia0.interactibility = false
+							}
 						
 							sound.playMusic(music_surface, true)
 							
 							if roomPrevious == RoomAlleyHub or roomPrevious == RoomMainMenu or roomPrevious == -1 {
 								player.groundX = 912
 								player.groundY = 80
+								app.x = player.groundX
+								app.y = player.groundY
+							}
+							else if roomPrevious == RoomDocks {
+								player.groundX = 1552
+								player.groundY = 512
 								app.x = player.groundX
 								app.y = player.groundY
 							}
@@ -605,7 +642,8 @@ function scene_loader() {
 			case RoomDocks:
 				if Quest > -1 {
 					switch(Quest.index) {
-						//	Bullies are throwing watch off the dock
+						
+						#region	Bullies are throwing watch off the dock
 						case quests.streetDance:
 						
 							suitPile.interactibility = false // deact suit
@@ -624,7 +662,9 @@ function scene_loader() {
 							collisionRoomChange.replace_with_collision()
 							
 						break
-						//	
+						#endregion
+						
+						#region Retrieving the watch from underwater
 						case quests.watch:
 							if roomPrevious == RoomDocks_Underwater {
 								
@@ -658,6 +698,26 @@ function scene_loader() {
 							}
 							
 						break
+						#endregion
+						
+						#region Retrieving the necklace from underwater
+							case quests.necklace:
+								
+								var Brother = instance_create_layer(816,304,Layer,brother)
+								Brother.npcKey = "brotherNecklace"
+								with Brother load_dialogue()
+								
+								var Husband = instance_create_layer(1072,304,Layer,husband)
+								Husband.image_xscale = -1
+								Husband.npcKey = "husbandAndWifePre"
+								with Husband load_dialogue()
+								
+								var Wife = instance_create_layer(1120,320,Layer,wife)
+								Wife.image_xscale = -1
+								Wife.interactibility = false
+								
+							break
+						#endregion
 					}
 				}	
 			break	
@@ -666,17 +726,24 @@ function scene_loader() {
 		#region Docks - Underwater 
 			case RoomDocks_Underwater:
 				
-				//	Use the cage
-				cage.z = 360
-				cage.lowered = false
-				cage.inUse = true
-				cage.liftDirection = down
-				cage.filled = true
+				if roomPrevious == RoomDocks {
+					//	Use the cage
+					cage.z = 360
+					cage.lowered = false
+					cage.inUse = true
+					cage.liftDirection = down
+					cage.filled = true
+				}
+				else {
+	
+				}
 				
 				if !debug.rebuilding sound.playMusic(music_underwater, true)
 			
 				if Quest > -1 {
 					switch(Quest.index) {
+						
+						#region Retrieving the watch
 						case quests.watch:
 							var Watch = instance_create_layer(2156,1213,Layer,watch)
 							var QM2 = instance_create_layer(0,0,Layer,questManager2)
@@ -687,6 +754,31 @@ function scene_loader() {
 							
 							var LostCrab = instance_create_layer(1440,2064,Layer,mudcrab_lost)
 						break
+						#endregion
+						
+						#region Retrieving the necklace
+							case quests.necklace:
+								
+								var Crab = instance_create_layer(1296,2128,Layer,crab)
+								Crab.holdingItem = chainlink
+								Crab.sprite_index = s_crab_chainlink
+								Crab.nodes[0,0] = 1296
+								Crab.nodes[1,0] = 2128
+								
+								Crab.nodes[0,1] = 1904
+								Crab.nodes[1,1] = 1568
+								
+								Crab.nodes[0,2] = 768
+								Crab.nodes[1,2] = 688
+								
+								Crab.nodes[0,3] = 624
+								Crab.nodes[1,3] = 1616
+								
+								Crab.fleeX = 1873
+								Crab.fleeY = 1883
+								
+							break
+						#endregion
 					}
 				}
 				else {

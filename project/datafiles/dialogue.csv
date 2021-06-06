@@ -215,3 +215,22 @@ vendorShop,respVendorShop,Hello dear!,s_vendor_face
 respVendorShop,-1,I'd like to purchase something.,
 respVendorShop,0,Bye.,
 vendorShop,0,<shop text>,s_vendor_face
+mafiaDoors,-1,"The diners for adults only, kid.",s_mafia1_face
+mafiaDoors,0,You didn't hear him? Now scram!,s_mafia0_face
+mafiaVendorShakedown,1,The tax rate is 5 percent now.,s_mafia0_face
+mafiaVendorShakedown,2,5 percent?!? Last month it was 2 percent!,s_vendor_face
+mafiaVendorShakedown,3,Well last week we had less problems.,s_mafia0_face
+mafiaVendorShakedown,4,More problems more percentage. Now pay up.,s_mafia0_face
+mafiaVendorShakedown,-5,Okay...,s_vendor_face
+nadyaNecklace,1,I asked your brother if he wanted to hang out.,s_girl_face
+nadyaNecklace,2,He said no and that he was busy with some serious work.,s_girl_face
+nadyaNecklace,0,...he's down at the docks.,s_girl_face
+brotherNecklace,1,Morning bro!,s_brother_face
+brotherNecklace,2,We got some customers today!,s_brother_face
+brotherNecklace,3,And by that I mean we have a woman who lost her necklace on a boat ride.,s_brother_face
+brotherNecklace,0,If you can find the necklace that'll be some cash for us!,s_brother_face
+husbandAndWifePre,respHusbandAndWife,Hello there.,s_husband_face
+respHusbandAndWife,1,I'm going underwater to retrieve your necklace!,
+respHusbandAndWife,0,Bye.,
+husbandAndWifePre,2,That's lovely to hear.,s_wife_face
+husbandAndWifePre,0,We appreciate it young man.,s_husband_face
