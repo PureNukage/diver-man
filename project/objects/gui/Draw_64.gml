@@ -1,5 +1,55 @@
 if live_call() return live_result
 
+////	Quest Journal
+if instance_exists(player) and player.questJournalOpen {
+	draw_set_color(c_gray)
+	var X = 135
+	var Y = 45
+	var Width = 300
+	var Height = 300
+	draw_rectangle(X,Y,X+Width,Y+Height,false)
+	
+	draw_set_color(c_black)
+	draw_set_halign(fa_center)
+	draw_set_valign(fa_middle)
+	draw_text(X+Width/2,Y+15,"Quests")
+	
+	//	Gather the width of the longest quest
+	var nameWidth = 0
+	var nameHeight = 0
+	var border = 8
+	for(var i=0;i<ds_list_size(questManager.questList);i++) {
+		var Quest = questManager.questList[| i]
+		var QuestName = questManager.questNames[Quest.index]
+		nameWidth = string_width(QuestName) + border*2
+		nameHeight = string_height(QuestName) + border*2
+	}
+	
+	var XX = X + 20
+	var YY = Y + 45
+	var WWidth = 100
+	var HHeight = 45
+	for(var i=0;i<ds_list_size(questManager.questList);i++) {
+		var Quest = questManager.questList[| i]
+		var QuestName = questManager.questNames[Quest.index]
+		
+		draw_set_color(c_black)
+		draw_roundrect(XX-2,YY-2,XX+nameWidth+2,YY+nameHeight+2,false)
+		
+		if point_in_rectangle(mouse_gui_x,mouse_gui_y,XX,YY,XX+nameWidth,YY+nameHeight) {
+			draw_set_color(c_dkgray)
+		}
+		else {
+			draw_set_color(c_ltgray)	
+		}
+		
+		draw_roundrect(XX,YY,XX+nameWidth,YY+nameHeight,false)
+
+		draw_set_color(c_black)		
+		draw_text(XX+nameWidth/2,YY+nameHeight/2,QuestName)
+	}
+}
+
 ////	Inventory
 if instance_exists(player) and player.inventoryOpen {
 	draw_set_color(c_gray)

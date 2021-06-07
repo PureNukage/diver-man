@@ -640,6 +640,16 @@ function scene_loader() {
 		
 		#region Docks
 			case RoomDocks:
+			
+				if roomPrevious == RoomDocks_Underwater {
+					//	Use the cage
+					cage.y += 360
+					cage.lowered = true
+					cage.inUse = true
+					cage.liftDirection = up
+					cage.filled = true	
+				}
+			
 				if Quest > -1 {
 					switch(Quest.index) {
 						
@@ -668,12 +678,12 @@ function scene_loader() {
 						case quests.watch:
 							if roomPrevious == RoomDocks_Underwater {
 								
-								//	Use the cage
-								cage.y += 360
-								cage.lowered = true
-								cage.inUse = true
-								cage.liftDirection = up
-								cage.filled = true
+								////	Use the cage
+								//cage.y += 360
+								//cage.lowered = true
+								//cage.inUse = true
+								//cage.liftDirection = up
+								//cage.filled = true
 								
 								//	We left the underwater without finding the watch
 								if player.item_check(item.watch) == -1 {
@@ -735,7 +745,8 @@ function scene_loader() {
 					cage.filled = true
 				}
 				else {
-	
+					cage.lowered = true
+					cage.liftDirection = up
 				}
 				
 				if !debug.rebuilding sound.playMusic(music_underwater, true)

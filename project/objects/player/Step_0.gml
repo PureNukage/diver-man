@@ -11,6 +11,11 @@ if !muted {
 					else inventory_open()
 				}
 				
+				//	Quest Journal
+				if input.keyJournal {
+					questJournalOpen = !questJournalOpen
+				}
+				
 				//	Attacking
 				if input.keyAttack and onGround and hasWrench and suitOn and stamina >= 20 {
 					useStamina(20, 10)

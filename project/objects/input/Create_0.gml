@@ -30,6 +30,8 @@ keyInteractHold = keyboard_check(ord("E"))
 
 keyAttack = keyboard_check(ord("Q"))
 
+keyJournal = keyboard_check(ord("J"))
+
 keyPause = keyboard_check_pressed(vk_escape)
 
 gamepad_set_axis_deadzone(0, 0.25)

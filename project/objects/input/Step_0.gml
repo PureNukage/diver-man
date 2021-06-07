@@ -30,6 +30,8 @@ keyInteractHold = keyboard_check(ord("E")) or gamepad_button_check(0, gp_face4)
 
 keyAttack = keyboard_check(ord("Q")) or gamepad_button_check_pressed(0, gp_face3)
 
+keyJournal = keyboard_check_pressed(ord("J"))
+
 keyPause = keyboard_check_pressed(vk_escape) or gamepad_button_check_pressed(0, gp_start)
 
 gamepadAxisLV = gamepad_axis_value(0, gp_axislv)

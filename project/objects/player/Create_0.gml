@@ -32,6 +32,8 @@ mask_index = s_diverman_collision
 inventory = ds_list_create()
 inventoryOpen = false
 
+questJournalOpen = false
+
 function inventory_open() {
 	inventoryOpen = true
 	app.zoom_level = 0.70
