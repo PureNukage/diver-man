@@ -52,6 +52,8 @@ else if stage == 5 {
 		player.canMove = true
 		brotherAfterWatch.interactibility = false
 		sailorPeteEntrance.interactibility = false
+		
+		questManager.add_quest(quests.watch)
 	}
 }
 //	Wait till Pete arrives at the cage/suit

@@ -573,7 +573,7 @@ function scene_loader() {
 						
 						#region	Street dance / chasing after brother
 						case quests.streetDance:
-							var Vendor = instance_create_layer(1232,512,Layer,vendor)
+							var Vendor = instance_create_layer(1232,512,Layer,vendorPlayerChase)
 							Vendor.image_xscale = -1
 							var vendorCart = instance_create_layer(1328,544,Layer,cart)
 							

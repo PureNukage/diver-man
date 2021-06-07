@@ -21,14 +21,11 @@ if on {
 		draw_text(XX,YY, "player_depth: "+string(depth)) YY += 15
 		draw_text(XX,YY, "camera_zoom: "+string(app.zoom_level)) YY += 15
 		draw_text(XX,YY, "app.depth: "+string(app.depth)) YY += 15
+		var Quest = questManager.current_quest()
+		if Quest > -1 {
+			draw_text(XX,YY, "quest: " + string(questManager.questNames[Quest.index]))
+		}
 		if instance_exists(mainmenu) draw_text(XX,YY, "mainmenu.depth: "+string(mainmenu.depth)) YY += 15
-		//draw_text(XX,YY, "x: "+string(x)) YY += 15
-		//draw_text(XX,YY, "y: "+string(y)) YY += 15
-		//draw_text(XX,YY, "z: "+string(z)) YY += 15
-		//draw_text(XX,YY, "map: "+string(map)) YY += 15
-		//draw_text(XX,YY, "groundX: "+string(groundX)) YY += 15
-		//draw_text(XX,YY, "groundY: "+string(groundY)) YY += 15
-		//draw_text(XX,YY, "moveForce: "+string(moveForce)) YY += 15
 	}
 	
 	
