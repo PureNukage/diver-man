@@ -57,12 +57,14 @@ function save_game(quick) {
 		var finishedQuestListString = encode_gamedata(questManager.finishedQuestList)
 		var characterList = encode_gamedata(characterManager.characterList)
 		var cutsceneList = encode_gamedata(cutsceneManager.cutsceneList)
+		var questInfoString = ds_grid_write(questManager.questInformation)
 		
 		ini_write_string(section,"questListString",questListString)
 		ini_write_string(section,"finishedQuestListString",finishedQuestListString)
 		ini_write_string(section,"characterList",characterList)
 		ini_write_string(section,"cutsceneList",cutsceneList)
-		
+		ini_write_string(section,"questInfoString",questInfoString)
+	
 		ini_write_real(section,"cutsceneManager",cutsceneManager.cutscene)
 		
 		////	Room
@@ -117,6 +119,7 @@ function load_game(quick) {
 		var finishedQuestListString = ini_read_string(section,"finishedQuestListString",0)
 		var characterListString = ini_read_string(section,"characterList",0)
 		var cutsceneListString = ini_read_string(section,"cutsceneList",0)
+		var questInfoString = ini_read_string(section,"questInfoString",0)
 		
 		if is_string(questListString) {
 			decode_gamedata(questManager.questList, questListString)
@@ -135,6 +138,10 @@ function load_game(quick) {
 		if is_string(cutsceneListString) {
 			decode_gamedata(cutsceneManager.cutsceneList, cutsceneListString)	
 		} else debug.log("ERROR LOADING Can't read cutsceneManager.cutsceneList string")
+		
+		if is_string(questInfoString) {
+			ds_grid_read(questManager.questInformation, questInfoString)
+		} else debug.log("ERROR LOADING Can't read questManager.questInformation string")
 		
 		cutsceneManager.cutscene = ini_read_real(section,"cutsceneManager",-1)
 		

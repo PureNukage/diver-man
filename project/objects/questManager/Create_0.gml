@@ -3,13 +3,64 @@ questCount = -1
 
 finishedQuestList = ds_list_create()
 
+questData = load_csv("quests.csv")
+questInformation = ds_grid_create(ds_grid_width(questData),ds_grid_height(questData))
+ds_grid_set_region(questInformation, 0,0, ds_grid_width(questInformation)-1,ds_grid_height(questInformation)-1, false)
+
 questNames = []
+for(var i=0;i<ds_grid_height(questData);i++) {
+	questNames[i] = questData[# i, 0]
+}
 questNames[quests.intro] = "Intro"
 questNames[quests.spendFinalCoin] = "The Last Coin"
 questNames[quests.streetDance] = "Performing for the Streets"
 questNames[quests.watch] = "The Family Watch"
 questNames[quests.necklace] = "Necklace Overboard"
 
+function quest_information_check() {
+	for(var i=0;i<questCount;i++) {	
+		var quest_index = questList[| i].index
+		switch(quest_index) {
+			case quests.spendFinalCoin:
+				questInformation[# quest_index, 1] = true
+			break
+			
+			#region Streen Dance
+				case quests.streetDance:
+					questInformation[# quest_index, 1] = true
+					//	If we're in the dancing room and the segment is over OR we're not in the dancing room
+					if (room == RoomCity2 and instance_exists(danceTimer) and danceTimer.stage >= 4) {
+						questInformation[# quest_index, 2] = true
+					}
+				break
+			#endregion
+			
+			#region Watch
+				case quests.watch:
+					questInformation[# quest_index, 1] = true
+					//	If Sailor Pete has told the player about the diving suit
+					if instance_exists(sailorPeteGivingSuit) and sailorPeteGivingSuit.stage >= 3 {
+						questInformation[# quest_index, 2] = true	
+					}
+					//	If the crab has taken the watch
+					if instance_exists(crab) and crab.holdingItem == watch {
+						questInformation[# quest_index, 3] = true	
+					}
+					//	If the player has the watch
+					if instance_exists(player) and player.item_check(item.watch) > -1 {
+						questInformation[# quest_index, 4] = true
+					}
+				break
+			#endregion
+			
+			#region Necklace
+				case quests.necklace:
+					questInformation[# quest_index, 1] = true
+				break
+			#endregion
+		}
+	}
+}
 
 function quest_check() {
 	for(var i=0;i<questCount;i++) {

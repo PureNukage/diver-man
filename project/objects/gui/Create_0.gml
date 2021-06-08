@@ -7,6 +7,7 @@ drawOxygen = false
 drawGold = false
 
 inventoryIndex = 0
+questIndex = 0
 
 drawNewQuest = false
 drawNewQuestTimer = -1

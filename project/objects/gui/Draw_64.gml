@@ -2,11 +2,52 @@ if live_call() return live_result
 
 ////	Quest Journal
 if instance_exists(player) and player.questJournalOpen {
-	draw_set_color(c_gray)
-	var X = 135
+	
+	//	Gather the width of the longest quest
+	var nameWidth = 0
+	var nameHeight = 0
+	var border = 8
+	var longestWidth = 0
+	var longestHeight = 0
+	for(var i=0;i<ds_list_size(questManager.questList);i++) {
+		var Quest = questManager.questList[| i]
+		var QuestName = questManager.questNames[Quest.index]
+		nameWidth = string_width(QuestName) + border*2
+		nameHeight = string_height(QuestName) + border*2 
+		
+		var tempLongestWidth = 0
+		var tempLongestHeight = 0
+		//	Gather the width of the quest information
+		for(var q=0;q<ds_grid_height(questManager.questData);q++) {
+			var String = questManager.questData[# Quest.index, q]
+			if q > 0 and String != "" {
+				tempLongestWidth = string_width_ext(String,string_height(String),330) + border*2
+				tempLongestHeight = string_height_ext(String,string_height(String),330) + border*2
+				if tempLongestWidth > longestWidth longestWidth = tempLongestWidth
+				if tempLongestHeight > longestHeight longestHeight = tempLongestHeight
+			}
+		}
+	}
+	
+	//	X and Y for the entire journal box
+	var X = 15
 	var Y = 45
-	var Width = 300
+	//	XX and YY for the column of quests
+	var XX = X + 20
+	var YY = Y + 45
+	
+	var mouseover = -1	
+	for(var i=0;i<ds_list_size(questManager.questList);i++) {
+		if (input.keyboardOrController == 0 and point_in_rectangle(mouse_gui_x,mouse_gui_y,XX,YY,XX+nameWidth,YY+nameHeight))
+		or (input.keyboardOrController == 1 and questIndex == i) {
+			mouseover = i
+		}
+	}
+	
+	draw_set_color(c_gray)
+	var Width = nameWidth + 50
 	var Height = 300
+	if mouseover > -1 Width += longestWidth
 	draw_rectangle(X,Y,X+Width,Y+Height,false)
 	
 	draw_set_color(c_black)
@@ -14,19 +55,6 @@ if instance_exists(player) and player.questJournalOpen {
 	draw_set_valign(fa_middle)
 	draw_text(X+Width/2,Y+15,"Quests")
 	
-	//	Gather the width of the longest quest
-	var nameWidth = 0
-	var nameHeight = 0
-	var border = 8
-	for(var i=0;i<ds_list_size(questManager.questList);i++) {
-		var Quest = questManager.questList[| i]
-		var QuestName = questManager.questNames[Quest.index]
-		nameWidth = string_width(QuestName) + border*2
-		nameHeight = string_height(QuestName) + border*2
-	}
-	
-	var XX = X + 20
-	var YY = Y + 45
 	var WWidth = 100
 	var HHeight = 45
 	for(var i=0;i<ds_list_size(questManager.questList);i++) {
@@ -36,17 +64,37 @@ if instance_exists(player) and player.questJournalOpen {
 		draw_set_color(c_black)
 		draw_roundrect(XX-2,YY-2,XX+nameWidth+2,YY+nameHeight+2,false)
 		
-		if point_in_rectangle(mouse_gui_x,mouse_gui_y,XX,YY,XX+nameWidth,YY+nameHeight) {
+		if (input.keyboardOrController == 0 and point_in_rectangle(mouse_gui_x,mouse_gui_y,XX,YY,XX+nameWidth,YY+nameHeight))
+		or (input.keyboardOrController == 1 and questIndex == i) {
 			draw_set_color(c_dkgray)
 		}
 		else {
-			draw_set_color(c_ltgray)	
+			draw_set_color(c_ltgray)
 		}
-		
 		draw_roundrect(XX,YY,XX+nameWidth,YY+nameHeight,false)
 
-		draw_set_color(c_black)		
+		draw_set_color(c_black)
 		draw_text(XX+nameWidth/2,YY+nameHeight/2,QuestName)
+		
+		//	Draw specific quest information
+		if mouseover == i {
+			var space = 16
+			var _x = XX+nameWidth+space
+			var _y = YY
+			//var _width = longestWidth
+			var _height = longestHeight
+			
+			draw_set_color(c_black)
+			draw_set_halign(fa_left)
+			for(var d=0;d<ds_grid_height(questManager.questData);d++) {
+				var String = questManager.questData[# Quest.index, d]
+				if d > 0 and String != "" and questManager.questInformation[# Quest.index, d] {
+					String = string_insert("- ",String,0)
+					draw_text_ext(_x, _y+_height/2, String,string_height(String),330)
+					_y += string_height_ext(String,string_height(String),330)
+				}
+			}	
+		}
 	}
 }
 
