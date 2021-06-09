@@ -234,3 +234,13 @@ respHusbandAndWife,1,I'm going underwater to retrieve your necklace!,
 respHusbandAndWife,0,Bye.,
 husbandAndWifePre,2,That's lovely to hear.,s_wife_face
 husbandAndWifePre,0,We appreciate it young man.,s_husband_face
+jellyNecklace,respJellyNecklace,Oh hello.,s_jelly_face
+respJellyNecklace,1,Nice necklace.,
+respJellyNecklace,0,Bye.,
+jellyNecklace,-2,Thanks. I found it and I'm going to give it to...,s_jelly_face
+jellyNecklace,3,…that eel over there. I subscribe to her OnlyFins.,s_jelly_face
+jellyNecklace,respJellyNeckQuestion,Think she'll like it?,s_jelly_face
+respJellyNeckQuestion,4,Go for it and find out.,
+respJellyNeckQuestion,5,I'm gonna need that necklace.,
+jellyNecklace,,,
+jellyNecklace,,,
