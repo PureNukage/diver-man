@@ -238,9 +238,22 @@ jellyNecklace,respJellyNecklace,Oh hello.,s_jelly_face
 respJellyNecklace,1,Nice necklace.,
 respJellyNecklace,0,Bye.,
 jellyNecklace,-2,Thanks. I found it and I'm going to give it to...,s_jelly_face
-jellyNecklace,3,…that eel over there. I subscribe to her OnlyFins.,s_jelly_face
+jellyNecklace,3,...that eel over there. I subscribe to her OnlyFins.,s_jelly_face
 jellyNecklace,respJellyNeckQuestion,Think she'll like it?,s_jelly_face
 respJellyNeckQuestion,4,Go for it and find out.,
-respJellyNeckQuestion,5,I'm gonna need that necklace.,
-jellyNecklace,,,
-jellyNecklace,,,
+respJellyNeckQuestion,7,I'm gonna need that necklace.,
+jellyNecklace,respJellyNecklaceQuestion,Okay! H-how do I look?,s_jelly_face
+respJellyNecklaceQuestion,6,Dashing! Go get her tiger.,
+respJellyNecklaceQuestion,5,You got something in your teeth.,
+jellyNecklace,6,Teeth? The heck is that??,s_jelly_face
+jellyNecklace,-13,Okay! Here I go!,s_jelly_face
+jellyNecklace,respJellyNeckBack,Uhhh but I found it? Also how am I supposed to get her to like me without gifts.,s_jelly_face
+respJellyNeckBack,8,"The necklace isn't yours, its from the surface.",
+respJellyNeckBack,9,Not my problem.,
+jellyNecklace,9,The surface? You're just making that up because you want it for yourself.,s_jelly_face
+jellyNecklace,10,How can you stand in the way of true love?,s_jelly_face
+jellyNecklace,respJellyReallyNecklace,Do you REALLY want me to give you the necklace?,s_jelly_face
+respJellyReallyNecklace,11,Yes.,
+respJellyReallyNecklace,12,"No, you can keep it.",
+jellyNecklace,6,Ok fine you can have it. I don't need it anyway!,s_jelly_face
+jellyNecklace,6,That's right. This is the start of something great!,s_jelly_face

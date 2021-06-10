@@ -237,7 +237,8 @@ function load_dialogue() {
 		
 		var SpriteIndex = asset_get_index(Sprite)
 		
-		if string_count(key,Key) > 0 {
+		//if string_count(key,Key) > 0 {
+		if key == Key {
 			myDialogue[0, DialogueIndex] = nextIndex
 			
 			////	Error checking the variable dialogue (the variable is replaced in Textbox::Begin Step)

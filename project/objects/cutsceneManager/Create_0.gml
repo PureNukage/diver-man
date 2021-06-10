@@ -4,6 +4,13 @@ timer = 0
 
 cutsceneList = ds_list_create()
 
+function start_cutscene(cutscene_index) {
+	cutscene = cutscene_index
+	stage = -1
+	timer = 0
+	debug.log("Starting cutscene: " + string(cutscene))
+}
+
 function find_cutscene(cutscene_index) {
 	for(var i=0;i<ds_list_size(cutsceneList);i++) {
 		if cutsceneList[| i] == cutscene_index return i	

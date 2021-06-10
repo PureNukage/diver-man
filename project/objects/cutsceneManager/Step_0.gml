@@ -83,4 +83,46 @@ switch(cutscene)
 			break
 		}
 	break
+	case cutscene.jellyGivingNecklace:
+		switch(stage) {
+			//	Spawn in the eels
+			case -1:
+				var Eeel1 = instance_create_layer(1472,2304,"Instances",eel)
+				Eeel1.image_xscale = -1
+				var Eeel2 = instance_create_layer(1520,2304,"Instances",eel)
+				stage = 0
+				player.canMove = false
+				jellyfish.interactibility = false
+				jellyfish.interactable = false
+				jellyfish.interactDistance = false
+			break
+			//	Pan camera to the eels
+			case 0:
+				app.cameraFocus(1496,2260,"~",true)
+				stage = 1
+			break
+			//	Resume Jellyfish dialogue
+			case 1:
+				if timer < 90 timer++
+				else {
+					if instance_exists(jellyfish) with jellyfish {
+						create_textbox(id, myDialogue[1, dialogueIndex])
+						inConversation = true	
+					}
+					stage = 2
+					timer = 0
+					app.cameraFocus(jellyfish.x,jellyfish.y,"~",true)
+				}
+			break
+			//	Jellyfish walks over to the eels
+			case 2:
+				if jellyfish.dialogueIndex == 13 {
+					app.cameraFocus(1496,2260,"~",true)
+					jellyfish.sprite_index = s_jelly
+					jellyfish.free_move(1440,2304)
+					stage = 3
+				}
+			break
+		}
+	break
 }
