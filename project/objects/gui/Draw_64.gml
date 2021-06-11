@@ -145,6 +145,7 @@ if instance_exists(player) and player.inventoryOpen {
 			draw_rectangle(XX,YY, XX+WWidth, YY+HHeight, true)
 		
 			if !is_undefined(Item) or Item > 0 {
+				var Name = sprite_get_name(Item.image)
 				draw_sprite(Item.image,0,XX,YY)
 			}
 			

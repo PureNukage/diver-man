@@ -7,8 +7,8 @@
   "edgeFiltering": false,
   "collisionTolerance": 0,
   "swfPrecision": 2.525,
-  "bbox_left": 3,
-  "bbox_right": 39,
+  "bbox_left": 8,
+  "bbox_right": 44,
   "bbox_top": 3,
   "bbox_bottom": 79,
   "HTile": false,
@@ -25,10 +25,10 @@
   "gridY": 0,
   "frames": [
     {"compositeImage":{"FrameId":{"name":"fb7f7b13-afd9-4026-b3e0-efc052d95179","path":"sprites/s_eel/s_eel.yy",},"LayerId":null,"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMSpriteBitmap",},"images":[
+        {"FrameId":{"name":"fb7f7b13-afd9-4026-b3e0-efc052d95179","path":"sprites/s_eel/s_eel.yy",},"LayerId":{"name":"886400c2-092a-4bd9-8112-79b3b8e87158","path":"sprites/s_eel/s_eel.yy",},"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMSpriteBitmap",},
         {"FrameId":{"name":"fb7f7b13-afd9-4026-b3e0-efc052d95179","path":"sprites/s_eel/s_eel.yy",},"LayerId":{"name":"92d8c8a5-27ee-4bff-a148-da41645d44a8","path":"sprites/s_eel/s_eel.yy",},"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMSpriteBitmap",},
         {"FrameId":{"name":"fb7f7b13-afd9-4026-b3e0-efc052d95179","path":"sprites/s_eel/s_eel.yy",},"LayerId":{"name":"4e6a9bd5-7097-4451-a951-75f3b9d865ec","path":"sprites/s_eel/s_eel.yy",},"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMSpriteBitmap",},
         {"FrameId":{"name":"fb7f7b13-afd9-4026-b3e0-efc052d95179","path":"sprites/s_eel/s_eel.yy",},"LayerId":{"name":"c43246f7-634b-44f9-b128-a7037d89edd0","path":"sprites/s_eel/s_eel.yy",},"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMSpriteBitmap",},
-        {"FrameId":{"name":"fb7f7b13-afd9-4026-b3e0-efc052d95179","path":"sprites/s_eel/s_eel.yy",},"LayerId":{"name":"886400c2-092a-4bd9-8112-79b3b8e87158","path":"sprites/s_eel/s_eel.yy",},"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMSpriteBitmap",},
       ],"parent":{"name":"s_eel","path":"sprites/s_eel/s_eel.yy",},"resourceVersion":"1.0","name":"fb7f7b13-afd9-4026-b3e0-efc052d95179","tags":[],"resourceType":"GMSpriteFrame",},
   ],
   "sequence": {

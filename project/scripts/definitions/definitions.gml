@@ -29,6 +29,7 @@ enum state {
 enum item {
 	sandwich,
 	watch,
+	necklace
 }
 
 enum treasure {

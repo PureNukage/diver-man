@@ -88,8 +88,8 @@ switch(cutscene)
 			//	Spawn in the eels
 			case -1:
 				var Eeel1 = instance_create_layer(1472,2304,"Instances",eel)
-				Eeel1.image_xscale = -1
 				var Eeel2 = instance_create_layer(1520,2304,"Instances",eel)
+				Eeel2.image_xscale = -1
 				stage = 0
 				player.canMove = false
 				jellyfish.interactibility = false
@@ -119,8 +119,56 @@ switch(cutscene)
 				if jellyfish.dialogueIndex == 13 {
 					app.cameraFocus(1496,2260,"~",true)
 					jellyfish.sprite_index = s_jelly
-					jellyfish.free_move(1440,2304)
+					jellyfish.free_move(1420,2304)
 					stage = 3
+				}
+			break
+			//	Wait for Jellyfish to stop moving
+			case 3:
+				if !jellyfish.moving {
+					if timer < 90 timer++
+					else {
+						jellyfish.sprite_index = s_jelly_giving_necklace
+						timer = 0
+						stage = 4
+					}
+				}
+			break
+			//	Wait a bit and then have the eels laugh
+			case 4:
+				if timer < 90 timer++
+				else {
+					with eel {
+						interactable = false
+						emote(s_emoji_laugh, 240)
+						free_move(1900,2304)
+					}
+					timer = 0
+					stage = 5
+				}
+			break
+			//	Wait for eels to be off camera then destroy them
+			case 5:
+				if timer < 240 timer++
+				else {
+					with eel instance_destroy()
+					
+					stage = 6
+					timer = 0
+				}
+			break
+			//	Jellyfish looks sad and cutscene ends
+			case 6:
+				jellyfish.sprite_index = s_jelly_sad
+				if timer < 90 timer++
+				else {
+					player.canMove = true
+					app.cameraFocus(player.x,player.y,1,true)
+					finish_cutscene()
+					jellyfish.interactibility = true
+					jellyfish.interactable = true
+					jellyfish.inConversation = false
+					jellyfish.interactDistance = true
 				}
 			break
 		}

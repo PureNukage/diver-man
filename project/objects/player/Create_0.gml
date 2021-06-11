@@ -77,6 +77,11 @@ function _create_item(item_index) constructor {
 			image = s_watch_image
 			text = "Watch"
 			description = "A watch passed down from your parents"
+		break 
+		case item.necklace:
+			image = s_necklace_image
+			text = "Necklace"
+			description = "A necklace belonging to the Wife"
 		break
 	}
 }

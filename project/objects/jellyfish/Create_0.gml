@@ -6,3 +6,4 @@ npcKey = "jellyNecklace"
 load_dialogue()
 
 startedCutscene = false
+gaveNecklace = false

@@ -20,5 +20,5 @@ if interactable {
 	draw_sprite_ext(Sprite,0,xx,yy,2,2,0,c_white,1)
 }
 else {
-	interactableY = y-z
+	interactableY = y-(sprite_get_yoffset(sprite_index)*image_yscale)-z
 }
