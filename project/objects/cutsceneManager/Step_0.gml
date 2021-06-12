@@ -118,7 +118,8 @@ switch(cutscene)
 			case 2:
 				if jellyfish.dialogueIndex == 13 {
 					app.cameraFocus(1496,2260,"~",true)
-					jellyfish.sprite_index = s_jelly
+					if jellyfish.sprite_index == s_jelly_sitting jellyfish.sprite_index = s_jelly
+					else jellyfish.sprite_index = s_jelly_no_necklace
 					jellyfish.free_move(1420,2304)
 					stage = 3
 				}
@@ -128,7 +129,7 @@ switch(cutscene)
 				if !jellyfish.moving {
 					if timer < 90 timer++
 					else {
-						jellyfish.sprite_index = s_jelly_giving_necklace
+						if jellyfish.sprite_index == s_jelly jellyfish.sprite_index = s_jelly_giving_necklace
 						timer = 0
 						stage = 4
 					}
@@ -159,7 +160,8 @@ switch(cutscene)
 			break
 			//	Jellyfish looks sad and cutscene ends
 			case 6:
-				jellyfish.sprite_index = s_jelly_sad
+				if jellyfish.sprite_index == s_jelly_giving_necklace jellyfish.sprite_index = s_jelly_sad
+				else jellyfish.sprite_index = s_jelly_sad_no_necklace
 				if timer < 90 timer++
 				else {
 					player.canMove = true

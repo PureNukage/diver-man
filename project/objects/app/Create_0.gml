@@ -777,7 +777,9 @@ function scene_loader() {
 						#region Retrieving the necklace
 							case quests.necklace:
 							
-								var Jelly = instance_create_layer(1043,2298,Layer,jellyfish)
+								if instance_exists(player) and player.item_check(item.necklace) == -1 {
+									var Jelly = instance_create_layer(1043,2298,Layer,jellyfish)
+								}
 								
 								var Crab = instance_create_layer(1296,2128,Layer,crab)
 								Crab.holdingItem = chainlink
