@@ -66,24 +66,27 @@ function item_check(item_index) {
 
 function _create_item(item_index) constructor {
 	index = item_index
+	var Image = -1
 	
 	switch(item_index) {
 		case item.sandwich:
-			image = s_sandwich
+			Image = s_sandwich
 			text = "Sandwich"
 			description = "A sandwich made with love. Restores HP"
 		break
 		case item.watch:
-			image = s_watch_image
+			Image = s_watch_image
 			text = "Watch"
 			description = "A watch passed down from your parents"
 		break 
 		case item.necklace:
-			image = s_necklace_image
+			Image = s_necklace_image
 			text = "Necklace"
 			description = "A necklace belonging to the Wife"
 		break
 	}
+	
+	image = sprite_get_name(Image)
 }
 
 function footprint() {
