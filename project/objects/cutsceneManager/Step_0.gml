@@ -161,7 +161,7 @@ switch(cutscene)
 			//	Jellyfish looks sad and cutscene ends
 			case 6:
 				if jellyfish.sprite_index == s_jelly_giving_necklace jellyfish.sprite_index = s_jelly_sad
-				else jellyfish.sprite_index = s_jelly_sad_no_necklace
+				else if player.item_check(item.necklace) > -1 jellyfish.sprite_index = s_jelly_sad_no_necklace
 				if timer < 90 timer++
 				else {
 					player.canMove = true

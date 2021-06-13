@@ -13,6 +13,7 @@ if sprite_index == s_jelly_sitting and dialogueIndex == 11 and !gaveNecklace {
 
 if !gaveNecklace and dialogueIndex == 15 {
 	gaveNecklace = true
-	sprite_index = s_jelly_sad_no_necklace
+	if sprite_index == s_jelly_sad sprite_index = s_jelly_sad_no_necklace
+	else sprite_index = s_jelly_sitting_no_necklace
 	player.create_item(item.necklace)
 }

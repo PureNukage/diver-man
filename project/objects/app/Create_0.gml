@@ -779,6 +779,9 @@ function scene_loader() {
 							
 								if instance_exists(player) and player.item_check(item.necklace) == -1 {
 									var Jelly = instance_create_layer(1043,2298,Layer,jellyfish)
+									if cutsceneManager.find_cutscene(cutscene.jellyGivingNecklace) > -1 {
+										Jelly.dialogueIndex = 13
+									}
 								}
 								
 								var Crab = instance_create_layer(1296,2128,Layer,crab)
