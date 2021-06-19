@@ -160,47 +160,61 @@ if instance_exists(player) and player.inventoryOpen {
 ////	Health and stamina bars
 if instance_exists(player) {
 	
-	////	Health bar
-	if drawHealth and app.roomTransitionTo == -1 { 
+	//////	Health bar
+	if drawHealth and app.roomTransitionTo == -1 {
 		var XX = 6
 		var YY = 6
-		//	Back
-		draw_sprite_ext(s_bar_back,0,XX,YY,1,1,0,c_black,1)
-		//	Front
-		var spriteWidth = sprite_get_width(s_bar_front)
+		draw_sprite(s_logo_back,0,XX,YY)
+		var spriteWidth = sprite_get_width(s_healthbar)
 		var ratio = player.hp / player.hpMax
 		var barWidth = spriteWidth * ratio
-		draw_sprite_part_ext(s_bar_front,0,0,0,barWidth,sprite_get_height(s_bar_front),XX,YY,1,1,make_color_rgb(146,0,0),1)
-		draw_sprite(s_logo_health,0,XX,YY)
-	}
-	
-	////	Stamina bar
-	if drawStamina and app.roomTransitionTo == -1 {
-		var XX = 6
-		var YY = 6 + sprite_get_height(s_bar_back) + 6
-		//	Back
-		draw_sprite_ext(s_bar_back,0,XX,YY,1,1,0,c_black,1)
-		//	Front
-		var spriteWidth = sprite_get_width(s_bar_front)
+		draw_sprite_part_ext(s_healthbar,0,0,0,barWidth,sprite_get_height(s_healthbar),XX+55,YY+19,1,1,c_white,1)
+		
+		var spriteWidth = sprite_get_width(s_stamina)
 		var ratio = player.stamina / player.staminaMax
 		var barWidth = spriteWidth * ratio
-		draw_sprite_part_ext(s_bar_front,0,0,0,barWidth,sprite_get_height(s_bar_front),XX,YY,1,1,make_color_rgb(60,114,59),1)
-		draw_sprite(s_logo_stamina,0,XX,YY)
+		draw_sprite_part_ext(s_stamina,0,0,0,barWidth,sprite_get_height(s_stamina),XX+50,YY+40,1,1,c_white,1)
 	}
+	//if drawHealth and app.roomTransitionTo == -1 { 
+	//	var XX = 6
+	//	var YY = 6
+	//	//	Back
+	//	draw_sprite_ext(s_bar_back,0,XX,YY,1,1,0,c_black,1)
+	//	//	Front
+	//	var spriteWidth = sprite_get_width(s_bar_front)
+	//	var ratio = player.hp / player.hpMax
+	//	var barWidth = spriteWidth * ratio
+	//	draw_sprite_part_ext(s_bar_front,0,0,0,barWidth,sprite_get_height(s_bar_front),XX,YY,1,1,make_color_rgb(146,0,0),1)
+	//	draw_sprite(s_logo_health,0,XX,YY)
+	//}
 	
-	////	o2 bar
-	if drawOxygen and app.roomTransitionTo == -1 {
-		var XX = 6
-		var YY = 6 + (sprite_get_height(s_bar_back)*2) + 12
-		//	Back
-		draw_sprite_ext(s_bar_back,0,XX,YY,1,1,0,c_black,1)
-		//	Front
-		var spriteWidth = sprite_get_width(s_bar_front)
-		var ratio = player.oxygen / player.oxygenMax
-		var barWidth = spriteWidth * ratio
-		draw_sprite_part_ext(s_bar_front,0,0,0,barWidth,sprite_get_height(s_bar_front),XX,YY,1,1,make_color_rgb(0,139,185),1)
-		draw_sprite(s_logo_oxygen,0,XX,YY)
-	}
+	//////	Stamina bar
+	//if drawStamina and app.roomTransitionTo == -1 {
+	//	var XX = 6
+	//	var YY = 6 + sprite_get_height(s_bar_back) + 6
+	//	//	Back
+	//	draw_sprite_ext(s_bar_back,0,XX,YY,1,1,0,c_black,1)
+	//	//	Front
+	//	var spriteWidth = sprite_get_width(s_bar_front)
+	//	var ratio = player.stamina / player.staminaMax
+	//	var barWidth = spriteWidth * ratio
+	//	draw_sprite_part_ext(s_bar_front,0,0,0,barWidth,sprite_get_height(s_bar_front),XX,YY,1,1,make_color_rgb(60,114,59),1)
+	//	draw_sprite(s_logo_stamina,0,XX,YY)
+	//}
+	
+	//////	o2 bar
+	//if drawOxygen and app.roomTransitionTo == -1 {
+	//	var XX = 6
+	//	var YY = 6 + (sprite_get_height(s_bar_back)*2) + 12
+	//	//	Back
+	//	draw_sprite_ext(s_bar_back,0,XX,YY,1,1,0,c_black,1)
+	//	//	Front
+	//	var spriteWidth = sprite_get_width(s_bar_front)
+	//	var ratio = player.oxygen / player.oxygenMax
+	//	var barWidth = spriteWidth * ratio
+	//	draw_sprite_part_ext(s_bar_front,0,0,0,barWidth,sprite_get_height(s_bar_front),XX,YY,1,1,make_color_rgb(0,139,185),1)
+	//	draw_sprite(s_logo_oxygen,0,XX,YY)
+	//}
 	
 	
 	////	Gold
