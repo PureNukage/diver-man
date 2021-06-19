@@ -72,6 +72,8 @@ if on {
 	if clicked {
 		app.roomTransition(RoomDocks_Underwater, 20)
 		if questManager.find_quest(quests.watch) == -1 questManager.add_quest(quests.watch)
+		gui.toggle(true)
+		app.suitOn = true
 		app.save_game(true)
 	}
 	

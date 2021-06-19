@@ -27,5 +27,7 @@ function finish_cutscene() {
 		cutscene = -1
 		stage = -1
 		timer = 0 
+		
+		app.save_game(false)
 	}
 }

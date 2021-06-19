@@ -78,7 +78,6 @@ switch(cutscene)
 					stage++
 					finish_cutscene()
 					mafia0.image_xscale = 1
-					app.save_game(false)
 				}
 			break
 		}
@@ -171,6 +170,7 @@ switch(cutscene)
 					jellyfish.interactable = true
 					jellyfish.inConversation = false
 					jellyfish.interactDistance = true
+					
 				}
 			break
 		}
