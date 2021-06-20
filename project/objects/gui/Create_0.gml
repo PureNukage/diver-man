@@ -1,5 +1,6 @@
 interactable = false
 
+drawEquip = false
 drawHealth = false
 drawStamina = false
 drawOxygen = false
@@ -80,10 +81,12 @@ function toggle(true_or_false) {
 		drawHealth = true
 		drawStamina = true
 		drawGold = true
+		drawEquip = true
 	}
 	else {
 		drawHealth = false
 		drawStamina = false
 		drawGold = false
+		drawEquip = false
 	}
 }

@@ -145,9 +145,7 @@ function load_game(quick) {
 		
 		cutsceneManager.cutscene = ini_read_real(section,"cutsceneManager",-1)
 		
-		gui.drawGold = true
-		gui.drawHealth = true
-		gui.drawStamina = true
+		gui.toggle(true)
 		
 	}
 	
