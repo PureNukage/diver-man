@@ -11,7 +11,7 @@
     "path": "audiogroups/audiogroup_default",
   },
   "soundFile": "music_surface.mp3",
-  "duration": 101.072723,
+  "duration": 108.4915,
   "parent": {
     "name": "Sounds",
     "path": "folders/Sounds.yy",

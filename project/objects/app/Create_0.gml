@@ -822,6 +822,7 @@ function scene_loader() {
 					surface_free(lighting.surface)
 					playerbed.interactibility = true
 					playerbed.interactable = true
+					sound.playMusic(music_brothers, true)
 				}
 				//	The night after getting the watch
 				else if (Quest > -1 and Quest.index == quests.watch) {
