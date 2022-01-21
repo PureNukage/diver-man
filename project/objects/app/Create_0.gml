@@ -718,18 +718,23 @@ function scene_loader() {
 						#region Retrieving the necklace from underwater
 							case quests.necklace:
 								
-								var Brother = instance_create_layer(816,304,Layer,brother)
-								Brother.npcKey = "brotherNecklace"
-								with Brother load_dialogue()
+								if player.item_check(item.necklace) == -1 { 
+									var Brother = instance_create_layer(816,304,Layer,brother)
+									Brother.npcKey = "brotherNecklace"
+									with Brother load_dialogue()
 								
-								var Husband = instance_create_layer(1072,304,Layer,husband)
-								Husband.image_xscale = -1
-								Husband.npcKey = "husbandAndWifePre"
-								with Husband load_dialogue()
+									var Husband = instance_create_layer(1072,304,Layer,husband)
+									Husband.image_xscale = -1
+									Husband.npcKey = "husbandAndWifePre"
+									with Husband load_dialogue()
 								
-								var Wife = instance_create_layer(1120,320,Layer,wife)
-								Wife.image_xscale = -1
-								Wife.interactibility = false
+									var Wife = instance_create_layer(1120,320,Layer,wife)
+									Wife.image_xscale = -1
+									Wife.interactibility = false
+								}
+								else {
+										
+								}
 								
 							break
 						#endregion
@@ -822,7 +827,7 @@ function scene_loader() {
 					surface_free(lighting.surface)
 					playerbed.interactibility = true
 					playerbed.interactable = true
-					sound.playMusic(music_brothers, true)
+					//sound.playMusic(music_brothers, true)
 				}
 				//	The night after getting the watch
 				else if (Quest > -1 and Quest.index == quests.watch) {

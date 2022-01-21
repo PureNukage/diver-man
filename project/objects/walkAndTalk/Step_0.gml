@@ -72,6 +72,7 @@ else if stage == 1 {
 		app.cameraRefresh = true
 		gui.drawHealth = true
 		gui.drawStamina = true
+		gui.drawEquip = true
 		exit
 	}
 }

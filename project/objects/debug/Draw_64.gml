@@ -45,6 +45,7 @@ if on {
 		gui.drawGold = !gui.drawGold
 		gui.drawHealth = !gui.drawHealth
 		gui.drawStamina = !gui.drawStamina
+		gui.drawEquip = !gui.drawEquip
 	}
 	
 	//	Playground
