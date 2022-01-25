@@ -1,5 +1,5 @@
 event_inherited()
 
-npcKey = "brotherMusic1"
+//npcKey = "default"
 
-load_dialogue()
+//load_dialogue()

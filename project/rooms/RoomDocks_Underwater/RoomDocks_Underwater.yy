@@ -83,6 +83,7 @@
         {"properties":[],"isDnd":false,"objectId":{"name":"mudcrab","path":"objects/mudcrab/mudcrab.yy",},"inheritCode":false,"hasCreationCode":false,"colour":4294967295,"rotation":0.0,"scaleX":1.0,"scaleY":1.0,"imageIndex":0,"imageSpeed":1.0,"inheritedItemId":null,"frozen":false,"ignore":false,"inheritItemSettings":false,"x":1824.0,"y":1871.99988,"resourceVersion":"1.0","name":"inst_34AAB37","tags":[],"resourceType":"GMRInstance",},
         {"properties":[],"isDnd":false,"objectId":{"name":"mudcrab","path":"objects/mudcrab/mudcrab.yy",},"inheritCode":false,"hasCreationCode":false,"colour":4294967295,"rotation":0.0,"scaleX":1.0,"scaleY":1.0,"imageIndex":0,"imageSpeed":1.0,"inheritedItemId":null,"frozen":false,"ignore":false,"inheritItemSettings":false,"x":1872.0,"y":2016.0,"resourceVersion":"1.0","name":"inst_6958172D","tags":[],"resourceType":"GMRInstance",},
         {"properties":[],"isDnd":false,"objectId":{"name":"chest","path":"objects/chest/chest.yy",},"inheritCode":false,"hasCreationCode":false,"colour":4294967295,"rotation":0.0,"scaleX":1.0,"scaleY":1.0,"imageIndex":0,"imageSpeed":1.0,"inheritedItemId":null,"frozen":false,"ignore":false,"inheritItemSettings":false,"x":407.0,"y":1913.99988,"resourceVersion":"1.0","name":"inst_49574395","tags":[],"resourceType":"GMRInstance",},
+        {"properties":[],"isDnd":false,"objectId":{"name":"shark","path":"objects/shark/shark.yy",},"inheritCode":false,"hasCreationCode":false,"colour":4294967295,"rotation":0.0,"scaleX":1.0,"scaleY":1.0,"imageIndex":0,"imageSpeed":1.0,"inheritedItemId":null,"frozen":false,"ignore":false,"inheritItemSettings":false,"x":960.0,"y":1696.0,"resourceVersion":"1.0","name":"inst_2FF19A45","tags":[],"resourceType":"GMRInstance",},
       ],"visible":true,"depth":0,"userdefinedDepth":false,"inheritLayerDepth":false,"inheritLayerSettings":false,"gridX":16,"gridY":16,"layers":[],"hierarchyFrozen":false,"resourceVersion":"1.0","name":"Instances","tags":[],"resourceType":"GMRInstanceLayer",},
     {"instances":[
         {"properties":[],"isDnd":false,"objectId":{"name":"rock_small_moss","path":"objects/rock_small_moss/rock_small_moss.yy",},"inheritCode":false,"hasCreationCode":false,"colour":4294967295,"rotation":0.0,"scaleX":1.0,"scaleY":1.0,"imageIndex":0,"imageSpeed":1.0,"inheritedItemId":null,"frozen":false,"ignore":false,"inheritItemSettings":false,"x":739.0,"y":2002.0,"resourceVersion":"1.0","name":"inst_214C564","tags":[],"resourceType":"GMRInstance",},
@@ -2488,6 +2489,7 @@
     {"name":"inst_2A0352EB","path":"rooms/RoomDocks_Underwater/RoomDocks_Underwater.yy",},
     {"name":"inst_568C78B6","path":"rooms/RoomDocks_Underwater/RoomDocks_Underwater.yy",},
     {"name":"inst_49574395","path":"rooms/RoomDocks_Underwater/RoomDocks_Underwater.yy",},
+    {"name":"inst_2FF19A45","path":"rooms/RoomDocks_Underwater/RoomDocks_Underwater.yy",},
   ],
   "inheritCreationOrder": false,
   "sequenceId": null,

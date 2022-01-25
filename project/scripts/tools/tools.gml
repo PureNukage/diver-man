@@ -237,7 +237,10 @@ function load_dialogue() {
 		
 		var SpriteIndex = asset_get_index(Sprite)
 		
-		//if string_count(key,Key) > 0 {
+		key = string_lettersdigits(key)
+		Key = string_lettersdigits(Key)
+		
+		//if (string_count(key,Key) > 0) and (string_length(key) == string_length(Key)) {
 		if key == Key {
 			myDialogue[0, DialogueIndex] = nextIndex
 			

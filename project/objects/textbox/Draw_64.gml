@@ -1,3 +1,26 @@
+if live_call() return live_result;
+
+//var centerX = display_get_gui_width()/2
+//var centerY = display_get_gui_height()/2
+//var width = 558
+//var height = string_height_ext(text, string_height(text), width)
+//var xx = centerX - width/2
+//var yy = display_get_gui_height() - height
+
+//draw_set_font(font_dialogue)
+//draw_rectangle(xx,yy, xx+width,yy+height,false)
+
+//draw_set_color(c_white)
+
+//draw_set_halign(fa_left)
+//draw_set_valign(fa_middle)
+
+//draw_text(centerX,centerY,string(text))
+
+//draw_nine_tile(s_parchment_9slice, )
+
+
+
 var widthSpacer = 20
 var heightSpacer = 40
 draw_set_font(font_dialogue)
@@ -22,8 +45,9 @@ draw_set_color(c_black)
 draw_set_halign(fa_center)
 draw_set_valign(fa_middle)
 draw_text_ext(xx+(tilesWidth*pixels)/2, yy+(tilesHeight*pixels)/2, text, string_height(text), width)
+//draw_text_ext(xx+(tilesWidth*pixels)/3, yy+(tilesHeight*pixels)/2, string_copy(text,0,textIndex), string_height(text), width)
 
-//draw_set_color(c_blue)
+draw_set_color(c_blue)
 gpu_set_blendmode(bm_subtract)
 var index = 0
 for(var i=0;i<array_length(rows);i++) {

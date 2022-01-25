@@ -20,7 +20,7 @@ if stage == 0 {
 		if gap <= 0 {
 			if timer < 120 timer++
 		
-			if timer >= 120 and !inConversation {
+			if timer >= 120 and !inConversation and dialogueIndex < 8 {
 				create_textbox(id,myDialogue[1, dialogueIndex])
 				inConversation = true
 			}
