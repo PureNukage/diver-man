@@ -1,26 +1,5 @@
 if live_call() return live_result;
 
-//var centerX = display_get_gui_width()/2
-//var centerY = display_get_gui_height()/2
-//var width = 558
-//var height = string_height_ext(text, string_height(text), width)
-//var xx = centerX - width/2
-//var yy = display_get_gui_height() - height
-
-//draw_set_font(font_dialogue)
-//draw_rectangle(xx,yy, xx+width,yy+height,false)
-
-//draw_set_color(c_white)
-
-//draw_set_halign(fa_left)
-//draw_set_valign(fa_middle)
-
-//draw_text(centerX,centerY,string(text))
-
-//draw_nine_tile(s_parchment_9slice, )
-
-
-
 var widthSpacer = 20
 var heightSpacer = 40
 draw_set_font(font_dialogue)
@@ -31,15 +10,18 @@ var height = string_height_ext(text,string_height(text),width-(widthSpacer*2)) +
 var xx = display_get_gui_width()/2 - width/2
 var yy = display_get_gui_height() - height - heightSpacer
 
-draw_nine_tile(s_parchment_9slice, width, height, xx, yy, string(string_copy(text,1,textIndex)))
+var pixels = 42
+var tilesWidth = ceil(width / pixels)
+var tilesHeight = ceil(height / pixels)
+
+//	Used to fix the yy on screen
+var diff = yy+(tilesHeight*pixels) - 338
+
+draw_nine_tile(s_parchment_9slice, width, height, xx, yy-diff, string(string_copy(text,1,textIndex)))
 
 var surface = surface_create(display_get_gui_width(),display_get_gui_height())
 surface_set_target(surface)
 draw_clear_alpha(c_black, 0)
-
-var pixels = 42
-var tilesWidth = ceil(width / pixels)
-var tilesHeight = ceil(height / pixels)
 
 draw_set_color(c_black)
 draw_set_halign(fa_center)
@@ -73,11 +55,25 @@ for(var i=0;i<array_length(rows);i++) {
 gpu_set_blendmode(bm_normal)
 
 surface_reset_target()
-draw_surface(surface,0,0)
+draw_surface(surface,0,0-diff)
 surface_free(surface)
+
+////	debug
+//draw_set_color(c_red)
+//draw_rectangle(xx-1,yy-1,xx+width,yy+height,true)
+//draw_set_color(c_blue)
+//draw_rectangle(xx,yy,xx+width,yy+(tilesHeight*pixels),true)
+//draw_set_color(c_green)
+//draw_rectangle(xx-2,yy,xx+width,yy+height+heightSpacer-2,true)
+
+//draw_set_color(c_orange)
+//draw_line(xx-20,338,xx-5,339)
+
+//draw_set_color(c_yellow)
+//draw_line(xx-10,338,xx-11,yy+(tilesHeight*pixels))
 
 var scale = 5
 var sprite = ID.myDialogue[2, ID.dialogueIndex]
-draw_sprite_ext(sprite,0, xx,yy-sprite_get_height(sprite)*scale, scale,scale, 0,c_white,1)
+draw_sprite_ext(sprite,0, xx,(yy-diff)-(sprite_get_height(sprite)*scale), scale,scale, 0,c_white,1)
 
 draw_reset()
