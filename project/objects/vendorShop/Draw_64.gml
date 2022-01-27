@@ -33,7 +33,7 @@ if shop {
 		var HHeight = 64
 		var border = 2
 		var String = shopList[| i].text
-		var Image = shopList[| i].image
+		var Image = asset_get_index(shopList[| i].image)
 		var Desc = shopList[| i].description
 		var hover = false
 		

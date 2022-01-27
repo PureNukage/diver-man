@@ -87,6 +87,7 @@ function _create_item(item_index) constructor {
 	}
 	
 	image = sprite_get_name(Image)
+
 }
 
 function footprint() {

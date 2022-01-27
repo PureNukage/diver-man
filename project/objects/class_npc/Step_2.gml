@@ -6,3 +6,6 @@ if map > -1 {
 		depth = -y
 	}
 }
+else {
+	depth = -y	
+}
