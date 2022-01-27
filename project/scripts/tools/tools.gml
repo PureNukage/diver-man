@@ -327,7 +327,7 @@ function condition_check_dialogue(ID) {
 					switch(i) {
 						//	Donated
 						case 0:
-							if !quest._donated keep = false
+							if !quest.donated or quest._donated keep = false
 						break
 						//	Decided to keep it
 						case 1:
@@ -335,15 +335,15 @@ function condition_check_dialogue(ID) {
 						break
 						//	Played street craps and made some money!
 						case 2:
-							if !quest.gambled or (quest.profited or quest.lostItAll) keep = false	
+							if (!quest.gambled or quest._gambled) or (quest.profited or quest.lostItAll) keep = false	
 						break
 						//	Here's a sandwich
 						case 3:
-							if !quest.boughtSandwich or player.item_check(item.sandwich) == -1 keep = false
+							if (!quest.boughtSandwich or quest._boughtSandwich) or player.item_check(item.sandwich) == -1 keep = false
 						break
 						//	Listened to Sailor Pete
 						case 4:
-							if !quest.listenedToPete keep = false
+							if !quest.listenedToPete or quest._listenedToPete keep = false
 						break
 						//	...and I lost it all
 						case 5:
@@ -449,17 +449,21 @@ function condition_check_response(ID) {
 			//	Find quest LWO
 			var quest = questManager.find_quest(quests.spendFinalCoin)
 			switch(index) {
+				//	Garden
+				case 0:
+					quest._donated = true
+				break
 				//	Gambled
-				case 1:
+				case 2:
 					quest._gambled = true
 				break
 				//	Sandwich
-				case 2:
+				case 3:
 					quest._boughtSandwich = true
 					player.remove_item(player.item_check(item.sandwich))
 				break
 				//	Pete
-				case 3:
+				case 4:
 					quest._listenedToPete = true
 				break
 				//	That's it

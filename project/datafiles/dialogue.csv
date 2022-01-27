@@ -25,11 +25,11 @@ brother,-5,Ok lets go.,s_brother_face
 brother,-2,Make it snappy.,s_brother_face
 brother,-6,HEAD HOME,
 brotherFinalCoin,respBrotherCoin,What'd you spend the coin on?,s_brother_face
-respBrotherCoin,1,I invested it into a garden.,
+respBrotherCoin,9,I invested it into a garden.,
 respBrotherCoin,2,Decided to keep it.,
-respBrotherCoin,3,Played street craps and made some money!,
-respBrotherCoin,4,Here's a sandwich.,
-respBrotherCoin,7,Listened to Sailor Petes tale about losing his leg.,
+respBrotherCoin,2,Played street craps and made some money!,
+respBrotherCoin,3,Here's a sandwich.,
+respBrotherCoin,6,Listened to Sailor Petes tale about losing his leg.,
 respBrotherCoin,11,...I gambled and I lost it all.,
 respBrotherCoin,10,Played street craps and flipped the coin into profit.,
 respBrotherCoin,11,That's it.,
@@ -41,7 +41,7 @@ brotherFinalCoin,respBrotherCoin,Thanks!,s_brother_face
 brotherFinalCoin,respBrotherPeteTale,How'd he lose it? Was it a shark like I guessed?,s_brother_face
 brotherFinalCoin,8,Davey Jones! Ha!,s_brother_face
 brotherFinalCoin,respBrotherCoin,Well that's one mystery solved.,s_brother_face
-brotherFinalCoin,11,An investment for later? Ok I'm trusting you.,s_brother_face
+brotherFinalCoin,2,An investment for later? Ok I'm trusting you.,s_brother_face
 brotherFinalCoin,11,Oh.,s_brother_face
 brotherFinalCoin,-12,What a day.,s_brother_face
 respBrotherPeteTale,8,His battleship sunk in a storm.,

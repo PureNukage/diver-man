@@ -40,7 +40,8 @@ function quest_script(quest) {
 								quest.boughtSandwich = false
 								quest.gambled = false
 								quest.profited = false
-								quest.lostItAll = false 
+								quest.lostItAll = false
+								quest.donated = false
 							
 								quest._listenedToPete = false
 								quest._boughtSandwich = false
@@ -53,7 +54,7 @@ function quest_script(quest) {
 								}
 									
 								//	Did the player donate?
-								if bobross.donated quest._donated = true
+								if bobross.donated quest.donated = true
 							
 								//	Did the player buy a sandwich?
 								if player.item_check(item.sandwich) > -1 quest.boughtSandwich = true

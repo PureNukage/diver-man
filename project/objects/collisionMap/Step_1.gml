@@ -8,11 +8,13 @@ if (map == -1 or (map > -1 and !map.drawSurface))  {
 	var lowestY = -1
 	for(var i=0;i<count;i++) {
 		var Unit = list[| i]
-		var ObjectIndex = Unit.object_index
-		if ObjectIndex == player or (object_get_parent(ObjectIndex) != class_foliage and object_get_parent(ObjectIndex) != class_rock) {
-			if lowestY == -1 or Unit.groundY > lowestY.groundY {
-				if (Unit.z < z+height or (Unit.map != id and Unit.y <= bbox_top+z)) and (Unit.y < bbox_bottom+height-1 and Unit.groundY < bbox_bottom-1) {
-					lowestY = Unit
+		if instance_exists(Unit) {
+			var ObjectIndex = Unit.object_index
+			if ObjectIndex == player or (object_get_parent(ObjectIndex) != class_foliage and object_get_parent(ObjectIndex) != class_rock) {
+				if lowestY == -1 or Unit.groundY > lowestY.groundY {
+					if (Unit.z < z+height or (Unit.map != id and Unit.y <= bbox_top+z)) and (Unit.y < bbox_bottom+height-1 and Unit.groundY < bbox_bottom-1) {
+						lowestY = Unit
+					}
 				}
 			}
 		}
