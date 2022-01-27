@@ -42,7 +42,7 @@ function quest_script(quest) {
 								quest.profited = false
 								quest.lostItAll = false
 								quest.donated = false
-							
+								
 								quest._listenedToPete = false
 								quest._boughtSandwich = false
 								quest._gambled = false
