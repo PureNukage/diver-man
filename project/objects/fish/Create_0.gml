@@ -15,20 +15,35 @@ interactibility = false
 
 maxMovespeed = 1
 
-if place_meeting(x,y,collisionMap) and map == -1 {
-	var list = ds_list_create()
-	var count = instance_place_list(x,y,collisionMap,list,true)
-	var highestMap = -1
-	for(var i=0;i<count;i++) {
-		var ID = list[| i]
-		if highestMap == -1 or ID.z+ID.height > highestMap.z+highestMap.height {
-			highestMap = ID	
+mapcheck()
+
+new_z = 0
+function float(_new_z) {
+	new_z = _new_z-z
+}
+function _floating() {
+	z += sign(new_z)
+	new_z -= sign(new_z)
+}
+function map_move(_x, _y) {
+	var newMap = instance_place(_x,_y,collisionMap)
+	
+	if newMap > -1 {
+		var newZ = newMap.z+newMap.height
+	
+		if newZ != z and newMap != map {
+			//changeMap(newMap)
+			map = newMap
+			float(newZ)
 		}
 	}
-	if highestMap > -1 {
-		map = highestMap
-		y += map.z
-		z = map.z
+	//	No map
+	else {
+		if z > 0 {
+			//changeMap(-1)
+			map = -1
+			float(0)
+		}
 	}
 }
 

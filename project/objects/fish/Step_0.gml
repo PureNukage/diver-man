@@ -2,6 +2,8 @@ event_inherited()
 
 switch(state) {
 	case state.free:
+	
+		if new_z != 0 _floating()
 		
 		if !moving {
 			if timer > -1 {
@@ -9,7 +11,13 @@ switch(state) {
 				timer--
 			}
 			else {
-				random_move(128)
+				var distance = 128
+				var ran_x = irandom_range(x-distance,x+distance)
+				var ran_y = irandom_range(y-distance,y+distance)
+				if !move_to(ran_x, ran_y) {
+					map_move(ran_x, ran_y)
+					debug.log("MAP MOVE")
+				}
 				timer = irandom_range(30,60)
 			}
 		}

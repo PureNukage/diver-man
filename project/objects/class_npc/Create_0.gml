@@ -69,7 +69,7 @@ function move_to(_x, _y) {
 		moving = true
 		return true
 	}
-	else {
+	else {	
 		//	If we're on a ramp
 		if map > -1 and map.ramp {
 			//	and the x,y is in a valid cell
