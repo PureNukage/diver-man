@@ -1,5 +1,6 @@
 if file_exists("save.ini") {
 	file_delete("save.ini")	
+	debug.log("This is a new game so I just deleted the save.ini file")
 }
 
 //	Add the intro quest
@@ -15,7 +16,7 @@ text1FadeIn = 0
 text2FadeIn = 0
 
 playerFadeIn = 0
-brotherFadeIn = 0 
+brotherFadeIn = 0
 backgroundFadeOut = 100
 
 timer = 0

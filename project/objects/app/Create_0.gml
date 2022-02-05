@@ -528,13 +528,14 @@ function scene_loader() {
 	var Quest = questManager.current_quest()
 	var Layer = "Instances"
 	
-	if Quest == -1 debug.log("SCENELOADER - NO ACTIVE QUEST")
+	//if Quest == -1 debug.log("SCENELOADER - NO ACTIVE QUEST")
+	if !is_struct(Quest) debug.log("SCENELOADER - NO ACTIVE QUEST")
 	
 	switch(room) {
 		
 		#region City
 			case RoomCityHub:
-				if Quest > -1 {
+				if is_struct(Quest) {
 					switch(Quest.index) {
 						#region	Final Coin quest
 						case quests.spendFinalCoin:
@@ -655,7 +656,7 @@ function scene_loader() {
 					cage.filled = true	
 				}
 			
-				if Quest > -1 {
+				if is_struct(Quest) {
 					switch(Quest.index) {
 						
 						#region	Bullies are throwing watch off the dock
@@ -761,7 +762,7 @@ function scene_loader() {
 				
 				if !debug.rebuilding sound.playMusic(music_underwater, true)
 			
-				if Quest > -1 {
+				if is_struct(Quest) {
 					switch(Quest.index) {
 						
 						#region Retrieving the watch
@@ -818,7 +819,7 @@ function scene_loader() {
 		#region Alleyway
 			case RoomAlleyHub:
 				//	After the final coin
-				if (Quest > -1 and Quest.index == quests.spendFinalCoin) or (Quest == -1 and questManager.find_finished_quest(quests.spendFinalCoin) > -1) {
+				if (is_struct(Quest) and Quest.index == quests.spendFinalCoin) or (Quest == -1 and questManager.find_finished_quest(quests.spendFinalCoin) > -1) {
 					var Watch = instance_create_layer(292,168,"Instances",watch)
 					var Brother = instance_create_layer(384,336,"Instances",brotherFinalCoin)
 					Brother.image_xscale = -1
@@ -830,7 +831,7 @@ function scene_loader() {
 					//sound.playMusic(music_brothers, true)
 				}
 				//	The night after getting the watch
-				else if (Quest > -1 and Quest.index == quests.watch) {
+				else if (is_struct(Quest) and Quest.index == quests.watch) {
 					lighting.darkness = 0.2
 					lighting.on = true
 					surface_free(lighting.surface)
@@ -840,7 +841,7 @@ function scene_loader() {
 					instance_create_layer(0,0,"Instances",roomAlleyAfterWatch)
 				}
 				//	The morning of the necklace
-				else if (Quest > -1 and Quest.index == quests.necklace) {
+				else if (is_struct(Quest) and Quest.index == quests.necklace) {
 					player.groundX = playerbed.x
 					player.groundY = playerbed.y + 32
 					playerbed.interactability = false
