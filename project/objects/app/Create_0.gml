@@ -734,7 +734,18 @@ function scene_loader() {
 									Wife.interactibility = false
 								}
 								else {
-										
+									var Brother = instance_create_layer(816,304,Layer,brother)
+									Brother.npcKey = "brotherNecklace"
+									with Brother load_dialogue()
+								
+									var Husband = instance_create_layer(1072,304,Layer,husband)
+									Husband.image_xscale = -1
+									Husband.npcKey = "husbandAndWifePost"
+									with Husband load_dialogue()
+								
+									var Wife = instance_create_layer(1120,320,Layer,wife)
+									Wife.image_xscale = -1
+									Wife.interactibility = false
 								}
 								
 							break

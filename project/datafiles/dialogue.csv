@@ -260,3 +260,11 @@ jellyNecklace,6,That's right. This is the start of something great!,s_jelly_face
 jellyNecklace,14,Oh hey...,s_jelly_face
 jellyNecklace,15,It didn't go like I thought it would. ,s_jelly_face
 jellyNecklace,-15,You can have the necklace. It's too painful having a reminder of her...,s_jelly_face
+husbandAndWifePost,1,Oh you got it!,s_wife_face
+husbandAndWifePost,2,"Thank you, son.",s_husband_face
+husbandAndWifePost,3,Here! It's the least I can do. ,s_wife_face
+husbandAndWifePost,-4,You don't know what this necklace means to me.,s_wife_face
+brotherNecklacePostHolding,1,Bro you got the necklace!,s_brother_face
+brotherNecklacePostHolding,0,Deliver it to the couple and lets get paid!,s_brother_face
+brotherNecklacePostEmpty,1,Good job bro!,s_brother_face
+brotherNecklacePostEmpty,-2,Those were our first customers! We're legitimate business folk now. ,s_brother_face
