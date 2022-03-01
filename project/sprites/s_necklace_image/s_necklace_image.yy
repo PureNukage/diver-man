@@ -25,8 +25,8 @@
   "gridY": 0,
   "frames": [
     {"compositeImage":{"FrameId":{"name":"4e307af5-dc29-4160-a743-14263d660b2d","path":"sprites/s_necklace_image/s_necklace_image.yy",},"LayerId":null,"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMSpriteBitmap",},"images":[
-        {"FrameId":{"name":"4e307af5-dc29-4160-a743-14263d660b2d","path":"sprites/s_necklace_image/s_necklace_image.yy",},"LayerId":{"name":"7505cb7a-4e1e-43f7-b382-4d1966a03c0c","path":"sprites/s_necklace_image/s_necklace_image.yy",},"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMSpriteBitmap",},
         {"FrameId":{"name":"4e307af5-dc29-4160-a743-14263d660b2d","path":"sprites/s_necklace_image/s_necklace_image.yy",},"LayerId":{"name":"7378b81f-5650-4f21-8c5b-ec8bdf39313b","path":"sprites/s_necklace_image/s_necklace_image.yy",},"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMSpriteBitmap",},
+        {"FrameId":{"name":"4e307af5-dc29-4160-a743-14263d660b2d","path":"sprites/s_necklace_image/s_necklace_image.yy",},"LayerId":{"name":"7505cb7a-4e1e-43f7-b382-4d1966a03c0c","path":"sprites/s_necklace_image/s_necklace_image.yy",},"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMSpriteBitmap",},
       ],"parent":{"name":"s_necklace_image","path":"sprites/s_necklace_image/s_necklace_image.yy",},"resourceVersion":"1.0","name":"4e307af5-dc29-4160-a743-14263d660b2d","tags":[],"resourceType":"GMSpriteFrame",},
   ],
   "sequence": {
@@ -43,7 +43,7 @@
     "tracks": [
       {"name":"frames","spriteId":null,"keyframes":{"Keyframes":[
             {"id":"e7ab33cf-d89a-4721-abaa-72cdd0c4101d","Key":0.0,"Length":1.0,"Stretch":false,"Disabled":false,"IsCreationKey":false,"Channels":{"0":{"Id":{"name":"4e307af5-dc29-4160-a743-14263d660b2d","path":"sprites/s_necklace_image/s_necklace_image.yy",},"resourceVersion":"1.0","resourceType":"SpriteFrameKeyframe",},},"resourceVersion":"1.0","resourceType":"Keyframe<SpriteFrameKeyframe>",},
-          ],"resourceVersion":"1.0","resourceType":"KeyframeStore<SpriteFrameKeyframe>",},"trackColour":0,"inheritsTrackColour":true,"builtinName":0,"traits":0,"interpolation":1,"tracks":[],"events":[],"modifiers":[],"isCreationTrack":false,"resourceVersion":"1.0","tags":[],"resourceType":"GMSpriteFramesTrack",},
+          ],"resourceVersion":"1.0","resourceType":"KeyframeStore<SpriteFrameKeyframe>",},"trackColour":0,"inheritsTrackColour":true,"builtinName":0,"traits":0,"interpolation":1,"tracks":[],"events":[],"isCreationTrack":false,"resourceVersion":"1.0","tags":[],"resourceType":"GMSpriteFramesTrack","modifiers":[],},
     ],
     "visibleRange": null,
     "lockOrigin": false,
@@ -60,7 +60,7 @@
     "eventToFunction": {},
     "eventStubScript": null,
     "parent": {"name":"s_necklace_image","path":"sprites/s_necklace_image/s_necklace_image.yy",},
-    "resourceVersion": "1.3",
+    "resourceVersion": "1.4",
     "name": "s_necklace_image",
     "tags": [],
     "resourceType": "GMSequence",

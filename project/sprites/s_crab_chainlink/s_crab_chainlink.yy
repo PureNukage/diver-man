@@ -25,9 +25,9 @@
   "gridY": 0,
   "frames": [
     {"compositeImage":{"FrameId":{"name":"4f819b13-5114-458d-9104-702c679832e9","path":"sprites/s_crab_chainlink/s_crab_chainlink.yy",},"LayerId":null,"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMSpriteBitmap",},"images":[
+        {"FrameId":{"name":"4f819b13-5114-458d-9104-702c679832e9","path":"sprites/s_crab_chainlink/s_crab_chainlink.yy",},"LayerId":{"name":"87167ab5-02d0-43af-87c2-90ca13d5594b","path":"sprites/s_crab_chainlink/s_crab_chainlink.yy",},"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMSpriteBitmap",},
         {"FrameId":{"name":"4f819b13-5114-458d-9104-702c679832e9","path":"sprites/s_crab_chainlink/s_crab_chainlink.yy",},"LayerId":{"name":"aca2a03e-1094-41bc-b743-821ed1e3b47e","path":"sprites/s_crab_chainlink/s_crab_chainlink.yy",},"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMSpriteBitmap",},
         {"FrameId":{"name":"4f819b13-5114-458d-9104-702c679832e9","path":"sprites/s_crab_chainlink/s_crab_chainlink.yy",},"LayerId":{"name":"6648cb6c-c6c1-46f9-aa2b-25a1011052a1","path":"sprites/s_crab_chainlink/s_crab_chainlink.yy",},"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMSpriteBitmap",},
-        {"FrameId":{"name":"4f819b13-5114-458d-9104-702c679832e9","path":"sprites/s_crab_chainlink/s_crab_chainlink.yy",},"LayerId":{"name":"87167ab5-02d0-43af-87c2-90ca13d5594b","path":"sprites/s_crab_chainlink/s_crab_chainlink.yy",},"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMSpriteBitmap",},
       ],"parent":{"name":"s_crab_chainlink","path":"sprites/s_crab_chainlink/s_crab_chainlink.yy",},"resourceVersion":"1.0","name":"4f819b13-5114-458d-9104-702c679832e9","tags":[],"resourceType":"GMSpriteFrame",},
   ],
   "sequence": {
@@ -44,7 +44,7 @@
     "tracks": [
       {"name":"frames","spriteId":null,"keyframes":{"Keyframes":[
             {"id":"afd54ac8-d52c-4d54-a1a6-9fd9689410bf","Key":0.0,"Length":1.0,"Stretch":false,"Disabled":false,"IsCreationKey":false,"Channels":{"0":{"Id":{"name":"4f819b13-5114-458d-9104-702c679832e9","path":"sprites/s_crab_chainlink/s_crab_chainlink.yy",},"resourceVersion":"1.0","resourceType":"SpriteFrameKeyframe",},},"resourceVersion":"1.0","resourceType":"Keyframe<SpriteFrameKeyframe>",},
-          ],"resourceVersion":"1.0","resourceType":"KeyframeStore<SpriteFrameKeyframe>",},"trackColour":0,"inheritsTrackColour":true,"builtinName":0,"traits":0,"interpolation":1,"tracks":[],"events":[],"modifiers":[],"isCreationTrack":false,"resourceVersion":"1.0","tags":[],"resourceType":"GMSpriteFramesTrack",},
+          ],"resourceVersion":"1.0","resourceType":"KeyframeStore<SpriteFrameKeyframe>",},"trackColour":0,"inheritsTrackColour":true,"builtinName":0,"traits":0,"interpolation":1,"tracks":[],"events":[],"isCreationTrack":false,"resourceVersion":"1.0","tags":[],"resourceType":"GMSpriteFramesTrack","modifiers":[],},
     ],
     "visibleRange": null,
     "lockOrigin": false,
@@ -61,7 +61,7 @@
     "eventToFunction": {},
     "eventStubScript": null,
     "parent": {"name":"s_crab_chainlink","path":"sprites/s_crab_chainlink/s_crab_chainlink.yy",},
-    "resourceVersion": "1.3",
+    "resourceVersion": "1.4",
     "name": "s_crab_chainlink",
     "tags": [],
     "resourceType": "GMSequence",
