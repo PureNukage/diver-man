@@ -694,3 +694,8 @@ function carton_unpack(carton, _metadata) {
 	
 	return List
 }
+	
+function create_coin(_x = x, _y = y-z) {
+	var Coin = instance_create_layer(_x,_y,"Instances",coin)
+	Coin.setThrust(5)
+}

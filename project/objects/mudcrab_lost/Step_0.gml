@@ -78,8 +78,7 @@ switch(state) {
 						instance_create_layer(x,y-z,"Instances",mudcrab)
 						instance_destroy()
 						//	Create gold coin
-						var Coin = instance_create_layer(x,y-z,"Instances",coin)
-						Coin.setThrust(5)
+						create_coin()
 					break
 				}
 				free_move(_x, _y) 

@@ -735,7 +735,7 @@ function scene_loader() {
 								}
 								else {
 									var Brother = instance_create_layer(816,304,Layer,brother)
-									Brother.npcKey = "brotherNecklace"
+									Brother.npcKey = "brotherNecklacePostHolding"
 									with Brother load_dialogue()
 								
 									var Husband = instance_create_layer(1072,304,Layer,husband)

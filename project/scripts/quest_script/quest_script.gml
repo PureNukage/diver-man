@@ -120,6 +120,20 @@ function quest_script(quest) {
 				
 			break
 		#endregion
+		
+		#region 
+			case quests.necklace:
+				
+				if room == RoomDocks and instance_exists(brother) {
+					with brother {
+						if npcKey = "brotherNecklacePostEmpty" and dialogueIndex == 2 {
+							quest_finished = true		
+						}
+					}
+				}
+				
+			break
+		#endregion
 	}
 	
 	//	We advanced a stage

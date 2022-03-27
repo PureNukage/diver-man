@@ -20,9 +20,5 @@ function stunCheck() {
 		setThrust(5)
 		timer = 90
 		
-		//	Create gold coin
-		//var Coin = instance_create_layer(x,y-z,"Instances",coin)
-		//Coin.setThrust(5)
-		
 	}
 }
