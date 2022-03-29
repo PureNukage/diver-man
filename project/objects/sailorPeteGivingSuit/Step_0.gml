@@ -25,8 +25,8 @@ else if stage == 3 {
 	if !instance_exists(textbox) and dialogueIndex == 7 {
 		app.cameraFocus(player.x,player.y,1,true)
 		stage = 4
-		suitPile.interactibility = true // act suit
-		cage.interactibility = true	 // act cage
+		suitPile.interactability = true // act suit
+		cage.interactability = true	 // act cage
 	}
 }
 //	Wait till player puts on diving suit

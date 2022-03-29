@@ -84,6 +84,11 @@ function _create_item(item_index) constructor {
 			text = "Necklace"
 			description = "A necklace belonging to the Wife"
 		break
+		case item.rebreather:
+			Image = s_rebreather
+			text = "Rebreather"
+			description = "Allows the Diving Suit to be disconnected from the hose"
+		break
 	}
 	
 	image = sprite_get_name(Image)

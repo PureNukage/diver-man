@@ -11,7 +11,7 @@ floatZ = 32
 
 //drawShadow = false
 
-interactibility = false
+interactability = false
 
 maxMovespeed = 1
 

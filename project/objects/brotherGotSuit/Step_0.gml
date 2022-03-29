@@ -1,4 +1,4 @@
 event_inherited()
 
-if player.suitOn interactibility = true
-else interactibility = false
+if player.suitOn interactability = true
+else interactability = false

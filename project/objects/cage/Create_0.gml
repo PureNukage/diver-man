@@ -8,7 +8,7 @@ drawUnit = false
 
 floatZ = 64
 
-interactibility = true
+interactability = true
 
 lowered = true
 inUse = false

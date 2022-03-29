@@ -50,8 +50,8 @@ else if stage == 5 {
 		brotherAfterWatch.move_to(754,360)
 		app.cameraFocus(player.x,player.y,1,true)
 		player.canMove = true
-		brotherAfterWatch.interactibility = false
-		sailorPeteEntrance.interactibility = false
+		brotherAfterWatch.interactability = false
+		sailorPeteEntrance.interactability = false
 		
 		questManager.add_quest(quests.watch)
 	}
@@ -64,7 +64,7 @@ else if stage == 6 {
 		instance_destroy(sailorPeteEntrance)
 		var Brother = instance_create_layer(x,y,"Instances",brotherGivingSuit)
 		Brother.image_xscale = image_xscale
-		Brother.interactibility = false
+		Brother.interactability = false
 		instance_destroy()
 	}
 }

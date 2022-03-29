@@ -614,11 +614,11 @@ function scene_loader() {
 								cutsceneManager.cutscene = cutscene.mafiaVendorShake
 								var _mafia0 = instance_create_layer(1184,512,Layer,mafia0)
 								instance_create_layer(0,0,Layer,mafiaVendorShakedown)
-								_mafia0.interactibility = false
+								_mafia0.interactability = false
 							}
 							else {
 								var _mafia0 = instance_create_layer(1104,240,Layer,mafia0)
-								_mafia0.interactibility = false
+								_mafia0.interactability = false
 							}
 						
 							sound.playMusic(music_surface, true)
@@ -662,8 +662,8 @@ function scene_loader() {
 						#region	Bullies are throwing watch off the dock
 						case quests.streetDance:
 						
-							suitPile.interactibility = false // deact suit
-							cage.interactibility = false	 // deact cage
+							suitPile.interactability = false // deact suit
+							cage.interactability = false	 // deact cage
 							
 							instance_create_layer(0,0,Layer,bullysTossWatch)
 						
@@ -731,7 +731,7 @@ function scene_loader() {
 								
 									var Wife = instance_create_layer(1120,320,Layer,wife)
 									Wife.image_xscale = -1
-									Wife.interactibility = false
+									Wife.interactability = false
 								}
 								else {
 									var Brother = instance_create_layer(816,304,Layer,brother)
@@ -745,7 +745,7 @@ function scene_loader() {
 								
 									var Wife = instance_create_layer(1120,320,Layer,wife)
 									Wife.image_xscale = -1
-									Wife.interactibility = false
+									Wife.interactability = false
 								}
 								
 							break
@@ -837,7 +837,7 @@ function scene_loader() {
 					lighting.darkness = 0.2
 					lighting.on = true
 					surface_free(lighting.surface)
-					playerbed.interactibility = true
+					playerbed.interactability = true
 					playerbed.interactable = true
 					//sound.playMusic(music_brothers, true)
 				}

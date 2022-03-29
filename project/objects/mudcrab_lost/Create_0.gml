@@ -2,7 +2,7 @@ event_inherited()
 
 mask_index = s_mudcrab_collision
 
-//interactibility = false
+//interactability = false
 npcKey = "crabLost"
 npcSprite = s_mudcrab
 load_dialogue()

@@ -6,4 +6,4 @@ npcKey = "sailorPeteEntrance"
 
 load_dialogue()
 
-interactibility = false
+interactability = false

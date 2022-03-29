@@ -2,7 +2,7 @@ event_inherited()
 
 mask_index = sprite_index
 
-interactibility = true
+interactability = true
 npcKey = "default"
 npcSprite = s_brother_face
 inConversation = false

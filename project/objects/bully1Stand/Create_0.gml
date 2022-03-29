@@ -1,2 +1,2 @@
 event_inherited()
-interactibility = false
+interactability = false

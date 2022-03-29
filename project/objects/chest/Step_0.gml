@@ -3,7 +3,7 @@ event_inherited()
 if opening open()
 
 if opened and treasure == -1 {
-	interactibility = false
+	interactability = false
 	interactable = false
 }
 

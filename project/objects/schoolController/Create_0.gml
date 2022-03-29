@@ -4,7 +4,7 @@ count = 8
 width = 512
 height = 512
 
-interactibility = false
+interactability = false
 
 maxMovespeed = 1
 

@@ -1,4 +1,4 @@
-if interactibility {
+if interactability {
 	if interactDistance and point_distance(x,y, player.x,player.y) < 60 and !player.muted and app.roomTransitionTo == -1 {
 		interactable = true
 	}

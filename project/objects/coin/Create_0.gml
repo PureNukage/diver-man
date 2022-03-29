@@ -17,7 +17,7 @@ image_xscale = 0
 image_yscale = 0
 
 maxMovespeed = 1
-interactibility = false
+interactability = false
 
 if place_meeting(x,y,collisionMap) {
 	var Map = instance_place(x,y,collisionMap)

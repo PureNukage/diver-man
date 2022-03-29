@@ -1,5 +1,5 @@
 event_inherited()
 
-interactibility = false
+interactability = false
 
 Delete = false

@@ -91,7 +91,7 @@ switch(cutscene)
 				Eeel2.image_xscale = -1
 				stage = 0
 				player.canMove = false
-				jellyfish.interactibility = false
+				jellyfish.interactability = false
 				jellyfish.interactable = false
 				jellyfish.interactDistance = false
 			break
@@ -166,7 +166,7 @@ switch(cutscene)
 					player.canMove = true
 					app.cameraFocus(player.x,player.y,1,true)
 					finish_cutscene()
-					jellyfish.interactibility = true
+					jellyfish.interactability = true
 					jellyfish.interactable = true
 					jellyfish.inConversation = false
 					jellyfish.interactDistance = true
