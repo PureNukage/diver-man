@@ -183,6 +183,7 @@ respGirlFinalCoin,2,Can't say that I do.,
 respGirlFinalCoin,3,[Tell her where he is],
 girlLastCoin,0,Well alriiiight. Let me know if you do!,s_girl_face
 girlLastCoin,-3,Oh goody!,s_girl_face
+girlLastCoin,-4,"Haha, I always like messing with your brother.",s_girl_face
 crabLost,1,aahhh !!,s_mudcrab_face
 crabLost,2,i cant get to my friends!,s_mudcrab_face
 crabLost,0,"mister, would you help bounce me onto the next cliff?",s_mudcrab_face
