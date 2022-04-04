@@ -8,8 +8,8 @@
   "spriteMaskId": null,
   "persistent": false,
   "parentObjectId": {
-    "name": "class_npc",
-    "path": "objects/class_npc/class_npc.yy",
+    "name": "brother",
+    "path": "objects/brother/brother.yy",
   },
   "physicsObject": false,
   "physicsSensor": false,
@@ -25,16 +25,15 @@
   "physicsShapePoints": [],
   "eventList": [
     {"isDnD":false,"eventNum":0,"eventType":3,"collisionObjectId":null,"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMEvent",},
-    {"isDnD":false,"eventNum":0,"eventType":0,"collisionObjectId":null,"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMEvent",},
   ],
   "properties": [],
   "overriddenProperties": [],
   "parent": {
-    "name": "intro",
-    "path": "folders/Game/quests/intro.yy",
+    "name": "necklace",
+    "path": "folders/Game/quests/necklace.yy",
   },
   "resourceVersion": "1.0",
-  "name": "brotherIntro",
+  "name": "brotherNecklace",
   "tags": [],
   "resourceType": "GMObject",
 }

@@ -24,13 +24,13 @@
   "physicsKinematic": false,
   "physicsShapePoints": [],
   "eventList": [
-    {"isDnD":false,"eventNum":0,"eventType":8,"collisionObjectId":null,"parent":{"name":"brotherbed","path":"objects/brotherbed/brotherbed.yy",},"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMEvent",},
+    {"isDnD":false,"eventNum":0,"eventType":8,"collisionObjectId":null,"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMEvent",},
   ],
   "properties": [],
   "overriddenProperties": [],
   "parent": {
     "name": "alley",
-    "path": "folders/Game/scenes/alley.yy",
+    "path": "folders/Game/quests/alley.yy",
   },
   "resourceVersion": "1.0",
   "name": "brotherbed",

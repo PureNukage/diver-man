@@ -31,7 +31,7 @@
   "overriddenProperties": [],
   "parent": {
     "name": "necklace",
-    "path": "folders/Game/scenes/necklace.yy",
+    "path": "folders/Game/quests/necklace.yy",
   },
   "resourceVersion": "1.0",
   "name": "mafiaVendorShakedown",

@@ -31,7 +31,7 @@
   "overriddenProperties": [],
   "parent": {
     "name": "get brothers watch",
-    "path": "folders/Game/scenes/get brothers watch.yy",
+    "path": "folders/Game/quests/get brothers watch.yy",
   },
   "resourceVersion": "1.0",
   "name": "sailorPeteGotSuit",

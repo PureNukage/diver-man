@@ -175,4 +175,30 @@ switch(cutscene)
 			break
 		}
 	break
+	case cutscene.girlSkippingAroundBrother:
+		switch(stage) {
+			//	Girl starts to skip towards where brother is standing
+			case -1:
+				app.cameraFollow(girl)
+				girl._startX = girl.x
+				girl._startY = girl.y
+				girl.move_to(brotherIntro.x-64, brotherIntro.y)
+				stage = 0
+			break
+			//	Wait for girl to reach brother
+			case 0:
+				if !girl.moving {
+					stage = 1
+					//	Brother should go "GRRRR" here and girl should giggle
+				}
+			break
+			//	Send girl back and release camera
+			case 1:
+				girl.move_to(girl._startX,girl._startY)
+				app.cameraUnfollow()
+				stage++
+				finish_cutscene()
+			break
+		}
+	break
 }

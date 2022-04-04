@@ -27,7 +27,7 @@
   "overriddenProperties": [],
   "parent": {
     "name": "intro",
-    "path": "folders/Game/scenes/intro.yy",
+    "path": "folders/Game/quests/intro.yy",
   },
   "resourceVersion": "1.0",
   "name": "roomIntroSurface",

@@ -59,4 +59,5 @@ enum cutscene {
 	coupleComingOffBoat,
 	mafiaVendorShake,
 	jellyGivingNecklace,
+	girlSkippingAroundBrother,
 }

@@ -37,13 +37,15 @@ if !paused {
 		coordX = player.x
 		coordY = player.y-player.z
 	}
-	if cameraLerp {
-		x = floor(lerp(x,coordX,0.05))
-		y = floor(lerp(y,coordY,0.05))
-	}
-	else {
-		x = coordX
-		y = coordY
+	if cameraUnit == -1 {
+		if cameraLerp {
+			x = floor(lerp(x,coordX,0.05))
+			y = floor(lerp(y,coordY,0.05))
+		}
+		else {
+			x = coordX
+			y = coordY
+		}
 	}
 	if cameraFocusDuration == "~" {
 	
@@ -56,6 +58,12 @@ if !paused {
 		var Lerp = 0.09
 		x = lerp(x,player.groundX,Lerp)
 		y = lerp(y,player.y-player.z-32,Lerp)
+	}
+	
+	if cameraUnit > -1 and instance_exists(cameraUnit) {
+		var Lerp = 0.09
+		x = lerp(x,cameraUnit.x,Lerp)
+		y = lerp(y,cameraUnit.y-cameraUnit.z-32,Lerp)
 	}
 
 	if time.stream <= 5 {

@@ -295,7 +295,8 @@ cameraFocusX = x
 cameraFocusY = y
 cameraFocusDuration = -1
 cameraLerp = true
-function cameraFocus(_x, _y, _duration, _lerp){
+cameraUnit = -1
+function cameraFocus(_x, _y, _duration, _lerp) {
 	
 	cameraFocusX = _x
 	cameraFocusY = _y
@@ -303,6 +304,18 @@ function cameraFocus(_x, _y, _duration, _lerp){
 	cameraLerp = _lerp
 	cameraFocusOnPlayer = false
 	
+}
+	
+function cameraFollow(_unit) {
+	if instance_exists(_unit) {
+		cameraUnit = _unit
+		cameraFocusOnPlayer = false
+	}
+}
+
+function cameraUnfollow() {
+	cameraUnit = -1
+	cameraFocusOnPlayer = true
 }
 	
 cameraSetup()

@@ -31,7 +31,7 @@
   "overriddenProperties": [],
   "parent": {
     "name": "alley",
-    "path": "folders/Game/scenes/alley.yy",
+    "path": "folders/Game/quests/alley.yy",
   },
   "resourceVersion": "1.0",
   "name": "brotherFinalCoin",

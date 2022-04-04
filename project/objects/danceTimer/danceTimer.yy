@@ -26,7 +26,7 @@
   "overriddenProperties": [],
   "parent": {
     "name": "street dancing",
-    "path": "folders/Game/scenes/street dancing.yy",
+    "path": "folders/Game/quests/street dancing.yy",
   },
   "resourceVersion": "1.0",
   "name": "danceTimer",
