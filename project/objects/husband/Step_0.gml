@@ -18,7 +18,7 @@ if npcKey == "husbandAndWifePost" and dialogueIndex == 4 and player.item_check(i
 	
 }
 
-if x < -80 and wife.x < -80 {
+if (x < -80 and wife.x < -80) {
 	instance_destroy()
 	debug.log("destroying husband and wife")
 }

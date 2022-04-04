@@ -15,5 +15,10 @@ if npcKey == "brotherNecklacePostEmpty" and dialogueIndex == 3 and !inConversati
 		npcKey = "sailorPeteShop"
 		load_dialogue()
 	}
+	//if instance_exists(collisionRoomChange) {
+	//	with collisionRoomChange {
+	//		spawn_collision()
+	//	}
+	//}
 	interactability = false
 }

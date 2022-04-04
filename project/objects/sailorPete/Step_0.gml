@@ -5,4 +5,3 @@ if dialogueIndex == 3 and !shop {
 	app.zoom_level = 0.70
 	player.muted = true
 }
-
