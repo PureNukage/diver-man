@@ -48,6 +48,7 @@ if instance_exists(player) and player.questJournalOpen {
 	var Width = nameWidth + 50
 	var Height = 300
 	if mouseover > -1 Width += longestWidth
+	if ds_list_empty(questManager.questList) Width = 300
 	draw_rectangle(X,Y,X+Width,Y+Height,false)
 	
 	draw_set_color(c_black)
@@ -95,6 +96,11 @@ if instance_exists(player) and player.questJournalOpen {
 				}
 			}	
 		}
+	}
+		
+	if ds_list_empty(questManager.questList) {
+		draw_set_color(c_black)
+		draw_text(Width/2, Height/2, "No quests")
 	}
 }
 
