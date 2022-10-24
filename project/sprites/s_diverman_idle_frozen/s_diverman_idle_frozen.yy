@@ -1,4 +1,7 @@
 {
+  "resourceType": "GMSprite",
+  "resourceVersion": "1.0",
+  "name": "s_diverman_idle_frozen",
   "bboxMode": 0,
   "collisionKind": 1,
   "type": 0,
@@ -14,6 +17,7 @@
   "HTile": false,
   "VTile": false,
   "For3D": false,
+  "DynamicTexturePage": false,
   "width": 96,
   "height": 97,
   "textureGroupId": {
@@ -24,12 +28,12 @@
   "gridX": 0,
   "gridY": 0,
   "frames": [
-    {"compositeImage":{"FrameId":{"name":"77337765-052f-4142-a16a-2ff27f5af27c","path":"sprites/s_diverman_idle_frozen/s_diverman_idle_frozen.yy",},"LayerId":null,"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMSpriteBitmap",},"images":[
-        {"FrameId":{"name":"77337765-052f-4142-a16a-2ff27f5af27c","path":"sprites/s_diverman_idle_frozen/s_diverman_idle_frozen.yy",},"LayerId":{"name":"fb0af12e-4e8c-4ac2-b37c-7e1e46f65625","path":"sprites/s_diverman_idle_frozen/s_diverman_idle_frozen.yy",},"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMSpriteBitmap",},
-      ],"parent":{"name":"s_diverman_idle_frozen","path":"sprites/s_diverman_idle_frozen/s_diverman_idle_frozen.yy",},"resourceVersion":"1.0","name":"77337765-052f-4142-a16a-2ff27f5af27c","tags":[],"resourceType":"GMSpriteFrame",},
+    {"resourceType":"GMSpriteFrame","resourceVersion":"1.1","name":"77337765-052f-4142-a16a-2ff27f5af27c",},
   ],
   "sequence": {
-    "spriteId": {"name":"s_diverman_idle_frozen","path":"sprites/s_diverman_idle_frozen/s_diverman_idle_frozen.yy",},
+    "resourceType": "GMSequence",
+    "resourceVersion": "1.4",
+    "name": "s_diverman_idle_frozen",
     "timeUnits": 1,
     "playback": 1,
     "playbackSpeed": 30.0,
@@ -40,9 +44,9 @@
     "events": {"Keyframes":[],"resourceVersion":"1.0","resourceType":"KeyframeStore<MessageEventKeyframe>",},
     "moments": {"Keyframes":[],"resourceVersion":"1.0","resourceType":"KeyframeStore<MomentsEventKeyframe>",},
     "tracks": [
-      {"name":"frames","spriteId":null,"keyframes":{"Keyframes":[
+      {"resourceType":"GMSpriteFramesTrack","resourceVersion":"1.0","name":"frames","spriteId":null,"keyframes":{"Keyframes":[
             {"id":"347ac97e-9fa9-48e7-8135-9d8c3d366090","Key":0.0,"Length":1.0,"Stretch":false,"Disabled":false,"IsCreationKey":false,"Channels":{"0":{"Id":{"name":"77337765-052f-4142-a16a-2ff27f5af27c","path":"sprites/s_diverman_idle_frozen/s_diverman_idle_frozen.yy",},"resourceVersion":"1.0","resourceType":"SpriteFrameKeyframe",},},"resourceVersion":"1.0","resourceType":"Keyframe<SpriteFrameKeyframe>",},
-          ],"resourceVersion":"1.0","resourceType":"KeyframeStore<SpriteFrameKeyframe>",},"trackColour":0,"inheritsTrackColour":true,"builtinName":0,"traits":0,"interpolation":1,"tracks":[],"events":[],"isCreationTrack":false,"resourceVersion":"1.0","tags":[],"resourceType":"GMSpriteFramesTrack","modifiers":[],},
+          ],"resourceVersion":"1.0","resourceType":"KeyframeStore<SpriteFrameKeyframe>",},"trackColour":0,"inheritsTrackColour":true,"builtinName":0,"traits":0,"interpolation":1,"tracks":[],"events":[],"isCreationTrack":false,"modifiers":[],},
     ],
     "visibleRange": null,
     "lockOrigin": false,
@@ -58,22 +62,13 @@
     "yorigin": 80,
     "eventToFunction": {},
     "eventStubScript": null,
-    "parent": {"name":"s_diverman_idle_frozen","path":"sprites/s_diverman_idle_frozen/s_diverman_idle_frozen.yy",},
-    "resourceVersion": "1.4",
-    "name": "s_diverman_idle_frozen",
-    "tags": [],
-    "resourceType": "GMSequence",
   },
   "layers": [
-    {"visible":true,"isLocked":false,"blendMode":0,"opacity":100.0,"displayName":"default","resourceVersion":"1.0","name":"fb0af12e-4e8c-4ac2-b37c-7e1e46f65625","tags":[],"resourceType":"GMImageLayer",},
+    {"resourceType":"GMImageLayer","resourceVersion":"1.0","name":"fb0af12e-4e8c-4ac2-b37c-7e1e46f65625","visible":true,"isLocked":false,"blendMode":0,"opacity":100.0,"displayName":"default",},
   ],
   "nineSlice": null,
   "parent": {
     "name": "diverman",
     "path": "folders/Art/characters/diverman.yy",
   },
-  "resourceVersion": "1.0",
-  "name": "s_diverman_idle_frozen",
-  "tags": [],
-  "resourceType": "GMSprite",
 }

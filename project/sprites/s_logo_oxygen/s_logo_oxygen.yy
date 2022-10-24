@@ -1,4 +1,7 @@
 {
+  "resourceType": "GMSprite",
+  "resourceVersion": "1.0",
+  "name": "s_logo_oxygen",
   "bboxMode": 0,
   "collisionKind": 1,
   "type": 0,
@@ -14,6 +17,7 @@
   "HTile": false,
   "VTile": false,
   "For3D": false,
+  "DynamicTexturePage": false,
   "width": 95,
   "height": 37,
   "textureGroupId": {
@@ -24,12 +28,12 @@
   "gridX": 0,
   "gridY": 0,
   "frames": [
-    {"compositeImage":{"FrameId":{"name":"35b2d547-5dcd-4a37-ae27-83d254c2af0c","path":"sprites/s_logo_oxygen/s_logo_oxygen.yy",},"LayerId":null,"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMSpriteBitmap",},"images":[
-        {"FrameId":{"name":"35b2d547-5dcd-4a37-ae27-83d254c2af0c","path":"sprites/s_logo_oxygen/s_logo_oxygen.yy",},"LayerId":{"name":"0d205a62-5774-4987-bb8c-b423cd5d14e4","path":"sprites/s_logo_oxygen/s_logo_oxygen.yy",},"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMSpriteBitmap",},
-      ],"parent":{"name":"s_logo_oxygen","path":"sprites/s_logo_oxygen/s_logo_oxygen.yy",},"resourceVersion":"1.0","name":"35b2d547-5dcd-4a37-ae27-83d254c2af0c","tags":[],"resourceType":"GMSpriteFrame",},
+    {"resourceType":"GMSpriteFrame","resourceVersion":"1.1","name":"35b2d547-5dcd-4a37-ae27-83d254c2af0c",},
   ],
   "sequence": {
-    "spriteId": {"name":"s_logo_oxygen","path":"sprites/s_logo_oxygen/s_logo_oxygen.yy",},
+    "resourceType": "GMSequence",
+    "resourceVersion": "1.4",
+    "name": "s_logo_oxygen",
     "timeUnits": 1,
     "playback": 1,
     "playbackSpeed": 30.0,
@@ -40,9 +44,9 @@
     "events": {"Keyframes":[],"resourceVersion":"1.0","resourceType":"KeyframeStore<MessageEventKeyframe>",},
     "moments": {"Keyframes":[],"resourceVersion":"1.0","resourceType":"KeyframeStore<MomentsEventKeyframe>",},
     "tracks": [
-      {"name":"frames","spriteId":null,"keyframes":{"Keyframes":[
+      {"resourceType":"GMSpriteFramesTrack","resourceVersion":"1.0","name":"frames","spriteId":null,"keyframes":{"Keyframes":[
             {"id":"9bba3f82-4111-4c81-9936-46ab3d4e03e0","Key":0.0,"Length":1.0,"Stretch":false,"Disabled":false,"IsCreationKey":false,"Channels":{"0":{"Id":{"name":"35b2d547-5dcd-4a37-ae27-83d254c2af0c","path":"sprites/s_logo_oxygen/s_logo_oxygen.yy",},"resourceVersion":"1.0","resourceType":"SpriteFrameKeyframe",},},"resourceVersion":"1.0","resourceType":"Keyframe<SpriteFrameKeyframe>",},
-          ],"resourceVersion":"1.0","resourceType":"KeyframeStore<SpriteFrameKeyframe>",},"trackColour":0,"inheritsTrackColour":true,"builtinName":0,"traits":0,"interpolation":1,"tracks":[],"events":[],"isCreationTrack":false,"resourceVersion":"1.0","tags":[],"resourceType":"GMSpriteFramesTrack","modifiers":[],},
+          ],"resourceVersion":"1.0","resourceType":"KeyframeStore<SpriteFrameKeyframe>",},"trackColour":0,"inheritsTrackColour":true,"builtinName":0,"traits":0,"interpolation":1,"tracks":[],"events":[],"isCreationTrack":false,"modifiers":[],},
     ],
     "visibleRange": null,
     "lockOrigin": false,
@@ -58,22 +62,13 @@
     "yorigin": 0,
     "eventToFunction": {},
     "eventStubScript": null,
-    "parent": {"name":"s_logo_oxygen","path":"sprites/s_logo_oxygen/s_logo_oxygen.yy",},
-    "resourceVersion": "1.4",
-    "name": "s_logo_oxygen",
-    "tags": [],
-    "resourceType": "GMSequence",
   },
   "layers": [
-    {"visible":true,"isLocked":false,"blendMode":0,"opacity":100.0,"displayName":"default","resourceVersion":"1.0","name":"0d205a62-5774-4987-bb8c-b423cd5d14e4","tags":[],"resourceType":"GMImageLayer",},
+    {"resourceType":"GMImageLayer","resourceVersion":"1.0","name":"0d205a62-5774-4987-bb8c-b423cd5d14e4","visible":true,"isLocked":false,"blendMode":0,"opacity":100.0,"displayName":"default",},
   ],
   "nineSlice": null,
   "parent": {
     "name": "gui",
     "path": "folders/Art/gui.yy",
   },
-  "resourceVersion": "1.0",
-  "name": "s_logo_oxygen",
-  "tags": [],
-  "resourceType": "GMSprite",
 }

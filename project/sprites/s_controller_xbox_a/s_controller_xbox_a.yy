@@ -1,4 +1,7 @@
 {
+  "resourceType": "GMSprite",
+  "resourceVersion": "1.0",
+  "name": "s_controller_xbox_a",
   "bboxMode": 0,
   "collisionKind": 1,
   "type": 0,
@@ -14,6 +17,7 @@
   "HTile": false,
   "VTile": false,
   "For3D": false,
+  "DynamicTexturePage": false,
   "width": 9,
   "height": 10,
   "textureGroupId": {
@@ -24,12 +28,12 @@
   "gridX": 0,
   "gridY": 0,
   "frames": [
-    {"compositeImage":{"FrameId":{"name":"31c27956-f4e7-490d-bd3f-72f3579e957e","path":"sprites/s_controller_xbox_a/s_controller_xbox_a.yy",},"LayerId":null,"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMSpriteBitmap",},"images":[
-        {"FrameId":{"name":"31c27956-f4e7-490d-bd3f-72f3579e957e","path":"sprites/s_controller_xbox_a/s_controller_xbox_a.yy",},"LayerId":{"name":"935a3f71-e5b8-489e-b21c-d3a6b09b5aeb","path":"sprites/s_controller_xbox_a/s_controller_xbox_a.yy",},"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMSpriteBitmap",},
-      ],"parent":{"name":"s_controller_xbox_a","path":"sprites/s_controller_xbox_a/s_controller_xbox_a.yy",},"resourceVersion":"1.0","name":"31c27956-f4e7-490d-bd3f-72f3579e957e","tags":[],"resourceType":"GMSpriteFrame",},
+    {"resourceType":"GMSpriteFrame","resourceVersion":"1.1","name":"31c27956-f4e7-490d-bd3f-72f3579e957e",},
   ],
   "sequence": {
-    "spriteId": {"name":"s_controller_xbox_a","path":"sprites/s_controller_xbox_a/s_controller_xbox_a.yy",},
+    "resourceType": "GMSequence",
+    "resourceVersion": "1.4",
+    "name": "s_controller_xbox_a",
     "timeUnits": 1,
     "playback": 1,
     "playbackSpeed": 30.0,
@@ -40,9 +44,9 @@
     "events": {"Keyframes":[],"resourceVersion":"1.0","resourceType":"KeyframeStore<MessageEventKeyframe>",},
     "moments": {"Keyframes":[],"resourceVersion":"1.0","resourceType":"KeyframeStore<MomentsEventKeyframe>",},
     "tracks": [
-      {"name":"frames","spriteId":null,"keyframes":{"Keyframes":[
+      {"resourceType":"GMSpriteFramesTrack","resourceVersion":"1.0","name":"frames","spriteId":null,"keyframes":{"Keyframes":[
             {"id":"cf456495-81d1-432f-bc7f-9ce02a5ac95b","Key":0.0,"Length":1.0,"Stretch":false,"Disabled":false,"IsCreationKey":false,"Channels":{"0":{"Id":{"name":"31c27956-f4e7-490d-bd3f-72f3579e957e","path":"sprites/s_controller_xbox_a/s_controller_xbox_a.yy",},"resourceVersion":"1.0","resourceType":"SpriteFrameKeyframe",},},"resourceVersion":"1.0","resourceType":"Keyframe<SpriteFrameKeyframe>",},
-          ],"resourceVersion":"1.0","resourceType":"KeyframeStore<SpriteFrameKeyframe>",},"trackColour":0,"inheritsTrackColour":true,"builtinName":0,"traits":0,"interpolation":1,"tracks":[],"events":[],"isCreationTrack":false,"resourceVersion":"1.0","tags":[],"resourceType":"GMSpriteFramesTrack","modifiers":[],},
+          ],"resourceVersion":"1.0","resourceType":"KeyframeStore<SpriteFrameKeyframe>",},"trackColour":0,"inheritsTrackColour":true,"builtinName":0,"traits":0,"interpolation":1,"tracks":[],"events":[],"isCreationTrack":false,"modifiers":[],},
     ],
     "visibleRange": null,
     "lockOrigin": false,
@@ -58,22 +62,13 @@
     "yorigin": 5,
     "eventToFunction": {},
     "eventStubScript": null,
-    "parent": {"name":"s_controller_xbox_a","path":"sprites/s_controller_xbox_a/s_controller_xbox_a.yy",},
-    "resourceVersion": "1.4",
-    "name": "s_controller_xbox_a",
-    "tags": [],
-    "resourceType": "GMSequence",
   },
   "layers": [
-    {"visible":true,"isLocked":false,"blendMode":0,"opacity":100.0,"displayName":"default","resourceVersion":"1.0","name":"935a3f71-e5b8-489e-b21c-d3a6b09b5aeb","tags":[],"resourceType":"GMImageLayer",},
+    {"resourceType":"GMImageLayer","resourceVersion":"1.0","name":"935a3f71-e5b8-489e-b21c-d3a6b09b5aeb","visible":true,"isLocked":false,"blendMode":0,"opacity":100.0,"displayName":"default",},
   ],
   "nineSlice": null,
   "parent": {
     "name": "controls",
     "path": "folders/Art/controls.yy",
   },
-  "resourceVersion": "1.0",
-  "name": "s_controller_xbox_a",
-  "tags": [],
-  "resourceType": "GMSprite",
 }

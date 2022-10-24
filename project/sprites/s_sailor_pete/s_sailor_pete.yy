@@ -1,4 +1,7 @@
 {
+  "resourceType": "GMSprite",
+  "resourceVersion": "1.0",
+  "name": "s_sailor_pete",
   "bboxMode": 2,
   "collisionKind": 1,
   "type": 0,
@@ -14,6 +17,7 @@
   "HTile": false,
   "VTile": false,
   "For3D": false,
+  "DynamicTexturePage": false,
   "width": 80,
   "height": 80,
   "textureGroupId": {
@@ -24,39 +28,21 @@
   "gridX": 0,
   "gridY": 0,
   "frames": [
-    {"compositeImage":{"FrameId":{"name":"bef80e01-a110-4891-aa20-cd728a0bf8de","path":"sprites/s_sailor_pete/s_sailor_pete.yy",},"LayerId":null,"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMSpriteBitmap",},"images":[
-        {"FrameId":{"name":"bef80e01-a110-4891-aa20-cd728a0bf8de","path":"sprites/s_sailor_pete/s_sailor_pete.yy",},"LayerId":{"name":"0c4ed419-c383-40ed-a019-9740e77e9403","path":"sprites/s_sailor_pete/s_sailor_pete.yy",},"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMSpriteBitmap",},
-      ],"parent":{"name":"s_sailor_pete","path":"sprites/s_sailor_pete/s_sailor_pete.yy",},"resourceVersion":"1.0","name":"bef80e01-a110-4891-aa20-cd728a0bf8de","tags":[],"resourceType":"GMSpriteFrame",},
-    {"compositeImage":{"FrameId":{"name":"7dd881f5-3b95-4915-8d6f-416cc94fcf3f","path":"sprites/s_sailor_pete/s_sailor_pete.yy",},"LayerId":null,"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMSpriteBitmap",},"images":[
-        {"FrameId":{"name":"7dd881f5-3b95-4915-8d6f-416cc94fcf3f","path":"sprites/s_sailor_pete/s_sailor_pete.yy",},"LayerId":{"name":"0c4ed419-c383-40ed-a019-9740e77e9403","path":"sprites/s_sailor_pete/s_sailor_pete.yy",},"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMSpriteBitmap",},
-      ],"parent":{"name":"s_sailor_pete","path":"sprites/s_sailor_pete/s_sailor_pete.yy",},"resourceVersion":"1.0","name":"7dd881f5-3b95-4915-8d6f-416cc94fcf3f","tags":[],"resourceType":"GMSpriteFrame",},
-    {"compositeImage":{"FrameId":{"name":"3349c2e8-506e-4de8-b7e9-5c28b16a9247","path":"sprites/s_sailor_pete/s_sailor_pete.yy",},"LayerId":null,"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMSpriteBitmap",},"images":[
-        {"FrameId":{"name":"3349c2e8-506e-4de8-b7e9-5c28b16a9247","path":"sprites/s_sailor_pete/s_sailor_pete.yy",},"LayerId":{"name":"0c4ed419-c383-40ed-a019-9740e77e9403","path":"sprites/s_sailor_pete/s_sailor_pete.yy",},"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMSpriteBitmap",},
-      ],"parent":{"name":"s_sailor_pete","path":"sprites/s_sailor_pete/s_sailor_pete.yy",},"resourceVersion":"1.0","name":"3349c2e8-506e-4de8-b7e9-5c28b16a9247","tags":[],"resourceType":"GMSpriteFrame",},
-    {"compositeImage":{"FrameId":{"name":"80b3a26a-39c3-43bb-8e5a-845e09289a6f","path":"sprites/s_sailor_pete/s_sailor_pete.yy",},"LayerId":null,"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMSpriteBitmap",},"images":[
-        {"FrameId":{"name":"80b3a26a-39c3-43bb-8e5a-845e09289a6f","path":"sprites/s_sailor_pete/s_sailor_pete.yy",},"LayerId":{"name":"0c4ed419-c383-40ed-a019-9740e77e9403","path":"sprites/s_sailor_pete/s_sailor_pete.yy",},"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMSpriteBitmap",},
-      ],"parent":{"name":"s_sailor_pete","path":"sprites/s_sailor_pete/s_sailor_pete.yy",},"resourceVersion":"1.0","name":"80b3a26a-39c3-43bb-8e5a-845e09289a6f","tags":[],"resourceType":"GMSpriteFrame",},
-    {"compositeImage":{"FrameId":{"name":"6b7d0352-9c66-4d38-a047-d86393be76c2","path":"sprites/s_sailor_pete/s_sailor_pete.yy",},"LayerId":null,"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMSpriteBitmap",},"images":[
-        {"FrameId":{"name":"6b7d0352-9c66-4d38-a047-d86393be76c2","path":"sprites/s_sailor_pete/s_sailor_pete.yy",},"LayerId":{"name":"0c4ed419-c383-40ed-a019-9740e77e9403","path":"sprites/s_sailor_pete/s_sailor_pete.yy",},"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMSpriteBitmap",},
-      ],"parent":{"name":"s_sailor_pete","path":"sprites/s_sailor_pete/s_sailor_pete.yy",},"resourceVersion":"1.0","name":"6b7d0352-9c66-4d38-a047-d86393be76c2","tags":[],"resourceType":"GMSpriteFrame",},
-    {"compositeImage":{"FrameId":{"name":"85e03f53-8a98-4cbd-8fdd-1bdf3953e0c9","path":"sprites/s_sailor_pete/s_sailor_pete.yy",},"LayerId":null,"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMSpriteBitmap",},"images":[
-        {"FrameId":{"name":"85e03f53-8a98-4cbd-8fdd-1bdf3953e0c9","path":"sprites/s_sailor_pete/s_sailor_pete.yy",},"LayerId":{"name":"0c4ed419-c383-40ed-a019-9740e77e9403","path":"sprites/s_sailor_pete/s_sailor_pete.yy",},"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMSpriteBitmap",},
-      ],"parent":{"name":"s_sailor_pete","path":"sprites/s_sailor_pete/s_sailor_pete.yy",},"resourceVersion":"1.0","name":"85e03f53-8a98-4cbd-8fdd-1bdf3953e0c9","tags":[],"resourceType":"GMSpriteFrame",},
-    {"compositeImage":{"FrameId":{"name":"7569e984-06f4-4783-867a-5e49e57e07c0","path":"sprites/s_sailor_pete/s_sailor_pete.yy",},"LayerId":null,"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMSpriteBitmap",},"images":[
-        {"FrameId":{"name":"7569e984-06f4-4783-867a-5e49e57e07c0","path":"sprites/s_sailor_pete/s_sailor_pete.yy",},"LayerId":{"name":"0c4ed419-c383-40ed-a019-9740e77e9403","path":"sprites/s_sailor_pete/s_sailor_pete.yy",},"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMSpriteBitmap",},
-      ],"parent":{"name":"s_sailor_pete","path":"sprites/s_sailor_pete/s_sailor_pete.yy",},"resourceVersion":"1.0","name":"7569e984-06f4-4783-867a-5e49e57e07c0","tags":[],"resourceType":"GMSpriteFrame",},
-    {"compositeImage":{"FrameId":{"name":"846ba08a-710b-4e17-b20d-585fe8b4db04","path":"sprites/s_sailor_pete/s_sailor_pete.yy",},"LayerId":null,"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMSpriteBitmap",},"images":[
-        {"FrameId":{"name":"846ba08a-710b-4e17-b20d-585fe8b4db04","path":"sprites/s_sailor_pete/s_sailor_pete.yy",},"LayerId":{"name":"0c4ed419-c383-40ed-a019-9740e77e9403","path":"sprites/s_sailor_pete/s_sailor_pete.yy",},"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMSpriteBitmap",},
-      ],"parent":{"name":"s_sailor_pete","path":"sprites/s_sailor_pete/s_sailor_pete.yy",},"resourceVersion":"1.0","name":"846ba08a-710b-4e17-b20d-585fe8b4db04","tags":[],"resourceType":"GMSpriteFrame",},
-    {"compositeImage":{"FrameId":{"name":"b29be70d-74e3-48fd-becb-95b5fde78ee9","path":"sprites/s_sailor_pete/s_sailor_pete.yy",},"LayerId":null,"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMSpriteBitmap",},"images":[
-        {"FrameId":{"name":"b29be70d-74e3-48fd-becb-95b5fde78ee9","path":"sprites/s_sailor_pete/s_sailor_pete.yy",},"LayerId":{"name":"0c4ed419-c383-40ed-a019-9740e77e9403","path":"sprites/s_sailor_pete/s_sailor_pete.yy",},"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMSpriteBitmap",},
-      ],"parent":{"name":"s_sailor_pete","path":"sprites/s_sailor_pete/s_sailor_pete.yy",},"resourceVersion":"1.0","name":"b29be70d-74e3-48fd-becb-95b5fde78ee9","tags":[],"resourceType":"GMSpriteFrame",},
-    {"compositeImage":{"FrameId":{"name":"b0b1557d-5c6c-4924-a02a-7536e8285c85","path":"sprites/s_sailor_pete/s_sailor_pete.yy",},"LayerId":null,"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMSpriteBitmap",},"images":[
-        {"FrameId":{"name":"b0b1557d-5c6c-4924-a02a-7536e8285c85","path":"sprites/s_sailor_pete/s_sailor_pete.yy",},"LayerId":{"name":"0c4ed419-c383-40ed-a019-9740e77e9403","path":"sprites/s_sailor_pete/s_sailor_pete.yy",},"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMSpriteBitmap",},
-      ],"parent":{"name":"s_sailor_pete","path":"sprites/s_sailor_pete/s_sailor_pete.yy",},"resourceVersion":"1.0","name":"b0b1557d-5c6c-4924-a02a-7536e8285c85","tags":[],"resourceType":"GMSpriteFrame",},
+    {"resourceType":"GMSpriteFrame","resourceVersion":"1.1","name":"bef80e01-a110-4891-aa20-cd728a0bf8de",},
+    {"resourceType":"GMSpriteFrame","resourceVersion":"1.1","name":"7dd881f5-3b95-4915-8d6f-416cc94fcf3f",},
+    {"resourceType":"GMSpriteFrame","resourceVersion":"1.1","name":"3349c2e8-506e-4de8-b7e9-5c28b16a9247",},
+    {"resourceType":"GMSpriteFrame","resourceVersion":"1.1","name":"80b3a26a-39c3-43bb-8e5a-845e09289a6f",},
+    {"resourceType":"GMSpriteFrame","resourceVersion":"1.1","name":"6b7d0352-9c66-4d38-a047-d86393be76c2",},
+    {"resourceType":"GMSpriteFrame","resourceVersion":"1.1","name":"85e03f53-8a98-4cbd-8fdd-1bdf3953e0c9",},
+    {"resourceType":"GMSpriteFrame","resourceVersion":"1.1","name":"7569e984-06f4-4783-867a-5e49e57e07c0",},
+    {"resourceType":"GMSpriteFrame","resourceVersion":"1.1","name":"846ba08a-710b-4e17-b20d-585fe8b4db04",},
+    {"resourceType":"GMSpriteFrame","resourceVersion":"1.1","name":"b29be70d-74e3-48fd-becb-95b5fde78ee9",},
+    {"resourceType":"GMSpriteFrame","resourceVersion":"1.1","name":"b0b1557d-5c6c-4924-a02a-7536e8285c85",},
   ],
   "sequence": {
-    "spriteId": {"name":"s_sailor_pete","path":"sprites/s_sailor_pete/s_sailor_pete.yy",},
+    "resourceType": "GMSequence",
+    "resourceVersion": "1.4",
+    "name": "s_sailor_pete",
     "timeUnits": 1,
     "playback": 1,
     "playbackSpeed": 10.0,
@@ -67,7 +53,7 @@
     "events": {"Keyframes":[],"resourceVersion":"1.0","resourceType":"KeyframeStore<MessageEventKeyframe>",},
     "moments": {"Keyframes":[],"resourceVersion":"1.0","resourceType":"KeyframeStore<MomentsEventKeyframe>",},
     "tracks": [
-      {"name":"frames","spriteId":null,"keyframes":{"Keyframes":[
+      {"resourceType":"GMSpriteFramesTrack","resourceVersion":"1.0","name":"frames","spriteId":null,"keyframes":{"Keyframes":[
             {"id":"072e5e66-cd2a-4036-a20d-6eb14cd9aa29","Key":0.0,"Length":1.0,"Stretch":false,"Disabled":false,"IsCreationKey":false,"Channels":{"0":{"Id":{"name":"bef80e01-a110-4891-aa20-cd728a0bf8de","path":"sprites/s_sailor_pete/s_sailor_pete.yy",},"resourceVersion":"1.0","resourceType":"SpriteFrameKeyframe",},},"resourceVersion":"1.0","resourceType":"Keyframe<SpriteFrameKeyframe>",},
             {"id":"3a3c5e5b-8c4d-454c-b3af-fc661eed8bd2","Key":1.0,"Length":1.0,"Stretch":false,"Disabled":false,"IsCreationKey":false,"Channels":{"0":{"Id":{"name":"7dd881f5-3b95-4915-8d6f-416cc94fcf3f","path":"sprites/s_sailor_pete/s_sailor_pete.yy",},"resourceVersion":"1.0","resourceType":"SpriteFrameKeyframe",},},"resourceVersion":"1.0","resourceType":"Keyframe<SpriteFrameKeyframe>",},
             {"id":"1cdeeab0-0198-49b9-a1d8-3d104997bb2a","Key":2.0,"Length":1.0,"Stretch":false,"Disabled":false,"IsCreationKey":false,"Channels":{"0":{"Id":{"name":"3349c2e8-506e-4de8-b7e9-5c28b16a9247","path":"sprites/s_sailor_pete/s_sailor_pete.yy",},"resourceVersion":"1.0","resourceType":"SpriteFrameKeyframe",},},"resourceVersion":"1.0","resourceType":"Keyframe<SpriteFrameKeyframe>",},
@@ -78,7 +64,7 @@
             {"id":"04dad1f0-95e6-4b86-af65-99a64f2721f9","Key":7.0,"Length":1.0,"Stretch":false,"Disabled":false,"IsCreationKey":false,"Channels":{"0":{"Id":{"name":"846ba08a-710b-4e17-b20d-585fe8b4db04","path":"sprites/s_sailor_pete/s_sailor_pete.yy",},"resourceVersion":"1.0","resourceType":"SpriteFrameKeyframe",},},"resourceVersion":"1.0","resourceType":"Keyframe<SpriteFrameKeyframe>",},
             {"id":"9f8abf90-5475-4b0d-bf8e-4804664ce5b8","Key":8.0,"Length":1.0,"Stretch":false,"Disabled":false,"IsCreationKey":false,"Channels":{"0":{"Id":{"name":"b29be70d-74e3-48fd-becb-95b5fde78ee9","path":"sprites/s_sailor_pete/s_sailor_pete.yy",},"resourceVersion":"1.0","resourceType":"SpriteFrameKeyframe",},},"resourceVersion":"1.0","resourceType":"Keyframe<SpriteFrameKeyframe>",},
             {"id":"be676032-e371-44c7-a0e0-d6c68aa64420","Key":9.0,"Length":1.0,"Stretch":false,"Disabled":false,"IsCreationKey":false,"Channels":{"0":{"Id":{"name":"b0b1557d-5c6c-4924-a02a-7536e8285c85","path":"sprites/s_sailor_pete/s_sailor_pete.yy",},"resourceVersion":"1.0","resourceType":"SpriteFrameKeyframe",},},"resourceVersion":"1.0","resourceType":"Keyframe<SpriteFrameKeyframe>",},
-          ],"resourceVersion":"1.0","resourceType":"KeyframeStore<SpriteFrameKeyframe>",},"trackColour":0,"inheritsTrackColour":true,"builtinName":0,"traits":0,"interpolation":1,"tracks":[],"events":[],"isCreationTrack":false,"resourceVersion":"1.0","tags":[],"resourceType":"GMSpriteFramesTrack","modifiers":[],},
+          ],"resourceVersion":"1.0","resourceType":"KeyframeStore<SpriteFrameKeyframe>",},"trackColour":0,"inheritsTrackColour":true,"builtinName":0,"traits":0,"interpolation":1,"tracks":[],"events":[],"isCreationTrack":false,"modifiers":[],},
     ],
     "visibleRange": null,
     "lockOrigin": false,
@@ -94,22 +80,13 @@
     "yorigin": 80,
     "eventToFunction": {},
     "eventStubScript": null,
-    "parent": {"name":"s_sailor_pete","path":"sprites/s_sailor_pete/s_sailor_pete.yy",},
-    "resourceVersion": "1.4",
-    "name": "s_sailor_pete",
-    "tags": [],
-    "resourceType": "GMSequence",
   },
   "layers": [
-    {"visible":true,"isLocked":false,"blendMode":0,"opacity":100.0,"displayName":"default","resourceVersion":"1.0","name":"0c4ed419-c383-40ed-a019-9740e77e9403","tags":[],"resourceType":"GMImageLayer",},
+    {"resourceType":"GMImageLayer","resourceVersion":"1.0","name":"0c4ed419-c383-40ed-a019-9740e77e9403","visible":true,"isLocked":false,"blendMode":0,"opacity":100.0,"displayName":"default",},
   ],
   "nineSlice": null,
   "parent": {
     "name": "characters",
     "path": "folders/Art/characters.yy",
   },
-  "resourceVersion": "1.0",
-  "name": "s_sailor_pete",
-  "tags": [],
-  "resourceType": "GMSprite",
 }

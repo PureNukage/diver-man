@@ -1,4 +1,8 @@
 {
+  "resourceType": "GMSound",
+  "resourceVersion": "1.0",
+  "name": "music_groove",
+  "conversionMode": 0,
   "compression": 0,
   "volume": 1.0,
   "preload": false,
@@ -11,13 +15,9 @@
     "path": "audiogroups/audiogroup_default",
   },
   "soundFile": "music_groove.mp3",
-  "duration": 48.0935249,
+  "duration": 48.088528,
   "parent": {
     "name": "Sounds",
     "path": "folders/Sounds.yy",
   },
-  "resourceVersion": "1.0",
-  "name": "music_groove",
-  "tags": [],
-  "resourceType": "GMSound",
 }

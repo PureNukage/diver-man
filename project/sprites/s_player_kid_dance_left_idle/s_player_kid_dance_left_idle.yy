@@ -1,4 +1,7 @@
 {
+  "resourceType": "GMSprite",
+  "resourceVersion": "1.0",
+  "name": "s_player_kid_dance_left_idle",
   "bboxMode": 0,
   "collisionKind": 1,
   "type": 0,
@@ -14,6 +17,7 @@
   "HTile": false,
   "VTile": false,
   "For3D": false,
+  "DynamicTexturePage": false,
   "width": 96,
   "height": 97,
   "textureGroupId": {
@@ -24,15 +28,13 @@
   "gridX": 0,
   "gridY": 0,
   "frames": [
-    {"compositeImage":{"FrameId":{"name":"3d15d740-5bac-4c63-87a7-cb88738473b2","path":"sprites/s_player_kid_dance_left_idle/s_player_kid_dance_left_idle.yy",},"LayerId":null,"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMSpriteBitmap",},"images":[
-        {"FrameId":{"name":"3d15d740-5bac-4c63-87a7-cb88738473b2","path":"sprites/s_player_kid_dance_left_idle/s_player_kid_dance_left_idle.yy",},"LayerId":{"name":"467dd097-abe8-4233-abc0-e7f649b1aada","path":"sprites/s_player_kid_dance_left_idle/s_player_kid_dance_left_idle.yy",},"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMSpriteBitmap",},
-      ],"parent":{"name":"s_player_kid_dance_left_idle","path":"sprites/s_player_kid_dance_left_idle/s_player_kid_dance_left_idle.yy",},"resourceVersion":"1.0","name":"3d15d740-5bac-4c63-87a7-cb88738473b2","tags":[],"resourceType":"GMSpriteFrame",},
-    {"compositeImage":{"FrameId":{"name":"bfb9fd82-9d57-4e56-9f77-c9a61817b2a4","path":"sprites/s_player_kid_dance_left_idle/s_player_kid_dance_left_idle.yy",},"LayerId":null,"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMSpriteBitmap",},"images":[
-        {"FrameId":{"name":"bfb9fd82-9d57-4e56-9f77-c9a61817b2a4","path":"sprites/s_player_kid_dance_left_idle/s_player_kid_dance_left_idle.yy",},"LayerId":{"name":"467dd097-abe8-4233-abc0-e7f649b1aada","path":"sprites/s_player_kid_dance_left_idle/s_player_kid_dance_left_idle.yy",},"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMSpriteBitmap",},
-      ],"parent":{"name":"s_player_kid_dance_left_idle","path":"sprites/s_player_kid_dance_left_idle/s_player_kid_dance_left_idle.yy",},"resourceVersion":"1.0","name":"bfb9fd82-9d57-4e56-9f77-c9a61817b2a4","tags":[],"resourceType":"GMSpriteFrame",},
+    {"resourceType":"GMSpriteFrame","resourceVersion":"1.1","name":"3d15d740-5bac-4c63-87a7-cb88738473b2",},
+    {"resourceType":"GMSpriteFrame","resourceVersion":"1.1","name":"bfb9fd82-9d57-4e56-9f77-c9a61817b2a4",},
   ],
   "sequence": {
-    "spriteId": {"name":"s_player_kid_dance_left_idle","path":"sprites/s_player_kid_dance_left_idle/s_player_kid_dance_left_idle.yy",},
+    "resourceType": "GMSequence",
+    "resourceVersion": "1.4",
+    "name": "s_player_kid_dance_left_idle",
     "timeUnits": 1,
     "playback": 1,
     "playbackSpeed": 12.0,
@@ -43,10 +45,10 @@
     "events": {"Keyframes":[],"resourceVersion":"1.0","resourceType":"KeyframeStore<MessageEventKeyframe>",},
     "moments": {"Keyframes":[],"resourceVersion":"1.0","resourceType":"KeyframeStore<MomentsEventKeyframe>",},
     "tracks": [
-      {"name":"frames","spriteId":null,"keyframes":{"Keyframes":[
+      {"resourceType":"GMSpriteFramesTrack","resourceVersion":"1.0","name":"frames","spriteId":null,"keyframes":{"Keyframes":[
             {"id":"09613222-1fa5-4053-b92d-93479e01b106","Key":0.0,"Length":1.0,"Stretch":false,"Disabled":false,"IsCreationKey":false,"Channels":{"0":{"Id":{"name":"3d15d740-5bac-4c63-87a7-cb88738473b2","path":"sprites/s_player_kid_dance_left_idle/s_player_kid_dance_left_idle.yy",},"resourceVersion":"1.0","resourceType":"SpriteFrameKeyframe",},},"resourceVersion":"1.0","resourceType":"Keyframe<SpriteFrameKeyframe>",},
             {"id":"65f06ea0-79b6-40ff-b24e-994aed747b9f","Key":1.0,"Length":1.0,"Stretch":false,"Disabled":false,"IsCreationKey":false,"Channels":{"0":{"Id":{"name":"bfb9fd82-9d57-4e56-9f77-c9a61817b2a4","path":"sprites/s_player_kid_dance_left_idle/s_player_kid_dance_left_idle.yy",},"resourceVersion":"1.0","resourceType":"SpriteFrameKeyframe",},},"resourceVersion":"1.0","resourceType":"Keyframe<SpriteFrameKeyframe>",},
-          ],"resourceVersion":"1.0","resourceType":"KeyframeStore<SpriteFrameKeyframe>",},"trackColour":0,"inheritsTrackColour":true,"builtinName":0,"traits":0,"interpolation":1,"tracks":[],"events":[],"isCreationTrack":false,"resourceVersion":"1.0","tags":[],"resourceType":"GMSpriteFramesTrack","modifiers":[],},
+          ],"resourceVersion":"1.0","resourceType":"KeyframeStore<SpriteFrameKeyframe>",},"trackColour":0,"inheritsTrackColour":true,"builtinName":0,"traits":0,"interpolation":1,"tracks":[],"events":[],"isCreationTrack":false,"modifiers":[],},
     ],
     "visibleRange": null,
     "lockOrigin": false,
@@ -62,22 +64,13 @@
     "yorigin": 80,
     "eventToFunction": {},
     "eventStubScript": null,
-    "parent": {"name":"s_player_kid_dance_left_idle","path":"sprites/s_player_kid_dance_left_idle/s_player_kid_dance_left_idle.yy",},
-    "resourceVersion": "1.4",
-    "name": "s_player_kid_dance_left_idle",
-    "tags": [],
-    "resourceType": "GMSequence",
   },
   "layers": [
-    {"visible":true,"isLocked":false,"blendMode":0,"opacity":100.0,"displayName":"default","resourceVersion":"1.0","name":"467dd097-abe8-4233-abc0-e7f649b1aada","tags":[],"resourceType":"GMImageLayer",},
+    {"resourceType":"GMImageLayer","resourceVersion":"1.0","name":"467dd097-abe8-4233-abc0-e7f649b1aada","visible":true,"isLocked":false,"blendMode":0,"opacity":100.0,"displayName":"default",},
   ],
   "nineSlice": null,
   "parent": {
     "name": "characters",
     "path": "folders/Art/characters.yy",
   },
-  "resourceVersion": "1.0",
-  "name": "s_player_kid_dance_left_idle",
-  "tags": [],
-  "resourceType": "GMSprite",
 }

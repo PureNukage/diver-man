@@ -1,4 +1,8 @@
 {
+  "resourceType": "GMSound",
+  "resourceVersion": "1.0",
+  "name": "sound_splash",
+  "conversionMode": 0,
   "compression": 0,
   "volume": 1.0,
   "preload": false,
@@ -11,13 +15,9 @@
     "path": "audiogroups/audiogroup_default",
   },
   "soundFile": "sound_splash.wav",
-  "duration": 0.718968,
+  "duration": 0.713968,
   "parent": {
     "name": "Sounds",
     "path": "folders/Sounds.yy",
   },
-  "resourceVersion": "1.0",
-  "name": "sound_splash",
-  "tags": [],
-  "resourceType": "GMSound",
 }

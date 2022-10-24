@@ -1,4 +1,8 @@
 {
+  "resourceType": "GMSound",
+  "resourceVersion": "1.0",
+  "name": "sound_coins",
+  "conversionMode": 0,
   "compression": 0,
   "volume": 1.0,
   "preload": false,
@@ -11,13 +15,9 @@
     "path": "audiogroups/audiogroup_default",
   },
   "soundFile": "sound_coins.mp3",
-  "duration": 0.318425,
+  "duration": 0.313425,
   "parent": {
     "name": "Sounds",
     "path": "folders/Sounds.yy",
   },
-  "resourceVersion": "1.0",
-  "name": "sound_coins",
-  "tags": [],
-  "resourceType": "GMSound",
 }

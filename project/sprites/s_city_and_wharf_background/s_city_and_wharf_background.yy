@@ -1,4 +1,7 @@
 {
+  "resourceType": "GMSprite",
+  "resourceVersion": "1.0",
+  "name": "s_city_and_wharf_background",
   "bboxMode": 0,
   "collisionKind": 1,
   "type": 0,
@@ -14,6 +17,7 @@
   "HTile": false,
   "VTile": false,
   "For3D": false,
+  "DynamicTexturePage": false,
   "width": 1600,
   "height": 360,
   "textureGroupId": {
@@ -24,12 +28,12 @@
   "gridX": 0,
   "gridY": 0,
   "frames": [
-    {"compositeImage":{"FrameId":{"name":"055ebd74-170e-4797-bfa9-6ea1172625c8","path":"sprites/s_city_and_wharf_background/s_city_and_wharf_background.yy",},"LayerId":null,"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMSpriteBitmap",},"images":[
-        {"FrameId":{"name":"055ebd74-170e-4797-bfa9-6ea1172625c8","path":"sprites/s_city_and_wharf_background/s_city_and_wharf_background.yy",},"LayerId":{"name":"3778caf5-ef8f-47df-99d4-4da1b5840ac9","path":"sprites/s_city_and_wharf_background/s_city_and_wharf_background.yy",},"resourceVersion":"1.0","name":"","tags":[],"resourceType":"GMSpriteBitmap",},
-      ],"parent":{"name":"s_city_and_wharf_background","path":"sprites/s_city_and_wharf_background/s_city_and_wharf_background.yy",},"resourceVersion":"1.0","name":"055ebd74-170e-4797-bfa9-6ea1172625c8","tags":[],"resourceType":"GMSpriteFrame",},
+    {"resourceType":"GMSpriteFrame","resourceVersion":"1.1","name":"055ebd74-170e-4797-bfa9-6ea1172625c8",},
   ],
   "sequence": {
-    "spriteId": {"name":"s_city_and_wharf_background","path":"sprites/s_city_and_wharf_background/s_city_and_wharf_background.yy",},
+    "resourceType": "GMSequence",
+    "resourceVersion": "1.4",
+    "name": "s_city_and_wharf_background",
     "timeUnits": 1,
     "playback": 1,
     "playbackSpeed": 30.0,
@@ -40,9 +44,9 @@
     "events": {"Keyframes":[],"resourceVersion":"1.0","resourceType":"KeyframeStore<MessageEventKeyframe>",},
     "moments": {"Keyframes":[],"resourceVersion":"1.0","resourceType":"KeyframeStore<MomentsEventKeyframe>",},
     "tracks": [
-      {"name":"frames","spriteId":null,"keyframes":{"Keyframes":[
+      {"resourceType":"GMSpriteFramesTrack","resourceVersion":"1.0","name":"frames","spriteId":null,"keyframes":{"Keyframes":[
             {"id":"60122ea6-2dfb-4a8d-a76b-5e6c06abda69","Key":0.0,"Length":1.0,"Stretch":false,"Disabled":false,"IsCreationKey":false,"Channels":{"0":{"Id":{"name":"055ebd74-170e-4797-bfa9-6ea1172625c8","path":"sprites/s_city_and_wharf_background/s_city_and_wharf_background.yy",},"resourceVersion":"1.0","resourceType":"SpriteFrameKeyframe",},},"resourceVersion":"1.0","resourceType":"Keyframe<SpriteFrameKeyframe>",},
-          ],"resourceVersion":"1.0","resourceType":"KeyframeStore<SpriteFrameKeyframe>",},"trackColour":0,"inheritsTrackColour":true,"builtinName":0,"traits":0,"interpolation":1,"tracks":[],"events":[],"isCreationTrack":false,"resourceVersion":"1.0","tags":[],"resourceType":"GMSpriteFramesTrack","modifiers":[],},
+          ],"resourceVersion":"1.0","resourceType":"KeyframeStore<SpriteFrameKeyframe>",},"trackColour":0,"inheritsTrackColour":true,"builtinName":0,"traits":0,"interpolation":1,"tracks":[],"events":[],"isCreationTrack":false,"modifiers":[],},
     ],
     "visibleRange": null,
     "lockOrigin": false,
@@ -58,22 +62,13 @@
     "yorigin": 0,
     "eventToFunction": {},
     "eventStubScript": null,
-    "parent": {"name":"s_city_and_wharf_background","path":"sprites/s_city_and_wharf_background/s_city_and_wharf_background.yy",},
-    "resourceVersion": "1.4",
-    "name": "s_city_and_wharf_background",
-    "tags": [],
-    "resourceType": "GMSequence",
   },
   "layers": [
-    {"visible":true,"isLocked":false,"blendMode":0,"opacity":100.0,"displayName":"default","resourceVersion":"1.0","name":"3778caf5-ef8f-47df-99d4-4da1b5840ac9","tags":[],"resourceType":"GMImageLayer",},
+    {"resourceType":"GMImageLayer","resourceVersion":"1.0","name":"3778caf5-ef8f-47df-99d4-4da1b5840ac9","visible":true,"isLocked":false,"blendMode":0,"opacity":100.0,"displayName":"default",},
   ],
   "nineSlice": null,
   "parent": {
     "name": "backgrounds",
     "path": "folders/Art/backgrounds.yy",
   },
-  "resourceVersion": "1.0",
-  "name": "s_city_and_wharf_background",
-  "tags": [],
-  "resourceType": "GMSprite",
 }
